@@ -6,37 +6,56 @@
 @media(max-height:520px) and (orientation:landscape){header{padding:5px max(14px,env(safe-area-inset-right)) 5px max(14px,env(safe-area-inset-left))}.brand{font-size:11px}.brand small{display:none}nav button{min-height:44px}#hud{top:56px;left:14px;right:14px;gap:10px}.vitals{padding:6px 10px;gap:14px}.vital{width:105px}.vital label{font-size:10px;margin-bottom:3px}.chapter{padding:5px 10px;font-size:10px;gap:2px}#intro{top:27%;left:7%;width:50%;max-height:66%;padding:15px 22px}#intro h1{font-size:38px;margin:4px 0}#intro h2{font-size:16px;margin-bottom:5px}#intro p{font-size:12px;line-height:1.4;margin:8px 0}#intro .eyebrow{font-size:8px}#intro small{font-size:9px;margin-top:7px}#lesson{top:28%;left:21%;width:58%;padding:8px 12px}#lessonTag{display:none}#lesson h2{font-size:14px;margin:0 0 3px}#lesson p{font-size:11px;line-height:1.5}#delta{top:99px;left:18px;font-size:11px}#controls{bottom:10px;left:max(14px,env(safe-area-inset-left));right:max(14px,env(safe-area-inset-right))}#controls button{width:60px;height:48px}#controlHint{font-size:9px;padding:4px 9px}#choices{bottom:64px;left:15%;width:70%;gap:7px}#choices button{font-size:10px;padding:7px 9px}#choices b{font-size:12px;margin-bottom:3px}#caption{font-size:13px;bottom:20%;padding:8px 12px}#ending .dialog,#helpPanel .dialog{max-height:100%;padding:20px}.dialog h1{font-size:28px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 .dialog>.modal-language{float:right;margin:0 0 8px 12px;min-height:44px;font-size:12px;padding:8px 12px}.dialog h2{padding-top:4px}
+/* Countdown stays below the flight corridor and separate from notes and HUD. */
+.flight-status{position:absolute;z-index:5;left:max(20px,env(safe-area-inset-left));bottom:max(100px,calc(env(safe-area-inset-bottom) + 85px));max-width:calc(100% - 40px);padding:8px 12px;border:1px solid #e2d5b46b;border-radius:9px;background:#19364ae8;color:#f5e5bd;font-size:12px;line-height:1.5;pointer-events:none;box-shadow:0 3px 15px #10253633}
+@media(max-width:600px) and (orientation:portrait){.flight-status{left:14px;max-width:calc(100% - 28px);bottom:max(99px,calc(env(safe-area-inset-bottom) + 80px));font-size:11px;padding:7px 10px}}
+@media(max-height:520px) and (orientation:landscape){.flight-status{left:max(14px,env(safe-area-inset-left));bottom:70px;font-size:11px;padding:6px 10px}}
 </style></head>
 <body><main id="game"><canvas id="scene" aria-label="候鳥第一人稱飛行 / First-person bird flight"></canvas>
 <header><div class="brand">FLY HOME<small>飛越香港</small></div><nav aria-label="遊戲選單 / Game menu"><button id="language">繁中 | EN</button><button id="pause" aria-label="暫停 / Pause">II</button><button id="help" aria-label="說明 / Instructions">?</button><button id="mute" aria-label="聲音 / Sound">♪</button><button id="restart" aria-label="重新開始 / Restart">↻</button></nav></header>
 <section id="hud"><div class="vitals"><div class="vital"><label id="healthLabel" for="health"></label><meter id="health" min="0" max="100" value="100"></meter></div><div class="vital"><label id="energyLabel" for="energy"></label><meter id="energy" min="0" max="100" value="100"></meter></div></div><div class="chapter"><span id="chapter"></span><span><b id="stage">01 / 06</b> · <time id="time">00:00</time><small id="route"></small></span></div></section>
 <section id="intro" class="panel"><span class="eyebrow">A MIGRATORY BIRD’S JOURNEY</span><h1>Fly Home</h1><h2>飛越香港</h2><p id="introText"></p><button id="start" class="primary"></button><small id="introHint"></small></section>
-<div id="caption" aria-live="polite"></div><section id="choices" aria-label="路線選擇 / Route choice"></section><aside id="lesson" role="status" hidden><span id="lessonTag"></span><h2 id="lessonTitle"></h2><p id="lessonText"></p></aside><div id="delta" aria-live="polite"></div>
+<div id="caption" aria-live="polite"></div><section id="choices" aria-label="路線選擇 / Route choice"></section><aside id="lesson" role="status" hidden><span id="lessonTag"></span><h2 id="lessonTitle"></h2><p id="lessonText"></p></aside><div id="delta" aria-live="polite"></div><div id="interference" class="flight-status" role="status" hidden></div>
 <section id="pausePanel" class="overlay" hidden></section><section id="helpPanel" class="overlay" hidden></section><section id="recovery" class="overlay" hidden></section><section id="ending" class="overlay" hidden></section>
 <footer id="controls"><button id="left" aria-label="按住向左飛行 / Hold to steer left">←</button><span id="controlHint"></span><button id="right" aria-label="按住向右飛行 / Hold to steer right">→</button></footer>
 </main><script>(()=>{
 // Shared world units for perspective drawing and swept collision tests.
 const FLIGHT_SPEED = 9;
 const LATERAL_RANGE = 23;
-const EYE_HEIGHT = 23;
+const EYE_HEIGHT = 34;
 const STAGE_STARTS = [10,45,80,115,140];
 const STAGE_ENDS = [45,80,115,140,165];
 const hash = n => {const a=Math.sin(n*127.1+311.7)*43758.5453;return a-Math.floor(a)};
 const pathX = z => Math.sin(z/175)*10+Math.sin(z/410)*14;
 const cameraZ = progress => (progress-10)*FLIGHT_SPEED;
+// Route difficulty changes actual geometry. Every choice shares the entrance;
+// its distinct blocks begin well beyond the decision, never around the player.
+const ROUTE_PROFILES = {
+ A:{cityCount:34,parkCount:13,villageCount:16,gap:10,turn:4.5,driftDuration:6,driftStrength:.14},
+ B:{cityCount:22,parkCount:9,villageCount:11,gap:16,turn:2.7,driftDuration:3,driftStrength:.085},
+ C:{cityCount:12,parkCount:5,villageCount:7,gap:24,turn:1.2,driftDuration:1,driftStrength:.035}
+};
 function makeDistrict(chapter, route='B') {
+ if(chapter<0||chapter>=4)return [];
  const result=[],start=cameraZ(STAGE_STARTS[chapter]),length=(STAGE_ENDS[chapter]-STAGE_STARTS[chapter])*FLIGHT_SPEED;
- const count=chapter<2?23:chapter===2?10:chapter===3?12:0;
+ // Stable entrance is identical across all routes and in next-district previews.
+ for(let i=0;i<4;i++){
+  const seed=chapter*223+i*19,side=i%2?-1:1,z=start+70+i*15,width=10+hash(seed)*7;
+  result.push({id:`${chapter}-entry-${i}`,entry:true,chapter,x:pathX(z)+side*(18+width/2),z,width,depth:10,
+   height:chapter===3?12:44+hash(seed+5)*34,seed,side,route:'B',glass:chapter!==3,marked:false,severe:false,style:i%5});
+ }
+ if(route==='entry')return result;
+ const profile=ROUTE_PROFILES[route],count=chapter<2?profile.cityCount:chapter===2?profile.parkCount:profile.villageCount;
  for(let i=0;i<count;i++){
-  const seed=chapter*223+i*19,side=i%2?-1:1;
-  const z=start+52+i*(length-50)/count+hash(seed)*9;
+  const seed=chapter*223+i*19+111,side=i%2?-1:1;
+  const spacing=Math.max(40,length-160)/count;
+  const z=start+140+i*spacing+hash(seed)*.5;
   const width=chapter===3?7+hash(seed+3)*7:9+hash(seed+3)*15;
-  const depth=chapter===3?9:10+hash(seed+4)*13;
-  const extra=route==='C'?10:route==='B'?3:0;
-  // Irregular clusters; primary row has clear centre, additional setbacks create plazas.
-  const edge=10.5+extra+hash(seed+1)*12+(i%4===0?18:0);
-  const height=chapter===3?7+hash(seed+5)*8:chapter===2?18+hash(seed+5)*30:17+hash(seed+5)*85;
-  result.push({id:`${chapter}-building-${i}`,chapter,x:pathX(z)+side*(edge+width/2),z,width,depth,height,
+  const depth=Math.min(chapter===3?9:18,spacing*1.4);
+  const turn=Math.sin((z-start-140)/37)*profile.turn;
+  const edge=profile.gap+hash(seed+1)*9+(i%5===0?12:0);
+  const height=chapter===3?7+hash(seed+5)*8:chapter===2?18+hash(seed+5)*35:39+hash(seed+5)*69;
+  result.push({id:`${chapter}-building-${i}`,entry:false,chapter,x:pathX(z)+turn+side*(edge+width/2),z,width,depth,height,
    seed,side,route,glass:chapter!==3&&hash(seed+8)>.32,marked:route==='B'&&i%3!==0,
    severe:route==='A'&&i%4===1,style:i%5});
  }
@@ -58,7 +77,7 @@ function hitsBuilding(building,from,to,radius=1.1){
 const clamp=n=>Math.max(0,Math.min(100,n));
 class Journey {
  constructor(){this.reset()}
- reset(){Object.assign(this,{health:100,energy:100,time:0,progress:0,x:0,chapter:-1,routes:{},events:new Set(),seen:new Set(),retryUsed:false,emergencyUsed:false,recovery:null,recoveryTime:0,done:false,success:false,started:false,paused:false,speed:1,clock:0,lesson:null,lessonQueue:[],grace:0,impact:0,slowImpact:0,notices:[],districts:new Map(),reflection:''})}
+ reset(){Object.assign(this,{health:100,energy:100,time:0,progress:0,x:0,chapter:-1,routes:{},events:new Set(),seen:new Set(),retryUsed:false,emergencyUsed:false,recovery:null,recoveryTime:0,done:false,success:false,started:false,paused:false,speed:1,clock:0,lesson:null,lessonQueue:[],grace:0,impact:0,slowImpact:0,notices:[],districts:new Map(),reflection:'',routeSelectedAt:{},interference:null})}
  get running(){return this.started&&!this.done&&!this.paused}
  event(id,health=0,energy=0){
   if(this.done||this.paused||this.events.has(id))return false;
@@ -68,13 +87,29 @@ class Journey {
  }
  choose(route){
   if(!this.running||this.recovery||![0,1,2,3].includes(this.chapter)||this.routes[this.chapter]||!['A','B','C'].includes(route))return false;
-  this.routes[this.chapter]=route;if(route==='C')this.event(`detour-${this.chapter}`,0,-5);return true;
+  this.routes[this.chapter]=route;this.routeSelectedAt[this.chapter]=this.clock;if(route==='C')this.event(`detour-${this.chapter}`,0,-5);return true;
  }
  buildings(chapter=this.chapter){
   if(chapter<0||chapter>4)return [];
-  const route=this.routes[chapter]||'B',key=`${chapter}-${route}`;
+  const route=this.routes[chapter]||'entry',key=`${chapter}-${route}`;
   if(!this.districts.has(key))this.districts.set(key,makeDistrict(chapter,route));
   return this.districts.get(key);
+ }
+ districtReveal(chapter=this.chapter){
+  const at=this.routeSelectedAt[chapter];return at===undefined?0:Math.min(1,Math.max(0,(this.clock-at)/1.8));
+ }
+ startInterference(){
+  if(!this.running||this.recovery||this.chapter!==1||this.events.has('light-1'))return false;
+  const profile=ROUTE_PROFILES[this.routes[1]||'B'];
+  if(!this.event('light-1',0,-10))return false;
+  this.interference={duration:profile.driftDuration,remaining:profile.driftDuration,elapsed:0,strength:profile.driftStrength,side:1};
+  this.teach('light',2);return true;
+ }
+ driftVelocity(){
+  const effect=this.interference;if(!effect)return 0;
+  const smooth=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)};
+  // Ease both edges of the velocity, never reset the bird's position on expiry.
+  return effect.side*effect.strength*smooth(effect.elapsed/.45)*smooth(effect.remaining/.8);
  }
  teach(id,priority=1){
   if(this.seen.has(id)||this.lessonQueue.some(x=>x.id===id))return false;
@@ -93,18 +128,18 @@ class Journey {
  rest(id){if(this.event(`rest-${id}`,0,20))this.teach('green')}
  checkRecovery(){
   if(this.done||this.recovery)return;
-  if(this.health===0){this.recovery='health';this.recoveryTime=0;this.lesson=null}
-  else if(this.energy===0){this.recovery='energy';this.recoveryTime=0;this.lesson=null}
+  if(this.health===0){this.recovery='health';this.recoveryTime=0;this.lesson=null;this.interference=null}
+  else if(this.energy===0){this.recovery='energy';this.recoveryTime=0;this.lesson=null;this.interference=null}
  }
  retry(){
   if(this.recovery!=='health'||this.retryUsed||this.recoveryTime<1)return false;
   this.retryUsed=true;this.health=70;this.energy=60;
   this.progress=STAGE_STARTS[Math.max(0,this.chapter)];this.x=0;
-  delete this.routes[this.chapter];
+  delete this.routes[this.chapter];delete this.routeSelectedAt[this.chapter];this.interference=null;
   for(const key of [...this.events])if(key===`detour-${this.chapter}`||key===`rest-${this.chapter}`||key.startsWith(`hit-${this.chapter}-`)||key===`light-${this.chapter}`)this.events.delete(key);
   this.recovery=null;this.grace=2;this.speed=.65;this.notices=[];return true;
  }
- finish(success){if(this.done)return;if(success)this.event('arrival',0,10);this.done=true;this.success=success;this.recovery=null;this.lesson=null}
+ finish(success){if(this.done)return;if(success)this.event('arrival',0,10);this.done=true;this.success=success;this.recovery=null;this.lesson=null;this.interference=null}
  tick(dt,steer=0){
   if(!this.running)return;
   dt=Math.max(0,Math.min(dt,.1));this.time+=dt;this.clock+=dt;
@@ -122,28 +157,25 @@ class Journey {
   this.speed+=(target-this.speed)*(1-Math.exp(-dt*8));
   const previous={x:pathX(cameraZ(this.progress))+this.x*LATERAL_RANGE,z:cameraZ(this.progress)};
   this.progress+=dt*this.speed;
-  if(this.progress>=10)this.x=Math.max(-1,Math.min(1,this.x+steer*dt*.62));
+  if(this.progress>=10)this.x=Math.max(-1,Math.min(1,this.x+(steer*.62+this.driftVelocity())*dt));
+  if(this.interference){this.interference.elapsed+=dt;this.interference.remaining=Math.max(0,this.interference.duration-this.interference.elapsed);if(this.interference.remaining<=0)this.interference=null}
   const c=this.progress<10?-1:this.progress<45?0:this.progress<80?1:this.progress<115?2:this.progress<140?3:4;
   if(c!==this.chapter){
    if(this.chapter>=0&&this.chapter<4)this.event(`segment-${this.chapter}`,0,-8);
-   this.chapter=c;if(c===4){this.event('arrival',0,10);this.teach('wetland')}
+   this.chapter=c;if(c!==1)this.interference=null;if(c===4){this.event('arrival',0,10);this.teach('wetland')}
   }
   const local=this.progress-(STAGE_STARTS[c]||0);
   // Route observations remain neutral. No input chooses a middle route after 8 flight seconds.
   if(c>=0&&c<4&&!this.routes[c]&&local>=8)this.choose(this.x<-.4?'A':this.x>.4?'C':'B');
   if(c===0&&local>=28)this.teach('glass'); // guaranteed lesson even with no impact
-  if(c===1&&local>=16){
-   if(this.event('light-1',0,-10)){
-    const r=this.routes[c];this.x=Math.max(-1,Math.min(1,this.x+(r==='A'?.34:r==='C'?.08:.16)));
-    this.teach('light',2);
-   }
-  }
+  if(c===1&&local>=16)this.startInterference();
   if(c===2&&local>=7)this.teach('corridor');
   if((c===0||c===2||c===3)&&this.routes[c]==='C'&&local>=21)this.rest(c);
   if(c===2&&local>=25)this.teach('green');
   const current={x:pathX(cameraZ(this.progress))+this.x*LATERAL_RANGE,z:cameraZ(this.progress)};
   if(c>=0&&c<4&&local>=8&&this.grace===0){
    for(const building of this.buildings()){
+    if(!building.entry&&this.districtReveal()<1)continue;
     if(hitsBuilding(building,previous,current)&&this.collide(building.id,building.severe)){
      this.x=Math.max(-1,Math.min(1,this.x-building.side*.16));break;
     }
@@ -251,11 +283,11 @@ class FlightRenderer {
   const distance=z-this.cz;
   const textured=face=>{
    this.textureFace(face,this.facadeTexture(b,false),distance);
-   if(this.nightMix>0){this.ctx.save();this.ctx.globalAlpha=this.nightMix;this.textureFace(face,this.facadeTexture(b,true),distance);this.ctx.restore()}
+   if(this.nightMix>0){this.ctx.save();this.ctx.globalAlpha*=this.nightMix;this.textureFace(face,this.facadeTexture(b,true),distance);this.ctx.restore()}
   };
   textured(side);this.polygon(side,`rgba(10,29,45,${night?.32:.22})`);
   textured(front);
-  if(fade>0){const c=this.ctx;c.save();c.globalAlpha=fade;this.polygon(front,p.haze);this.polygon(side,p.haze);c.restore()}
+  if(fade>0){const c=this.ctx;c.save();c.globalAlpha*=fade;this.polygon(front,p.haze);this.polygon(side,p.haze);c.restore()}
   if(H<this.eye){
    this.polygon([[x0,H,z],[x1,H,z],[x1,H,z1],[x0,H,z1]],paint('#d9d5c4'));
    this.polygon([[x0+1,H+.05,z+1],[x1-1,H+.05,z+1],[x1-1,H+.05,z1-1],[x0+1,H+.05,z1-1]],paint(b.chapter===3?'#ba7954':'#7d8d8b'));
@@ -291,19 +323,40 @@ class FlightRenderer {
  ground(p,g){
   const c=this.ctx,w=this.w,h=this.h,wet=g.chapter>=2;
   const grd=c.createLinearGradient(0,this.horizon,0,h);grd.addColorStop(0,p.haze);grd.addColorStop(1,p.ground);c.fillStyle=grd;c.fillRect(0,this.horizon,w,h);
-  // Ground is projected from the same curved coordinate system as buildings.
-  for(let k=45;k>=0;k--){const a=this.cz+k*10+2,b=a+11,xa=pathX(a),xb=pathX(b);
-   if(wet){const width=g.chapter===4?30:g.chapter===3?20:8;
-    this.polygon([[xa-width,0,a],[xa+width,0,a],[xb+width,0,b],[xb-width,0,b]],p.water);
-    if(k%2===0)this.polygon([[xa-width*.8,.015,a],[xa+width*.6,.015,a],[xa+width*.6,.015,a+.12],[xa-width*.8,.015,a+.12]],colorMix(p.water,'#fff4d1',.2));
-    if(g.chapter===3&&k%6===0){for(const side of [-1,1])this.polygon([[xa+side*29,0,a],[xa+side*53,0,a],[xb+side*53,0,b+15],[xb+side*29,0,b+15]],colorMix(p.water,'#a2bd9a',.2))}
-   }else{
-    this.polygon([[xa-8,0,a],[xa+8,0,a],[xb+8,0,b],[xb-8,0,b]],colorMix(p.ground,'#516371',.65));
-    for(const side of [-1,1])this.polygon([[xa+side*8,.02,a],[xa+side*11,.02,a],[xb+side*11,.02,b],[xb+side*8,.02,b]],colorMix(p.stone[0],p.haze,.15));
-    if(k%2===0)this.polygon([[xa-.12,.04,a],[xa+.12,.04,a],[xa+.12,.04,a+3],[xa-.12,.04,a+3]],'#ded6b5');
+  if(!wet){
+   // Small disconnected courtyards and cross-streets lie below the bird. There
+   // is no continuous paved ribbon or lane marking aligned to the camera.
+   const first=Math.floor(this.cz/44);
+   for(let i=11;i>=0;i--){
+    const cell=first+i,z=cell*44,x=pathX(z)+(hash(cell+12)-.5)*36;
+    const width=10+hash(cell+7)*15,depth=13+hash(cell+20)*17;
+    this.polygon([[x-width,0,z],[x+width,0,z],[x+width,0,z+depth],[x-width,0,z+depth]],colorMix(p.ground,p.stone[0],.2+hash(cell)*.25));
+    const gx=x+(hash(cell+33)-.5)*22;
+    this.polygon([[gx-6,.02,z+3],[gx+6,.02,z+3],[gx+6,.02,z+10],[gx-6,.02,z+10]],colorMix(p.ground,'#526e52',.35));
+    if(cell%4===0){
+     const groundStreet=colorMix(p.ground,'#68767c',.28);
+     this.polygon([[x-95,0,z+34],[x+95,0,z+34],[x+95,0,z+37],[x-95,0,z+37]],groundStreet);
+    }
    }
+   return;
+  }
+  for(let k=45;k>=0;k--){const a=this.cz+k*10+2,b=a+11,xa=pathX(a),xb=pathX(b);
+   const width=g.chapter===4?30:g.chapter===3?20:8;
+   this.polygon([[xa-width,0,a],[xa+width,0,a],[xb+width,0,b],[xb-width,0,b]],p.water);
+   if(k%2===0)this.polygon([[xa-width*.8,.015,a],[xa+width*.6,.015,a],[xa+width*.6,.015,a+.12],[xa-width*.8,.015,a+.12]],colorMix(p.water,'#fff4d1',.2));
+   if(g.chapter===3&&k%6===0){for(const side of [-1,1])this.polygon([[xa+side*29,0,a],[xa+side*53,0,a],[xb+side*53,0,b+15],[xb+side*29,0,b+15]],colorMix(p.water,'#a2bd9a',.2))}
   }
  }
+ navigation(g){
+  const at=g.routeSelectedAt[g.chapter],route=g.routes[g.chapter];
+  if(at===undefined||g.clock-at>1.8||g.recovery||g.done)return;
+  const age=g.clock-at,c=this.ctx,side=route==='A'?-1:route==='C'?1:0;
+  c.save();c.globalAlpha=Math.min(.4,age/.3,(1.8-age)/.7);
+  const x=this.w*(.5+side*.06),y=this.h*.59;
+  c.strokeStyle='#eff1ea';c.lineWidth=2;c.beginPath();
+  c.moveTo(x-7,y+side*2+5);c.lineTo(x+side*4,y-4);c.lineTo(x+7,y-side*2+5);c.stroke();c.restore();
+ }
+
  bird(x,y,size,phase,color='#233c48'){
   const c=this.ctx;c.strokeStyle=color;c.lineWidth=Math.max(1,size*.08);c.beginPath();c.moveTo(x-size,y+Math.sin(phase)*size*.4);c.quadraticCurveTo(x-size*.4,y-size*.4,x,y);c.quadraticCurveTo(x+size*.4,y-size*.4,x+size,y+Math.sin(phase)*size*.4);c.stroke();
  }
@@ -348,7 +401,7 @@ class FlightRenderer {
   if(stage<4)objects.push(...g.buildings(stage+1).filter(b=>b.z<this.cz+350));
   if(!night)for(const b of objects){
    if(b.z<this.cz+3||b.z>this.cz+240)continue;const x0=b.x-b.width/2,x1=b.x+b.width/2,shift=b.height*.3;
-   this.polygon([[x0,.06,b.z],[x1,.06,b.z],[x1+shift,.06,b.z+b.depth+shift],[x0+shift,.06,b.z+b.depth+shift]],'#223d4925');
+   c.save();c.globalAlpha=b.entry?1:g.districtReveal(b.chapter);this.polygon([[x0,.06,b.z],[x1,.06,b.z],[x1+shift,.06,b.z+b.depth+shift],[x0+shift,.06,b.z+b.depth+shift]],'#223d4925');c.restore();
   }
   // Trees are anchored in world space, not randomly regenerated each frame.
   const first=Math.floor(this.cz/12),treeCount=stage>=2?70:28;
@@ -358,7 +411,10 @@ class FlightRenderer {
    objects.push({tree:true,z,x,height:stage===4?3+hash(index)*4:5+hash(index)*9,seed:index*7});
   }
   objects.sort((a,b)=>(b.z+(b.depth||0)/2)-(a.z+(a.depth||0)/2));
-  for(const obj of objects)obj.tree?this.tree(obj,p):this.building(obj,p,night);
+  for(const obj of objects){
+   if(obj.tree)this.tree(obj,p);
+   else {c.save();c.globalAlpha=obj.entry?1:g.districtReveal(obj.chapter);this.building(obj,p,night);c.restore()}
+  }
   c.restore();
   if(stage===4||g.progress<6||!g.started){
    const count=g.progress>=4&&g.progress<6?3:stage===4?14:7;
@@ -367,6 +423,7 @@ class FlightRenderer {
     this.bird(w*(.28+hash(i+5)*.4)+spread*(i-1),h*(.31+hash(i+40)*.12),5+hash(i+12)*7,g.clock*3+i);
    }
   }
+  this.navigation(g);
   // Near-field wing tips reinforce the bird camera while leaving the corridor clear.
   if(g.progress>=10||!g.started)for(const side of [-1,1]){
    c.save();c.translate(w/2+side*w*.41,h+18+Math.sin(g.clock*4)*7);c.scale(side,1);c.rotate(-.1-g.x*.04);
@@ -388,14 +445,14 @@ const tr=(zh,en)=>lang==='zh'?zh:en;
 const names=[['玻璃建築區','Glass-building district'],['夜間照明區','Night-lighting district'],['生態廊道','Ecological corridor'],['魚塘與村落','Fish ponds & villages'],['米埔內后海灣','Mai Po · Inner Deep Bay']];
 const lessons={
  glass:{title:['玻璃幕牆與鳥類碰撞','Glass façades & bird collisions'],text:['玻璃可能反射天空與植被，或因透明而難以辨識。外部可見標記及鳥類友善玻璃設計，有助降低碰撞風險，但不能完全消除風險。','Glass can reflect sky and vegetation or appear transparent. External markers and bird-friendly glazing can reduce collision risk, but cannot eliminate it.'],short:['玻璃反射或透明，可能令鳥類誤判。外部可見標記可降低碰撞風險。','Reflective or transparent glass can confuse birds. External markers can reduce collision risk.']},
- light:{title:['夜間人工照明','Artificial light at night'],text:['部分遷徙鳥類可能受到夜間人工光吸引或干擾。合理控制光線方向、減少不必要照明，有助降低潛在生態影響。','Some migratory birds may be attracted or disoriented by artificial light. Directing light thoughtfully and reducing unnecessary illumination can limit potential impacts.'],short:['夜間人工光可能干擾部分候鳥。減少不必要照明，有助降低影響。','Light at night may affect some migratory birds. Reducing unnecessary light can help.']},
+ light:{title:['夜間人工照明','Artificial light at night'],text:['部分遷徙鳥類可能受到夜間人工光吸引或干擾。減少不必要照明有助降低影響。遊戲中的持續偏移是模擬，並非所有光線都會影響所有鳥類。','Some migratory birds may be attracted or disoriented by artificial light. Reducing unnecessary light can help. The drift is a game representation, not a claim that every light affects every bird.'],short:['夜間光線可能干擾部分候鳥。方向偏移為遊戲模擬，並非所有鳥類都受影響。','Light may affect some migratory birds. This simulated drift does not represent every bird or light.']},
  corridor:{title:['生態空間與廊道','Ecological spaces & corridors'],text:['連通的綠地、樹木與水源可能提供遮蔽、覓食及停歇機會。其價值仍取決於棲地品質、食物及人為干擾。','Connected vegetation and water may offer shelter, food and resting places. Their value depends on habitat quality, food and human disturbance.'],short:['連通的綠地與水源有助移動與覓食；棲地品質同樣重要。','Connected greenery and water can support movement and foraging. Habitat quality matters.']},
  green:{title:['合適的停歇地','Suitable resting places'],text:['只有指定的生態停歇點恢復體力。合適的植被、水源與低干擾環境可能支持候鳥；並非每片綠地都有相同價值。','Only designated resting points restore energy. Suitable vegetation, water and low disturbance may support birds; green spaces vary in ecological value.'],short:['指定停歇點恢復體力，不恢復健康。綠地的價值取決於棲地品質。','Resting points restore energy, not health. The value of green space depends on habitat quality.']},
  wetland:{title:['濕地保護與生物多樣性','Wetlands & biodiversity'],text:['濕地提供覓食、停歇及棲息空間。保護棲地面積、環境品質與生態連通性，是維持生物多樣性的重要一環。','Wetlands provide feeding, resting and habitat areas. Protecting habitat extent, environmental quality and connectivity supports biodiversity.'],short:['濕地提供覓食與棲息空間。保護面積、品質及連通性，支持生物多樣性。','Wetlands offer food and habitat. Protect their extent, quality and connectivity.']}
 };
 const routes={
  0:[['建築邊緣','Building edge','密集幕牆與較窄的樓宇間隙。','Dense façades and narrower gaps.'],['外部玻璃標記','External glass markers','窗面有細小標記，樓距較寬。','Subtle glass markings and wider gaps.'],['綠蔭繞道','Green detour','沿樹木繞行；−5 體力，有停歇點。','Tree-lined detour; −5 energy, a resting point.']],
- 1:[['商業街區','Commercial streets','窗光較多，街區較密集。','More lit windows; a denser district.'],['受管理照明','Managed lighting','照明較克制，建築間距不同。','Restrained lighting and wider setbacks.'],['外圍繞道','Outer detour','繞開強光；額外 −5 體力。','Around the brightest area; −5 energy.']],
+ 1:[['商業街區','Commercial streets','樓宇密集、間隙較窄；強光區較多。','Dense towers, narrower gaps and brighter windows.'],['受管理照明','Managed lighting','樓距適中，照明較克制。','Moderate density and restrained lighting.'],['外圍繞道','Outer detour','樓宇較稀疏，繞開強光；−5 體力。','Sparse buildings, around the brightest area; −5 energy.']],
  2:[['城市邊緣','Urban edge','沿建築與綠地的交界前進。','Follow the boundary of buildings and greenery.'],['水道沿線','Waterway','沿水道觀察相連的綠地。','Follow water and connected greenery.'],['生態繞道','Ecological detour','路程較長；−5 體力，有停歇點。','Longer; −5 energy, a resting point.']],
  3:[['村落邊緣','Village edge','沿村落與魚塘的交界前進。','Follow the edge of villages and ponds.'],['濕地廊道','Wetland corridor','沿相連的水面與植被前進。','Follow linked water and vegetation.'],['外圍繞道','Outer detour','路程較長；−5 體力，有停歇點。','Longer; −5 energy, a resting point.']]
 };
@@ -441,7 +498,7 @@ function pause(value=true){if(!g.started||g.done)return;g.paused=value;clearInpu
 }
 function help(){
  helpWasPaused=g.paused;g.paused=true;clearInput();$('pausePanel').hidden=true;$('helpPanel').hidden=false;
- $('helpPanel').innerHTML=`<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><h2 id="helpTitle">${tr('飛行指南','Flight guide')}</h2><p>${tr('使用 A / D 或左右方向鍵；觸屏按住左下或右下箭頭。鬆開即停止轉向。Escape 或 II 暫停。觀察立體樓房之間的空間，碰到外牆會扣健康值。','Use A / D or arrow keys; on touchscreens hold the lower-left or lower-right button. Release to stop steering. Escape or II pauses. Observe the spaces between buildings; touching a façade costs health.')}</p><p>${tr('知識卡會自動淡出；飛行暫時降速至約 65%，仍可轉向。短暫保護期不代表整段無碰撞。每完成一段 −8 體力，繞道 −5，照明修正 −10，指定停歇點 +20，抵達濕地 +10。','Field notes fade automatically. Flight slows to about 65%, while steering remains available. A brief grace period does not remove all collision risk. Segment −8 energy; detour −5; lighting correction −10; designated rest +20; wetland arrival +10.')}</p><details><summary>${tr('完整飛行筆記','Complete field notes')}</summary>${Object.values(lessons).map(l=>`<h3>${l.title[lang==='zh'?0:1]}</h3><p>${l.text[lang==='zh'?0:1]}</p>`).join('')}</details><button id="closeHelp" class="primary">${tr('返回遊戲','Back to game')}</button></div>`;
+ $('helpPanel').innerHTML=`<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><h2 id="helpTitle">${tr('飛行指南','Flight guide')}</h2><p>${tr('使用 A / D 或左右方向鍵；觸屏按住左下或右下箭頭。鬆開即停止轉向。Escape 或 II 暫停。觀察立體樓房之間的空間，碰到外牆會扣健康值。','Use A / D or arrow keys; on touchscreens hold the lower-left or lower-right button. Release to stop steering. Escape or II pauses. Observe the spaces between buildings; touching a façade costs health.')}</p><p>${tr('知識卡會自動淡出；飛行暫時降速至約 65%，仍可轉向。短暫保護期不代表整段無碰撞。照明干擾會持續偏移，請反向轉向修正；A 約 6 秒、B 約 3 秒、C 約 1 秒，期間只扣一次體力。每完成一段 −8 體力，繞道 −5，照明修正 −10，指定停歇點 +20，抵達濕地 +10。','Field notes fade automatically. Flight slows to about 65%, while steering remains available. A brief grace period does not remove all collision risk. Countersteer against sustained light drift: A about 6s, B 3s, C 1s. Energy is charged once per zone. Segment −8 energy; detour −5; lighting correction −10; designated rest +20; wetland arrival +10.')}</p><details><summary>${tr('完整飛行筆記','Complete field notes')}</summary>${Object.values(lessons).map(l=>`<h3>${l.title[lang==='zh'?0:1]}</h3><p>${l.text[lang==='zh'?0:1]}</p>`).join('')}</details><button id="closeHelp" class="primary">${tr('返回遊戲','Back to game')}</button></div>`;
  $('closeHelp').onclick=()=>{$('helpPanel').hidden=true;g.paused=helpWasPaused;clearInput();if(helpWasPaused)pause(true);else labels()};$('closeHelp').focus();modalLanguageButtons();updateAudio();
 }
 $('start').onclick=restart;$('restart').onclick=restart;
@@ -495,6 +552,12 @@ function renderEnding(){
  $('ending').innerHTML=`<div class="dialog" role="dialog" aria-modal="true"><span class="eyebrow">SDG 15 · LIFE ON LAND · 陸域生命</span><h1>${g.success?tr('終於，再次相聚','Together, at last.'):tr('本次旅程未能完成','Journey not completed')}</h1><p>${g.success?tr('你抵達米埔內后海灣濕地，回到家人身邊。','You have reached Mai Po Inner Deep Bay and reunited with your family.'):tr('飛行中斷了，但你的旅程留下值得思考的事。','Flight was interrupted, but your journey still offers something to reflect on.')}</p><ul>${Object.values(lessons).filter((_,i)=>i!==3).map(l=>`<li>${l.short[lang==='zh'?0:1]}</li>`).join('')}</ul><p>${tr('保護陸地生態系統，維護生物多樣性，並減少人類活動對野生動物及其棲息地造成的潛在影響。城市發展與生物多樣性保護可以並行。','Protect terrestrial ecosystems, conserve biodiversity, and reduce potential impacts on wildlife and habitats. Urban development and biodiversity conservation can coexist.')}</p><p>${tr('如果你可以改變一項城市設計，你會怎樣讓城市對鳥類更友善？','If you could change one feature of the city, how would you make it more bird-friendly?')}</p><textarea id="reflection" aria-label="反思 / Reflection" placeholder="${tr('寫下你的想法（僅保留於此頁面）','Your reflection (kept on this page only)')}"></textarea><details><summary>${tr('延伸閱讀','Further reading')}</summary><p><a href="https://sdgs.un.org/goals/goal15" target="_blank" rel="noopener">UN · SDG 15</a> · <a href="https://www.wwf.org.hk/" target="_blank" rel="noopener">WWF Hong Kong</a></p><small>${tr('遊戲景觀為香港啟發的虛構場景；數值並非科學測量。','Landscapes are fictional and Hong Kong-inspired; game values are not scientific measurements.')}</small></details><button id="again" class="primary">${tr('再飛一次','Fly again')} ↗</button></div>`;
  $('reflection').value=g.reflection;$('again').onclick=restart;clearInput();
 }
+function renderInterference(){
+ const effect=g.interference,visible=!!effect&&!g.recovery&&!g.done;
+ $('interference').hidden=!visible;if(!visible)return;
+ const seconds=Math.ceil(effect.remaining);
+ setText('interference',tr(`照明干擾 · 向右偏移 ${seconds} 秒 · 向左修正`,`Light interference · Right drift ${seconds}s · Steer left`));
+}
 function updateUI(){
  setText('healthLabel',`${tr('健康','Health')} ${g.health}`);setText('energyLabel',`${tr('體力','Energy')} ${g.energy}`);
  $('health').value=g.health;$('energy').value=g.energy;
@@ -510,7 +573,7 @@ function updateUI(){
  }
  setText('caption',caption);
  const notices=g.notices.slice(-2);setText('delta',notices.map(n=>`${n.health?`${tr('健康','Health')} ${n.health}`:''}${n.energy?`${tr('體力','Energy')} ${n.energy>0?'+':''}${n.energy}`:''}`).join(' · '));
- renderRoutes();renderLesson();renderRecovery();renderEnding();modalLanguageButtons();
+ renderRoutes();renderLesson();renderRecovery();renderEnding();renderInterference();modalLanguageButtons();
  $('controls').inert=g.paused||!!g.recovery||g.done||!g.started;
  $('choices').inert=g.paused||!!g.recovery||g.done;
  updateAudio();

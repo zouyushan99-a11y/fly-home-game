@@ -1,0 +1,170 @@
+{
+  "environment": {
+    "browser": "154.0.8037.57",
+    "os": "linux",
+    "physicalPhone": false,
+    "benchmark": "1280x720 DPR 1, fixed scene B day at progress 28; 20 RAF warmup + 120 RAF-paced draws, repeated 3 times, no simulation or screenshots inside timing"
+  },
+  "performance": {
+    "before": {
+      "runs": [
+        {
+          "meanMs": 2.050833333330229,
+          "p50Ms": 1.9000000001396984,
+          "p95Ms": 3.199999999953434,
+          "rafFPS": 25.993718184772014,
+          "rafP95Ms": 50.099999999999454
+        },
+        {
+          "meanMs": 1.7833333333585566,
+          "p50Ms": 1.6999999999534339,
+          "p95Ms": 2.800000000046566,
+          "rafFPS": 25.17623363544814,
+          "rafP95Ms": 50.100000000000364
+        },
+        {
+          "meanMs": 1.6625000000058208,
+          "p50Ms": 1.5999999998603016,
+          "p95Ms": 2.300000000046566,
+          "rafFPS": 25.80756161555336,
+          "rafP95Ms": 50
+        }
+      ],
+      "textures": 18,
+      "foliage": 1,
+      "moving": {
+        "meanMs": 1.6724999999831198,
+        "rafFPS": 27.745985502722547
+      }
+    },
+    "after": {
+      "runs": [
+        {
+          "meanMs": 2.3441666666612337,
+          "p50Ms": 2.1000000000931323,
+          "p95Ms": 4.5,
+          "rafFPS": 22.22345685871436,
+          "rafP95Ms": 66.59999999999945
+        },
+        {
+          "meanMs": 2.1866666666639505,
+          "p50Ms": 2,
+          "p95Ms": 3.800000000046566,
+          "rafFPS": 21.36599957268001,
+          "rafP95Ms": 66.69999999999891
+        },
+        {
+          "meanMs": 1.8599999999976717,
+          "p50Ms": 1.6999999999534339,
+          "p95Ms": 2.800000000046566,
+          "rafFPS": 25.533001404315083,
+          "rafP95Ms": 50
+        }
+      ],
+      "textures": 43,
+      "foliage": 12,
+      "moving": {
+        "meanMs": 4.326249999983702,
+        "rafFPS": 22.019156666299697
+      }
+    }
+  },
+  "checks": [
+    {
+      "name": "before: no browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "layout stable",
+      "pass": true
+    },
+    {
+      "name": "route density A > B > C",
+      "pass": true
+    },
+    {
+      "name": "six building types",
+      "pass": true
+    },
+    {
+      "name": "rotated collision inside and outside",
+      "pass": true,
+      "detail": {
+        "tests": 460,
+        "bad": 0
+      }
+    },
+    {
+      "name": "swept collision catches tunnelling",
+      "pass": true
+    },
+    {
+      "name": "pause freezes simulation",
+      "pass": true
+    },
+    {
+      "name": "route choice and C cost",
+      "pass": true
+    },
+    {
+      "name": "collision rules retained",
+      "pass": true
+    },
+    {
+      "name": "severe collision retained",
+      "pass": true
+    },
+    {
+      "name": "full simulated journey C arrives",
+      "pass": true,
+      "detail": {
+        "health": 75,
+        "energy": 93,
+        "progress": 165.006694436205
+      }
+    },
+    {
+      "name": "pause freezes rendered animation",
+      "pass": true
+    },
+    {
+      "name": "four sky textures decoded",
+      "pass": true
+    },
+    {
+      "name": "texture cache bounded",
+      "pass": true
+    },
+    {
+      "name": "reduced effects freeze reflection phase",
+      "pass": true
+    },
+    {
+      "name": "after: no browser exceptions",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "bilingual toggle",
+      "pass": true
+    },
+    {
+      "name": "touch hold steers",
+      "pass": true
+    },
+    {
+      "name": "keyboard steers",
+      "pass": true
+    },
+    {
+      "name": "pause button",
+      "pass": true
+    },
+    {
+      "name": "mobile no browser exceptions",
+      "pass": true,
+      "detail": []
+    }
+  ]
+}

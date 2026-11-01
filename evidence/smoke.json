@@ -1,0 +1,24 @@
+[
+  {
+    "mode": "web",
+    "playing": true,
+    "time": "00:02",
+    "paused": true,
+    "reduced": true,
+    "errors": [],
+    "externalHTTPRequests": 2,
+    "fileProtocolTest": null,
+    "pass": true
+  },
+  {
+    "mode": "offline",
+    "playing": true,
+    "time": "00:02",
+    "paused": true,
+    "reduced": true,
+    "errors": [],
+    "externalHTTPRequests": 0,
+    "fileProtocolTest": "not verified: managed Chromium blocks file:// with ERR_BLOCKED_BY_ADMINISTRATOR",
+    "pass": true
+  }
+]

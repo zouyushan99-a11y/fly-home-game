@@ -1,0 +1,86 @@
+{
+  "day.webp": {
+    "size": [
+      1774,
+      887
+    ],
+    "bytes": 152344
+  },
+  "day-small.webp": {
+    "size": [
+      960,
+      480
+    ],
+    "bytes": 53742
+  },
+  "day-original": {
+    "size": [
+      1774,
+      887
+    ],
+    "bytes": 2051437
+  },
+  "night.webp": {
+    "size": [
+      1774,
+      887
+    ],
+    "bytes": 61386
+  },
+  "night-small.webp": {
+    "size": [
+      960,
+      480
+    ],
+    "bytes": 15800
+  },
+  "night-original": {
+    "size": [
+      1774,
+      887
+    ],
+    "bytes": 1771205
+  },
+  "dawn.webp": {
+    "size": [
+      1774,
+      887
+    ],
+    "bytes": 136472
+  },
+  "dawn-small.webp": {
+    "size": [
+      960,
+      480
+    ],
+    "bytes": 45300
+  },
+  "dawn-original": {
+    "size": [
+      1774,
+      887
+    ],
+    "bytes": 2024659
+  },
+  "dusk.webp": {
+    "size": [
+      1774,
+      887
+    ],
+    "bytes": 142686
+  },
+  "dusk-small.webp": {
+    "size": [
+      960,
+      480
+    ],
+    "bytes": 45324
+  },
+  "dusk-original": {
+    "size": [
+      1774,
+      887
+    ],
+    "bytes": 2022249
+  }
+}

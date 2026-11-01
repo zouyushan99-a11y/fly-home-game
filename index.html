@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#183448"><title>Fly Home · 飛越香港</title><style>:root{font-family:system-ui,-apple-system,'Noto Sans TC',sans-serif;color:#f6f4e9;background:#10293c;color-scheme:dark}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}button,textarea{font:inherit}button{color:inherit;border:1px solid #fff4;border-radius:9px;background:#18364ace;min-width:44px;min-height:44px;padding:9px 13px;cursor:pointer;touch-action:manipulation}button:hover{background:#34576e}button:focus-visible{outline:3px solid #f4d69c;outline-offset:2px}button:disabled{opacity:.45;cursor:default}#game{position:relative;width:100%;height:100vh;height:100dvh;overflow:hidden}#scene{position:absolute;inset:0;width:100%;height:100%;display:block}header{position:absolute;z-index:10;inset:0 0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px max(20px,env(safe-area-inset-right)) 18px max(20px,env(safe-area-inset-left));background:linear-gradient(#092439c9,transparent)}.brand{font-size:15px;font-weight:750;letter-spacing:3px}.brand small{display:block;font-size:9px;font-weight:400;letter-spacing:4px;margin-top:3px}nav{display:flex;gap:7px}nav button:not(#language){font-size:20px;padding:4px 10px}#language{font-size:12px}#hud{position:absolute;z-index:2;top:83px;left:25px;right:25px;display:flex;justify-content:space-between;gap:20px;pointer-events:none}.vitals{display:flex;gap:16px;padding:10px 14px;background:#112e43b8;border-radius:10px;backdrop-filter:blur(8px)}.vital{width:140px}.vital label{display:block;font-size:12px;font-weight:600;margin-bottom:5px}meter{display:block;width:100%;height:7px;appearance:none}meter::-webkit-meter-bar{border:0;background:#133345;border-radius:5px}meter::-webkit-meter-optimum-value{background:#c2d5aa;border-radius:5px}#energy::-webkit-meter-optimum-value{background:#edc68a}.chapter{display:flex;flex-direction:column;text-align:right;justify-content:center;gap:6px;font-size:12px;background:#112e43b8;padding:10px 14px;border-radius:10px;backdrop-filter:blur(8px)}.chapter b{font-weight:400;letter-spacing:2px}.chapter small{margin-left:8px}#time{font-variant-numeric:tabular-nums}.panel{position:absolute;z-index:3;border:1px solid #f7f2de4a;border-radius:17px;background:#112d44e6;padding:30px;box-shadow:0 25px 80px #06182a66;backdrop-filter:blur(10px)}#intro{top:27%;left:8%;width:min(460px,84%);max-height:65%;overflow:auto}h1{font:500 clamp(42px,6vw,78px) Georgia,serif;margin:12px 0}h2{font-size:24px;margin:0 0 12px}#intro h2{letter-spacing:5px;font-weight:400}.eyebrow{font-size:10px;letter-spacing:2px;color:#e6cc98}p{font-size:15px;line-height:1.75}small{line-height:1.6}.primary{background:#eac27f;color:#172d40;border:0;border-radius:25px;font-weight:650;min-height:46px;padding:12px 24px}.primary:hover,.primary:focus-visible{background:#f6d9a6;color:#172d40}#intro small{display:block;font-size:11px;color:#d5dfdf;margin-top:12px}#caption{position:absolute;z-index:2;left:20%;width:60%;bottom:22%;text-align:center;text-wrap:balance;font-size:18px;line-height:1.7;text-shadow:0 2px 9px #001627;background:#10293b99;border-radius:10px;padding:12px 20px;pointer-events:none}#caption:empty{display:none}#choices{position:absolute;z-index:4;left:20%;width:60%;bottom:100px;display:flex;gap:10px}#choices:empty{display:none}#choices button{flex:1;min-width:0;text-align:left;background:#153349ed;font-size:12px;line-height:1.5;padding:12px}#choices b{display:block;font-size:15px;margin-bottom:5px;color:#f3e8cf}#lesson{position:absolute;z-index:5;top:19%;left:20%;width:60%;max-width:820px;padding:14px 20px;border-radius:12px;background:#173449eb;border:1px solid #d4decf55;box-shadow:0 6px 35px #10223344;pointer-events:none;opacity:1}#lessonTag{font-size:9px;letter-spacing:2px;color:#edcb8d}#lesson h2{font-size:19px;margin:5px 0}#lesson p{font-size:14px;line-height:1.65;margin:0}#delta{position:absolute;z-index:3;top:145px;left:28px;font-size:14px;color:#ffe4b2;text-shadow:0 1px 4px #14314a;pointer-events:none}#controls{position:absolute;z-index:6;left:max(20px,env(safe-area-inset-left));right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;pointer-events:none}#controls button{width:68px;height:58px;background:#16364bbc;font-size:25px;pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}#controls button.held{background:#e5c488;color:#16354a}#controlHint{font-size:11px;letter-spacing:1px;text-shadow:0 1px 4px #00172d;background:#10273c77;padding:7px 12px;border-radius:20px}.overlay{position:absolute;z-index:20;inset:0;background:#071e31b8;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}.dialog{width:min(680px,100%);max-height:100%;overflow:auto;overscroll-behavior:contain;background:#f5f1e6;color:#20384a;border-radius:17px;padding:28px;box-shadow:0 18px 80px #0004}.dialog h1{font-size:36px}.dialog h2{font-size:24px}.dialog p{font-size:14px}.dialog small{display:block;color:#657383;font-size:11px}.dialog .eyebrow{color:#8a6838}.dialog button{background:#23455b;color:white;margin-top:12px;margin-right:6px}.dialog button.primary{background:#eac27f;color:#172d40}.dialog a{color:#295d84}.dialog textarea{width:100%;min-height:65px;padding:10px;border:1px solid #adb9bb;border-radius:6px;background:white;color:#20384a}.dialog details{margin:16px 0}.dialog summary{cursor:pointer;font-size:13px;min-height:30px}.dialog ul{font-size:13px;line-height:1.8;padding-left:20px}[hidden]{display:none!important}
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#183448"><title>Fly Home · 飛越香港</title><style>:root{font-family:system-ui,-apple-system,'Noto Sans TC',sans-serif;color:#f6f4e9;background:#10293c;color-scheme:dark}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}button,textarea{font:inherit}button{color:inherit;border:1px solid #fff4;border-radius:9px;background:#18364ace;min-width:44px;min-height:44px;padding:9px 13px;cursor:pointer;touch-action:manipulation}button:hover{background:#34576e}button:focus-visible{outline:3px solid #f4d69c;outline-offset:2px}button:disabled{opacity:.45;cursor:default}#game{position:relative;width:100%;height:100vh;height:100dvh;overflow:hidden}#scene{position:absolute;inset:0;width:100%;height:100%;display:block}header{position:absolute;z-index:10;inset:0 0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px max(20px,env(safe-area-inset-right)) 18px max(20px,env(safe-area-inset-left));background:linear-gradient(#092439c9,transparent)}.brand{font-size:15px;font-weight:750;letter-spacing:3px}.brand small{display:block;font-size:9px;font-weight:400;letter-spacing:4px;margin-top:3px}nav{display:flex;gap:7px}nav button:not(#language){font-size:20px;padding:4px 10px}#language{font-size:12px}#hud{position:absolute;z-index:2;top:83px;left:25px;right:25px;display:flex;justify-content:space-between;gap:20px;pointer-events:none}.vitals{display:flex;gap:16px;padding:10px 14px;background:#112e43b8;border-radius:10px;backdrop-filter:blur(8px)}.vital{width:140px}.vital label{display:block;font-size:12px;font-weight:600;margin-bottom:5px}meter{display:block;width:100%;height:7px;appearance:none}meter::-webkit-meter-bar{border:0;background:#133345;border-radius:5px}meter::-webkit-meter-optimum-value{background:#c2d5aa;border-radius:5px}#energy::-webkit-meter-optimum-value{background:#edc68a}.chapter{display:flex;flex-direction:column;text-align:right;justify-content:center;gap:6px;font-size:12px;background:#112e43b8;padding:10px 14px;border-radius:10px;backdrop-filter:blur(8px)}.chapter b{font-weight:400;letter-spacing:2px}.chapter small{margin-left:8px}#time{font-variant-numeric:tabular-nums}.panel{position:absolute;z-index:3;border:1px solid #f7f2de4a;border-radius:17px;background:#112d44e6;padding:30px;box-shadow:0 25px 80px #06182a66;backdrop-filter:blur(10px)}#intro{top:27%;left:8%;width:min(460px,84%);max-height:65%;overflow:auto}h1{font:500 clamp(42px,6vw,78px) Georgia,serif;margin:12px 0}h2{font-size:24px;margin:0 0 12px}#intro h2{letter-spacing:5px;font-weight:400}.eyebrow{font-size:10px;letter-spacing:2px;color:#e6cc98}p{font-size:15px;line-height:1.75}small{line-height:1.6}.primary{background:#eac27f;color:#172d40;border:0;border-radius:25px;font-weight:650;min-height:46px;padding:12px 24px}.primary:hover,.primary:focus-visible{background:#f6d9a6;color:#172d40}#intro small{display:block;font-size:11px;color:#d5dfdf;margin-top:12px}#caption{position:absolute;z-index:2;left:20%;width:60%;bottom:22%;text-align:center;text-wrap:balance;font-size:18px;line-height:1.7;text-shadow:0 2px 9px #001627;background:#10293b99;border-radius:10px;padding:12px 20px;pointer-events:none}#caption:empty{display:none}#choices{position:absolute;z-index:4;left:20%;width:60%;bottom:100px;display:flex;gap:10px}#choices:empty{display:none}#choices button{flex:1;min-width:0;text-align:left;background:#153349ed;font-size:12px;line-height:1.5;padding:12px}#choices b{display:block;font-size:15px;margin-bottom:5px;color:#f3e8cf}#lesson{position:absolute;z-index:5;top:19%;left:20%;width:60%;max-width:820px;padding:14px 20px;border-radius:12px;background:#173449eb;border:1px solid #d4decf55;box-shadow:0 6px 35px #10223344;pointer-events:auto;opacity:1}#lessonTag{font-size:9px;letter-spacing:2px;color:#edcb8d}#lesson h2{font-size:19px;margin:5px 0}#lesson p{font-size:14px;line-height:1.65;margin:0}#delta{position:absolute;z-index:3;top:145px;left:28px;font-size:14px;color:#ffe4b2;text-shadow:0 1px 4px #14314a;pointer-events:none}#controls{position:absolute;z-index:6;left:max(20px,env(safe-area-inset-left));right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;pointer-events:none}#controls button{width:68px;height:58px;background:#16364bbc;font-size:25px;pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}#controls button.held{background:#e5c488;color:#16354a}#controlHint{font-size:11px;letter-spacing:1px;text-shadow:0 1px 4px #00172d;background:#10273c77;padding:7px 12px;border-radius:20px}.overlay{position:absolute;z-index:20;inset:0;background:#071e31b8;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}.dialog{width:min(680px,100%);max-height:100%;overflow:auto;overscroll-behavior:contain;background:#f5f1e6;color:#20384a;border-radius:17px;padding:28px;box-shadow:0 18px 80px #0004}.dialog h1{font-size:36px}.dialog h2{font-size:24px}.dialog p{font-size:14px}.dialog small{display:block;color:#657383;font-size:11px}.dialog .eyebrow{color:#8a6838}.dialog button{background:#23455b;color:white;margin-top:12px;margin-right:6px}.dialog button.primary{background:#eac27f;color:#172d40}.dialog a{color:#295d84}.dialog textarea{width:100%;min-height:65px;padding:10px;border:1px solid #adb9bb;border-radius:6px;background:white;color:#20384a}.dialog details{margin:16px 0}.dialog summary{cursor:pointer;font-size:13px;min-height:30px}.dialog ul{font-size:13px;line-height:1.8;padding-left:20px}[hidden]{display:none!important}
 @media(min-width:1400px){#lesson{left:calc(50% - 410px)}}
 @media(max-width:900px){header{padding:9px 14px 14px}.brand{font-size:12px;letter-spacing:2px}nav{gap:5px}#hud{top:72px;left:16px;right:16px}.vitals{gap:12px}.vital{width:115px}#intro{left:7%;top:25%;padding:24px}#lesson{left:17%;width:66%;top:20%;padding:12px 16px}#choices{left:13%;width:74%}}
 @media(max-width:600px) and (orientation:portrait){header{padding:8px 10px}.brand{font-size:10px;letter-spacing:1px}.brand small{font-size:8px;letter-spacing:2px}nav{gap:3px}nav button{min-width:44px;min-height:44px;padding:5px 8px}#language{font-size:11px;min-width:72px}#hud{top:66px;left:12px;right:12px;gap:6px;display:block}.vitals{width:100%;justify-content:space-between;padding:9px 12px;gap:20px}.vital{width:50%}.chapter{flex-direction:row;justify-content:space-between;padding:5px 10px;margin-top:4px;font-size:10px;gap:3px}.chapter small{margin-left:4px}#intro{left:6%;width:88%;top:25%;max-height:61%;padding:24px}#intro h1{font-size:52px}#intro p{font-size:14px}#lesson{left:6%;width:88%;top:20%;padding:10px 13px}#lesson h2{font-size:16px;margin:4px 0}#lesson p{font-size:13px;line-height:1.65}#lessonTag{font-size:8px}#delta{top:143px;left:17px;font-size:12px}#choices{left:4%;width:92%;bottom:104px;gap:6px}#choices button{font-size:11px;padding:10px 8px}#choices b{font-size:12px}#controls{left:14px;right:14px;bottom:max(19px,env(safe-area-inset-bottom))}#controls button{width:64px;height:62px}#controlHint{font-size:9px;letter-spacing:0;max-width:190px;text-align:center}#caption{left:8%;width:84%;bottom:25%;font-size:14px;padding:10px 12px}.dialog{padding:22px}.dialog h1{font-size:29px}}
@@ -18,7 +18,7 @@
 <div id="caption" aria-live="polite"></div><section id="choices" aria-label="路線選擇 / Route choice"></section><aside id="lesson" role="status" hidden><span id="lessonTag"></span><h2 id="lessonTitle"></h2><p id="lessonText"></p></aside><div id="delta" aria-live="polite"></div><div id="interference" class="flight-status" role="status" hidden></div>
 <section id="pausePanel" class="overlay" hidden></section><section id="helpPanel" class="overlay" hidden></section><section id="recovery" class="overlay" hidden></section><section id="ending" class="overlay" hidden></section>
 <footer id="controls"><button id="left" aria-label="按住向左飛行 / Hold to steer left">←</button><span id="controlHint"></span><button id="right" aria-label="按住向右飛行 / Hold to steer right">→</button></footer>
-</main><script>(()=>{
+</main><div id="knowledgeFeedback" role="status" style="position:absolute;left:20%;right:20%;bottom:140px;background:#112d44e6;padding:10px;z-index:5;pointer-events:none" hidden></div><script>(()=>{
 // Shared world units for perspective drawing and swept collision tests.
 const FLIGHT_SPEED = 9;
 const LATERAL_RANGE = 23;
@@ -70,33 +70,29 @@ function makeDistrict(chapter,route='B'){
    height:chapter===3?12:chapter===2?20:44+hash(seed+5)*34,seed,side,route:'B',marked:false,severe:false,style:i%5,turn:0,edge:18}));
  }
  if(route==='entry')return result;
- const profile=ROUTE_PROFILES[route],count=chapter<2?profile.cityCount:chapter===2?profile.parkCount:profile.villageCount;
- // Independent seeded parcels: paired courtyards, staggered clusters, diagonal
- // passage, plaza, and planted outer blocks. Sorted only for rendering, never random per frame.
- for(let i=0;i<count;i++){
-  const seed=chapter*223+i*19+111,u=(i+.15+hash(seed)*.7)/count,zone=Math.floor(u*5);
-  let z=start+140+u*Math.max(40,length-160);
-  const side=hash(seed+91)>.5?1:-1,width=chapter===3?7+hash(seed+3)*7:9+hash(seed+3)*15;
-  const depth=chapter===3?9:9+hash(seed+11)*10;
-  let turn=Math.sin((z-start-140)/37)*profile.turn;
-  let edge=profile.gap+hash(seed+1)*17;
-  if(zone===1){edge+=12;z+=hash(seed+44)*8;} // planted courtyards
-  if(zone===2){turn+=(u-.5)*profile.turn*6;edge+=5;} // diagonal passage
-  if(zone===3)edge+=22; // open plaza around reserved central landmark
-  result.push(decorate({id:`${chapter}-building-${i}`,entry:false,chapter,z,width,depth,
-   height:chapter===3?7+hash(seed+5)*8:chapter===2?10+hash(seed+5)*16:39+hash(seed+5)*69,
-   seed,side,route,marked:route==='B'&&i%3!==0,severe:route==='A'&&i%4===1,style:i%5,turn,edge,zone}));
- }
- const centres=chapter<2?(route==='A'?[202,274]:[232]):chapter===2?[188,258]:[];
- for(const [i,offset] of centres.entries()){
-  const z=start+offset,tree=chapter===2;
-  for(const b of result)if(b.z<z+48&&b.z+b.depth>z-48){
-   const extent=Math.abs(Math.cos(b.angle))*b.width/2+Math.abs(Math.sin(b.angle))*b.depth/2;
-   b.x=pathX(b.z)+b.side*(18+'ABC'.indexOf(route)*5+extent);
+ // Parcels are groups around courtyards, not alternating roadside rows.
+ const layouts=[[[42,0],[64,0],[42,26],[64,26]], [[-65,0],[-43,22],[-65,44]], [[48,0],[72,28],[-55,42]], [[-68,0],[66,8]], [[-44,0],[-68,23],[52,35]]];
+ const overlaps=(a,b)=>{const ext=o=>[Math.abs(Math.cos(o.angle||0))*o.width/2+Math.abs(Math.sin(o.angle||0))*o.depth/2,Math.abs(Math.sin(o.angle||0))*o.width/2+Math.abs(Math.cos(o.angle||0))*o.depth/2];const A=ext(a),B=ext(b);return Math.abs(a.x-b.x)<A[0]+B[0]+2&&Math.abs(a.z+a.depth/2-b.z-b.depth/2)<A[1]+B[1]+2;};
+ for(let parcel=0;parcel<3;parcel++){
+  const template=(chapter+parcel+'ABC'.indexOf(route))%5,anchor=start+125+parcel*(length-155)/3;
+  for(const [j,[dx,dz]] of layouts[template].entries()){
+   const seed=chapter*313+parcel*47+j*19,z=anchor+dz;
+   const b=decorate({id:`${chapter}-parcel-${parcel}-${j}`,chapter,central:true,z,x:pathX(z)+dx,width:12+hash(seed)*6,depth:12,height:chapter<2?40+hash(seed+3)*55:15+hash(seed)*10,seed,side:Math.sign(dx),route,style:j%5,marked:route==='B',severe:false,template});
+   if(!result.some(other=>overlaps(b,other)))result.push(b);
   }
-  result.push(decorate({id:`${chapter}-central-${i}`,chapter,entry:false,central:true,solidTree:tree,
-   x:pathX(z)+(tree?(i%2?5:-5):0),z,width:tree?2.2:7,depth:tree?2.2:12,height:tree?49:58+i*19,
-   seed:chapter*231+i*17,side:0,route,marked:route==='B',severe:!tree,style:i%5}));
+ }
+ // Broad alternating openings force deliberate steering. Full-height geometry
+ // and collision share these footprints; every opening remains comfortably wider than the bird.
+ const gateCount=chapter===0?3:chapter===3?2:4,gap=route==='A'?6:route==='B'?8:10;
+ for(let i=0;i<gateCount;i++){
+  const offset=138+i*(length-170)/Math.max(1,gateCount-1),z=start+offset;
+  const opening=(i%2?-1:1)*(route==='C'?12:10)*(chapter%2?-1:1);
+  for(const side of [-1,1]){
+   const left=side<0?-34:opening+gap,right=side<0?opening-gap:34;
+   const b={id:`${chapter}-challenge-${i}-${side}`,chapter,entry:false,x:pathX(z)+(left+right)/2,z,width:right-left,depth:9,height:42+hash(i+chapter)*12,angle:0,seed:chapter*79+i*11+side,side,route,glass:chapter<2,kind:chapter<2?'office':'residential',marked:route==='B',severe:false,style:i%5,gate:i,opening,gap,template:['courtyard','diagonal','landmark','plaza','garden'][(chapter+i)%5]};
+   for(let j=result.length-1;j>=0;j--)if(!result[j].entry&&overlaps(b,result[j]))result.splice(j,1);
+   result.push(b);
+  }
  }
  return result;
 }
@@ -131,7 +127,7 @@ function wildlife(chapter,progress){
 const clamp=n=>Math.max(0,Math.min(100,n));
 class Journey {
  constructor(){this.reset()}
- reset(){Object.assign(this,{health:100,energy:100,time:0,progress:0,x:0,chapter:-1,routes:{},events:new Set(),seen:new Set(),retryUsed:false,emergencyUsed:false,recovery:null,recoveryTime:0,done:false,success:false,started:false,paused:false,speed:1,clock:0,lesson:null,lessonQueue:[],grace:0,impact:0,slowImpact:0,notices:[],districts:new Map(),reflection:'',routeSelectedAt:{},interference:null,gust:null,yieldRemaining:0,habitatNotice:null})}
+ reset(){Object.assign(this,{health:100,energy:100,time:0,progress:0,x:0,chapter:-1,routes:{},events:new Set(),seen:new Set(),retryUsed:false,emergencyUsed:false,recovery:null,recoveryTime:0,done:false,success:false,started:false,paused:false,speed:1,clock:0,lesson:null,lessonQueue:[],grace:0,impact:0,slowImpact:0,notices:[],districts:new Map(),journal:[],feedback:null,reflection:'',routeSelectedAt:{},interference:null,gust:null,yieldRemaining:0,habitatNotice:null})}
  get running(){return this.started&&!this.done&&!this.paused}
  event(id,health=0,energy=0){
   if(this.done||this.paused||this.events.has(id))return false;
@@ -180,23 +176,24 @@ class Journey {
    const distance=flock.z-cameraZ(this.progress),dx=Math.abs(flock.x-(pathX(cameraZ(this.progress))+this.x*LATERAL_RANGE));
    if(distance>18&&distance<65&&!this.events.has(flock.id))this.habitatNotice={kind:'birds-ahead',remaining:.2};
    if(Math.abs(distance)<18&&dx<8&&this.event(flock.id)){
-    this.yieldRemaining=2.5;this.habitatNotice={kind:this.chapter===4?'roost':'yield',remaining:3};
+    this.teach('birds',2,true);this.yieldRemaining=2.5;this.habitatNotice={kind:this.chapter===4?'roost':'yield',remaining:3};
    }
   }
  }
- teach(id,priority=1){
+ teach(id,priority=1,repeat=false){
+  if(repeat||(!this.seen.has(id)&&!this.lessonQueue.some(x=>x.id===id))){this.journal.push({id,trigger:repeat?'event':'discovery',chapter:this.chapter,at:this.progress});this.feedback={id,until:this.clock+5};}
   if(this.seen.has(id)||this.lessonQueue.some(x=>x.id===id))return false;
   this.lessonQueue.push({id,priority});this.lessonQueue.sort((a,b)=>b.priority-a.priority);return true;
  }
  beginLesson(){
   if(this.lesson||this.recovery||this.impact>0||!this.lessonQueue.length)return;
-  const next=this.lessonQueue.shift();this.seen.add(next.id);this.lesson={id:next.id,remaining:4,total:4};
+  const next=this.lessonQueue.shift();this.seen.add(next.id);this.lesson={id:next.id,remaining:6,total:6};
   this.grace=Math.max(this.grace,1.2);
  }
- collide(id,severe=false){
+ collide(id,severe=false,glass=false){
   if(!this.running||this.recovery||this.grace>0)return false;
   if(!this.event(`hit-${id}`,severe?-35:-25))return false;
-  this.impact=.3;this.slowImpact=.9;this.grace=1; if(this.chapter<2)this.teach('glass',2);this.checkRecovery();return true;
+  this.impact=.3;this.slowImpact=.9;this.grace=1; this.teach(glass?'glass':'wall',2,true);this.checkRecovery();return true;
  }
  rest(id){if(this.event(`rest-${id}`,0,20))this.teach('green')}
  checkRecovery(){
@@ -212,9 +209,10 @@ class Journey {
   for(const key of [...this.events])if(key===`detour-${this.chapter}`||key===`rest-${this.chapter}`||key.startsWith(`hit-${this.chapter}-`)||key===`light-${this.chapter}`||key.startsWith(`gust-${this.chapter}-`)||key===`flock-${this.chapter}`)this.events.delete(key);
   this.recovery=null;this.grace=2;this.speed=.65;this.notices=[];return true;
  }
- finish(success){if(this.done)return;if(success)this.event('arrival',0,10);this.done=true;this.success=success;this.recovery=null;this.lesson=null;this.interference=null;this.clearHabitat()}
+ finish(success){if(this.done)return;if(success)this.event('arrival',0,10);this.teach(success?'arrival':'failure',3,true);this.seen.add(success?'arrival':'failure');this.done=true;this.success=success;this.recovery=null;this.lesson=null;this.interference=null;this.clearHabitat()}
  tick(dt,steer=0){
   if(!this.running)return;
+  if(this.lesson)return;
   dt=Math.max(0,Math.min(dt,.1));this.time+=dt;this.clock+=dt;
   this.grace=Math.max(0,this.grace-dt);this.impact=Math.max(0,this.impact-dt);this.slowImpact=Math.max(0,this.slowImpact-dt);
   this.notices=this.notices.filter(n=>this.clock-n.at<2.5);
@@ -225,7 +223,7 @@ class Journey {
    return;
   }
   if(this.lesson){this.lesson.remaining-=dt;if(this.lesson.remaining<=0)this.lesson=null}
-  this.beginLesson();
+  this.beginLesson();if(this.lesson)return;
   this.yieldRemaining=Math.max(0,this.yieldRemaining-dt);
   if(this.habitatNotice){this.habitatNotice.remaining-=dt;if(this.habitatNotice.remaining<=0)this.habitatNotice=null}
   const target=this.slowImpact>0?.4:this.yieldRemaining>0?.55:this.lesson?.65:this.chapter===4?.85:1;
@@ -237,7 +235,7 @@ class Journey {
   const c=this.progress<10?-1:this.progress<45?0:this.progress<80?1:this.progress<115?2:this.progress<140?3:4;
   if(c!==this.chapter){
    if(this.chapter>=0&&this.chapter<4)this.event(`segment-${this.chapter}`,0,-8);
-   this.clearHabitat();this.chapter=c;if(c!==1)this.interference=null;if(c===4){this.event('arrival',0,10);this.teach('wetland')}
+   this.clearHabitat();this.chapter=c;this.teach(['city','night','corridor','pond','wetland'][c],1);if(c!==1)this.interference=null;if(c===4){this.event('arrival',0,10);this.teach('wetland')}
   }
   const local=this.progress-(STAGE_STARTS[c]||0);
   // Route observations remain neutral. No input chooses a middle route after 8 flight seconds.
@@ -253,7 +251,7 @@ class Journey {
    for(const building of this.buildings()){
     if(!building.entry&&this.districtReveal()<1)continue;
     const frontal=!building.solidTree&&this.speed>.85&&previous.z<building.z-1.1&&current.z>=building.z-1.1;
-    if(hitsBuilding(building,previous,current)&&this.collide(building.id,building.severe||frontal)){
+    if(hitsBuilding(building,previous,current)&&this.collide(building.id,building.severe||frontal,building.glass)){
      this.x=Math.max(-1,Math.min(1,this.x-(building.side||Math.sign(previous.x-building.x)*-1||1)*.16));break;
     }
    }
@@ -692,6 +690,15 @@ const lessons={
  green:{title:['合適的停歇地','Suitable resting places'],text:['只有指定的生態停歇點恢復體力。合適的植被、水源與低干擾環境可能支持候鳥；並非每片綠地都有相同價值。','Only designated resting points restore energy. Suitable vegetation, water and low disturbance may support birds; green spaces vary in ecological value.'],short:['指定停歇點恢復體力，不恢復健康。綠地的價值取決於棲地品質。','Resting points restore energy, not health. The value of green space depends on habitat quality.']},
  wetland:{title:['濕地保護與生物多樣性','Wetlands & biodiversity'],text:['濕地提供覓食、停歇及棲息空間。保護棲地面積、環境品質與生態連通性，是維持生物多樣性的重要一環。','Wetlands provide feeding, resting and habitat areas. Protecting habitat extent, environmental quality and connectivity supports biodiversity.'],short:['濕地提供覓食與棲息空間。保護面積、品質及連通性，支持生物多樣性。','Wetlands offer food and habitat. Protect their extent, quality and connectivity.']}
 };
+const extraNotes={
+ wall:['外牆與飛行空間','Walls and flight space','建築會限制可飛行空間。觀察整個輪廓，提前移向開口；不要只看窗戶。','Buildings constrain flight space. Read the whole silhouette and steer toward an opening early.'],
+ city:['進入城市','Entering the city','建築間隙並不總是直線相連。先看下一個出口，再平穩轉向。','Gaps do not always align. Find the next opening before steering.'],
+ night:['進入夜間街區','Entering the night district','人工照明可能影響部分遷徙鳥類。留意偏移提示，提前準備反向修正。','Artificial light can affect some migratory birds. Watch drift warnings and prepare to countersteer.'],
+ pond:['魚塘與村落','Ponds and villages','魚塘周邊可能提供覓食空間，價值取決於管理和干擾。觀察陣風預告，遠離鳥群。','Ponds may offer feeding habitat; management and disturbance matter. Watch wind warnings and give birds space.'],
+ birds:['為鳥群留出空間','Give birds space','接近可能令鳥群警戒或驚飛，增加能量消耗。提前繞行，減少干擾。','Approaching may cause vigilance or flushing and expend energy. Detour early to reduce disturbance.'],
+ arrival:['抵達並不代表旅程結束','Arrival is part of migration','候鳥需要一連串合適停歇地。回顧本次遇到的風險與幫助，思考如何保護沿途棲地。','Migrants need a network of suitable stopovers. Review the hazards and support you encountered and consider habitat protection.'],
+ failure:['從這次飛行學習','Learning from this flight','失誤是觀察線索。回顧撞擊類型和路線，下次提早辨認出口；遊戲數值不是科學測量。','Use mistakes as clues. Review collision types and routes; identify exits earlier next time. Game values are not scientific measurements.']};
+for(const [id,[zh,en,zt,et]] of Object.entries(extraNotes))lessons[id]={title:[zh,en],text:[zt,et],short:[zt,et]};
 const routes={
  0:[['建築邊緣','Building edge','密集幕牆與較窄的樓宇間隙。','Dense façades and narrower gaps.'],['外部玻璃標記','External glass markers','窗面有細小標記，樓距較寬。','Subtle glass markings and wider gaps.'],['綠蔭繞道','Green detour','沿樹木繞行；−5 體力，有停歇點。','Tree-lined detour; −5 energy, a resting point.']],
  1:[['商業街區','Commercial streets','樓宇密集、間隙較窄；強光區較多。','Dense towers, narrower gaps and brighter windows.'],['受管理照明','Managed lighting','樓距適中，照明較克制。','Moderate density and restrained lighting.'],['外圍繞道','Outer detour','樓宇較稀疏，繞開強光；−5 體力。','Sparse buildings, around the brightest area; −5 energy.']],
@@ -740,7 +747,7 @@ function pause(value=true){if(!g.started||g.done)return;g.paused=value;clearInpu
 }
 function help(){
  helpWasPaused=g.paused;g.paused=true;clearInput();$('pausePanel').hidden=true;$('helpPanel').hidden=false;
- $('helpPanel').innerHTML=`<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><h2 id="helpTitle">${tr('飛行指南','Flight guide')}</h2><p>${tr('使用 A / D 或左右方向鍵；觸屏按住左下或右下箭頭。鬆開即停止轉向。Escape 或 II 暫停。觀察立體樓房之間的空間，碰到外牆會扣健康值。','Use A / D or arrow keys; on touchscreens hold the lower-left or lower-right button. Release to stop steering. Escape or II pauses. Observe the spaces between buildings; touching a façade costs health.')}</p><p>${tr('知識卡會自動淡出；飛行暫時降速至約 65%，仍可轉向。短暫保護期不代表整段無碰撞。照明干擾會持續偏移，請反向轉向修正；A 約 6 秒、B 約 3 秒、C 約 1 秒，期間只扣一次體力。每完成一段 −8 體力，繞道 −5，照明修正 −10，指定停歇點 +20，抵達濕地 +10。','Field notes fade automatically. Flight slows to about 65%, while steering remains available. A brief grace period does not remove all collision risk. Countersteer against sustained light drift: A about 6s, B 3s, C 1s. Energy is charged once per zone. Segment −8 energy; detour −5; lighting correction −10; designated rest +20; wetland arrival +10.')}</p><p>${tr('普通碰撞 −25 健康，嚴重碰撞 −35。廊道鳥群附近會短暫減速；魚塘有預告陣風，請反向修正。濕地請為棲息鳥群讓行。','Ordinary collision −25 health; severe collision −35. Slow down near corridor flocks. Countersteer against forecast gusts over ponds. Give wetland roosts space.')}</p><label class="effects-setting"><input id="reduceEffects" type="checkbox" ${renderer.reducedEffects?'checked':''}> ${tr('減少視覺效果（停止雲層、植被、反射動畫及風線）','Reduce visual effects (freeze clouds, foliage, reflection animation and wind streaks)')}</label><details><summary>${tr('完整飛行筆記','Complete field notes')}</summary>${Object.values(lessons).map(l=>`<h3>${l.title[lang==='zh'?0:1]}</h3><p>${l.text[lang==='zh'?0:1]}</p>`).join('')}</details><button id="closeHelp" class="primary">${tr('返回遊戲','Back to game')}</button></div>`;
+ $('helpPanel').innerHTML=`<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><h2 id="helpTitle">${tr('飛行指南','Flight guide')}</h2><p>${tr('使用 A / D 或左右方向鍵；觸屏按住左下或右下箭頭。鬆開即停止轉向。Escape 或 II 暫停。觀察立體樓房之間的空間，碰到外牆會扣健康值。','Use A / D or arrow keys; on touchscreens hold the lower-left or lower-right button. Release to stop steering. Escape or II pauses. Observe the spaces between buildings; touching a façade costs health.')}</p><p>${tr('首次知識卡會安全暫停飛行，讀完後按繼續。重複事件顯示簡短回饋；飛行筆記只列出已解鎖內容。照明干擾會持續偏移，請反向轉向修正；A 約 6 秒、B 約 3 秒、C 約 1 秒，期間只扣一次體力。每完成一段 −8 體力，繞道 −5，照明修正 −10，指定停歇點 +20，抵達濕地 +10。','First-time notes freeze flight until Continue. Repeated events give brief feedback; the notebook lists unlocked topics. Countersteer against sustained light drift: A about 6s, B 3s, C 1s. Energy is charged once per zone. Segment −8 energy; detour −5; lighting correction −10; designated rest +20; wetland arrival +10.')}</p><p>${tr('普通碰撞 −25 健康，嚴重碰撞 −35。廊道鳥群附近會短暫減速；魚塘有預告陣風，請反向修正。濕地請為棲息鳥群讓行。','Ordinary collision −25 health; severe collision −35. Slow down near corridor flocks. Countersteer against forecast gusts over ponds. Give wetland roosts space.')}</p><label class="effects-setting"><input id="reduceEffects" type="checkbox" ${renderer.reducedEffects?'checked':''}> ${tr('減少視覺效果（停止雲層、植被、反射動畫及風線）','Reduce visual effects (freeze clouds, foliage, reflection animation and wind streaks)')}</label><details><summary>${tr('完整飛行筆記','Complete field notes')}</summary>${Object.entries(lessons).filter(([id])=>g.seen.has(id)).map(([,l])=>`<h3>${l.title[lang==='zh'?0:1]}</h3><p>${l.text[lang==='zh'?0:1]}</p>`).join('')}</details><button id="closeHelp" class="primary">${tr('返回遊戲','Back to game')}</button></div>`;
  $('reduceEffects').onchange=e=>{renderer.reducedEffects=e.target.checked};
  $('closeHelp').onclick=()=>{$('helpPanel').hidden=true;g.paused=helpWasPaused;clearInput();if(helpWasPaused)pause(true);else labels()};$('closeHelp').focus();modalLanguageButtons();updateAudio();
 }
@@ -777,9 +784,9 @@ function renderLesson(){
  const active=g.lesson&&!g.recovery&&!g.done; $('lesson').hidden=!active;if(!active)return;
  const short=innerWidth<650||innerHeight<520,key=g.lesson.id+lang+short;
  if(key!==lessonKey){lessonKey=key;const l=lessons[g.lesson.id],i=lang==='zh'?0:1;
-  setText('lessonTag',tr('飛行筆記 · 緩速觀察','FIELD NOTES · SLOW FLIGHT'));setText('lessonTitle',l.title[i]);setText('lessonText',(short?l.short:l.text)[i]);
+  setText('lessonTag',tr('飛行筆記 · 安全暫停','FIELD NOTES · FLIGHT FROZEN'));setText('lessonTitle',l.title[i]);setText('lessonText',(short?l.short:l.text)[i]);
  }
- const age=g.lesson.total-g.lesson.remaining;$('lesson').style.opacity=Math.min(1,age/.35,g.lesson.remaining/.4);
+ $('lesson').style.opacity=1;if(!$('continueLesson')){const button=document.createElement('button');button.id='continueLesson';button.onclick=()=>{g.lesson=null;g.grace=Math.max(g.grace,1.2);clearInput();updateUI()};$('lesson').append(button);}setText('continueLesson',tr('讀完了，繼續飛行','Continue flying'));
 }
 function renderRecovery(){
  $('recovery').hidden=!g.recovery;if(!g.recovery)return;
@@ -792,7 +799,7 @@ function renderEnding(){
  $('ending').hidden=!g.done;if(!g.done)return;
  const key=`${lang}-${g.success}`;if(key===endKey)return;
  if($('reflection'))g.reflection=$('reflection').value;endKey=key;
- $('ending').innerHTML=`<div class="dialog" role="dialog" aria-modal="true"><span class="eyebrow">SDG 15 · LIFE ON LAND · 陸域生命</span><h1>${g.success?tr('終於，再次相聚','Together, at last.'):tr('本次旅程未能完成','Journey not completed')}</h1><p>${g.success?tr('你抵達米埔內后海灣濕地，回到家人身邊。','You have reached Mai Po Inner Deep Bay and reunited with your family.'):tr('飛行中斷了，但你的旅程留下值得思考的事。','Flight was interrupted, but your journey still offers something to reflect on.')}</p><ul>${Object.values(lessons).filter((_,i)=>i!==3).map(l=>`<li>${l.short[lang==='zh'?0:1]}</li>`).join('')}</ul><p>${tr('保護陸地生態系統，維護生物多樣性，並減少人類活動對野生動物及其棲息地造成的潛在影響。城市發展與生物多樣性保護可以並行。','Protect terrestrial ecosystems, conserve biodiversity, and reduce potential impacts on wildlife and habitats. Urban development and biodiversity conservation can coexist.')}</p><p>${tr('如果你可以改變一項城市設計，你會怎樣讓城市對鳥類更友善？','If you could change one feature of the city, how would you make it more bird-friendly?')}</p><textarea id="reflection" aria-label="反思 / Reflection" placeholder="${tr('寫下你的想法（僅保留於此頁面）','Your reflection (kept on this page only)')}"></textarea><details><summary>${tr('延伸閱讀','Further reading')}</summary><p><a href="https://sdgs.un.org/goals/goal15" target="_blank" rel="noopener">UN · SDG 15</a> · <a href="https://www.wwf.org.hk/" target="_blank" rel="noopener">WWF Hong Kong</a></p><small>${tr('遊戲景觀為香港啟發的虛構場景；數值並非科學測量。','Landscapes are fictional and Hong Kong-inspired; game values are not scientific measurements.')}</small></details><button id="again" class="primary">${tr('再飛一次','Fly again')} ↗</button></div>`;
+ $('ending').innerHTML=`<div class="dialog" role="dialog" aria-modal="true"><span class="eyebrow">SDG 15 · LIFE ON LAND · 陸域生命</span><h1>${g.success?tr('終於，再次相聚','Together, at last.'):tr('本次旅程未能完成','Journey not completed')}</h1><p>${g.success?tr('你抵達米埔內后海灣濕地，回到家人身邊。','You have reached Mai Po Inner Deep Bay and reunited with your family.'):tr('飛行中斷了，但你的旅程留下值得思考的事。','Flight was interrupted, but your journey still offers something to reflect on.')}</p><p>${tr('本次有效撞擊','Impacts this journey')}: ${g.journal.filter(e=>e.trigger==='event'&&['glass','wall'].includes(e.id)).length} · ${tr('路線','Routes')}: ${Object.values(g.routes).join(' → ')}</p><ul>${[...new Set(g.journal.map(e=>e.id))].map(id=>lessons[id]).filter(Boolean).map(l=>`<li>${l.short[lang==='zh'?0:1]}</li>`).join('')}</ul><p>${tr('保護陸地生態系統，維護生物多樣性，並減少人類活動對野生動物及其棲息地造成的潛在影響。城市發展與生物多樣性保護可以並行。','Protect terrestrial ecosystems, conserve biodiversity, and reduce potential impacts on wildlife and habitats. Urban development and biodiversity conservation can coexist.')}</p><p>${tr('如果你可以改變一項城市設計，你會怎樣讓城市對鳥類更友善？','If you could change one feature of the city, how would you make it more bird-friendly?')}</p><textarea id="reflection" aria-label="反思 / Reflection" placeholder="${tr('寫下你的想法（僅保留於此頁面）','Your reflection (kept on this page only)')}"></textarea><details><summary>${tr('延伸閱讀','Further reading')}</summary><p><a href="https://sdgs.un.org/goals/goal15" target="_blank" rel="noopener">UN · SDG 15</a> · <a href="https://www.wwf.org.hk/" target="_blank" rel="noopener">WWF Hong Kong</a></p><small>${tr('遊戲景觀為香港啟發的虛構場景；數值並非科學測量。','Landscapes are fictional and Hong Kong-inspired; game values are not scientific measurements.')}</small></details><button id="again" class="primary">${tr('再飛一次','Fly again')} ↗</button></div>`;
  $('reflection').value=g.reflection;$('again').onclick=restart;clearInput();
 }
 function renderInterference(){
@@ -807,6 +814,7 @@ function renderInterference(){
  }
 }
 function updateUI(){
+ const feedback=$('knowledgeFeedback');if(feedback){feedback.hidden=!g.feedback||g.clock>g.feedback.until||!!g.lesson;feedback.textContent=g.feedback?lessons[g.feedback.id]?.short[lang==='zh'?0:1]||'':'';}
  setText('healthLabel',`${tr('健康','Health')} ${g.health}`);setText('energyLabel',`${tr('體力','Energy')} ${g.energy}`);
  $('health').value=g.health;$('energy').value=g.energy;
  setText('chapter',g.chapter<0?tr('與家人同行','With your family'):names[g.chapter][lang==='zh'?0:1]);setText('stage',`${String(g.chapter+2).padStart(2,'0')} / 06`);

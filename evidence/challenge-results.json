@@ -1,0 +1,74 @@
+[
+  {
+    "route": "A",
+    "policy": "idle",
+    "success": false,
+    "health": 0,
+    "progress": 33.27910187104749,
+    "events": 7
+  },
+  {
+    "route": "A",
+    "policy": "right",
+    "success": false,
+    "health": 0,
+    "progress": 25.21576853771477,
+    "events": 9
+  },
+  {
+    "route": "A",
+    "policy": "active",
+    "success": true,
+    "health": 100,
+    "progress": 165.00252776953852,
+    "events": 11
+  },
+  {
+    "route": "B",
+    "policy": "idle",
+    "success": false,
+    "health": 0,
+    "progress": 33.27910187104749,
+    "events": 7
+  },
+  {
+    "route": "B",
+    "policy": "right",
+    "success": false,
+    "health": 0,
+    "progress": 25.21576853771477,
+    "events": 9
+  },
+  {
+    "route": "B",
+    "policy": "active",
+    "success": true,
+    "health": 100,
+    "progress": 165.00252776953852,
+    "events": 11
+  },
+  {
+    "route": "C",
+    "policy": "idle",
+    "success": false,
+    "health": 0,
+    "progress": 33.27910187104749,
+    "events": 8
+  },
+  {
+    "route": "C",
+    "policy": "right",
+    "success": false,
+    "health": 0,
+    "progress": 25.21576853771477,
+    "events": 10
+  },
+  {
+    "route": "C",
+    "policy": "active",
+    "success": true,
+    "health": 100,
+    "progress": 165.00252776953852,
+    "events": 11
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "reports": [
+    {
+      "version": "before",
+      "fps": 22.694391648463274,
+      "submitMs": 2.3675000000046564
+    },
+    {
+      "version": "after",
+      "fps": 60.69802731411229,
+      "submitMs": 1.4787499999802094
+    }
+  ],
+  "errors": [],
+  "readingSafety": true
+}

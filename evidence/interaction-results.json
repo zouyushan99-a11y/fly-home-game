@@ -1,0 +1,228 @@
+{
+  "cases": [
+    {
+      "name": "desktop",
+      "chapter": 0,
+      "route": "A",
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "chapter": 0,
+      "route": "B",
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "chapter": 0,
+      "route": "C",
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "chapter": 1,
+      "route": "A",
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "chapter": 1,
+      "route": "B",
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "chapter": 1,
+      "route": "C",
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "chapter": 2,
+      "route": "A",
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "chapter": 2,
+      "route": "B",
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "chapter": 2,
+      "route": "C",
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "chapter": 3,
+      "route": "A",
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "chapter": 3,
+      "route": "B",
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "chapter": 3,
+      "route": "C",
+      "passed": true
+    },
+    {
+      "name": "portrait",
+      "chapter": 0,
+      "route": "A",
+      "passed": true
+    },
+    {
+      "name": "portrait",
+      "chapter": 0,
+      "route": "B",
+      "passed": true
+    },
+    {
+      "name": "portrait",
+      "chapter": 0,
+      "route": "C",
+      "passed": true
+    },
+    {
+      "name": "portrait",
+      "chapter": 1,
+      "route": "A",
+      "passed": true
+    },
+    {
+      "name": "portrait",
+      "chapter": 1,
+      "route": "B",
+      "passed": true
+    },
+    {
+      "name": "portrait",
+      "chapter": 1,
+      "route": "C",
+      "passed": true
+    },
+    {
+      "name": "portrait",
+      "chapter": 2,
+      "route": "A",
+      "passed": true
+    },
+    {
+      "name": "portrait",
+      "chapter": 2,
+      "route": "B",
+      "passed": true
+    },
+    {
+      "name": "portrait",
+      "chapter": 2,
+      "route": "C",
+      "passed": true
+    },
+    {
+      "name": "portrait",
+      "chapter": 3,
+      "route": "A",
+      "passed": true
+    },
+    {
+      "name": "portrait",
+      "chapter": 3,
+      "route": "B",
+      "passed": true
+    },
+    {
+      "name": "portrait",
+      "chapter": 3,
+      "route": "C",
+      "passed": true
+    },
+    {
+      "name": "landscape",
+      "chapter": 0,
+      "route": "A",
+      "passed": true
+    },
+    {
+      "name": "landscape",
+      "chapter": 0,
+      "route": "B",
+      "passed": true
+    },
+    {
+      "name": "landscape",
+      "chapter": 0,
+      "route": "C",
+      "passed": true
+    },
+    {
+      "name": "landscape",
+      "chapter": 1,
+      "route": "A",
+      "passed": true
+    },
+    {
+      "name": "landscape",
+      "chapter": 1,
+      "route": "B",
+      "passed": true
+    },
+    {
+      "name": "landscape",
+      "chapter": 1,
+      "route": "C",
+      "passed": true
+    },
+    {
+      "name": "landscape",
+      "chapter": 2,
+      "route": "A",
+      "passed": true
+    },
+    {
+      "name": "landscape",
+      "chapter": 2,
+      "route": "B",
+      "passed": true
+    },
+    {
+      "name": "landscape",
+      "chapter": 2,
+      "route": "C",
+      "passed": true
+    },
+    {
+      "name": "landscape",
+      "chapter": 3,
+      "route": "A",
+      "passed": true
+    },
+    {
+      "name": "landscape",
+      "chapter": 3,
+      "route": "B",
+      "passed": true
+    },
+    {
+      "name": "landscape",
+      "chapter": 3,
+      "route": "C",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "extraChecks": [
+    "queued knowledge waits for route",
+    "checkpoint retry restores choice",
+    "100 simulated seconds frozen per reading/choice",
+    "help, pause and bilingual return paths"
+  ],
+  "physicalPhone": false
+}

@@ -1,0 +1,24 @@
+{
+  "lessonVisible": true,
+  "routeButtons": 3,
+  "lessonRect": {
+    "x": 177.234375,
+    "y": 109.1875,
+    "width": 489.515625,
+    "height": 101.5,
+    "top": 109.1875,
+    "right": 666.75,
+    "bottom": 210.6875,
+    "left": 177.234375
+  },
+  "choicesRect": {
+    "x": 126.59375,
+    "y": 274,
+    "width": 590.796875,
+    "height": 52,
+    "top": 274,
+    "right": 717.390625,
+    "bottom": 326,
+    "left": 126.59375
+  }
+}

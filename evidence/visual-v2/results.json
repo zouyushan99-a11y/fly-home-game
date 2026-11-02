@@ -1,0 +1,544 @@
+{
+  "physicalPhone": false,
+  "routes": [
+    {
+      "version": "before",
+      "route": "A",
+      "success": true,
+      "health": 100,
+      "energy": 25.440000000015296,
+      "minEnergy": 17.446666666681963,
+      "seconds": 171.40000000002854,
+      "ledger": {
+        "flight": -68.5600000000026,
+        "detour": 0,
+        "light": -14,
+        "rest": 0,
+        "arrival": 8
+      },
+      "retry": false,
+      "emergency": false,
+      "rests": [
+        {
+          "progress": 165.00252776953852,
+          "gain": 7.993333333333332
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "route": "B",
+      "success": true,
+      "health": 100,
+      "energy": 52.44000000002781,
+      "minEnergy": 44.446666666694476,
+      "seconds": 171.40000000002854,
+      "ledger": {
+        "flight": -68.5600000000026,
+        "detour": 0,
+        "light": -8,
+        "rest": 21,
+        "arrival": 8
+      },
+      "retry": false,
+      "emergency": false,
+      "rests": [
+        {
+          "progress": 31.016666666666186,
+          "gain": 6.993333333333339
+        },
+        {
+          "progress": 101.00833333339261,
+          "gain": 6.993333333333332
+        },
+        {
+          "progress": 136.00833333333392,
+          "gain": 6.993333333333332
+        },
+        {
+          "progress": 165.00252776953852,
+          "gain": 7.993333333333332
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "route": "C",
+      "success": true,
+      "health": 100,
+      "energy": 59.440000000030096,
+      "minEnergy": 48.15333333336435,
+      "seconds": 171.40000000002854,
+      "ledger": {
+        "flight": -68.5600000000026,
+        "detour": -28,
+        "light": -3,
+        "rest": 50.99999999999999,
+        "arrival": 8
+      },
+      "retry": false,
+      "emergency": false,
+      "rests": [
+        {
+          "progress": 31.016666666666186,
+          "gain": 16.99333333333334
+        },
+        {
+          "progress": 101.00833333349071,
+          "gain": 16.993333333333325
+        },
+        {
+          "progress": 136.00833333333392,
+          "gain": 16.993333333333332
+        },
+        {
+          "progress": 165.00252776953852,
+          "gain": 7.993333333333332
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "route": "A",
+      "success": true,
+      "health": 100,
+      "energy": 25.440000000015296,
+      "minEnergy": 17.446666666681963,
+      "seconds": 171.40000000002854,
+      "ledger": {
+        "flight": -68.5600000000026,
+        "detour": 0,
+        "light": -14,
+        "rest": 0,
+        "arrival": 8
+      },
+      "retry": false,
+      "emergency": false,
+      "rests": [
+        {
+          "progress": 165.00252776953852,
+          "gain": 7.993333333333332
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "route": "B",
+      "success": true,
+      "health": 100,
+      "energy": 52.44000000002781,
+      "minEnergy": 44.446666666694476,
+      "seconds": 171.40000000002854,
+      "ledger": {
+        "flight": -68.5600000000026,
+        "detour": 0,
+        "light": -8,
+        "rest": 21,
+        "arrival": 8
+      },
+      "retry": false,
+      "emergency": false,
+      "rests": [
+        {
+          "progress": 31.016666666666186,
+          "gain": 6.993333333333339
+        },
+        {
+          "progress": 101.00833333339261,
+          "gain": 6.993333333333332
+        },
+        {
+          "progress": 136.00833333333392,
+          "gain": 6.993333333333332
+        },
+        {
+          "progress": 165.00252776953852,
+          "gain": 7.993333333333332
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "route": "C",
+      "success": true,
+      "health": 100,
+      "energy": 59.440000000030096,
+      "minEnergy": 48.15333333336435,
+      "seconds": 171.40000000002854,
+      "ledger": {
+        "flight": -68.5600000000026,
+        "detour": -28,
+        "light": -3,
+        "rest": 50.99999999999999,
+        "arrival": 8
+      },
+      "retry": false,
+      "emergency": false,
+      "rests": [
+        {
+          "progress": 31.016666666666186,
+          "gain": 16.99333333333334
+        },
+        {
+          "progress": 101.00833333349071,
+          "gain": 16.993333333333325
+        },
+        {
+          "progress": 136.00833333333392,
+          "gain": 16.993333333333332
+        },
+        {
+          "progress": 165.00252776953852,
+          "gain": 7.993333333333332
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "name": "near-field geometry unchanged for every chapter and route",
+      "pass": true
+    },
+    {
+      "name": "background stable and unreachable",
+      "pass": true
+    },
+    {
+      "name": "outro freezes resources, collisions, events, progress; finish idempotent; restart clears",
+      "pass": true
+    },
+    {
+      "name": "lessons, route waits and overlays freeze energy and interference timers",
+      "pass": true
+    },
+    {
+      "name": "desktop: success, failure, skip, restart, reduced effects; four knowledge topics in both languages; 18 assets decoded",
+      "pass": true
+    },
+    {
+      "name": "portrait: success, failure, skip, restart, reduced effects; four knowledge topics in both languages; 18 assets decoded",
+      "pass": true
+    },
+    {
+      "name": "landscape: success, failure, skip, restart, reduced effects; four knowledge topics in both languages; 18 assets decoded",
+      "pass": true
+    }
+  ],
+  "performance": [
+    {
+      "device": "desktop",
+      "scene": "day",
+      "version": "before",
+      "meanMs": 2.3162499999278223,
+      "p95Ms": 3,
+      "rafFPS": 59.26364915919699
+    },
+    {
+      "device": "desktop",
+      "scene": "night",
+      "version": "before",
+      "meanMs": 2.719999999948777,
+      "p95Ms": 3.2999999998137355,
+      "rafFPS": 55.81525151747716
+    },
+    {
+      "device": "desktop",
+      "scene": "lamps",
+      "version": "before",
+      "meanMs": 2.431250000046566,
+      "p95Ms": 3.2999999998137355,
+      "rafFPS": 47.528517110266165
+    },
+    {
+      "device": "desktop",
+      "scene": "grass",
+      "version": "before",
+      "meanMs": 1.743750000023283,
+      "p95Ms": 2.400000000372529,
+      "rafFPS": 57.14693906707624
+    },
+    {
+      "device": "desktop",
+      "scene": "village",
+      "version": "before",
+      "meanMs": 1.4399999999906867,
+      "p95Ms": 2.2000000001862645,
+      "rafFPS": 59.263649159197
+    },
+    {
+      "device": "desktop",
+      "scene": "meadow",
+      "version": "before",
+      "meanMs": 0.8237499999930151,
+      "p95Ms": 1.2999999998137355,
+      "rafFPS": 60.0015000375009
+    },
+    {
+      "device": "desktop",
+      "scene": "day",
+      "version": "after",
+      "meanMs": 3.6474999999278226,
+      "p95Ms": 4.599999999627471,
+      "rafFPS": 42.858673524054424
+    },
+    {
+      "device": "desktop",
+      "scene": "night",
+      "version": "after",
+      "meanMs": 3.710000000044238,
+      "p95Ms": 5,
+      "rafFPS": 46.603751602003975
+    },
+    {
+      "device": "desktop",
+      "scene": "lamps",
+      "version": "after",
+      "meanMs": 2.85374999998603,
+      "p95Ms": 4.099999999627471,
+      "rafFPS": 42.48088360237896
+    },
+    {
+      "device": "desktop",
+      "scene": "grass",
+      "version": "after",
+      "meanMs": 2.025000000023283,
+      "p95Ms": 2.7000000001862645,
+      "rafFPS": 53.333333333333336
+    },
+    {
+      "device": "desktop",
+      "scene": "village",
+      "version": "after",
+      "meanMs": 1.7324999999837019,
+      "p95Ms": 2.5,
+      "rafFPS": 55.81914596706675
+    },
+    {
+      "device": "desktop",
+      "scene": "meadow",
+      "version": "after",
+      "meanMs": 0.7937500000349246,
+      "p95Ms": 1.2000000001862645,
+      "rafFPS": 60.00600060005997
+    },
+    {
+      "device": "portrait",
+      "scene": "day",
+      "version": "before",
+      "meanMs": 1.9337500000256114,
+      "p95Ms": 2.800000000745058,
+      "rafFPS": 60.00600060006001
+    },
+    {
+      "device": "portrait",
+      "scene": "night",
+      "version": "before",
+      "meanMs": 1.9425000000512227,
+      "p95Ms": 3.400000000372529,
+      "rafFPS": 60.001500037500946
+    },
+    {
+      "device": "portrait",
+      "scene": "lamps",
+      "version": "before",
+      "meanMs": 2.4012499999953434,
+      "p95Ms": 4.8999999994412065,
+      "rafFPS": 60.00150003750093
+    },
+    {
+      "device": "portrait",
+      "scene": "grass",
+      "version": "before",
+      "meanMs": 1.6462500000488944,
+      "p95Ms": 2.400000000372529,
+      "rafFPS": 60.00600060006001
+    },
+    {
+      "device": "portrait",
+      "scene": "village",
+      "version": "before",
+      "meanMs": 1.4237500000046566,
+      "p95Ms": 2.7000000001862645,
+      "rafFPS": 60.0015000375009
+    },
+    {
+      "device": "portrait",
+      "scene": "meadow",
+      "version": "before",
+      "meanMs": 0.8350000000209548,
+      "p95Ms": 1.5,
+      "rafFPS": 60.0015000375009
+    },
+    {
+      "device": "portrait",
+      "scene": "day",
+      "version": "after",
+      "meanMs": 2.7549999999580903,
+      "p95Ms": 4.900000000372529,
+      "rafFPS": 60.00600060006001
+    },
+    {
+      "device": "portrait",
+      "scene": "night",
+      "version": "after",
+      "meanMs": 2.2037499999976715,
+      "p95Ms": 3.900000000372529,
+      "rafFPS": 60.00600060006001
+    },
+    {
+      "device": "portrait",
+      "scene": "lamps",
+      "version": "after",
+      "meanMs": 2.058750000083819,
+      "p95Ms": 2.7999999998137355,
+      "rafFPS": 60.00150003750097
+    },
+    {
+      "device": "portrait",
+      "scene": "grass",
+      "version": "after",
+      "meanMs": 1.362500000023283,
+      "p95Ms": 1.900000000372529,
+      "rafFPS": 60.00600060005997
+    },
+    {
+      "device": "portrait",
+      "scene": "village",
+      "version": "after",
+      "meanMs": 1.3562500000349247,
+      "p95Ms": 1.900000000372529,
+      "rafFPS": 57.83271886069547
+    },
+    {
+      "device": "portrait",
+      "scene": "meadow",
+      "version": "after",
+      "meanMs": 0.6837500000139698,
+      "p95Ms": 0.900000000372529,
+      "rafFPS": 60.00600060005997
+    },
+    {
+      "device": "landscape",
+      "scene": "day",
+      "version": "before",
+      "meanMs": 1.78125,
+      "p95Ms": 2.2000000001862645,
+      "rafFPS": 60.001500037500946
+    },
+    {
+      "device": "landscape",
+      "scene": "night",
+      "version": "before",
+      "meanMs": 1.6362500000046567,
+      "p95Ms": 2,
+      "rafFPS": 59.99700014999251
+    },
+    {
+      "device": "landscape",
+      "scene": "lamps",
+      "version": "before",
+      "meanMs": 1.9662500000442378,
+      "p95Ms": 3.5,
+      "rafFPS": 59.99700014999247
+    },
+    {
+      "device": "landscape",
+      "scene": "grass",
+      "version": "before",
+      "meanMs": 1.6449999999254943,
+      "p95Ms": 2.7000000001862645,
+      "rafFPS": 60.00150003750093
+    },
+    {
+      "device": "landscape",
+      "scene": "village",
+      "version": "before",
+      "meanMs": 1.1987500000279396,
+      "p95Ms": 1.900000000372529,
+      "rafFPS": 60.0015000375009
+    },
+    {
+      "device": "landscape",
+      "scene": "meadow",
+      "version": "before",
+      "meanMs": 1.1800000000395812,
+      "p95Ms": 1.8999999994412065,
+      "rafFPS": 60.00150003750097
+    },
+    {
+      "device": "landscape",
+      "scene": "day",
+      "version": "after",
+      "meanMs": 4.691249999892898,
+      "p95Ms": 8.600000000558794,
+      "rafFPS": 57.14693906707622
+    },
+    {
+      "device": "landscape",
+      "scene": "night",
+      "version": "after",
+      "meanMs": 3.9825000000186264,
+      "p95Ms": 7.199999999254942,
+      "rafFPS": 59.26364915919697
+    },
+    {
+      "device": "landscape",
+      "scene": "lamps",
+      "version": "after",
+      "meanMs": 3.1387499999604187,
+      "p95Ms": 4.7999999998137355,
+      "rafFPS": 56.47324579980237
+    },
+    {
+      "device": "landscape",
+      "scene": "grass",
+      "version": "after",
+      "meanMs": 2.088749999983702,
+      "p95Ms": 7.7000000001862645,
+      "rafFPS": 57.836899942163065
+    },
+    {
+      "device": "landscape",
+      "scene": "village",
+      "version": "after",
+      "meanMs": 1.5262499999953434,
+      "p95Ms": 2,
+      "rafFPS": 59.25925925925926
+    },
+    {
+      "device": "landscape",
+      "scene": "meadow",
+      "version": "after",
+      "meanMs": 0.8749999999883584,
+      "p95Ms": 1.400000000372529,
+      "rafFPS": 60.00150003750097
+    }
+  ],
+  "buildingCounts": [
+    {
+      "chapter": 0,
+      "before": 80,
+      "after": 182
+    },
+    {
+      "chapter": 1,
+      "before": 88,
+      "after": 188
+    },
+    {
+      "chapter": 2,
+      "before": 49,
+      "after": 96
+    },
+    {
+      "chapter": 3,
+      "before": 22,
+      "after": 39
+    },
+    {
+      "chapter": 4,
+      "before": 0,
+      "after": 0
+    }
+  ]
+}

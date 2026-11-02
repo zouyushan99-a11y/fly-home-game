@@ -196,97 +196,97 @@
       "device": "desktop",
       "scene": "day",
       "version": "before",
-      "meanMs": 1.676249999999709,
-      "p95Ms": 2.400000000023283,
-      "rafFPS": 59.26364915919699
+      "meanMs": 1.486249999984284,
+      "p95Ms": 2.200000000069849,
+      "rafFPS": 60.001500037500946
     },
     {
       "device": "desktop",
       "scene": "night",
       "version": "before",
-      "meanMs": 2.5187500000116416,
-      "p95Ms": 3.599999999976717,
-      "rafFPS": 54.54793399699989
+      "meanMs": 2.45750000000844,
+      "p95Ms": 3.5,
+      "rafFPS": 59.26364915919697
     },
     {
       "device": "desktop",
       "scene": "day",
       "version": "after",
-      "meanMs": 3.1900000000037836,
-      "p95Ms": 4.699999999953434,
-      "rafFPS": 50.00312519532471
+      "meanMs": 2.0525000000052387,
+      "p95Ms": 2.800000000046566,
+      "rafFPS": 59.25925925925926
     },
     {
       "device": "desktop",
       "scene": "night",
       "version": "after",
-      "meanMs": 2.9574999999953433,
-      "p95Ms": 4.099999999976717,
-      "rafFPS": 48.001920076803074
+      "meanMs": 2.4199999999982538,
+      "p95Ms": 3.200000000069849,
+      "rafFPS": 57.832718860695444
     },
     {
       "device": "portrait",
       "scene": "day",
       "version": "before",
-      "meanMs": 1.3175000000032013,
-      "p95Ms": 2.299999999930151,
+      "meanMs": 1.0387499999982537,
+      "p95Ms": 1.6999999999534339,
       "rafFPS": 60.00600060006001
     },
     {
       "device": "portrait",
       "scene": "night",
       "version": "before",
-      "meanMs": 1.271250000006694,
-      "p95Ms": 1.7999999999301508,
+      "meanMs": 1.321250000008149,
+      "p95Ms": 2.099999999976717,
       "rafFPS": 59.99700014999251
     },
     {
       "device": "portrait",
       "scene": "day",
       "version": "after",
-      "meanMs": 1.6837499999979628,
-      "p95Ms": 3,
-      "rafFPS": 60.00600060006001
+      "meanMs": 1.8549999999988358,
+      "p95Ms": 2.800000000046566,
+      "rafFPS": 60.001500037500946
     },
     {
       "device": "portrait",
       "scene": "night",
       "version": "after",
-      "meanMs": 1.5999999999941792,
-      "p95Ms": 2.599999999976717,
+      "meanMs": 1.6000000000014551,
+      "p95Ms": 2.200000000069849,
       "rafFPS": 60.00150003750093
     },
     {
       "device": "landscape",
       "scene": "day",
       "version": "before",
-      "meanMs": 1.5399999999965075,
-      "p95Ms": 2.700000000069849,
+      "meanMs": 1.4150000000125147,
+      "p95Ms": 2.300000000046566,
+      "rafFPS": 60.00150003750093
+    },
+    {
+      "device": "landscape",
+      "scene": "night",
+      "version": "before",
+      "meanMs": 1.8237499999988358,
+      "p95Ms": 5.199999999953434,
+      "rafFPS": 60.00600060006
+    },
+    {
+      "device": "landscape",
+      "scene": "day",
+      "version": "after",
+      "meanMs": 1.911250000000291,
+      "p95Ms": 3.3999999999068677,
+      "rafFPS": 60.00600060006001
+    },
+    {
+      "device": "landscape",
+      "scene": "night",
+      "version": "after",
+      "meanMs": 1.881250000008731,
+      "p95Ms": 2.900000000023283,
       "rafFPS": 60.001500037500946
-    },
-    {
-      "device": "landscape",
-      "scene": "night",
-      "version": "before",
-      "meanMs": 1.620000000001164,
-      "p95Ms": 2.400000000023283,
-      "rafFPS": 60.00150003750093
-    },
-    {
-      "device": "landscape",
-      "scene": "day",
-      "version": "after",
-      "meanMs": 1.6137499999982539,
-      "p95Ms": 2.199999999953434,
-      "rafFPS": 60.00600060006001
-    },
-    {
-      "device": "landscape",
-      "scene": "night",
-      "version": "after",
-      "meanMs": 1.6650000000066938,
-      "p95Ms": 2.1000000000931323,
-      "rafFPS": 60.00600060006001
     }
   ]
 }

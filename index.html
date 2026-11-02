@@ -660,8 +660,9 @@ class FlightRenderer {
   }
   this.ground(p,g);
   // Backdrop receives only flat atmospheric faces, never reflections or textures.
-  const background=[...cityBackdrop(Math.max(0,g.chapter)),...cityBackdrop(Math.min(4,Math.max(0,g.chapter)+1))];
-  background.sort((a,b)=>b.z-a.z);
+  // Keep all districts in world space across chapter boundaries; cull by distance.
+  if(!this.cityWorld)this.cityWorld=[0,1,2,3].flatMap(cityBackdrop).sort((a,b)=>b.z-a.z);
+  const background=this.cityWorld;
   for(const b of background){const d=b.z-this.cz;if(d<8||d>650)continue;
    const pt=this.project([b.x,b.height/2,b.z]),extent=(b.width+b.height)*this.f/d;if(pt[0]+extent<0||pt[0]-extent>this.w)continue;
    const tone=colorMix(night?'#283449':'#657c8c',p.haze,Math.min(.88,.3+d/950));

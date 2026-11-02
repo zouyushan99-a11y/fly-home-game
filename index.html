@@ -367,13 +367,28 @@ class FlightRenderer {
  }
  roofTexture(points,image,night){
   if(night)image=image.night||image;
-  const q=points.map(p=>this.project(p)),c=this.ctx;
+  const c=this.ctx,near=this.cz+3,uv=[[0,0],[256,0],[256,256],[0,256]];
+  // Clip in world space BEFORE projection, carrying UVs through intersections.
+  // Projecting a vertex behind the camera flips a below-eye roof over the view.
   for(const ids of [[0,1,2],[0,2,3]]){
-   const src=[[0,0],[256,0],[256,256],[0,256]],a=src[ids[0]],b=src[ids[1]],d=src[ids[2]],A=q[ids[0]],B=q[ids[1]],D=q[ids[2]];
-   const den=(b[0]-a[0])*(d[1]-a[1])-(d[0]-a[0])*(b[1]-a[1]);
-   const xx=((B[0]-A[0])*(d[1]-a[1])-(D[0]-A[0])*(b[1]-a[1]))/den,xy=((D[0]-A[0])*(b[0]-a[0])-(B[0]-A[0])*(d[0]-a[0]))/den;
-   const yx=((B[1]-A[1])*(d[1]-a[1])-(D[1]-A[1])*(b[1]-a[1]))/den,yy=((D[1]-A[1])*(b[0]-a[0])-(B[1]-A[1])*(d[0]-a[0]))/den;
-   c.save();c.beginPath();c.moveTo(...A);c.lineTo(...B);c.lineTo(...D);c.closePath();c.clip();c.transform(xx,yx,xy,yy,A[0]-xx*a[0]-xy*a[1],A[1]-yx*a[0]-yy*a[1]);c.drawImage(image,0,0,256,256);c.restore();
+   const input=ids.map(i=>({p:points[i],uv:uv[i]})),clipped=[];
+   for(let i=0;i<input.length;i++){
+    const a=input[i],b=input[(i+1)%input.length],ain=a.p[2]>=near,bin=b.p[2]>=near;
+    if(ain)clipped.push(a);
+    if(ain!==bin){const t=(near-a.p[2])/(b.p[2]-a.p[2]);clipped.push({p:a.p.map((v,k)=>v+(b.p[k]-v)*t),uv:a.uv.map((v,k)=>v+(b.uv[k]-v)*t)});}
+   }
+   if(clipped.length<3)continue;
+   const projected=clipped.map(v=>({...v,q:this.project(v.p)}));
+   if(projected.some(v=>!v.q.every(Number.isFinite)))continue;
+   if(projected.every(v=>v.q[0]<0)||projected.every(v=>v.q[0]>this.w)||projected.every(v=>v.q[1]<0)||projected.every(v=>v.q[1]>this.h))continue;
+   for(let i=1;i<projected.length-1;i++){
+    const vertices=[projected[0],projected[i],projected[i+1]],[[a,A],[b,B],[d,D]]=vertices.map(v=>[v.uv,v.q]);
+    const den=(b[0]-a[0])*(d[1]-a[1])-(d[0]-a[0])*(b[1]-a[1]);
+    if(Math.abs(den)<1e-8||Math.abs((B[0]-A[0])*(D[1]-A[1])-(D[0]-A[0])*(B[1]-A[1]))<1e-6)continue;
+    const xx=((B[0]-A[0])*(d[1]-a[1])-(D[0]-A[0])*(b[1]-a[1]))/den,xy=((D[0]-A[0])*(b[0]-a[0])-(B[0]-A[0])*(d[0]-a[0]))/den;
+    const yx=((B[1]-A[1])*(d[1]-a[1])-(D[1]-A[1])*(b[1]-a[1]))/den,yy=((D[1]-A[1])*(b[0]-a[0])-(B[1]-A[1])*(d[0]-a[0]))/den;
+    c.save();c.beginPath();c.moveTo(...A);c.lineTo(...B);c.lineTo(...D);c.closePath();c.clip();c.transform(xx,yx,xy,yy,A[0]-xx*a[0]-xy*a[1],A[1]-yx*a[0]-yy*a[1]);c.drawImage(image,0,0,256,256);c.restore();
+   }
   }
  }
  streetLamp(lamp){

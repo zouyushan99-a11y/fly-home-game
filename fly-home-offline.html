@@ -130,21 +130,38 @@ function wildlife(chapter,progress){
 }
 
 const clamp=n=>Math.max(0,Math.min(100,n));
+// Energy values are game-design units, not physiological measurements.
+const ENERGY={flight:.40,detour:7,light:{A:14,B:8,C:3},rest:{B:7,C:17},arrival:8};
+// Decorative districts are stable, route-independent and outside the reachable
+// path (pathX ± 23). Streets and alternate empty parcels preserve open space.
+const CITY_BACKDROP=new Map();
+function cityBackdrop(chapter){
+ if(CITY_BACKDROP.has(chapter))return CITY_BACKDROP.get(chapter);
+ const out=[],rows=[15,15,8,4,0][chapter]||0,start=cameraZ(STAGE_STARTS[chapter]||10);
+ for(let row=0;row<rows;row++)for(const side of [-1,1])for(let col=0;col<4;col++){
+  const seed=chapter*1009+row*37+col*13+(side+1)*7;
+  if((row+col)%5===0||hash(seed+9)<.12)continue;
+  const z=start-100+row*38+hash(seed)*8,x=side*(100+col*39+hash(seed+3)*8);
+  out.push({x,z,width:17+hash(seed+4)*11,depth:18+hash(seed+5)*9,height:chapter<2?25+hash(seed+6)*100:chapter===2?10+hash(seed+6)*30:6+hash(seed+6)*9,seed,side,angle:0,kind:'office',style:col%2,background:true});
+ }
+ CITY_BACKDROP.set(chapter,out);return out;
+}
 class Journey {
  constructor(){this.reset()}
- reset(){Object.assign(this,{health:100,energy:100,time:0,progress:0,x:0,chapter:-1,entryPending:false,routes:{},events:new Set(),seen:new Set(),retryUsed:false,emergencyUsed:false,recovery:null,recoveryTime:0,done:false,success:false,started:false,paused:false,speed:1,clock:0,lesson:null,lessonQueue:[],grace:0,impact:0,slowImpact:0,notices:[],districts:new Map(),journal:[],feedback:null,reflection:'',routeSelectedAt:{},interference:null,gust:null,yieldRemaining:0,habitatNotice:null})}
+ reset(){Object.assign(this,{health:100,energy:100,energyLedger:{flight:0,detour:0,light:0,rest:0,arrival:0},outro:null,summaryReady:false,time:0,progress:0,x:0,chapter:-1,entryPending:false,routes:{},events:new Set(),seen:new Set(),retryUsed:false,emergencyUsed:false,recovery:null,recoveryTime:0,done:false,success:false,started:false,paused:false,speed:1,clock:0,lesson:null,lessonQueue:[],grace:0,impact:0,slowImpact:0,notices:[],districts:new Map(),journal:[],feedback:null,reflection:'',routeSelectedAt:{},interference:null,gust:null,yieldRemaining:0,habitatNotice:null})}
  get waitingRoute(){return this.started&&!this.done&&this.chapter>=0&&this.chapter<4&&!this.routes[this.chapter]}
- get interaction(){return !this.started?'intro':this.done?'ending':this.paused?'overlay':this.recovery?'recovery':this.lesson?'lesson':this.waitingRoute?'route':'flight'}
+ get interaction(){return !this.started?'intro':this.done?(this.summaryReady?'ending':'outro'):this.paused?'overlay':this.recovery?'recovery':this.lesson?'lesson':this.waitingRoute?'route':'flight'}
  get running(){return this.started&&!this.done&&!this.paused}
  event(id,health=0,energy=0){
   if(this.done||this.paused||this.events.has(id))return false;
-  this.events.add(id);this.health=clamp(this.health+health);this.energy=clamp(this.energy+energy);
+  this.events.add(id);this.health=clamp(this.health+health);const before=this.energy;this.energy=clamp(this.energy+energy);
+  const bucket=id.startsWith('detour-')?'detour':id==='light-1'?'light':id.startsWith('rest-')?'rest':id==='arrival'?'arrival':null;if(bucket)this.energyLedger[bucket]+=this.energy-before;
   if(health||energy)this.notices.push({id,health,energy,at:this.clock});
   return true;
  }
  choose(route){
   if(this.interaction!=='route'||this.entryPending||![0,1,2,3].includes(this.chapter)||this.routes[this.chapter]||!['A','B','C'].includes(route))return false;
-  this.routes[this.chapter]=route;this.routeSelectedAt[this.chapter]=this.clock;if(route==='C')this.event(`detour-${this.chapter}`,0,-5);return true;
+  this.routes[this.chapter]=route;this.routeSelectedAt[this.chapter]=this.clock;if(route==='C')this.event(`detour-${this.chapter}`,0,-ENERGY.detour);return true;
  }
  buildings(chapter=this.chapter){
   if(chapter<0||chapter>4)return [];
@@ -158,7 +175,7 @@ class Journey {
  startInterference(){
   if(!this.running||this.recovery||this.chapter!==1||this.events.has('light-1'))return false;
   const profile=ROUTE_PROFILES[this.routes[1]||'B'];
-  if(!this.event('light-1',0,-10))return false;
+  if(!this.event('light-1',0,-ENERGY.light[this.routes[1]||'B']))return false;
   this.interference={duration:profile.driftDuration,remaining:profile.driftDuration,elapsed:0,strength:profile.driftStrength,side:1};
   this.teach('light',2);return true;
  }
@@ -203,7 +220,7 @@ class Journey {
   if(!this.event(`hit-${id}`,severe?-35:-25))return false;
   this.impact=.3;this.slowImpact=.9;this.grace=1; this.teach(glass?'glass':'wall',2,true);this.checkRecovery();return true;
  }
- rest(id){if(this.event(`rest-${id}`,0,20))this.teach('green')}
+ rest(id){if(this.event(`rest-${id}`,0,ENERGY.rest[this.routes[this.chapter]]||0))this.teach('green')}
  checkRecovery(){
   if(this.done||this.recovery)return;
   if(this.health===0){this.recovery='health';this.recoveryTime=0;this.lesson=null;this.interference=null;this.clearHabitat()}
@@ -217,8 +234,16 @@ class Journey {
   for(const key of [...this.events])if(key===`detour-${this.chapter}`||key===`rest-${this.chapter}`||key.startsWith(`hit-${this.chapter}-`)||key===`light-${this.chapter}`||key.startsWith(`gust-${this.chapter}-`)||key===`flock-${this.chapter}`)this.events.delete(key);
   this.recovery=null;this.entryPending=false;this.grace=2;this.speed=.65;this.notices=[];return true;
  }
- finish(success){if(this.done)return;if(success)this.event('arrival',0,10);this.teach(success?'arrival':'failure',3,true);this.seen.add(success?'arrival':'failure');this.done=true;this.success=success;this.recovery=null;this.lesson=null;this.interference=null;this.clearHabitat()}
+ finish(success){
+  if(this.done)return;
+  if(success)this.event('arrival',0,ENERGY.arrival);
+  this.teach(success?'arrival':'failure',3,true);this.seen.add(success?'arrival':'failure');
+  this.done=true;this.success=success;this.summaryReady=false;this.outro={elapsed:0,duration:4};
+  this.recovery=null;this.lesson=null;this.lessonQueue=[];this.entryPending=false;this.interference=null;this.impact=0;this.clearHabitat();
+ }
+ skipOutro(){if(this.done){this.summaryReady=true;this.outro.elapsed=this.outro.duration;}}
  tick(dt,steer=0){
+  if(this.done){if(!this.summaryReady){this.outro.elapsed=Math.min(this.outro.duration,this.outro.elapsed+Math.max(0,Math.min(dt,.1)));if(this.outro.elapsed>=this.outro.duration)this.summaryReady=true;}return;}
   if(!this.running)return;
   if(!this.recovery){this.beginLesson();if(this.lesson||this.waitingRoute)return;}
   dt=Math.max(0,Math.min(dt,.1));this.time+=dt;this.clock+=dt;
@@ -238,12 +263,13 @@ class Journey {
   this.speed+=(target-this.speed)*(1-Math.exp(-dt*8));
   const previous={x:pathX(cameraZ(this.progress))+this.x*LATERAL_RANGE,z:cameraZ(this.progress)};
   this.progress+=dt*this.speed;
+  const drain=Math.min(this.energy,dt*ENERGY.flight);this.energy-=drain;this.energyLedger.flight-=drain;
   if(this.progress>=10)this.x=Math.max(-1,Math.min(1,this.x+(steer*.62+this.driftVelocity())*dt));
   for(const key of ['interference','gust']){const effect=this[key];if(effect){effect.elapsed+=dt;effect.remaining=Math.max(0,effect.duration-effect.elapsed);if(effect.remaining<=0)this[key]=null}}
   const c=this.progress<10?-1:this.progress<45?0:this.progress<80?1:this.progress<115?2:this.progress<140?3:4;
   if(c!==this.chapter){
-   if(this.chapter>=0&&this.chapter<4)this.event(`segment-${this.chapter}`,0,-8);
-   this.clearHabitat();this.chapter=c;this.entryPending=true;this.teach(['city','night','corridor','pond','wetland'][c],1);if(c!==1)this.interference=null;if(c===4){this.event('arrival',0,10);this.teach('wetland')}
+   // Continuous flight replaces abrupt segment energy charges.
+   this.clearHabitat();this.chapter=c;this.entryPending=true;this.teach(['city','night','corridor','pond','wetland'][c],1);if(c!==1)this.interference=null;if(c===4)this.teach('wetland')
    this.beginLesson();if(!this.lesson)this.entryPending=false;return;
   }
   const local=this.progress-(STAGE_STARTS[c]||0);
@@ -252,7 +278,7 @@ class Journey {
   if(c===1&&local>=16)this.startInterference();
   if(c===2&&local>=7)this.teach('corridor');
   this.updateHabitat(local);
-  if((c===0||c===2||c===3)&&this.routes[c]==='C'&&local>=21)this.rest(c);
+  if((c===0||c===2||c===3)&&['B','C'].includes(this.routes[c])&&local>=21)this.rest(c);
   if(c===2&&local>=25)this.teach('green');
   const current={x:pathX(cameraZ(this.progress))+this.x*LATERAL_RANGE,z:cameraZ(this.progress)};
   if(c>=0&&c<4&&local>=8&&this.grace===0){
@@ -624,7 +650,8 @@ class FlightRenderer {
   this.stage=Math.max(0,g.chapter);this.simClock=g.clock;this.lightActive=!!g.interference;
   this.nightMix=g.chapter===1?Math.min(1,(g.progress-45)/6):g.chapter===2?Math.max(0,1-(g.progress-80)/6):0;
   const t=g.started?g.progress:17;
-  this.cz=cameraZ(t);this.cx=pathX(this.cz)+g.x*23;this.eye=EYE_HEIGHT+(this.reducedEffects?0:Math.sin(g.clock*1.8)*.4);
+  const landing=g.done&&g.success&&!this.reducedEffects?Math.min(4,g.outro.elapsed):0;
+  this.cz=cameraZ(t)+FLIGHT_SPEED*(landing-landing*landing/8);this.cx=pathX(this.cz)+g.x*23;this.eye=EYE_HEIGHT+(this.reducedEffects?0:Math.sin(g.clock*1.8)*.4);
   if(!this.reducedEffects)this.reflectionClock=g.clock;
   this.sky(g,p);
   for(let layer=0;layer<3;layer++){
@@ -632,6 +659,15 @@ class FlightRenderer {
     points.push([x,this.horizon-28-layer*11-ridge*(w<500?.6:1)])}points.push([w+12,this.horizon+5]);this.screenPoly(points,colorMix(p.sky,p.ground,.25+layer*.15));
   }
   this.ground(p,g);
+  // Backdrop receives only flat atmospheric faces, never reflections or textures.
+  const background=[...cityBackdrop(Math.max(0,g.chapter)),...cityBackdrop(Math.min(4,Math.max(0,g.chapter)+1))];
+  background.sort((a,b)=>b.z-a.z);
+  for(const b of background){const d=b.z-this.cz;if(d<8||d>650)continue;
+   const pt=this.project([b.x,b.height/2,b.z]),extent=(b.width+b.height)*this.f/d;if(pt[0]+extent<0||pt[0]-extent>this.w)continue;
+   const tone=colorMix(night?'#283449':'#657c8c',p.haze,Math.min(.88,.3+d/950));
+   this.polygon([[b.x-b.width/2,0,b.z],[b.x+b.width/2,0,b.z],[b.x+b.width/2,b.height,b.z],[b.x-b.width/2,b.height,b.z]],tone);
+   this.polygon([[b.x+b.width/2,0,b.z],[b.x+b.width/2,0,b.z+b.depth],[b.x+b.width/2,b.height,b.z+b.depth],[b.x+b.width/2,b.height,b.z]],colorMix(tone,p.haze,.18));
+  }
   c.save();if(g.impact>0)c.translate(Math.sin(g.clock*90)*5,Math.cos(g.clock*80)*4);
   const stage=Math.max(0,g.chapter),objects=[...g.buildings(stage)];
   if(stage<4)objects.push(...g.buildings(stage+1).filter(b=>b.z<this.cz+350));
@@ -682,6 +718,11 @@ class FlightRenderer {
   if(g.started&&g.progress>=6&&g.progress<10)this.overview(g,lang);
   if(g.impact>0){c.strokeStyle='#edaf75b0';c.lineWidth=16;c.strokeRect(0,0,w,h)}
   if(g.recovery==='health'){c.fillStyle=`rgba(15,29,44,${Math.min(.65,g.recoveryTime*.65)})`;c.fillRect(0,0,w,h)}
+  if(g.done){
+   const u=Math.min(1,g.outro.elapsed/g.outro.duration),ease=u*u*(3-2*u);
+   c.fillStyle=g.success?`rgba(244,211,151,${.10*ease})`:`rgba(17,29,46,${.5*ease})`;c.fillRect(0,0,w,h);
+   if(g.success&&!this.reducedEffects)for(let i=0;i<9;i++)this.bird(lerp(w*(.1+hash(i)*.8),w*(.40+i*.025),ease),lerp(h*(.25+hash(i+20)*.25),h*.73+Math.abs(i-4)*3,ease),8,Math.sin(u*Math.PI)*5+i,'#faf0ce');
+  }
   this.frames++;this.renderCost=performance.now()-began;
  }
 }
@@ -708,10 +749,10 @@ const extraNotes={
  failure:['從這次飛行學習','Learning from this flight','失誤是觀察線索。回顧撞擊類型和路線，下次提早辨認出口；遊戲數值不是科學測量。','Use mistakes as clues. Review collision types and routes; identify exits earlier next time. Game values are not scientific measurements.']};
 for(const [id,[zh,en,zt,et]] of Object.entries(extraNotes))lessons[id]={title:[zh,en],text:[zt,et],short:[zt,et]};
 const routes={
- 0:[['建築邊緣','Building edge','密集幕牆與較窄的樓宇間隙。','Dense façades and narrower gaps.'],['外部玻璃標記','External glass markers','窗面有細小標記，樓距較寬。','Subtle glass markings and wider gaps.'],['綠蔭繞道','Green detour','沿樹木繞行；−5 體力，有停歇點。','Tree-lined detour; −5 energy, a resting point.']],
- 1:[['商業街區','Commercial streets','樓宇密集、間隙較窄；強光區較多。','Dense towers, narrower gaps and brighter windows.'],['受管理照明','Managed lighting','樓距適中，照明較克制。','Moderate density and restrained lighting.'],['外圍繞道','Outer detour','樓宇較稀疏，繞開強光；−5 體力。','Sparse buildings, around the brightest area; −5 energy.']],
- 2:[['城市邊緣','Urban edge','沿建築與綠地的交界前進。','Follow the boundary of buildings and greenery.'],['水道沿線','Waterway','沿水道觀察相連的綠地。','Follow water and connected greenery.'],['生態繞道','Ecological detour','路程較長；−5 體力，有停歇點。','Longer; −5 energy, a resting point.']],
- 3:[['村落邊緣','Village edge','沿村落與魚塘的交界前進。','Follow the edge of villages and ponds.'],['濕地廊道','Wetland corridor','沿相連的水面與植被前進。','Follow linked water and vegetation.'],['外圍繞道','Outer detour','路程較長；−5 體力，有停歇點。','Longer; −5 energy, a resting point.']]
+ 0:[['建築邊緣','Building edge','密集幕牆與較窄的樓宇間隙。','Dense façades and narrower gaps.'],['外部玻璃標記','External glass markers','窗面有細小標記，樓距較寬；指定停歇 +7。','Subtle glass markings and wider gaps; designated rest +7.'],['綠蔭繞道','Green detour','沿樹木繞行；−7 體力，停歇 +17，每處一次。','Tree-lined detour; −7 energy, rest +17, once per site.']],
+ 1:[['商業街區','Commercial streets','樓宇密集、間隙較窄；強光區較多。','Dense towers, narrower gaps and brighter windows.'],['受管理照明','Managed lighting','樓距適中，照明較克制。','Moderate density and restrained lighting.'],['外圍繞道','Outer detour','樓宇較稀疏，繞開強光；−7 體力。','Sparse buildings, around the brightest area; −7 energy.']],
+ 2:[['城市邊緣','Urban edge','沿建築與綠地的交界前進。','Follow the boundary of buildings and greenery.'],['水道沿線','Waterway','沿水道觀察相連的綠地；停歇 +7。','Follow water and connected greenery; rest +7.'],['生態繞道','Ecological detour','路程較長；−7 體力，停歇 +17，每處一次。','Longer; −7 energy, rest +17, once per site.']],
+ 3:[['村落邊緣','Village edge','沿村落與魚塘的交界前進。','Follow the edge of villages and ponds.'],['濕地廊道','Wetland corridor','沿相連的水面與植被前進；停歇 +7。','Follow linked water and vegetation; rest +7.'],['外圍繞道','Outer detour','路程較長；−7 體力，停歇 +17，每處一次。','Longer; −7 energy, rest +17, once per site.']]
 };
 function setText(id,text){if($(id).textContent!==text)$(id).textContent=text}
 function clearInput(){keys.clear();pointers.clear();$('left').classList.remove('held');$('right').classList.remove('held')}
@@ -755,7 +796,7 @@ function pause(value=true){if(!g.started||g.done)return;g.paused=value;clearInpu
 }
 function help(){
  helpWasPaused=g.paused;g.paused=true;clearInput();$('pausePanel').hidden=true;$('helpPanel').hidden=false;
- $('helpPanel').innerHTML=`<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><h2 id="helpTitle">${tr('飛行指南','Flight guide')}</h2><p>${tr('使用 A / D 或左右方向鍵；觸屏按住左下或右下箭頭。鬆開即停止轉向。Escape 或 II 暫停。觀察立體樓房之間的空間，碰到外牆會扣健康值。','Use A / D or arrow keys; on touchscreens hold the lower-left or lower-right button. Release to stop steering. Escape or II pauses. Observe the spaces between buildings; touching a façade costs health.')}</p><p>${tr('首次知識卡會安全暫停飛行，讀完後按繼續。重複事件顯示簡短回饋；飛行筆記只列出已解鎖內容。照明干擾會持續偏移，請反向轉向修正；A 約 6 秒、B 約 3 秒、C 約 1 秒，期間只扣一次體力。每完成一段 −8 體力，繞道 −5，照明修正 −10，指定停歇點 +20，抵達濕地 +10。','First-time notes freeze flight until Continue. Repeated events give brief feedback; the notebook lists unlocked topics. Countersteer against sustained light drift: A about 6s, B 3s, C 1s. Energy is charged once per zone. Segment −8 energy; detour −5; lighting correction −10; designated rest +20; wetland arrival +10.')}</p><p>${tr('普通碰撞 −25 健康，嚴重碰撞 −35。廊道鳥群附近會短暫減速；魚塘有預告陣風，請反向修正。濕地請為棲息鳥群讓行。','Ordinary collision −25 health; severe collision −35. Slow down near corridor flocks. Countersteer against forecast gusts over ponds. Give wetland roosts space.')}</p><label class="effects-setting"><input id="reduceEffects" type="checkbox" ${renderer.reducedEffects?'checked':''}> ${tr('減少視覺效果（停止雲層、植被、反射動畫及風線）','Reduce visual effects (freeze clouds, foliage, reflection animation and wind streaks)')}</label><details><summary>${tr('完整飛行筆記','Complete field notes')}</summary>${Object.entries(lessons).filter(([id])=>g.seen.has(id)).map(([,l])=>`<h3>${l.title[lang==='zh'?0:1]}</h3><p>${l.text[lang==='zh'?0:1]}</p>`).join('')}</details><button id="closeHelp" class="primary">${tr('返回遊戲','Back to game')}</button></div>`;
+ $('helpPanel').innerHTML=`<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><h2 id="helpTitle">${tr('飛行指南','Flight guide')}</h2><p>${tr('使用 A / D 或左右方向鍵；觸屏按住左下或右下箭頭。鬆開即停止轉向。Escape 或 II 暫停。觀察立體樓房之間的空間，碰到外牆會扣健康值。','Use A / D or arrow keys; on touchscreens hold the lower-left or lower-right button. Release to stop steering. Escape or II pauses. Observe the spaces between buildings; touching a façade costs health.')}</p><p>${tr('首次知識卡會安全暫停飛行，讀完後按繼續。重複事件顯示簡短回饋；飛行筆記只列出已解鎖內容。照明干擾會持續偏移，請反向轉向修正；A 約 6 秒、B 約 3 秒、C 約 1 秒，期間只扣一次體力。飛行每秒 −0.40 體力；C 繞道每段 −7；夜間干擾 A/B/C −14/−8/−3。城市、廊道與村落指定停歇點 B +7、C +17，每處僅一次；完成旅程 +8。低於 30 會預警。數值屬遊戲設計，並非科學測量。','First-time notes freeze flight until Continue. Repeated events give brief feedback; the notebook lists unlocked topics. Countersteer against sustained light drift: A about 6s, B 3s, C 1s. Energy is charged once per zone. Flight −0.40 energy/second; each C detour −7; night interference A/B/C −14/−8/−3. City, corridor and village rests: B +7, C +17, once each; completed journey +8. Warning below 30. These are game-design values, not scientific measurements.')}</p><p>${tr('普通碰撞 −25 健康，嚴重碰撞 −35。廊道鳥群附近會短暫減速；魚塘有預告陣風，請反向修正。濕地請為棲息鳥群讓行。','Ordinary collision −25 health; severe collision −35. Slow down near corridor flocks. Countersteer against forecast gusts over ponds. Give wetland roosts space.')}</p><label class="effects-setting"><input id="reduceEffects" type="checkbox" ${renderer.reducedEffects?'checked':''}> ${tr('減少視覺效果（停止雲層、植被、反射動畫及風線）','Reduce visual effects (freeze clouds, foliage, reflection animation and wind streaks)')}</label><details><summary>${tr('完整飛行筆記','Complete field notes')}</summary>${Object.entries(lessons).filter(([id])=>g.seen.has(id)).map(([,l])=>`<h3>${l.title[lang==='zh'?0:1]}</h3><p>${l.text[lang==='zh'?0:1]}</p>`).join('')}</details><button id="closeHelp" class="primary">${tr('返回遊戲','Back to game')}</button></div>`;
  $('reduceEffects').onchange=e=>{renderer.reducedEffects=e.target.checked};
  $('closeHelp').onclick=()=>{$('helpPanel').hidden=true;g.paused=helpWasPaused;clearInput();if(helpWasPaused)pause(true);else labels()};$('closeHelp').focus();modalLanguageButtons();updateUI();
 }
@@ -804,8 +845,20 @@ function renderRecovery(){
  $('recovery').innerHTML=`<div class="dialog" role="dialog" aria-modal="true"><h2>${energy?tr('體力不足，需要停歇','Energy depleted. Rest is needed.'):tr('本次飛行已中斷','Flight interrupted')}</h2><p>${energy?tr('正在滑行至最近的指定停歇點。約 3 秒後恢復至 25 體力，健康值不變。','Gliding to the nearest designated rest. Energy returns to 25 after about 3 seconds; health is unchanged.'):g.retryUsed?tr('正在整理旅程回顧。','Preparing your journey reflection.'):tr('你還有一次重試。返回本章起點，健康值恢復至 70、體力至 60；保留之前完成的旅程與知識。','One retry remains. Return to this chapter with health 70 and energy 60. Previous progress and lessons are preserved.')}</p>${!energy&&!g.retryUsed?`<button id="retry" class="primary" ${ready?'':'disabled'}>${tr('從檢查點重試','Retry from checkpoint')}</button>`:''}</div>`;
  if($('retry'))$('retry').onclick=()=>{if(g.retry()){clearInput();uiKey='';recoveryKey='';updateUI()}};
 }
+function renderOutro(){
+ if(!$('outro')){const el=document.createElement('section');el.id='outro';el.setAttribute('aria-live','polite');el.style.cssText='position:absolute;z-index:19;left:8%;right:8%;bottom:18%;text-align:center;padding:20px;background:#102d43dd;border:1px solid #efcf91;border-radius:18px';$('game').append(el);}
+ const active=g.done&&!g.summaryReady;$('outro').hidden=!active;if(!active)return;
+ if(renderer.reducedEffects)g.outro.duration=.8;
+ const step=renderer.reducedEffects?2:Math.min(2,Math.floor(g.outro.elapsed/1.35));
+ const text=g.success?[tr('已抵達濕地 · 正在減速','Wetland reached · Slowing down'),tr('家人前來迎接 · 正在降落','Your flock is joining · Landing'),tr('旅程完成 · 歡迎回家','Journey complete · Welcome home')][step]:tr('本次飛行已安全停止 · 正在整理旅程','Flight has stopped · Preparing your reflection');
+ if(!$('skipOutro')){$('outro').innerHTML='<h2 id="outroTitle"></h2><p id="outroStatus"></p><button id="skipOutro"></button>';}
+ setText('outroTitle',text);setText('outroStatus',`${tr('即將顯示旅程總結','Your journey summary follows shortly')} · ${Math.max(0,Math.ceil(g.outro.duration-g.outro.elapsed))}s`);
+ setText('skipOutro',tr('跳過動畫 · 查看總結','Skip animation · View summary'));
+ $('skipOutro').onclick=()=>{g.skipOutro();updateUI()};
+ for(const id of ['pausePanel','helpPanel','recovery','lesson','choices'])$(id).hidden=true;
+}
 function renderEnding(){
- $('ending').hidden=!g.done;if(!g.done)return;
+ $('ending').hidden=!g.summaryReady;if(!g.summaryReady)return;
  const key=`${lang}-${g.success}`;if(key===endKey)return;
  if($('reflection'))g.reflection=$('reflection').value;endKey=key;
  $('ending').innerHTML=`<div class="dialog" role="dialog" aria-modal="true"><span class="eyebrow">SDG 15 · LIFE ON LAND · 陸域生命</span><h1>${g.success?tr('終於，再次相聚','Together, at last.'):tr('本次旅程未能完成','Journey not completed')}</h1><p>${g.success?tr('你抵達米埔內后海灣濕地，回到家人身邊。','You have reached Mai Po Inner Deep Bay and reunited with your family.'):tr('飛行中斷了，但你的旅程留下值得思考的事。','Flight was interrupted, but your journey still offers something to reflect on.')}</p><p>${tr('本次有效撞擊','Impacts this journey')}: ${g.journal.filter(e=>e.trigger==='event'&&['glass','wall'].includes(e.id)).length} · ${tr('路線','Routes')}: ${Object.values(g.routes).join(' → ')}</p><ul>${[...new Set(g.journal.map(e=>e.id))].map(id=>lessons[id]).filter(Boolean).map(l=>`<li>${l.short[lang==='zh'?0:1]}</li>`).join('')}</ul><p>${tr('保護陸地生態系統，維護生物多樣性，並減少人類活動對野生動物及其棲息地造成的潛在影響。城市發展與生物多樣性保護可以並行。','Protect terrestrial ecosystems, conserve biodiversity, and reduce potential impacts on wildlife and habitats. Urban development and biodiversity conservation can coexist.')}</p><p>${tr('如果你可以改變一項城市設計，你會怎樣讓城市對鳥類更友善？','If you could change one feature of the city, how would you make it more bird-friendly?')}</p><textarea id="reflection" aria-label="反思 / Reflection" placeholder="${tr('寫下你的想法（僅保留於此頁面）','Your reflection (kept on this page only)')}"></textarea><details><summary>${tr('延伸閱讀','Further reading')}</summary><p><a href="https://sdgs.un.org/goals/goal15" target="_blank" rel="noopener">UN · SDG 15</a> · <a href="https://www.wwf.org.hk/" target="_blank" rel="noopener">WWF Hong Kong</a></p><small>${tr('遊戲景觀為香港啟發的虛構場景；數值並非科學測量。','Landscapes are fictional and Hong Kong-inspired; game values are not scientific measurements.')}</small></details><button id="again" class="primary">${tr('再飛一次','Fly again')} ↗</button></div>`;
@@ -824,7 +877,7 @@ function renderInterference(){
 }
 function updateUI(){
  const feedback=$('knowledgeFeedback');if(feedback){feedback.hidden=!g.feedback||g.clock>g.feedback.until||g.interaction!=='flight';feedback.textContent=g.feedback?lessons[g.feedback.id]?.short[lang==='zh'?0:1]||'':'';}
- setText('healthLabel',`${tr('健康','Health')} ${g.health}`);setText('energyLabel',`${tr('體力','Energy')} ${g.energy}`);
+ setText('healthLabel',`${tr('健康','Health')} ${g.health}`);setText('energyLabel',`${tr('體力','Energy')} ${Math.ceil(g.energy)}`);
  $('health').value=g.health;$('energy').value=g.energy;
  setText('chapter',g.chapter<0?tr('與家人同行','With your family'):names[g.chapter][lang==='zh'?0:1]);setText('stage',`${String(g.chapter+2).padStart(2,'0')} / 06`);
  setText('time',`${String(Math.floor(g.time/60)).padStart(2,'0')}:${String(Math.floor(g.time%60)).padStart(2,'0')}`);
@@ -836,12 +889,13 @@ function updateUI(){
   else if(g.progress<10)caption=tr('前方是繁忙的城市；遠處的米埔濕地，或許是重聚之地。','A bustling city lies ahead. Mai Po’s wetlands may offer a chance to reunite.');
   else if(g.chapter===4&&g.progress<145)caption=tr('米埔濕地就在眼前，家人正在等待。','Mai Po lies ahead. Your family is waiting.');
  }
+ if(g.energy<30&&g.interaction==='flight')caption=tr('體力偏低 · B 路線節省繞道體力，C 路線有較多停歇恢復；保持與鳥群距離。','Low energy · B saves detour energy; C offers stronger rests. Give flocks space.');
  setText('caption',caption);
  const notices=g.notices.slice(-2);setText('delta',notices.map(n=>`${n.health?`${tr('健康','Health')} ${n.health}`:''}${n.energy?`${tr('體力','Energy')} ${n.energy>0?'+':''}${n.energy}`:''}`).join(' · '));
- renderRoutes();renderLesson();renderRecovery();renderEnding();renderInterference();modalLanguageButtons();
+ renderRoutes();renderLesson();renderRecovery();renderOutro();renderEnding();renderInterference();modalLanguageButtons();
  $('controls').inert=g.interaction!=='flight';
  $('caption').hidden=g.interaction!=='flight';$('interference').hidden=g.interaction!=='flight'||$('interference').hidden;
- $('help').disabled=!$('helpPanel').hidden;$('pause').disabled=!g.started||g.done||!$('helpPanel').hidden;
+ $('help').disabled=g.done||!$('helpPanel').hidden;$('pause').disabled=!g.started||g.done||!$('helpPanel').hidden;
  $('lesson').inert=g.interaction!=='lesson';
  updateAudio();
 }

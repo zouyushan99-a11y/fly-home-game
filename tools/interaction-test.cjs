@@ -17,7 +17,7 @@ for(const [name,width,height,touch] of [['desktop',1280,720,false],['portrait',3
   await click('#pause');await click('#pauseHelp');assert.deepEqual(await visible(),['helpPanel']);await click('#helpPanel .modal-language');await click('#closeHelp');assert.deepEqual(await visible(),['pausePanel']);await click('#resume');assert.deepEqual(await visible(),['choices']);
   const energy=await page.evaluate(()=>test.g.energy);
   await click(`#choices button:nth-child(${'ABC'.indexOf(route)+1})`);
-  assert.equal(await page.evaluate(c=>test.g.routes[c],c),route);assert.equal(await page.evaluate(()=>test.g.energy),energy-(route==='C'?5:0));assert.deepEqual(await visible(),[]);
+  assert.equal(await page.evaluate(c=>test.g.routes[c],c),route);assert.equal(await page.evaluate(()=>test.g.energy),energy-(route==='C'?7:0));assert.deepEqual(await visible(),[]);
   assert((await page.locator('#route').textContent()).includes(route));const z=await page.evaluate(()=>test.g.progress);await page.evaluate(()=>test.advance(.1));assert((await page.evaluate(()=>test.g.progress))>z);
   if(c===0&&route==='A')await page.screenshot({path:`evidence/flow-${name}-3-flight.png`});
   results.push({name,chapter:c,route,passed:true});

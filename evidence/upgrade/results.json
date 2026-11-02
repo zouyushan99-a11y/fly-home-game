@@ -1,0 +1,292 @@
+{
+  "physicalPhone": false,
+  "routes": [
+    {
+      "version": "before",
+      "route": "A",
+      "success": true,
+      "health": 100,
+      "energy": 68,
+      "minEnergy": 66,
+      "seconds": 171.40000000002854,
+      "retry": false,
+      "emergency": false,
+      "rests": [
+        {
+          "progress": 140.0083333333371,
+          "gain": 2
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "route": "B",
+      "success": true,
+      "health": 100,
+      "energy": 68,
+      "minEnergy": 66,
+      "seconds": 171.40000000002854,
+      "retry": false,
+      "emergency": false,
+      "rests": [
+        {
+          "progress": 140.0083333333371,
+          "gain": 2
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "route": "C",
+      "success": true,
+      "health": 100,
+      "energy": 93,
+      "minEnergy": 64,
+      "seconds": 171.40000000002854,
+      "retry": false,
+      "emergency": false,
+      "rests": [
+        {
+          "progress": 31.016666666666186,
+          "gain": 5
+        },
+        {
+          "progress": 101.00833333349071,
+          "gain": 20
+        },
+        {
+          "progress": 136.00833333333392,
+          "gain": 20
+        },
+        {
+          "progress": 140.0083333333371,
+          "gain": 2
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "route": "A",
+      "success": true,
+      "health": 100,
+      "energy": 25.440000000015296,
+      "minEnergy": 17.446666666681963,
+      "seconds": 171.40000000002854,
+      "ledger": {
+        "flight": -68.5600000000026,
+        "detour": 0,
+        "light": -14,
+        "rest": 0,
+        "arrival": 8
+      },
+      "retry": false,
+      "emergency": false,
+      "rests": [
+        {
+          "progress": 165.00252776953852,
+          "gain": 7.993333333333332
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "route": "B",
+      "success": true,
+      "health": 100,
+      "energy": 52.44000000002781,
+      "minEnergy": 44.446666666694476,
+      "seconds": 171.40000000002854,
+      "ledger": {
+        "flight": -68.5600000000026,
+        "detour": 0,
+        "light": -8,
+        "rest": 21,
+        "arrival": 8
+      },
+      "retry": false,
+      "emergency": false,
+      "rests": [
+        {
+          "progress": 31.016666666666186,
+          "gain": 6.993333333333339
+        },
+        {
+          "progress": 101.00833333339261,
+          "gain": 6.993333333333332
+        },
+        {
+          "progress": 136.00833333333392,
+          "gain": 6.993333333333332
+        },
+        {
+          "progress": 165.00252776953852,
+          "gain": 7.993333333333332
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "route": "C",
+      "success": true,
+      "health": 100,
+      "energy": 59.440000000030096,
+      "minEnergy": 48.15333333336435,
+      "seconds": 171.40000000002854,
+      "ledger": {
+        "flight": -68.5600000000026,
+        "detour": -28,
+        "light": -3,
+        "rest": 50.99999999999999,
+        "arrival": 8
+      },
+      "retry": false,
+      "emergency": false,
+      "rests": [
+        {
+          "progress": 31.016666666666186,
+          "gain": 16.99333333333334
+        },
+        {
+          "progress": 101.00833333349071,
+          "gain": 16.993333333333325
+        },
+        {
+          "progress": 136.00833333333392,
+          "gain": 16.993333333333332
+        },
+        {
+          "progress": 165.00252776953852,
+          "gain": 7.993333333333332
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "name": "near-field geometry unchanged for every chapter and route",
+      "pass": true
+    },
+    {
+      "name": "background stable and unreachable",
+      "pass": true
+    },
+    {
+      "name": "outro freezes resources, collisions, events, progress; finish idempotent; restart clears",
+      "pass": true
+    },
+    {
+      "name": "lessons, route waits and overlays freeze energy and interference timers",
+      "pass": true
+    },
+    {
+      "name": "desktop: success, failure, skip, restart, reduced effects",
+      "pass": true
+    },
+    {
+      "name": "portrait: success, failure, skip, restart, reduced effects",
+      "pass": true
+    },
+    {
+      "name": "landscape: success, failure, skip, restart, reduced effects",
+      "pass": true
+    }
+  ],
+  "performance": [
+    {
+      "device": "desktop",
+      "scene": "day",
+      "version": "before",
+      "meanMs": 1.676249999999709,
+      "p95Ms": 2.400000000023283,
+      "rafFPS": 59.26364915919699
+    },
+    {
+      "device": "desktop",
+      "scene": "night",
+      "version": "before",
+      "meanMs": 2.5187500000116416,
+      "p95Ms": 3.599999999976717,
+      "rafFPS": 54.54793399699989
+    },
+    {
+      "device": "desktop",
+      "scene": "day",
+      "version": "after",
+      "meanMs": 3.1900000000037836,
+      "p95Ms": 4.699999999953434,
+      "rafFPS": 50.00312519532471
+    },
+    {
+      "device": "desktop",
+      "scene": "night",
+      "version": "after",
+      "meanMs": 2.9574999999953433,
+      "p95Ms": 4.099999999976717,
+      "rafFPS": 48.001920076803074
+    },
+    {
+      "device": "portrait",
+      "scene": "day",
+      "version": "before",
+      "meanMs": 1.3175000000032013,
+      "p95Ms": 2.299999999930151,
+      "rafFPS": 60.00600060006001
+    },
+    {
+      "device": "portrait",
+      "scene": "night",
+      "version": "before",
+      "meanMs": 1.271250000006694,
+      "p95Ms": 1.7999999999301508,
+      "rafFPS": 59.99700014999251
+    },
+    {
+      "device": "portrait",
+      "scene": "day",
+      "version": "after",
+      "meanMs": 1.6837499999979628,
+      "p95Ms": 3,
+      "rafFPS": 60.00600060006001
+    },
+    {
+      "device": "portrait",
+      "scene": "night",
+      "version": "after",
+      "meanMs": 1.5999999999941792,
+      "p95Ms": 2.599999999976717,
+      "rafFPS": 60.00150003750093
+    },
+    {
+      "device": "landscape",
+      "scene": "day",
+      "version": "before",
+      "meanMs": 1.5399999999965075,
+      "p95Ms": 2.700000000069849,
+      "rafFPS": 60.001500037500946
+    },
+    {
+      "device": "landscape",
+      "scene": "night",
+      "version": "before",
+      "meanMs": 1.620000000001164,
+      "p95Ms": 2.400000000023283,
+      "rafFPS": 60.00150003750093
+    },
+    {
+      "device": "landscape",
+      "scene": "day",
+      "version": "after",
+      "meanMs": 1.6137499999982539,
+      "p95Ms": 2.199999999953434,
+      "rafFPS": 60.00600060006001
+    },
+    {
+      "device": "landscape",
+      "scene": "night",
+      "version": "after",
+      "meanMs": 1.6650000000066938,
+      "p95Ms": 2.1000000000931323,
+      "rafFPS": 60.00600060006001
+    }
+  ]
+}

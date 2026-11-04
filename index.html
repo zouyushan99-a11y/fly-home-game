@@ -26,6 +26,7 @@
 </main><div id="knowledgeFeedback" role="status" style="position:absolute;left:20%;right:20%;bottom:140px;background:#112d44e6;padding:10px;z-index:5;pointer-events:none" hidden></div><script>(()=>{
 // Shared world units for perspective drawing and swept collision tests.
 const FLIGHT_SPEED = 9;
+const PACE = 1.35, STEER_RATE = .78, FORK_COMMIT = 7;
 const LATERAL_RANGE = 23;
 const EYE_HEIGHT = 34;
 const STAGE_STARTS = [10,45,80,115,140];
@@ -61,7 +62,9 @@ function makeDistrict(chapter,route='B'){
  const decorate=b=>{
   const h=hash(b.seed+81);
   b.kind=b.solidTree?'tree':chapter===3?(h<.84?'village':'public'):chapter===2?(h<.72?'public':'residential'):b.central?'stepped':h<.3?'office':h<.58?'residential':h<.8?'commercial':'stepped';
-  b.glass=['office','stepped','public'].includes(b.kind);
+  if(!b.entry&&chapter<2){b.kind=route==='A'?(b.central?'stepped':'office'):route==='B'?'residential':'public';if(route==='C')b.height=10+hash(b.seed)*10;}
+  if(b.entry&&b.side>0){b.kind='public';b.height=18;}
+  b.glass=['office','stepped','public'].includes(b.kind)||(!b.entry&&route==='B'&&chapter<2);
   b.angle=b.solidTree?0:(hash(b.seed+72)-.5)*.94;
   if(b.kind==='public'){b.height=7+hash(b.seed+2)*9;b.width*=1.2;}
   if(b.kind==='village'){b.height=7+hash(b.seed+5)*8;b.depth=8+hash(b.seed+9)*5;}
@@ -72,7 +75,11 @@ function makeDistrict(chapter,route='B'){
  for(let i=0;i<4;i++){
   const seed=chapter*223+i*19,side=i%2?-1:1,z=start+70+i*15;
   result.push(decorate({id:`${chapter}-entry-${i}`,entry:true,chapter,z,width:10+hash(seed)*7,depth:10,
-   height:chapter===3?12:chapter===2?20:44+hash(seed+5)*34,seed,side,route:'B',marked:false,severe:false,style:i%5,turn:0,edge:18}));
+   height:chapter===3?12:chapter===2?20:44+hash(seed+5)*34,seed,side,route:'B',marked:false,severe:false,style:i%5,turn:0,edge:26}));
+ }
+ // Shared low entrance landmarks remain unchanged when a route is confirmed.
+ for(const [i,offset,kind] of [[0,-27,'office'],[1,-7.5,'residential'],[2,29,'public']]){
+  const z=start+76;result.push({id:`${chapter}-waypoint-${i}`,entry:true,chapter,z,x:pathX(z)+offset,width:i===1?4:8,depth:8,height:i===2?12:28,angle:0,seed:chapter*71+i,side:Math.sign(offset),route:'ABC'[i],kind,glass:i<2,marked:i===1,style:i});
  }
  if(route==='entry')return result;
  // Parcels are groups around courtyards, not alternating roadside rows.
@@ -94,7 +101,7 @@ function makeDistrict(chapter,route='B'){
   const opening=(i%2?-1:1)*(route==='C'?12:10)*(chapter%2?-1:1);
   for(const side of [-1,1]){
    const left=side<0?-34:opening+gap,right=side<0?opening-gap:34;
-   const b={id:`${chapter}-challenge-${i}-${side}`,chapter,entry:false,x:pathX(z)+(left+right)/2,z,width:right-left,depth:9,height:42+hash(i+chapter)*12,angle:0,seed:chapter*79+i*11+side,side,route,glass:chapter<2,kind:chapter<2?'office':'residential',marked:route==='B',severe:false,style:i%5,gate:i,opening,gap,template:['courtyard','diagonal','landmark','plaza','garden'][(chapter+i)%5]};
+   const b={id:`${chapter}-challenge-${i}-${side}`,chapter,entry:false,x:pathX(z)+(left+right)/2,z,width:right-left,depth:9,height:route==='C'?12+hash(i+chapter)*9:42+hash(i+chapter)*12,angle:0,seed:chapter*79+i*11+side,side,route,glass:chapter<2,kind:route==='C'?'public':chapter<2?(route==='B'?'residential':'office'):'residential',marked:route==='B',severe:false,style:i%5,gate:i,opening,gap,template:['courtyard','diagonal','landmark','plaza','garden'][(chapter+i)%5]};
    for(let j=result.length-1;j>=0;j--)if(!result[j].entry&&overlaps(b,result[j]))result.splice(j,1);
    result.push(b);
   }
@@ -131,7 +138,7 @@ function wildlife(chapter,progress){
 
 const clamp=n=>Math.max(0,Math.min(100,n));
 // Energy values are game-design units, not physiological measurements.
-const ENERGY={flight:.40,detour:7,light:{A:14,B:8,C:3},rest:{B:7,C:17},arrival:8};
+const ENERGY={flight:.54,detour:7,light:{A:14,B:8,C:3},rest:{B:7,C:17},arrival:8};
 // Decorative districts are stable, route-independent and outside the reachable
 // path (pathX ± 23). Streets and alternate empty parcels preserve open space.
 const CITY_BACKDROP=new Map();
@@ -146,11 +153,23 @@ function cityBackdrop(chapter){
  }
  CITY_BACKDROP.set(chapter,out);return out;
 }
+// Fixed world coordinates across chapter changes; low, non-colliding decoration.
+const EXTRA_TREES=[0,1,2,3].flatMap(stage=>{
+ const out=[],a=cameraZ(STAGE_STARTS[stage]),b=cameraZ(STAGE_ENDS[stage]);
+ for(let cell=Math.floor(a/24)-1;cell<=Math.ceil(b/24);cell++)for(const side of [-1,1]){
+  if(cell%5===0)continue;
+  for(let j=0;j<(stage===2?3:2);j++){
+   const z=cell*24+6+j*5;if(z<a||z>=b)continue;
+   out.push({tree:true,plant:'tree',stage,z,x:pathX(z)+side*((stage<2?27:stage===2?25:38)+j*9),height:9+hash(cell*17+j)*13,seed:cell*17+j});
+  }
+ }
+ return out;
+});
 class Journey {
  constructor(){this.reset()}
  reset(){Object.assign(this,{health:100,energy:100,energyLedger:{flight:0,detour:0,light:0,rest:0,arrival:0},outro:null,summaryReady:false,time:0,progress:0,x:0,chapter:-1,entryPending:false,routes:{},events:new Set(),seen:new Set(),retryUsed:false,emergencyUsed:false,recovery:null,recoveryTime:0,done:false,success:false,started:false,paused:false,speed:1,clock:0,lesson:null,lessonQueue:[],grace:0,impact:0,slowImpact:0,notices:[],districts:new Map(),journal:[],feedback:null,reflection:'',routeSelectedAt:{},interference:null,gust:null,yieldRemaining:0,habitatNotice:null})}
  get waitingRoute(){return this.started&&!this.done&&this.chapter>=0&&this.chapter<4&&!this.routes[this.chapter]}
- get interaction(){return !this.started?'intro':this.done?(this.summaryReady?'ending':'outro'):this.paused?'overlay':this.recovery?'recovery':this.lesson?'lesson':this.waitingRoute?'route':'flight'}
+ get interaction(){return !this.started?'intro':this.done?(this.summaryReady?'ending':'outro'):this.paused?'overlay':this.recovery?'recovery':this.lesson?'lesson':'flight'}
  get running(){return this.started&&!this.done&&!this.paused}
  event(id,health=0,energy=0){
   if(this.done||this.paused||this.events.has(id))return false;
@@ -160,8 +179,15 @@ class Journey {
   return true;
  }
  choose(route){
-  if(this.interaction!=='route'||this.entryPending||![0,1,2,3].includes(this.chapter)||this.routes[this.chapter]||!['A','B','C'].includes(route))return false;
+  if(this.interaction!=='flight'||this.progress-STAGE_STARTS[this.chapter]<FORK_COMMIT||this.entryPending||![0,1,2,3].includes(this.chapter)||this.routes[this.chapter]||!['A','B','C'].includes(route))return false;
   this.routes[this.chapter]=route;this.routeSelectedAt[this.chapter]=this.clock;if(route==='C')this.event(`detour-${this.chapter}`,0,-ENERGY.detour);return true;
+ }
+ pathAt(z){
+  const p=z/FLIGHT_SPEED+10,c=STAGE_STARTS.findIndex((v,i)=>p>=v&&p<STAGE_ENDS[i]);
+  if(c<0||this.routes[c]!=='C')return pathX(z);
+  const a=STAGE_STARTS[c]+9,b=STAGE_ENDS[c]-3,t=(p-a)/(b-a);
+  // Smooth onset and reconnection: both offset and derivative vanish at either end.
+  return pathX(z)+(t>0&&t<1?11*Math.sin(t*Math.PI)**2*Math.sin(t*Math.PI*6):0);
  }
  buildings(chapter=this.chapter){
   if(chapter<0||chapter>4)return [];
@@ -245,7 +271,7 @@ class Journey {
  tick(dt,steer=0){
   if(this.done){if(!this.summaryReady){this.outro.elapsed=Math.min(this.outro.duration,this.outro.elapsed+Math.max(0,Math.min(dt,.1)));if(this.outro.elapsed>=this.outro.duration)this.summaryReady=true;}return;}
   if(!this.running)return;
-  if(!this.recovery){this.beginLesson();if(this.lesson||this.waitingRoute)return;}
+  if(!this.recovery){this.beginLesson();if(this.lesson)return;}
   dt=Math.max(0,Math.min(dt,.1));this.time+=dt;this.clock+=dt;
   this.grace=Math.max(0,this.grace-dt);this.impact=Math.max(0,this.impact-dt);this.slowImpact=Math.max(0,this.slowImpact-dt);
   this.notices=this.notices.filter(n=>this.clock-n.at<2.5);
@@ -261,10 +287,14 @@ class Journey {
   if(this.habitatNotice){this.habitatNotice.remaining-=dt;if(this.habitatNotice.remaining<=0)this.habitatNotice=null}
   const target=this.slowImpact>0?.4:this.yieldRemaining>0?.55:this.lesson?.65:this.chapter===4?.85:1;
   this.speed+=(target-this.speed)*(1-Math.exp(-dt*8));
-  const previous={x:pathX(cameraZ(this.progress))+this.x*LATERAL_RANGE,z:cameraZ(this.progress)};
-  this.progress+=dt*this.speed;
+  const previous={x:this.pathAt(cameraZ(this.progress))+this.x*LATERAL_RANGE,z:cameraZ(this.progress)};
+  // C follows a real curved centreline; arc-length integration preserves airspeed.
+  const slope=(this.pathAt(previous.z+.1)-this.pathAt(previous.z-.1))/.2;
+  const baseSlope=(pathX(previous.z+.1)-pathX(previous.z-.1))/.2;
+  const arc=this.routes[this.chapter]==='C'?Math.sqrt((1+slope*slope)/(1+baseSlope*baseSlope)):1;
+  this.progress+=dt*this.speed*PACE/arc;
   const drain=Math.min(this.energy,dt*ENERGY.flight);this.energy-=drain;this.energyLedger.flight-=drain;
-  if(this.progress>=10)this.x=Math.max(-1,Math.min(1,this.x+(steer*.62+this.driftVelocity())*dt));
+  if(this.progress>=10)this.x=Math.max(-1,Math.min(1,this.x+(steer*STEER_RATE+this.driftVelocity())*dt));
   for(const key of ['interference','gust']){const effect=this[key];if(effect){effect.elapsed+=dt;effect.remaining=Math.max(0,effect.duration-effect.elapsed);if(effect.remaining<=0)this[key]=null}}
   const c=this.progress<10?-1:this.progress<45?0:this.progress<80?1:this.progress<115?2:this.progress<140?3:4;
   if(c!==this.chapter){
@@ -273,14 +303,15 @@ class Journey {
    this.beginLesson();if(!this.lesson)this.entryPending=false;return;
   }
   const local=this.progress-(STAGE_STARTS[c]||0);
-  // Routes require an explicit user choice; no timeout or steering-based fallback.
+  // Half-open, gap-free entry sectors: exact boundaries belong to the central gate.
+  if(this.waitingRoute&&local>=FORK_COMMIT)this.choose(this.x<-7.5/23?'A':this.x>7.5/23?'C':'B');
   if(c===0&&local>=28)this.teach('glass'); // guaranteed lesson even with no impact
   if(c===1&&local>=16)this.startInterference();
   if(c===2&&local>=7)this.teach('corridor');
   this.updateHabitat(local);
   if((c===0||c===2||c===3)&&['B','C'].includes(this.routes[c])&&local>=21)this.rest(c);
   if(c===2&&local>=25)this.teach('green');
-  const current={x:pathX(cameraZ(this.progress))+this.x*LATERAL_RANGE,z:cameraZ(this.progress)};
+  const current={x:this.pathAt(cameraZ(this.progress))+this.x*LATERAL_RANGE,z:cameraZ(this.progress)};
   if(c>=0&&c<4&&local>=8&&this.grace===0){
    for(const building of this.buildings()){
     if(!building.entry&&this.districtReveal()<1)continue;
@@ -471,7 +502,7 @@ class FlightRenderer {
   t.strokeStyle=night?'#8098ac66':b.glass?'#d4e4e9af':'#8f8b7c66';t.lineWidth=1.2;
   if(b.glass)for(let col=0;col<=cols;col++){t.beginPath();t.moveTo(col*cw,0);t.lineTo(col*cw,512);t.stroke();}
   if(b.glass)for(let row=0;row<=rows;row++){t.beginPath();t.moveTo(0,row*ch);t.lineTo(256,row*ch);t.stroke();}
-  if(b.marked&&b.glass){t.fillStyle='#efe7d8';for(let x=10;x<256;x+=16)for(let y=10;y<512;y+=16)t.fillRect(x,y,1.5,1.5);}
+  if(b.marked&&b.glass){t.fillStyle='#fff7e6';for(let x=8;x<256;x+=12)for(let y=8;y<512;y+=12)t.fillRect(x,y,3,3);}
   // Original transparent architectural overlays sit above the independent sky.
   const source=this.buildingArt[kind]?.[b.face||'front'],art=night?source?.night:source;
   if(art?.complete&&art.naturalWidth){
@@ -644,6 +675,22 @@ class FlightRenderer {
    }
   }
  }
+ streets(g,p){
+  if(g.chapter>1)return;
+  const night=g.chapter===1,asphalt=night?'#29343e':'#657077',paving=night?'#56616a':'#c1c2b5',paint=night?'#a6a89a':'#eee9cf';
+  const first=Math.floor(this.cz/36);
+  for(let cell=first+12;cell>=first-1;cell--){
+   const z=cell*36,x=pathX(z),next=pathX(z+36);
+   const strip=(a,b,color,y=.08)=>this.polygon([[x+a,y,z],[x+b,y,z],[next+b,y,z+36],[next+a,y,z+36]],color);
+   strip(-13,13,paving);strip(-10,10,asphalt,.09);
+   for(const side of [-1,1])strip(side*10-.15,side*10+.15,paint,.11);
+   if(cell%3===0){
+    this.polygon([[x-75,.1,z+11],[x+75,.1,z+11],[x+75,.1,z+25],[x-75,.1,z+25]],paving);
+    this.polygon([[x-75,.12,z+13],[x+75,.12,z+13],[x+75,.12,z+23],[x-75,.12,z+23]],asphalt);
+    for(const dz of [7,26])for(let j=-9;j<10;j+=2)this.polygon([[x+j,.14,z+dz],[x+j+1,.14,z+dz],[x+j+1,.14,z+dz+3],[x+j,.14,z+dz+3]],paint);
+   }else for(let j=0;j<3;j++)this.polygon([[x-.12,.13,z+j*12],[x+.12,.13,z+j*12],[x+.12,.13,z+j*12+5],[x-.12,.13,z+j*12+5]],paint);
+  }
+ }
  ground(p,g){
   const c=this.ctx,w=this.w,h=this.h,wet=g.chapter>=2;
   const grd=c.createLinearGradient(0,this.horizon,0,h);grd.addColorStop(0,p.haze);grd.addColorStop(.28,colorMix(p.ground,p.haze,.28));grd.addColorStop(1,p.ground);c.fillStyle=grd;c.fillRect(0,this.horizon,w,h);
@@ -683,14 +730,30 @@ class FlightRenderer {
    if(g.chapter===3&&k%6===0){for(const side of [-1,1])this.polygon([[xa+side*29,0,a],[xa+side*53,0,a],[xb+side*53,0,b+15],[xb+side*29,0,b+15]],colorMix(p.water,'#a2bd9a',.2))}
   }
  }
+ forks(g,lang,signs=false){
+  if(g.chapter<0||g.chapter>3)return;
+  const start=STAGE_STARTS[g.chapter],local=g.progress-start,z=cameraZ(start+FORK_COMMIT);
+  if(local>FORK_COMMIT+.4)return;
+  const c=this.ctx,labels=lang==='zh'?['反光建築','標記玻璃','綠地繞行']:['Reflective','Marked glass','Green detour'];
+  const colors=['#8ab9ca','#ece3b8','#729956'];
+  for(let i=0;i<3;i++){
+   const offset=(i-1)*15,x=pathX(z)+offset;
+   if(!signs)for(let k=0;k<7;k++){
+    const a=cameraZ(start+k),b=a+9,t=k/7,u=(k+1)/7;
+    this.polygon([[pathX(a)+offset*t-4,.12,a],[pathX(a)+offset*t+4,.12,a],[pathX(b)+offset*u+4,.12,b],[pathX(b)+offset*u-4,.12,b]],colors[i]);
+   }
+   if(!signs)continue;
+   // Tall, thin waypoint outlines mark traversable airspace; never colliders.
+   for(const side of [-1,1])this.polygon([[x+side*7-.12,22,z],[x+side*7+.12,22,z],[x+side*7+.12,46,z],[x+side*7-.12,46,z]],colors[i]);
+   this.polygon([[x-7,45.7,z],[x+7,45.7,z],[x+7,46,z],[x-7,46,z]],colors[i]);
+   if(z-this.cz>12){const pt=this.project([x,47,z]);c.save();c.font=`bold ${this.w<500?10:13}px system-ui`;c.textAlign='center';c.fillStyle='#102c40';const tw=c.measureText(labels[i]).width;c.fillRect(pt[0]-tw/2-4,pt[1]-15,tw+8,19);c.fillStyle='#fff4d3';c.fillText(labels[i],pt[0],pt[1]);c.restore();}
+  }
+ }
  navigation(g){
-  const at=g.routeSelectedAt[g.chapter],route=g.routes[g.chapter];
-  if(at===undefined||g.clock-at>1.8||g.recovery||g.done)return;
-  const age=g.clock-at,c=this.ctx,side=route==='A'?-1:route==='C'?1:0;
-  c.save();c.globalAlpha=Math.min(.4,age/.3,(1.8-age)/.7);
-  const x=this.w*(.5+side*.06),y=this.h*.59;
-  c.strokeStyle='#eff1ea';c.lineWidth=2;c.beginPath();
-  c.moveTo(x-7,y+side*2+5);c.lineTo(x+side*4,y-4);c.lineTo(x+7,y-side*2+5);c.stroke();c.restore();
+  if(!g.waitingRoute||g.lesson||g.paused||g.done)return;
+  const c=this.ctx;c.save();c.textAlign='center';c.font=`${this.w<500?12:15}px system-ui`;c.fillStyle='#102c40df';c.fillRect(this.w*.08,this.h*.72,this.w*.84,44);c.fillStyle='#fff4d3';
+  c.fillText(this.language==='zh'?'左右飛入入口 · 穿過門框後確認':'Steer into an opening · cross to confirm',this.w/2,this.h*.72+18);
+  c.fillText(this.language==='zh'?'左：反光建築　中：標記玻璃　右：綠地':'Left: reflective · Middle: marked · Right: green',this.w/2,this.h*.72+35);c.restore();
  }
 
  bird(x,y,size,phase,color='#233c48'){
@@ -709,18 +772,23 @@ class FlightRenderer {
   const began=performance.now();this.resize();const c=this.ctx,w=this.w,h=this.h;
   c.setTransform(this.dpr,0,0,this.dpr,0,0);
   const p=stagePalette(g),night=g.chapter===1;
-  this.stage=Math.max(0,g.chapter);this.simClock=g.clock;this.lightActive=!!g.interference;
+  this.language=lang;this.stage=Math.max(0,g.chapter);this.simClock=g.clock;this.lightActive=!!g.interference;
   this.nightMix=g.chapter===1?Math.min(1,(g.progress-45)/6):g.chapter===2?Math.max(0,1-(g.progress-80)/6):0;
   const t=g.started?g.progress:17;
   const landing=g.done&&g.success&&!this.reducedEffects?Math.min(4,g.outro.elapsed):0;
-  this.cz=cameraZ(t)+FLIGHT_SPEED*(landing-landing*landing/8);this.cx=pathX(this.cz)+g.x*23;this.eye=EYE_HEIGHT+(this.reducedEffects?0:Math.sin(g.clock*1.8)*.4);
+  this.cz=cameraZ(t)+FLIGHT_SPEED*(landing-landing*landing/8);this.cx=g.pathAt(this.cz)+g.x*23;this.eye=EYE_HEIGHT+(this.reducedEffects?0:Math.sin(g.clock*1.8)*.4);
   if(!this.reducedEffects)this.reflectionClock=g.clock;
   this.sky(g,p);
   for(let layer=0;layer<3;layer++){
    const points=[[0,this.horizon+3]];for(let x=0;x<=w+12;x+=12){const ridge=Math.sin(x*.006+layer)*22+Math.sin(x*.013+layer*.4)*10;
     points.push([x,this.horizon-28-layer*11-ridge*(w<500?.6:1)])}points.push([w+12,this.horizon+5]);this.screenPoly(points,colorMix(p.sky,p.ground,.25+layer*.15));
   }
-  this.ground(p,g);this.meadowAndLamps(g,p);
+  this.ground(p,g);this.streets(g,p);this.meadowAndLamps(g,p);this.forks(g,lang);
+  if([0,2,3].includes(g.chapter)&&['B','C'].includes(g.routes[g.chapter])){
+   const z=cameraZ(STAGE_STARTS[g.chapter]+21),x=g.pathAt(z);
+   const ring=[];for(let i=0;i<24;i++){const a=i*Math.PI/12;ring.push([x+Math.cos(a)*7,.18,z+Math.sin(a)*7]);}this.polygon(ring,'#d3ca91');
+   const inner=[];for(let i=0;i<24;i++){const a=i*Math.PI/12;inner.push([x+Math.cos(a)*5.7,.2,z+Math.sin(a)*5.7]);}this.polygon(inner,'#688a59');
+  }
   // Backdrop receives only flat atmospheric faces, never reflections or textures.
   // Keep all districts in world space across chapter boundaries; cull by distance.
   if(!this.cityWorld)this.cityWorld=[0,1,2,3].flatMap(cityBackdrop).sort((a,b)=>b.z-a.z);
@@ -743,6 +811,7 @@ class FlightRenderer {
    c.save();c.globalAlpha=b.entry?1:g.districtReveal(b.chapter);this.polygon([worldPoint(b,-b.width/2,.06,-b.depth/2),worldPoint(b,b.width/2,.06,-b.depth/2),worldPoint(b,b.width/2+shift,.06,b.depth/2+shift),worldPoint(b,-b.width/2+shift,.06,b.depth/2+shift)],'#223d4925');c.restore();
   }
   this.vegetation(objects,stage);
+  for(const tree of EXTRA_TREES)if(tree.z>this.cz-20&&tree.z<this.cz+410)objects.push(tree);
   // Ground-level fixtures are below the fixed flight altitude, not obstacles.
   if(night){const first=Math.floor(this.cz/36);for(let cell=first;cell<first+8;cell++)for(const side of [-1,1]){const z=cell*36;objects.push({lamp:true,z,x:pathX(z)+side*18,side,depth:0});}}
 
@@ -778,7 +847,7 @@ class FlightRenderer {
    c.save();c.strokeStyle='#e8edde66';c.lineWidth=1.2;
    for(let i=0;i<9;i++){const x=((hash(i)*w+g.clock*side*20)%w+w)%w,y=h*(.65+hash(i+7)*.2);c.beginPath();c.moveTo(x,y);c.quadraticCurveTo(x+side*13,y-4,x+side*28,y-2);c.stroke()}c.restore();
   }
-  this.navigation(g);
+  this.forks(g,lang,true);this.navigation(g);
   // Near-field wing tips reinforce the bird camera while leaving the corridor clear.
   if(g.progress>=10||!g.started)for(const side of [-1,1]){
    c.save();c.translate(w/2+side*w*.41,h+18+Math.sin(g.clock*4)*7);c.scale(side,1);c.rotate(-.1-g.x*.04);
@@ -867,7 +936,7 @@ function pause(value=true){if(!g.started||g.done)return;g.paused=value;clearInpu
 }
 function help(){
  helpWasPaused=g.paused;g.paused=true;clearInput();$('pausePanel').hidden=true;$('helpPanel').hidden=false;
- $('helpPanel').innerHTML=`<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><h2 id="helpTitle">${tr('飛行指南','Flight guide')}</h2><p>${tr('使用 A / D 或左右方向鍵；觸屏按住左下或右下箭頭。鬆開即停止轉向。Escape 或 II 暫停。觀察立體樓房之間的空間，碰到外牆會扣健康值。','Use A / D or arrow keys; on touchscreens hold the lower-left or lower-right button. Release to stop steering. Escape or II pauses. Observe the spaces between buildings; touching a façade costs health.')}</p><p>${tr('首次知識卡會安全暫停飛行，讀完後按繼續。重複事件顯示簡短回饋；飛行筆記只列出已解鎖內容。照明干擾會持續偏移，請反向轉向修正；A 約 6 秒、B 約 3 秒、C 約 1 秒，期間只扣一次體力。飛行每秒 −0.40 體力；C 繞道每段 −7；夜間干擾 A/B/C −14/−8/−3。城市、廊道與村落指定停歇點 B +7、C +17，每處僅一次；完成旅程 +8。低於 30 會預警。數值屬遊戲設計，並非科學測量。','First-time notes freeze flight until Continue. Repeated events give brief feedback; the notebook lists unlocked topics. Countersteer against sustained light drift: A about 6s, B 3s, C 1s. Energy is charged once per zone. Flight −0.40 energy/second; each C detour −7; night interference A/B/C −14/−8/−3. City, corridor and village rests: B +7, C +17, once each; completed journey +8. Warning below 30. These are game-design values, not scientific measurements.')}</p><p>${tr('普通碰撞 −25 健康，嚴重碰撞 −35。廊道鳥群附近會短暫減速；魚塘有預告陣風，請反向修正。濕地請為棲息鳥群讓行。','Ordinary collision −25 health; severe collision −35. Slow down near corridor flocks. Countersteer against forecast gusts over ponds. Give wetland roosts space.')}</p><label class="effects-setting"><input id="reduceEffects" type="checkbox" ${renderer.reducedEffects?'checked':''}> ${tr('減少視覺效果（停止雲層、植被、反射動畫及風線）','Reduce visual effects (freeze clouds, foliage, reflection animation and wind streaks)')}</label><details><summary>${tr('完整飛行筆記','Complete field notes')}</summary>${Object.entries(lessons).filter(([id])=>g.seen.has(id)).map(([,l])=>`<h3>${l.title[lang==='zh'?0:1]}</h3><p>${l.text[lang==='zh'?0:1]}</p>`).join('')}</details><button id="closeHelp" class="primary">${tr('返回遊戲','Back to game')}</button></div>`;
+ $('helpPanel').innerHTML=`<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><h2 id="helpTitle">${tr('飛行指南','Flight guide')}</h2><p>${tr('使用 A / D 或左右方向鍵；觸屏按住左下或右下箭頭。鬆開即停止轉向。Escape 或 II 暫停。觀察立體樓房之間的空間，碰到外牆會扣健康值。','Use A / D or arrow keys; on touchscreens hold the lower-left or lower-right button. Release to stop steering. Escape or II pauses. Observe the spaces between buildings; touching a façade costs health.')}</p><p>${tr('首次知識卡會安全暫停飛行，讀完後按繼續。左右飛入岔路口，穿過門框後確認；邊界歸中間入口，未對準中心也能通過。重複事件顯示簡短回饋；飛行筆記只列出已解鎖內容。照明干擾會持續偏移，請反向轉向修正；A 約 6 秒、B 約 3 秒、C 約 1 秒，期間只扣一次體力。飛行每秒 −0.54 體力；C 繞道每段 −7；夜間干擾 A/B/C −14/−8/−3。城市、廊道與村落指定停歇點 B +7、C +17，每處僅一次；完成旅程 +8。低於 30 會預警。數值屬遊戲設計，並非科學測量。','First-time notes freeze flight until Continue. Steer into a fork opening; crossing its frame confirms the route. Exact boundaries belong to the middle opening; you need not hit the centre. Repeated events give brief feedback; the notebook lists unlocked topics. Countersteer against sustained light drift: A about 6s, B 3s, C 1s. Energy is charged once per zone. Flight −0.54 energy/second; each C detour −7; night interference A/B/C −14/−8/−3. City, corridor and village rests: B +7, C +17, once each; completed journey +8. Warning below 30. These are game-design values, not scientific measurements.')}</p><p>${tr('普通碰撞 −25 健康，嚴重碰撞 −35。廊道鳥群附近會短暫減速；魚塘有預告陣風，請反向修正。濕地請為棲息鳥群讓行。','Ordinary collision −25 health; severe collision −35. Slow down near corridor flocks. Countersteer against forecast gusts over ponds. Give wetland roosts space.')}</p><label class="effects-setting"><input id="reduceEffects" type="checkbox" ${renderer.reducedEffects?'checked':''}> ${tr('減少視覺效果（停止雲層、植被、反射動畫及風線）','Reduce visual effects (freeze clouds, foliage, reflection animation and wind streaks)')}</label><details><summary>${tr('完整飛行筆記','Complete field notes')}</summary>${Object.entries(lessons).filter(([id])=>g.seen.has(id)).map(([,l])=>`<h3>${l.title[lang==='zh'?0:1]}</h3><p>${l.text[lang==='zh'?0:1]}</p>`).join('')}</details><button id="closeHelp" class="primary">${tr('返回遊戲','Back to game')}</button></div>`;
  $('reduceEffects').onchange=e=>{renderer.reducedEffects=e.target.checked};
  $('closeHelp').onclick=()=>{$('helpPanel').hidden=true;g.paused=helpWasPaused;clearInput();if(helpWasPaused)pause(true);else labels()};$('closeHelp').focus();modalLanguageButtons();updateUI();
 }
@@ -895,12 +964,8 @@ for(const [id,direction] of [['left',-1],['right',1]]){
  for(const name of ['pointerup','pointercancel','lostpointercapture'])button.addEventListener(name,release);
  button.addEventListener('contextmenu',e=>e.preventDefault());
 }
-function renderRoutes(){
- const active=g.interaction==='route'&&!g.entryPending;$('choices').hidden=!active;$('choices').inert=!active;
- const key=`${g.chapter}-${g.routes[g.chapter]||''}-${lang}-${g.recovery||''}-${g.done}-${active}`;if(key===uiKey)return;uiKey=key;
- $('choices').replaceChildren();if(!active)return;
- routes[g.chapter].forEach((r,i)=>{const b=document.createElement('button');b.innerHTML=`<b>${'ABC'[i]} · ${r[lang==='zh'?0:1]}</b><span>${r[lang==='zh'?2:3]}</span>`;b.onclick=()=>{if(g.choose('ABC'[i])){clearInput();updateUI()}};$('choices').append(b)});
-}
+function renderRoutes(){$('choices').hidden=true;$('choices').inert=true;$('choices').replaceChildren();}
+
 function renderLesson(){
  const active=g.interaction==='lesson'; $('lesson').hidden=!active;if(!active)return;
  const short=innerWidth<650||innerHeight<520,key=g.lesson.id+lang+short;

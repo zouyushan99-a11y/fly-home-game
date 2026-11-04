@@ -1,0 +1,259 @@
+{
+  "routes": [
+    {
+      "version": "before",
+      "route": "A",
+      "success": true,
+      "health": 100,
+      "energy": 25.440000000015296,
+      "seconds": 171.40000000002854,
+      "flightDistance": 1486.5263178071325,
+      "ledger": {
+        "flight": -68.5600000000026,
+        "detour": 0,
+        "light": -14,
+        "rest": 0,
+        "arrival": 8
+      },
+      "emergency": false,
+      "routes": {
+        "0": "A",
+        "1": "A",
+        "2": "A",
+        "3": "A"
+      },
+      "rests": [
+        {
+          "progress": 165.00252776953852,
+          "energy": 25.440000000015296
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "route": "B",
+      "success": true,
+      "health": 100,
+      "energy": 52.44000000002781,
+      "seconds": 171.40000000002854,
+      "flightDistance": 1486.5263178071325,
+      "ledger": {
+        "flight": -68.5600000000026,
+        "detour": 0,
+        "light": -8,
+        "rest": 21,
+        "arrival": 8
+      },
+      "emergency": false,
+      "routes": {
+        "0": "B",
+        "1": "B",
+        "2": "B",
+        "3": "B"
+      },
+      "rests": [
+        {
+          "progress": 31.016666666666186,
+          "energy": 94.59333333334462
+        },
+        {
+          "progress": 101.00833333339261,
+          "energy": 65.14666666669758
+        },
+        {
+          "progress": 136.00833333333392,
+          "energy": 58.14666666669662
+        },
+        {
+          "progress": 165.00252776953852,
+          "energy": 52.44000000002781
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "route": "C",
+      "success": true,
+      "health": 100,
+      "energy": 59.440000000030096,
+      "seconds": 171.40000000002854,
+      "flightDistance": 1486.526317807135,
+      "ledger": {
+        "flight": -68.5600000000026,
+        "detour": -28,
+        "light": -3,
+        "rest": 50.99999999999999,
+        "arrival": 8
+      },
+      "emergency": false,
+      "routes": {
+        "0": "C",
+        "1": "C",
+        "2": "C",
+        "3": "C"
+      },
+      "rests": [
+        {
+          "progress": 31.016666666666186,
+          "energy": 97.59333333334462
+        },
+        {
+          "progress": 101.00833333349071,
+          "energy": 69.14666666669439
+        },
+        {
+          "progress": 136.00833333333392,
+          "energy": 65.14666666669768
+        },
+        {
+          "progress": 165.00252776953852,
+          "energy": 59.440000000030096
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "route": "A",
+      "success": true,
+      "health": 100,
+      "energy": 25.15899999999739,
+      "seconds": 127.48333333332738,
+      "flightDistance": 1486.578196065587,
+      "ledger": {
+        "flight": -68.84100000000242,
+        "detour": 0,
+        "light": -14,
+        "rest": 0,
+        "arrival": 8
+      },
+      "emergency": false,
+      "routes": {
+        "0": "A",
+        "1": "A",
+        "2": "A",
+        "3": "A"
+      },
+      "rests": [
+        {
+          "progress": 165.00828748888605,
+          "energy": 25.15899999999739
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "route": "B",
+      "success": true,
+      "health": 100,
+      "energy": 52.15899999999739,
+      "seconds": 127.48333333332738,
+      "flightDistance": 1486.578196065587,
+      "ledger": {
+        "flight": -68.84100000000242,
+        "detour": 0,
+        "light": -8,
+        "rest": 21,
+        "arrival": 8
+      },
+      "emergency": false,
+      "routes": {
+        "0": "B",
+        "1": "B",
+        "2": "B",
+        "3": "B"
+      },
+      "rests": [
+        {
+          "progress": 31.00500000000086,
+          "energy": 94.59799999999953
+        },
+        {
+          "progress": 101.01375033406191,
+          "energy": 64.98699999999845
+        },
+        {
+          "progress": 136.00124999998914,
+          "energy": 57.991999999997915
+        },
+        {
+          "progress": 165.00828748888605,
+          "energy": 52.15899999999739
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "route": "C",
+      "success": true,
+      "health": 100,
+      "energy": 55.531999999997254,
+      "seconds": 134.19999999999894,
+      "flightDistance": 1568.2570825970718,
+      "ledger": {
+        "flight": -72.46800000000256,
+        "detour": -28,
+        "light": -3,
+        "rest": 51,
+        "arrival": 8
+      },
+      "emergency": false,
+      "routes": {
+        "0": "C",
+        "1": "C",
+        "2": "C",
+        "3": "C"
+      },
+      "rests": [
+        {
+          "progress": 31.001376711245488,
+          "energy": 97.12999999999951
+        },
+        {
+          "progress": 101.00608407623717,
+          "energy": 66.90799999999837
+        },
+        {
+          "progress": 136.00455623101624,
+          "energy": 61.36499999999778
+        },
+        {
+          "progress": 165.00612824462473,
+          "energy": 55.531999999997254
+        }
+      ]
+    }
+  ],
+  "checks": [
+    "lesson freezes simulation",
+    "paused freezes simulation",
+    "boundary and missed-centre sectors are total, deterministic and single-shot",
+    "success/failure freeze, single summary and restart",
+    "late direction change selects final entry; rest cannot be farmed; A has more equal-offset collision samples than B, B is not risk-free"
+  ],
+  "addedTrees": [
+    {
+      "stage": 0,
+      "count": 40
+    },
+    {
+      "stage": 1,
+      "count": 40
+    },
+    {
+      "stage": 2,
+      "count": 68
+    },
+    {
+      "stage": 3,
+      "count": 30
+    },
+    {
+      "stage": 4,
+      "count": 0
+    }
+  ],
+  "collisionSamples": {
+    "A": 30,
+    "B": 22
+  }
+}

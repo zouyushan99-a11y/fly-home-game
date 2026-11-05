@@ -1,0 +1,11 @@
+{
+  "lamps": 98,
+  "checks": [
+    "poles on their road sidewalks",
+    "arms perpendicular to local road and inward",
+    "heads over actual road",
+    "junction clearance >=10",
+    "no carriageway or building occupied",
+    "fixed authored world positions, no flight collision objects"
+  ]
+}

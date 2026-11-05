@@ -1,0 +1,121 @@
+{
+  "journeys": [
+    {
+      "version": "before",
+      "route": "A",
+      "success": true,
+      "health": 100,
+      "energy": 15.744999999997034,
+      "totalSeconds": 144.91666666667413,
+      "finalSeconds": 40.083333333345465,
+      "finalDistance": 405,
+      "atOldEnd": {
+        "done": false,
+        "energy": 17.15899999999739
+      }
+    },
+    {
+      "version": "before",
+      "route": "B",
+      "success": true,
+      "health": 100,
+      "energy": 42.744999999997034,
+      "totalSeconds": 144.91666666667413,
+      "finalSeconds": 40.083333333345465,
+      "finalDistance": 405,
+      "atOldEnd": {
+        "done": false,
+        "energy": 44.15899999999739
+      }
+    },
+    {
+      "version": "before",
+      "route": "C",
+      "success": true,
+      "health": 100,
+      "energy": 45.802999999996885,
+      "totalSeconds": 152.21666666667994,
+      "finalSeconds": 40.06666666668502,
+      "finalDistance": 405,
+      "atOldEnd": {
+        "done": false,
+        "energy": 47.21699999999724
+      }
+    },
+    {
+      "version": "after",
+      "route": "A",
+      "success": true,
+      "health": 100,
+      "energy": 15.744999999997034,
+      "totalSeconds": 144.91666666667413,
+      "finalSeconds": 40.083333333345465,
+      "finalDistance": 405,
+      "atOldEnd": {
+        "done": false,
+        "energy": 17.15899999999739
+      }
+    },
+    {
+      "version": "after",
+      "route": "B",
+      "success": true,
+      "health": 100,
+      "energy": 42.744999999997034,
+      "totalSeconds": 144.91666666667413,
+      "finalSeconds": 40.083333333345465,
+      "finalDistance": 405,
+      "atOldEnd": {
+        "done": false,
+        "energy": 44.15899999999739
+      }
+    },
+    {
+      "version": "after",
+      "route": "C",
+      "success": true,
+      "health": 100,
+      "energy": 45.802999999996885,
+      "totalSeconds": 152.21666666667994,
+      "finalSeconds": 40.06666666668502,
+      "finalDistance": 405,
+      "atOldEnd": {
+        "done": false,
+        "energy": 47.21699999999724
+      }
+    }
+  ],
+  "checks": [
+    "near-field route geometry and natural passage buildings unchanged for all routes",
+    "extended final stage still freezes with pause and knowledge",
+    "success/failure finale freezes resources and events; reset clears extended finish state",
+    "30/60/120Hz smooth left/right yaw, reversal and centering; all route time/health/energy exactly match baseline"
+  ],
+  "buildings": [
+    {
+      "chapter": 0,
+      "before": 180,
+      "after": 176
+    },
+    {
+      "chapter": 1,
+      "before": 180,
+      "after": 178
+    },
+    {
+      "chapter": 2,
+      "before": 82,
+      "after": 82
+    },
+    {
+      "chapter": 3,
+      "before": 38,
+      "after": 38
+    },
+    {
+      "chapter": 4,
+      "before": 32,
+      "after": 32
+    }
+  ]
+}

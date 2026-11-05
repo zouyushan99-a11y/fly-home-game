@@ -1,0 +1,50 @@
+{
+  "buildings": 506,
+  "groundRoads": 19,
+  "connectedGraphNodes": 1762,
+  "bridges": [
+    {
+      "id": 0,
+      "length": 349.89277465320106,
+      "maxGrade": 0.11996085777281965,
+      "crossingSamples": 10,
+      "piers": 14,
+      "height": 6.4
+    },
+    {
+      "id": 1,
+      "length": 355.9520651313512,
+      "maxGrade": 0.1199598981551071,
+      "crossingSamples": 3,
+      "piers": 15,
+      "height": 6.4
+    },
+    {
+      "id": 2,
+      "length": 314.19244945912214,
+      "maxGrade": 0.11994384128584297,
+      "crossingSamples": 11,
+      "piers": 12,
+      "height": 6.4
+    },
+    {
+      "id": 3,
+      "length": 303.0084987279177,
+      "maxGrade": 0.11994384128584297,
+      "crossingSamples": 9,
+      "piers": 12,
+      "height": 6.4
+    }
+  ],
+  "checks": [
+    "all background footprints mutually separated and clear of all candidate foreground maps",
+    "all roads + sidewalks clear of building bounds",
+    "original ground roads unchanged",
+    "all road nodes connected",
+    "ground ramp endpoints on road network; elevated joins share exact XYZ",
+    "decks and ramps clear of buildings",
+    "piers outside roads and sidewalks",
+    "road crossing clearance exceeds 5 world units",
+    "ramp grade below 15%; structures below flight altitude"
+  ]
+}

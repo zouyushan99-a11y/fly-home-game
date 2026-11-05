@@ -1,0 +1,32 @@
+{
+  "roadCountBefore": 7,
+  "roadCountAfter": 19,
+  "backdropsBefore": [
+    182,
+    188,
+    96,
+    39,
+    0
+  ],
+  "backdropsAfter": [
+    180,
+    180,
+    82,
+    38,
+    32
+  ],
+  "bridges": [
+    {
+      "length": 349.89277465320106,
+      "height": 6.4,
+      "rampLength": 80,
+      "piers": 14
+    },
+    {
+      "length": 355.9520651313512,
+      "height": 6.4,
+      "rampLength": 80,
+      "piers": 15
+    }
+  ]
+}

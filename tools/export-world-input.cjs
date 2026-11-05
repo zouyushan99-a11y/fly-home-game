@@ -1,0 +1,2 @@
+const fs=require('fs'),vm=require('vm'),cp=require('child_process');
+const html=cp.execFileSync('git',['show','215a5dd:index.html'],{encoding:'utf8'}),c={};vm.createContext(c);vm.runInContext(html.split('<script>(()=>{')[1].split('const palettes=')[0]+';this.near=[0,1,2,3].flatMap(c=>["A","B","C"].flatMap(r=>makeDistrict(c,r)));this.backdrops=[0,1,2,3,4].map(cityBackdrop);this.roads=ROAD_LAYOUT;',c);fs.writeFileSync('assets/world/input.json',JSON.stringify({near:c.near,backdrops:c.backdrops,roads:c.roads}));

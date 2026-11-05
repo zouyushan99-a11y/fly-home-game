@@ -1,0 +1,299 @@
+[
+  {
+    "device": "desktop",
+    "targetProgress": 12,
+    "progress": 12.015000000000141,
+    "health": 100,
+    "energy": 95.19399999999982,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "desktop",
+    "targetProgress": 15,
+    "progress": 15.007500000000254,
+    "health": 100,
+    "energy": 93.99699999999977,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "desktop",
+    "targetProgress": 18,
+    "progress": 18.000000000000366,
+    "health": 100,
+    "energy": 92.79999999999973,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "desktop",
+    "targetProgress": 45.5,
+    "progress": 45.502041030217974,
+    "health": 100,
+    "energy": 90.93799999999928,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "desktop",
+    "targetProgress": 48,
+    "progress": 48.02204103021807,
+    "health": 100,
+    "energy": 89.92999999999924,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "desktop",
+    "targetProgress": 50,
+    "progress": 50.002041030218145,
+    "health": 100,
+    "energy": 89.13799999999921,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "desktop",
+    "targetProgress": 150,
+    "progress": 150.00475155880312,
+    "health": 100,
+    "energy": 49.47799999999759,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "desktop",
+    "targetProgress": 165,
+    "progress": 165.01900155880438,
+    "health": 100,
+    "energy": 41.93599999999731,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "desktop",
+    "targetProgress": 178,
+    "progress": 178.00487655880607,
+    "health": 100,
+    "energy": 35.824999999997075,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "desktop",
+    "targetProgress": 184,
+    "progress": 184.01012655880686,
+    "health": 100,
+    "energy": 32.99899999999697,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "desktop",
+    "targetProgress": 185.1,
+    "progress": 185.004626558807,
+    "health": 100,
+    "energy": 40.53099999999695,
+    "done": true,
+    "success": true
+  },
+  {
+    "device": "portrait",
+    "targetProgress": 12,
+    "progress": 12.015000000000141,
+    "health": 100,
+    "energy": 95.19399999999982,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "portrait",
+    "targetProgress": 15,
+    "progress": 15.007500000000254,
+    "health": 100,
+    "energy": 93.99699999999977,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "portrait",
+    "targetProgress": 18,
+    "progress": 18.000000000000366,
+    "health": 100,
+    "energy": 92.79999999999973,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "portrait",
+    "targetProgress": 45.5,
+    "progress": 45.502041030217974,
+    "health": 100,
+    "energy": 90.93799999999928,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "portrait",
+    "targetProgress": 48,
+    "progress": 48.02204103021807,
+    "health": 100,
+    "energy": 89.92999999999924,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "portrait",
+    "targetProgress": 50,
+    "progress": 50.002041030218145,
+    "health": 100,
+    "energy": 89.13799999999921,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "portrait",
+    "targetProgress": 150,
+    "progress": 150.00475155880312,
+    "health": 100,
+    "energy": 49.47799999999759,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "portrait",
+    "targetProgress": 165,
+    "progress": 165.01900155880438,
+    "health": 100,
+    "energy": 41.93599999999731,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "portrait",
+    "targetProgress": 178,
+    "progress": 178.00487655880607,
+    "health": 100,
+    "energy": 35.824999999997075,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "portrait",
+    "targetProgress": 184,
+    "progress": 184.01012655880686,
+    "health": 100,
+    "energy": 32.99899999999697,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "portrait",
+    "targetProgress": 185.1,
+    "progress": 185.004626558807,
+    "health": 100,
+    "energy": 40.53099999999695,
+    "done": true,
+    "success": true
+  },
+  {
+    "device": "landscape",
+    "targetProgress": 12,
+    "progress": 12.015000000000141,
+    "health": 100,
+    "energy": 95.19399999999982,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "landscape",
+    "targetProgress": 15,
+    "progress": 15.007500000000254,
+    "health": 100,
+    "energy": 93.99699999999977,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "landscape",
+    "targetProgress": 18,
+    "progress": 18.000000000000366,
+    "health": 100,
+    "energy": 92.79999999999973,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "landscape",
+    "targetProgress": 45.5,
+    "progress": 45.502041030217974,
+    "health": 100,
+    "energy": 90.93799999999928,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "landscape",
+    "targetProgress": 48,
+    "progress": 48.02204103021807,
+    "health": 100,
+    "energy": 89.92999999999924,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "landscape",
+    "targetProgress": 50,
+    "progress": 50.002041030218145,
+    "health": 100,
+    "energy": 89.13799999999921,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "landscape",
+    "targetProgress": 150,
+    "progress": 150.00475155880312,
+    "health": 100,
+    "energy": 49.47799999999759,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "landscape",
+    "targetProgress": 165,
+    "progress": 165.01900155880438,
+    "health": 100,
+    "energy": 41.93599999999731,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "landscape",
+    "targetProgress": 178,
+    "progress": 178.00487655880607,
+    "health": 100,
+    "energy": 35.824999999997075,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "landscape",
+    "targetProgress": 184,
+    "progress": 184.01012655880686,
+    "health": 100,
+    "energy": 32.99899999999697,
+    "done": false,
+    "success": false
+  },
+  {
+    "device": "landscape",
+    "targetProgress": 185.1,
+    "progress": 185.004626558807,
+    "health": 100,
+    "energy": 40.53099999999695,
+    "done": true,
+    "success": true
+  }
+]

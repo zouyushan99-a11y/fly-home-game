@@ -1,0 +1,26 @@
+[
+  {
+    "device": "desktop",
+    "route": "A",
+    "realRAF": true,
+    "injectedCode": false,
+    "errors": [],
+    "clockContinues": true
+  },
+  {
+    "device": "portrait",
+    "route": "B",
+    "realRAF": true,
+    "injectedCode": false,
+    "errors": [],
+    "clockContinues": true
+  },
+  {
+    "device": "landscape",
+    "route": "C",
+    "realRAF": true,
+    "injectedCode": false,
+    "errors": [],
+    "clockContinues": true
+  }
+]

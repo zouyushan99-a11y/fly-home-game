@@ -1,0 +1,40 @@
+{
+  "before": {
+    "roadSegments": 7,
+    "junctionNodes": 6,
+    "independentLoops": 0
+  },
+  "after": {
+    "roadSegments": 19,
+    "junctionNodes": 15,
+    "independentLoops": 8
+  },
+  "density": [
+    {
+      "chapter": 0,
+      "before": {
+        "emptyCells": 1,
+        "maxBuildingsPerCell": 5,
+        "coefficientOfVariation": 0.3703283782785646
+      },
+      "after": {
+        "emptyCells": 7,
+        "maxBuildingsPerCell": 7,
+        "coefficientOfVariation": 0.6294539529434784
+      }
+    },
+    {
+      "chapter": 1,
+      "before": {
+        "emptyCells": 1,
+        "maxBuildingsPerCell": 6,
+        "coefficientOfVariation": 0.47163101603342367
+      },
+      "after": {
+        "emptyCells": 11,
+        "maxBuildingsPerCell": 7,
+        "coefficientOfVariation": 0.7160709072604233
+      }
+    }
+  ]
+}

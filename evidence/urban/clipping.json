@@ -1,0 +1,71 @@
+{
+  "physicalPhone": false,
+  "checks": [
+    {
+      "device": "desktop",
+      "beforeUpperGreen": 413991,
+      "afterUpperGreen": 0,
+      "partialRoofRetained": true,
+      "visibleRoofUnchanged": true,
+      "allBoundarySafe": true,
+      "whollyBehindRejected": true,
+      "stateRestored": true
+    },
+    {
+      "device": "portrait",
+      "beforeUpperGreen": 60107,
+      "afterUpperGreen": 0,
+      "partialRoofRetained": true,
+      "visibleRoofUnchanged": true,
+      "allBoundarySafe": true,
+      "whollyBehindRejected": true,
+      "stateRestored": true
+    },
+    {
+      "device": "landscape",
+      "beforeUpperGreen": 147216,
+      "afterUpperGreen": 0,
+      "partialRoofRetained": true,
+      "visibleRoofUnchanged": true,
+      "allBoundarySafe": true,
+      "whollyBehindRejected": true,
+      "stateRestored": true
+    }
+  ],
+  "journeys": [
+    {
+      "device": "desktop",
+      "route": "A",
+      "success": true,
+      "health": 100,
+      "energy": 15.744999999997034,
+      "steps": 8699,
+      "rendered": 289,
+      "unsafeRoofProjects": 0,
+      "errors": []
+    },
+    {
+      "device": "portrait",
+      "route": "B",
+      "success": true,
+      "health": 100,
+      "energy": 42.744999999997034,
+      "steps": 8699,
+      "rendered": 289,
+      "unsafeRoofProjects": 0,
+      "errors": []
+    },
+    {
+      "device": "landscape",
+      "route": "C",
+      "success": true,
+      "health": 100,
+      "energy": 45.802999999996885,
+      "steps": 9137,
+      "rendered": 304,
+      "unsafeRoofProjects": 0,
+      "errors": []
+    }
+  ],
+  "sampling": "60 Hz simulation; rendered every 30 steps (2 Hz), accelerated; exact reproduction positions captured separately"
+}

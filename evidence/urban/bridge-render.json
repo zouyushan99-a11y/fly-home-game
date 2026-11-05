@@ -1,0 +1,23 @@
+[
+  {
+    "device": "desktop",
+    "unsafe": 0,
+    "above": 0,
+    "projected": 31601,
+    "cases": 15
+  },
+  {
+    "device": "portrait",
+    "unsafe": 0,
+    "above": 0,
+    "projected": 31601,
+    "cases": 15
+  },
+  {
+    "device": "landscape",
+    "unsafe": 0,
+    "above": 0,
+    "projected": 31601,
+    "cases": 15
+  }
+]

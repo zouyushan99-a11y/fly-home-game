@@ -1,0 +1,406 @@
+{
+  "checks": [
+    "desktop: A real keyboard/touch held input, reading/pause/help freeze, bilingual, one entry selection",
+    "desktop: B real keyboard/touch held input, reading/pause/help freeze, bilingual, one entry selection",
+    "desktop: C real keyboard/touch held input, reading/pause/help freeze, bilingual, one entry selection",
+    {
+      "device": "desktop",
+      "bridgeSafety": {
+        "parts": 202,
+        "maxY": 7.300000000000001,
+        "cached": true
+      }
+    },
+    {
+      "device": "desktop",
+      "terrain": {
+        "stable": true,
+        "width": 1080,
+        "height": 2520,
+        "accessPaths": 3
+      }
+    },
+    "desktop: complete mixed journey, clipped roofs, success/failure, skip/restart, reduced ending",
+    "portrait: A real keyboard/touch held input, reading/pause/help freeze, bilingual, one entry selection",
+    "portrait: B real keyboard/touch held input, reading/pause/help freeze, bilingual, one entry selection",
+    "portrait: C real keyboard/touch held input, reading/pause/help freeze, bilingual, one entry selection",
+    {
+      "device": "portrait",
+      "bridgeSafety": {
+        "parts": 202,
+        "maxY": 7.300000000000001,
+        "cached": true
+      }
+    },
+    {
+      "device": "portrait",
+      "terrain": {
+        "stable": true,
+        "width": 1080,
+        "height": 2520,
+        "accessPaths": 3
+      }
+    },
+    "portrait: complete mixed journey, clipped roofs, success/failure, skip/restart, reduced ending",
+    "landscape: A real keyboard/touch held input, reading/pause/help freeze, bilingual, one entry selection",
+    "landscape: B real keyboard/touch held input, reading/pause/help freeze, bilingual, one entry selection",
+    "landscape: C real keyboard/touch held input, reading/pause/help freeze, bilingual, one entry selection",
+    {
+      "device": "landscape",
+      "bridgeSafety": {
+        "parts": 202,
+        "maxY": 7.300000000000001,
+        "cached": true
+      }
+    },
+    {
+      "device": "landscape",
+      "terrain": {
+        "stable": true,
+        "width": 1080,
+        "height": 2520,
+        "accessPaths": 3
+      }
+    },
+    "landscape: complete mixed journey, clipped roofs, success/failure, skip/restart, reduced ending"
+  ],
+  "performance": [
+    {
+      "device": "desktop",
+      "version": "before",
+      "scene": "day",
+      "meanMs": 4.186250000447035,
+      "p95Ms": 5.699999988079071,
+      "rafFPS": 38.71092615890835
+    },
+    {
+      "device": "desktop",
+      "version": "before",
+      "scene": "night",
+      "meanMs": 4.122499999031424,
+      "p95Ms": 4.799999982118607,
+      "rafFPS": 48.004800480048004
+    },
+    {
+      "device": "desktop",
+      "version": "before",
+      "scene": "corner",
+      "meanMs": 2.8737499993294477,
+      "p95Ms": 3.800000011920929,
+      "rafFPS": 48.484848484848484
+    },
+    {
+      "device": "desktop",
+      "version": "before",
+      "scene": "green",
+      "meanMs": 2.2599999997764826,
+      "p95Ms": 3.199999988079071,
+      "rafFPS": 48.98059144064167
+    },
+    {
+      "device": "desktop",
+      "version": "before",
+      "scene": "final-edge",
+      "meanMs": 0.7050000000745058,
+      "p95Ms": 1.0999999940395355,
+      "rafFPS": 60.00600060005997
+    },
+    {
+      "device": "desktop",
+      "version": "before",
+      "scene": "final-open",
+      "meanMs": 0.7825000006705523,
+      "p95Ms": 1.2000000178813934,
+      "rafFPS": 60.0015000375009
+    },
+    {
+      "device": "desktop",
+      "version": "after",
+      "scene": "day",
+      "meanMs": 4.901250000298023,
+      "p95Ms": 5.800000011920929,
+      "rafFPS": 38.09705224058288
+    },
+    {
+      "device": "desktop",
+      "version": "after",
+      "scene": "night",
+      "meanMs": 5.222500002384185,
+      "p95Ms": 7.199999988079071,
+      "rafFPS": 41.027745012564736
+    },
+    {
+      "device": "desktop",
+      "version": "after",
+      "scene": "corner",
+      "meanMs": 4.088749999180436,
+      "p95Ms": 5.699999988079071,
+      "rafFPS": 44.86316733961418
+    },
+    {
+      "device": "desktop",
+      "version": "after",
+      "scene": "green",
+      "meanMs": 3.0012499995529653,
+      "p95Ms": 4.799999982118607,
+      "rafFPS": 45.716898108463354
+    },
+    {
+      "device": "desktop",
+      "version": "after",
+      "scene": "final-edge",
+      "meanMs": 1.5112500000745057,
+      "p95Ms": 2.5,
+      "rafFPS": 60.00600060005997
+    },
+    {
+      "device": "desktop",
+      "version": "after",
+      "scene": "final-open",
+      "meanMs": 0.7387499991804362,
+      "p95Ms": 1.0999999940395355,
+      "rafFPS": 60.0015000375009
+    },
+    {
+      "device": "portrait",
+      "version": "before",
+      "scene": "day",
+      "meanMs": 3.9224999994039536,
+      "p95Ms": 7.899999976158142,
+      "rafFPS": 59.26364915919699
+    },
+    {
+      "device": "portrait",
+      "version": "before",
+      "scene": "night",
+      "meanMs": 3.22250000089407,
+      "p95Ms": 4.800000011920929,
+      "rafFPS": 60.001500037500946
+    },
+    {
+      "device": "portrait",
+      "version": "before",
+      "scene": "corner",
+      "meanMs": 2.857499999180436,
+      "p95Ms": 4.9000000059604645,
+      "rafFPS": 60.00600060005997
+    },
+    {
+      "device": "portrait",
+      "version": "before",
+      "scene": "green",
+      "meanMs": 1.9949999995529653,
+      "p95Ms": 3.600000023841858,
+      "rafFPS": 60.00150003750093
+    },
+    {
+      "device": "portrait",
+      "version": "before",
+      "scene": "final-edge",
+      "meanMs": 0.9087499987334013,
+      "p95Ms": 1.5,
+      "rafFPS": 59.25925925925926
+    },
+    {
+      "device": "portrait",
+      "version": "before",
+      "scene": "final-open",
+      "meanMs": 0.787499999254942,
+      "p95Ms": 1.300000011920929,
+      "rafFPS": 59.99700014999244
+    },
+    {
+      "device": "portrait",
+      "version": "after",
+      "scene": "day",
+      "meanMs": 3.8287500012665987,
+      "p95Ms": 5.200000017881393,
+      "rafFPS": 59.25925925925926
+    },
+    {
+      "device": "portrait",
+      "version": "after",
+      "scene": "night",
+      "meanMs": 3.6487499997019768,
+      "p95Ms": 6.199999988079071,
+      "rafFPS": 60.00600060006001
+    },
+    {
+      "device": "portrait",
+      "version": "after",
+      "scene": "corner",
+      "meanMs": 3.126249999925494,
+      "p95Ms": 4.0999999940395355,
+      "rafFPS": 60.00150003750093
+    },
+    {
+      "device": "portrait",
+      "version": "after",
+      "scene": "green",
+      "meanMs": 1.9262500032782555,
+      "p95Ms": 2.5,
+      "rafFPS": 60.00150003750097
+    },
+    {
+      "device": "portrait",
+      "version": "after",
+      "scene": "final-edge",
+      "meanMs": 1.1,
+      "p95Ms": 1.4000000059604645,
+      "rafFPS": 60.00150003750097
+    },
+    {
+      "device": "portrait",
+      "version": "after",
+      "scene": "final-open",
+      "meanMs": 0.7962500009685755,
+      "p95Ms": 1.100000023841858,
+      "rafFPS": 60.00150003750097
+    },
+    {
+      "device": "landscape",
+      "version": "before",
+      "scene": "day",
+      "meanMs": 3.3262500014156102,
+      "p95Ms": 4.0999999940395355,
+      "rafFPS": 60.001500037500946
+    },
+    {
+      "device": "landscape",
+      "version": "before",
+      "scene": "night",
+      "meanMs": 2.8100000008940698,
+      "p95Ms": 3.5,
+      "rafFPS": 60.001500037500946
+    },
+    {
+      "device": "landscape",
+      "version": "before",
+      "scene": "corner",
+      "meanMs": 2.3375000011175873,
+      "p95Ms": 2.800000011920929,
+      "rafFPS": 60.01050183782161
+    },
+    {
+      "device": "landscape",
+      "version": "before",
+      "scene": "green",
+      "meanMs": 2.044999999925494,
+      "p95Ms": 3.199999988079071,
+      "rafFPS": 60.00150003750093
+    },
+    {
+      "device": "landscape",
+      "version": "before",
+      "scene": "final-edge",
+      "meanMs": 0.6762499995529652,
+      "p95Ms": 1,
+      "rafFPS": 59.99700014999244
+    },
+    {
+      "device": "landscape",
+      "version": "before",
+      "scene": "final-open",
+      "meanMs": 0.7074999999254942,
+      "p95Ms": 1,
+      "rafFPS": 59.99700014999251
+    },
+    {
+      "device": "landscape",
+      "version": "after",
+      "scene": "day",
+      "meanMs": 3.6975000001490117,
+      "p95Ms": 5,
+      "rafFPS": 60.001500037500946
+    },
+    {
+      "device": "landscape",
+      "version": "after",
+      "scene": "night",
+      "meanMs": 3.4212500005960464,
+      "p95Ms": 4.5999999940395355,
+      "rafFPS": 60.001500037500946
+    },
+    {
+      "device": "landscape",
+      "version": "after",
+      "scene": "corner",
+      "meanMs": 3.4087500009685754,
+      "p95Ms": 4.4000000059604645,
+      "rafFPS": 60.00150003750093
+    },
+    {
+      "device": "landscape",
+      "version": "after",
+      "scene": "green",
+      "meanMs": 1.781249998509884,
+      "p95Ms": 2.2999999821186066,
+      "rafFPS": 59.99700014999247
+    },
+    {
+      "device": "landscape",
+      "version": "after",
+      "scene": "final-edge",
+      "meanMs": 1.5774999994784593,
+      "p95Ms": 2.4000000059604645,
+      "rafFPS": 60.00150003750097
+    },
+    {
+      "device": "landscape",
+      "version": "after",
+      "scene": "final-open",
+      "meanMs": 0.9987500011920929,
+      "p95Ms": 1.5,
+      "rafFPS": 59.263649159197
+    }
+  ],
+  "journeys": [
+    {
+      "device": "desktop",
+      "success": true,
+      "health": 100,
+      "energy": 39.53099999999695,
+      "routes": {
+        "0": "C",
+        "1": "B",
+        "2": "A",
+        "3": "C"
+      },
+      "steps": 8945,
+      "rendered": 298,
+      "unsafe": 0
+    },
+    {
+      "device": "portrait",
+      "success": true,
+      "health": 100,
+      "energy": 39.53099999999695,
+      "routes": {
+        "0": "C",
+        "1": "B",
+        "2": "A",
+        "3": "C"
+      },
+      "steps": 8945,
+      "rendered": 298,
+      "unsafe": 0
+    },
+    {
+      "device": "landscape",
+      "success": true,
+      "health": 100,
+      "energy": 39.53099999999695,
+      "routes": {
+        "0": "C",
+        "1": "B",
+        "2": "A",
+        "3": "C"
+      },
+      "steps": 8945,
+      "rendered": 298,
+      "unsafe": 0
+    }
+  ],
+  "physicalPhone": false,
+  "errors": []
+}

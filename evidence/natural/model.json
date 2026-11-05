@@ -1,0 +1,90 @@
+{
+  "journeys": [
+    {
+      "route": "A",
+      "success": true,
+      "health": 100,
+      "energy": 25.15899999999739,
+      "seconds": 127.48333333332738,
+      "routes": {
+        "0": "A",
+        "1": "A",
+        "2": "A",
+        "3": "A"
+      },
+      "steps": 7653
+    },
+    {
+      "route": "B",
+      "success": true,
+      "health": 100,
+      "energy": 52.15899999999739,
+      "seconds": 127.48333333332738,
+      "routes": {
+        "0": "B",
+        "1": "B",
+        "2": "B",
+        "3": "B"
+      },
+      "steps": 7653
+    },
+    {
+      "route": "C",
+      "success": true,
+      "health": 100,
+      "energy": 55.21699999999724,
+      "seconds": 134.78333333333273,
+      "routes": {
+        "0": "C",
+        "1": "C",
+        "2": "C",
+        "3": "C"
+      },
+      "steps": 8091
+    }
+  ],
+  "checks": [
+    "all physical passage boundaries, no choice inside wall, wall stops penetration, can steer out, choice single-shot",
+    "direction reversal before passage; pause/notes freeze energy, interference and position",
+    "fixed cached road network, every road+sidewalk segment clears union of all route footprints",
+    "offline-precomputed layout equals a deterministic rebuild"
+  ],
+  "roadBuildMs": 5,
+  "roads": [
+    {
+      "kind": "main",
+      "width": 4.8,
+      "points": 384
+    },
+    {
+      "kind": "side",
+      "width": 3.2,
+      "points": 33
+    },
+    {
+      "kind": "side",
+      "width": 3.2,
+      "points": 26
+    },
+    {
+      "kind": "side",
+      "width": 3.2,
+      "points": 31
+    },
+    {
+      "kind": "side",
+      "width": 3.2,
+      "points": 43
+    },
+    {
+      "kind": "side",
+      "width": 3.2,
+      "points": 23
+    },
+    {
+      "kind": "side",
+      "width": 3.2,
+      "points": 51
+    }
+  ]
+}

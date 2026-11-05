@@ -1,0 +1,38 @@
+[
+  {
+    "device": "desktop",
+    "calls": 850,
+    "bad": 0,
+    "maxUVError": 0,
+    "maxEdgeAlpha": 1,
+    "mapSize": [
+      1080,
+      2520
+    ],
+    "accessPaths": 3
+  },
+  {
+    "device": "portrait",
+    "calls": 1083,
+    "bad": 0,
+    "maxUVError": 0,
+    "maxEdgeAlpha": 1,
+    "mapSize": [
+      1080,
+      2520
+    ],
+    "accessPaths": 3
+  },
+  {
+    "device": "landscape",
+    "calls": 462,
+    "bad": 0,
+    "maxUVError": 0,
+    "maxEdgeAlpha": 1,
+    "mapSize": [
+      1080,
+      2520
+    ],
+    "accessPaths": 3
+  }
+]

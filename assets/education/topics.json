@@ -1,0 +1,206 @@
+{
+  "glass": {
+    "title": [
+      "玻璃建築與鳥類碰撞",
+      "Glass buildings and bird collisions"
+    ],
+    "impact": [
+      "鳥類撞上透明或反光玻璃，可能嚴重受傷甚至死亡。",
+      "Birds can collide with transparent or reflective glass, causing serious injury or death."
+    ],
+    "why": [
+      "玻璃上的天空與樹木倒影像真實棲地；透明通道也可能看似暢通。風險取決於玻璃及周圍環境。",
+      "Reflected trees and sky can look like real habitat. Transparent passages may seem open. Risk varies with glazing and its surroundings."
+    ],
+    "solution": [
+      "在玻璃外表面設置清晰、密集而重複的圖案，配合鳥友好建築設計。標記能降低風險，並不保證完全安全。",
+      "Apply visible, closely repeated patterns to external glass surfaces and use bird-friendly building design. Markings can reduce risk, but do not guarantee complete protection."
+    ],
+    "alt": [
+      "反光玻璃與外部可見標記的比較：鳥可能把倒影當作通道，圖案幫助辨認障礙。",
+      "Reflective glass versus visible external patterns: reflections resemble a passage; patterns help reveal the barrier."
+    ],
+    "note": null,
+    "labels": [
+      [
+        "反光 / 透明",
+        "Reflective / transparent"
+      ],
+      [
+        "外部重複標記",
+        "External patterns"
+      ]
+    ]
+  },
+  "light": {
+    "title": [
+      "夜間人工照明",
+      "Artificial night lighting"
+    ],
+    "impact": [
+      "人工光可能吸引或干擾部分遷徙鳥類，改變牠們的移動方向與行為。",
+      "Artificial light can attract or disorient some migrating birds, changing their movement or behaviour."
+    ],
+    "why": [
+      "候鳥會利用自然環境線索。人工光改變夜間視覺環境；影響因物種、光強、地點和天氣而異。",
+      "Migrants use natural environmental cues. Artificial light changes the night-time visual environment. Effects vary with species, intensity, location and weather."
+    ],
+    "solution": [
+      "關閉無人使用的建築照明，減少不必要的戶外燈光；遷徙期間尤其需要妥善管理。",
+      "Switch off unused building lights and reduce unnecessary outdoor lighting, especially during migration. Direct necessary light downwards and manage its brightness carefully."
+    ],
+    "alt": [
+      "亮燈過多的城市與減少多餘照明的建築比較；鳥的反應因情況而異。",
+      "Excessive city lighting compared with reduced unnecessary lighting; bird responses vary."
+    ],
+    "note": [
+      "遊戲中的方向偏移是簡化模擬，並非所有鳥類遇光都會迷向。",
+      "Flight drift is a simplified game representation; light does not disorient every bird."
+    ],
+    "labels": [
+      [
+        "多餘照明",
+        "Excess lighting"
+      ],
+      [
+        "減光、向下照明",
+        "Less light, directed down"
+      ]
+    ]
+  },
+  "green": {
+    "title": [
+      "綠地與合適的停歇棲地",
+      "Green spaces and suitable resting habitats"
+    ],
+    "impact": [
+      "合適的綠地可為鳥類提供食物、遮蔽及停歇空間，支持旅途中的生活需要。",
+      "Suitable green spaces can provide birds with food, shelter and places to rest during their journeys."
+    ],
+    "why": [
+      "只有綠色外觀並不足夠。植被、食物、水源、安靜區域及與其他棲地的連接，共同決定棲地品質。",
+      "Green colour alone is not enough. Habitat quality depends on vegetation, food, water, quiet areas and connections to other habitats."
+    ],
+    "solution": [
+      "種植適合當地的原生植物，保留水源、灌木與安靜角落，連接分散的棲地。不同鳥種的需要並不相同。",
+      "Use suitable native plants, retain water, shrubs and quiet corners, and connect fragmented habitats. Different bird species need different conditions; not every park provides equally useful habitat."
+    ],
+    "alt": [
+      "單一草坪與包含原生植被、水源、食物及遮蔽的連通棲地比較。",
+      "A simple lawn compared with connected habitat containing native vegetation, water, food and shelter."
+    ],
+    "note": [
+      "遊戲體力與停歇恢復屬設計數值，不是鳥類生理測量。",
+      "Game Energy and rest recovery are design values, not measurements of bird physiology."
+    ],
+    "labels": [
+      [
+        "單一草坪",
+        "Simple lawn"
+      ],
+      [
+        "食物 · 水 · 遮蔽",
+        "Food · water · shelter"
+      ]
+    ]
+  },
+  "pond": {
+    "title": [
+      "魚塘、村落與水鳥",
+      "Fishponds, villages and waterbirds"
+    ],
+    "impact": [
+      "管理合宜的魚塘可為部分水鳥提供覓食機會；干擾、水況不適或棲地流失，會降低其生態價值。",
+      "Well-managed fishponds can offer feeding opportunities for some waterbirds. Disturbance, unsuitable water conditions or habitat loss can reduce their ecological value."
+    ],
+    "why": [
+      "適當的淺水與食物供應有助水鳥覓食。不同鳥種需要的水深、食物與棲地條件並不一樣。",
+      "Shallow water and available food can support feeding, but different species need different depths, food sources and habitat conditions."
+    ],
+    "solution": [
+      "支持照顧野生動物需要的魚塘管理，保護濕地，並在村落活動與覓食、棲息區之間保留緩衝空間。",
+      "Support wildlife-friendly pond management, protect wetlands, and retain buffers between village activity and feeding or resting birds."
+    ],
+    "alt": [
+      "香港濕地邊緣示意：村屋、緩衝植被、魚塘淺水與覓食水鳥；不是玩家已看見場景的紀錄。",
+      "Hong Kong wetland-edge diagram: village, vegetation buffer, shallow fishpond and feeding waterbirds; not a record of a scene the player has seen."
+    ],
+    "note": null,
+    "labels": [
+      [
+        "村落與緩衝區",
+        "Village and buffer"
+      ],
+      [
+        "淺水與覓食空間",
+        "Shallows and feeding"
+      ]
+    ]
+  },
+  "birds": {
+    "title": [
+      "人為干擾與鳥群",
+      "Human disturbance to bird flocks"
+    ],
+    "impact": [
+      "反覆受到干擾，鳥類可能中斷覓食或休息，甚至離開原本合適的地方。",
+      "Repeated disturbance can interrupt feeding or resting. Birds may leave an otherwise suitable habitat."
+    ],
+    "why": [
+      "過近的人類活動可能被視為威脅。反覆警戒或飛離，會減少覓食和休息時間；反應因鳥種及情況而異。",
+      "Nearby human activity may seem threatening. Repeated vigilance or departure reduces time available for feeding and resting. Responses vary with species and circumstances."
+    ],
+    "solution": [
+      "安靜觀察並保持適當距離，避免接近巢位和休息中的鳥群。不要為拍照而追逐或驚飛牠們。",
+      "Observe quietly from a respectful distance. Avoid approaching nests or resting flocks, and never chase birds or flush them for photographs."
+    ],
+    "alt": [
+      "左側鳥群安靜覓食；右側有人走得太近，部分鳥停止覓食並飛離。",
+      "Birds feed peacefully on the left; when people approach too closely on the right, some birds stop feeding and leave."
+    ],
+    "note": null,
+    "labels": [
+      [
+        "安靜觀察",
+        "Quiet observation"
+      ],
+      [
+        "過近可能驚飛",
+        "Close approach may flush"
+      ]
+    ]
+  },
+  "wetland": {
+    "title": [
+      "米埔內后海灣：相連的濕地",
+      "Mai Po Inner Deep Bay: connected wetlands"
+    ],
+    "impact": [
+      "濕地流失或退化，會減少候鳥與留鳥可用的覓食、休息及遮蔽空間。",
+      "Wetland loss or deterioration reduces feeding, resting and sheltering opportunities for migratory and resident birds."
+    ],
+    "why": [
+      "米埔內后海灣的泥灘、魚塘、紅樹林與蘆葦叢提供不同食物和棲地。失去其中一環，可能影響整個網絡。",
+      "Mudflats, fishponds, mangroves and reedbeds at Mai Po Inner Deep Bay support different food sources and ecological needs. Losing one part can affect the wider habitat network."
+    ],
+    "solution": [
+      "保護濕地面積與環境品質，支持負責任的管理，保持不同棲地之間的連接，讓鳥類有安全的旅途與家園。",
+      "Protect wetland areas and habitat quality, support responsible management, and preserve connections between habitats."
+    ],
+    "alt": [
+      "米埔內后海灣生態系示意：泥灘、魚塘、紅樹林與蘆葦叢相連，不同水鳥利用不同棲地。",
+      "Mai Po Inner Deep Bay ecosystem diagram: connected mudflats, fishponds, mangroves and reedbeds used by different waterbirds."
+    ],
+    "note": null,
+    "labels": [
+      [
+        "泥灘與魚塘",
+        "Mudflats and fishponds"
+      ],
+      [
+        "紅樹林與蘆葦叢",
+        "Mangroves and reedbeds"
+      ]
+    ]
+  }
+}

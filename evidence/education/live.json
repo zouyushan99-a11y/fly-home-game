@@ -1,0 +1,32 @@
+[
+  {
+    "device": "desktop",
+    "file": "index.html",
+    "route": "A",
+    "realRAF": true,
+    "injectedCode": false,
+    "frozenPixelExact7Seconds": true,
+    "physicalPhone": false,
+    "errors": []
+  },
+  {
+    "device": "portrait",
+    "file": "index.html",
+    "route": "B",
+    "realRAF": true,
+    "injectedCode": false,
+    "frozenPixelExact7Seconds": true,
+    "physicalPhone": false,
+    "errors": []
+  },
+  {
+    "device": "landscape",
+    "file": "fly-home-offline.html",
+    "route": "C",
+    "realRAF": true,
+    "injectedCode": false,
+    "frozenPixelExact7Seconds": true,
+    "physicalPhone": false,
+    "errors": []
+  }
+]

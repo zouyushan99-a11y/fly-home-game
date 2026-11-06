@@ -1,0 +1,110 @@
+{
+  "journeys": [
+    {
+      "route": "A",
+      "success": true,
+      "health": 100,
+      "energy": 15.744999999997034,
+      "seconds": 144.91666666667413,
+      "lessons": [
+        {
+          "id": "glass",
+          "progress": 10.012500000000065
+        },
+        {
+          "id": "light",
+          "progress": 45.000000000001386
+        },
+        {
+          "id": "green",
+          "progress": 80.00999999999766
+        },
+        {
+          "id": "birds",
+          "progress": 90.78749999999467
+        },
+        {
+          "id": "pond",
+          "progress": 115.00874999998993
+        },
+        {
+          "id": "wetland",
+          "progress": 140.00624999999056
+        }
+      ]
+    },
+    {
+      "route": "B",
+      "success": true,
+      "health": 100,
+      "energy": 42.744999999997034,
+      "seconds": 144.91666666667413,
+      "lessons": [
+        {
+          "id": "glass",
+          "progress": 10.012500000000065
+        },
+        {
+          "id": "green",
+          "progress": 28.012500000000745
+        },
+        {
+          "id": "light",
+          "progress": 45.000000000001386
+        },
+        {
+          "id": "birds",
+          "progress": 90.78749999999467
+        },
+        {
+          "id": "pond",
+          "progress": 115.00874999998993
+        },
+        {
+          "id": "wetland",
+          "progress": 140.00624999999056
+        }
+      ]
+    },
+    {
+      "route": "C",
+      "success": true,
+      "health": 100,
+      "energy": 45.802999999996885,
+      "seconds": 152.21666666667994,
+      "lessons": [
+        {
+          "id": "glass",
+          "progress": 10.012500000000065
+        },
+        {
+          "id": "green",
+          "progress": 28.015557640070885
+        },
+        {
+          "id": "light",
+          "progress": 45.007041030217955
+        },
+        {
+          "id": "birds",
+          "progress": 90.79806618343083
+        },
+        {
+          "id": "pond",
+          "progress": 115.01660330945812
+        },
+        {
+          "id": "wetland",
+          "progress": 140.01777634915962
+        }
+      ]
+    }
+  ],
+  "checks": [
+    "collision-first applies original penalty including lethal hit; glass outranks queued topics; later hits only remind",
+    "reading freezes movement, yaw, world clocks, resources, collision/event APIs; continue preserves snapshot and is idempotent",
+    "all A/B/C journeys see six topics once, without collision dependence",
+    "safe waypoint fallback covers skipped green/pond/flock; reset clears education",
+    "lighting lesson without lighting effect; effect-first lesson freezes effect timer; all route energy matches baseline"
+  ]
+}

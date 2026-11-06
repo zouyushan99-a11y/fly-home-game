@@ -1,0 +1,128 @@
+[
+  {
+    "device": "desktop",
+    "contrast": [
+      {
+        "selector": ".knowledge-summary h3",
+        "ratio": 9.60944408032564
+      },
+      {
+        "selector": ".knowledge-summary p",
+        "ratio": 9.60944408032564
+      },
+      {
+        "selector": ".summary-action",
+        "ratio": 8.185783729432567
+      },
+      {
+        "selector": ".education-motto",
+        "ratio": 6.780388696687958
+      },
+      {
+        "selector": ".education-ending h2 small",
+        "ratio": 6.780388696687958
+      },
+      {
+        "selector": ".evidence-cards h3",
+        "ratio": 9.3020378282454
+      },
+      {
+        "selector": ".evidence-cards a",
+        "ratio": 8.202743130833538
+      },
+      {
+        "selector": ".citizen-note p",
+        "ratio": 8.554976851371553
+      },
+      {
+        "selector": ".education-ending section:last-of-type a",
+        "ratio": 6.2164813579797285
+      }
+    ],
+    "controlledSummaryFixture": true
+  },
+  {
+    "device": "portrait",
+    "contrast": [
+      {
+        "selector": ".knowledge-summary h3",
+        "ratio": 9.60944408032564
+      },
+      {
+        "selector": ".knowledge-summary p",
+        "ratio": 9.60944408032564
+      },
+      {
+        "selector": ".summary-action",
+        "ratio": 8.185783729432567
+      },
+      {
+        "selector": ".education-motto",
+        "ratio": 6.780388696687958
+      },
+      {
+        "selector": ".education-ending h2 small",
+        "ratio": 6.780388696687958
+      },
+      {
+        "selector": ".evidence-cards h3",
+        "ratio": 9.3020378282454
+      },
+      {
+        "selector": ".evidence-cards a",
+        "ratio": 8.202743130833538
+      },
+      {
+        "selector": ".citizen-note p",
+        "ratio": 8.554976851371553
+      },
+      {
+        "selector": ".education-ending section:last-of-type a",
+        "ratio": 6.2164813579797285
+      }
+    ],
+    "controlledSummaryFixture": true
+  },
+  {
+    "device": "landscape",
+    "contrast": [
+      {
+        "selector": ".knowledge-summary h3",
+        "ratio": 9.60944408032564
+      },
+      {
+        "selector": ".knowledge-summary p",
+        "ratio": 9.60944408032564
+      },
+      {
+        "selector": ".summary-action",
+        "ratio": 8.185783729432567
+      },
+      {
+        "selector": ".education-motto",
+        "ratio": 6.780388696687958
+      },
+      {
+        "selector": ".education-ending h2 small",
+        "ratio": 6.780388696687958
+      },
+      {
+        "selector": ".evidence-cards h3",
+        "ratio": 9.3020378282454
+      },
+      {
+        "selector": ".evidence-cards a",
+        "ratio": 8.202743130833538
+      },
+      {
+        "selector": ".citizen-note p",
+        "ratio": 8.554976851371553
+      },
+      {
+        "selector": ".education-ending section:last-of-type a",
+        "ratio": 6.2164813579797285
+      }
+    ],
+    "controlledSummaryFixture": true
+  }
+]

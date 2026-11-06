@@ -1,0 +1,183 @@
+{
+  "devices": [
+    {
+      "device": "desktop",
+      "results": [
+        {
+          "route": "A",
+          "done": true,
+          "success": true,
+          "health": 100,
+          "energy": 15.744999999997034,
+          "lessons": [
+            "glass",
+            "light",
+            "green",
+            "birds",
+            "pond",
+            "wetland"
+          ]
+        },
+        {
+          "route": "B",
+          "done": true,
+          "success": true,
+          "health": 100,
+          "energy": 42.744999999997034,
+          "lessons": [
+            "glass",
+            "green",
+            "light",
+            "birds",
+            "pond",
+            "wetland"
+          ]
+        },
+        {
+          "route": "C",
+          "done": true,
+          "success": true,
+          "health": 100,
+          "energy": 45.802999999996885,
+          "lessons": [
+            "glass",
+            "green",
+            "light",
+            "birds",
+            "pond",
+            "wetland"
+          ]
+        }
+      ],
+      "checks": [
+        "six illustrated bilingual exhibits",
+        "world and resources frozen for 10 simulated seconds per exhibit",
+        "continue preserves exact position/resources",
+        "help + pause resume into active exhibit",
+        "footer and dialog fit viewport",
+        "success/failure + skip + restart",
+        "verified-only statistics policy + real reference hrefs"
+      ]
+    },
+    {
+      "device": "portrait",
+      "results": [
+        {
+          "route": "A",
+          "done": true,
+          "success": true,
+          "health": 100,
+          "energy": 15.744999999997034,
+          "lessons": [
+            "glass",
+            "light",
+            "green",
+            "birds",
+            "pond",
+            "wetland"
+          ]
+        },
+        {
+          "route": "B",
+          "done": true,
+          "success": true,
+          "health": 100,
+          "energy": 42.744999999997034,
+          "lessons": [
+            "glass",
+            "green",
+            "light",
+            "birds",
+            "pond",
+            "wetland"
+          ]
+        },
+        {
+          "route": "C",
+          "done": true,
+          "success": true,
+          "health": 100,
+          "energy": 45.802999999996885,
+          "lessons": [
+            "glass",
+            "green",
+            "light",
+            "birds",
+            "pond",
+            "wetland"
+          ]
+        }
+      ],
+      "checks": [
+        "six illustrated bilingual exhibits",
+        "world and resources frozen for 10 simulated seconds per exhibit",
+        "continue preserves exact position/resources",
+        "help + pause resume into active exhibit",
+        "footer and dialog fit viewport",
+        "success/failure + skip + restart",
+        "verified-only statistics policy + real reference hrefs"
+      ]
+    },
+    {
+      "device": "landscape",
+      "results": [
+        {
+          "route": "A",
+          "done": true,
+          "success": true,
+          "health": 100,
+          "energy": 15.744999999997034,
+          "lessons": [
+            "glass",
+            "light",
+            "green",
+            "birds",
+            "pond",
+            "wetland"
+          ]
+        },
+        {
+          "route": "B",
+          "done": true,
+          "success": true,
+          "health": 100,
+          "energy": 42.744999999997034,
+          "lessons": [
+            "glass",
+            "green",
+            "light",
+            "birds",
+            "pond",
+            "wetland"
+          ]
+        },
+        {
+          "route": "C",
+          "done": true,
+          "success": true,
+          "health": 100,
+          "energy": 45.802999999996885,
+          "lessons": [
+            "glass",
+            "green",
+            "light",
+            "birds",
+            "pond",
+            "wetland"
+          ]
+        }
+      ],
+      "checks": [
+        "six illustrated bilingual exhibits",
+        "world and resources frozen for 10 simulated seconds per exhibit",
+        "continue preserves exact position/resources",
+        "help + pause resume into active exhibit",
+        "footer and dialog fit viewport",
+        "success/failure + skip + restart",
+        "verified-only statistics policy + real reference hrefs"
+      ]
+    }
+  ],
+  "physicalPhone": false,
+  "errors": []
+}

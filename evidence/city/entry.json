@@ -1,0 +1,83 @@
+[
+  {
+    "device": "desktop",
+    "requested": "A",
+    "route": "A",
+    "frames": 300,
+    "health": 100,
+    "x": -0.092961253675527,
+    "progress": 18.45900000000032
+  },
+  {
+    "device": "desktop",
+    "requested": "B",
+    "route": "B",
+    "frames": 419,
+    "health": 100,
+    "x": 0,
+    "progress": 19.449000000000357
+  },
+  {
+    "device": "desktop",
+    "requested": "C",
+    "route": "C",
+    "frames": 354,
+    "health": 100,
+    "x": 0.01847826086956602,
+    "progress": 19.674000000000365
+  },
+  {
+    "device": "portrait",
+    "requested": "A",
+    "route": "A",
+    "frames": 300,
+    "health": 100,
+    "x": -0.092961253675527,
+    "progress": 18.45900000000032
+  },
+  {
+    "device": "portrait",
+    "requested": "B",
+    "route": "B",
+    "frames": 419,
+    "health": 100,
+    "x": 0,
+    "progress": 19.449000000000357
+  },
+  {
+    "device": "portrait",
+    "requested": "C",
+    "route": "C",
+    "frames": 354,
+    "health": 100,
+    "x": 0.01847826086956602,
+    "progress": 19.674000000000365
+  },
+  {
+    "device": "landscape",
+    "requested": "A",
+    "route": "A",
+    "frames": 300,
+    "health": 100,
+    "x": -0.092961253675527,
+    "progress": 18.45900000000032
+  },
+  {
+    "device": "landscape",
+    "requested": "B",
+    "route": "B",
+    "frames": 419,
+    "health": 100,
+    "x": 0,
+    "progress": 19.449000000000357
+  },
+  {
+    "device": "landscape",
+    "requested": "C",
+    "route": "C",
+    "frames": 354,
+    "health": 100,
+    "x": 0.01847826086956602,
+    "progress": 19.674000000000365
+  }
+]

@@ -1,0 +1,164 @@
+[
+  {
+    "route": "A",
+    "chapters": [
+      {
+        "chapter": -1,
+        "start": 0.016666666666666666,
+        "startEnergy": 99.991,
+        "duration": 7.399999999999979,
+        "endEnergy": 95.99499999999985
+      },
+      {
+        "chapter": 0,
+        "start": 7.416666666666646,
+        "startEnergy": 95.99499999999985,
+        "duration": 27.66666666666598,
+        "endEnergy": 81.05499999999928
+      },
+      {
+        "chapter": 1,
+        "start": 35.083333333332625,
+        "startEnergy": 81.05499999999928,
+        "duration": 27.5666666666651,
+        "endEnergy": 52.16899999999872
+      },
+      {
+        "chapter": 2,
+        "start": 62.649999999997725,
+        "startEnergy": 52.16899999999872,
+        "duration": 27.04999999999847,
+        "endEnergy": 37.561999999998164
+      },
+      {
+        "chapter": 3,
+        "start": 89.6999999999962,
+        "startEnergy": 37.561999999998164,
+        "duration": 18.516666666665614,
+        "endEnergy": 27.562999999997785
+      },
+      {
+        "chapter": 4,
+        "start": 108.21666666666181,
+        "startEnergy": 27.562999999997785,
+        "duration": 40.06666666668167,
+        "endEnergy": 13.926999999996966
+      }
+    ],
+    "ledger": {
+      "flight": -80.07300000000285,
+      "detour": 0,
+      "light": -14,
+      "rest": 0,
+      "arrival": 8
+    }
+  },
+  {
+    "route": "B",
+    "chapters": [
+      {
+        "chapter": -1,
+        "start": 0.016666666666666666,
+        "startEnergy": 99.991,
+        "duration": 7.399999999999979,
+        "endEnergy": 95.99499999999985
+      },
+      {
+        "chapter": 0,
+        "start": 7.416666666666646,
+        "startEnergy": 95.99499999999985,
+        "duration": 31.149999999999114,
+        "endEnergy": 86.17399999999921
+      },
+      {
+        "chapter": 1,
+        "start": 38.56666666666576,
+        "startEnergy": 86.17399999999921,
+        "duration": 31.116666666664905,
+        "endEnergy": 61.370999999998574
+      },
+      {
+        "chapter": 2,
+        "start": 69.68333333333067,
+        "startEnergy": 61.370999999998574,
+        "duration": 27.049999999998462,
+        "endEnergy": 53.76399999999802
+      },
+      {
+        "chapter": 3,
+        "start": 96.73333333332913,
+        "startEnergy": 53.76399999999802,
+        "duration": 18.53333333333228,
+        "endEnergy": 50.75599999999764
+      },
+      {
+        "chapter": 4,
+        "start": 115.26666666666141,
+        "startEnergy": 50.75599999999764,
+        "duration": 40.06666666668768,
+        "endEnergy": 37.11999999999682
+      }
+    ],
+    "ledger": {
+      "flight": -83.880000000003,
+      "detour": 0,
+      "light": -8,
+      "rest": 21,
+      "arrival": 8
+    }
+  },
+  {
+    "route": "C",
+    "chapters": [
+      {
+        "chapter": -1,
+        "start": 0.016666666666666666,
+        "startEnergy": 99.991,
+        "duration": 7.399999999999979,
+        "endEnergy": 95.99499999999985
+      },
+      {
+        "chapter": 0,
+        "start": 7.416666666666646,
+        "startEnergy": 95.99499999999985,
+        "duration": 33.966666666665624,
+        "endEnergy": 87.65299999999915
+      },
+      {
+        "chapter": 1,
+        "start": 41.38333333333227,
+        "startEnergy": 87.65299999999915,
+        "duration": 33.96666666666474,
+        "endEnergy": 76.31099999999846
+      },
+      {
+        "chapter": 2,
+        "start": 75.34999999999701,
+        "startEnergy": 76.31099999999846,
+        "duration": 28.64999999999837,
+        "endEnergy": 70.83999999999787
+      },
+      {
+        "chapter": 3,
+        "start": 103.99999999999538,
+        "startEnergy": 70.83999999999787,
+        "duration": 21.033333333332138,
+        "endEnergy": 69.48199999999744
+      },
+      {
+        "chapter": 4,
+        "start": 125.03333333332752,
+        "startEnergy": 69.48199999999744,
+        "duration": 40.08333333336269,
+        "endEnergy": 55.83699999999662
+      }
+    ],
+    "ledger": {
+      "flight": -89.1630000000032,
+      "detour": -28,
+      "light": -3,
+      "rest": 68,
+      "arrival": 8
+    }
+  }
+]

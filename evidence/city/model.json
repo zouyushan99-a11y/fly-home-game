@@ -1,0 +1,62 @@
+[
+  {
+    "route": "A",
+    "steps": 8897,
+    "success": true,
+    "health": 100,
+    "energy": 13.926999999996966,
+    "time": 148.28333333334348,
+    "progress": 185.00236084749721,
+    "hits": [],
+    "events": [],
+    "routes": {
+      "0": "A",
+      "1": "A",
+      "2": "A",
+      "3": "A"
+    }
+  },
+  {
+    "route": "B",
+    "steps": 9320,
+    "success": true,
+    "health": 100,
+    "energy": 37.11999999999682,
+    "time": 155.3333333333491,
+    "progress": 185.00889686755863,
+    "hits": [],
+    "events": [
+      "rest-city-0-B",
+      "rest-2",
+      "rest-3"
+    ],
+    "routes": {
+      "0": "B",
+      "1": "B",
+      "2": "B",
+      "3": "B"
+    }
+  },
+  {
+    "route": "C",
+    "steps": 9907,
+    "success": true,
+    "health": 100,
+    "energy": 55.83699999999662,
+    "time": 165.1166666666902,
+    "progress": 185.00908434899003,
+    "hits": [],
+    "events": [
+      "rest-city-0-C",
+      "rest-city-1-C",
+      "rest-2",
+      "rest-3"
+    ],
+    "routes": {
+      "0": "C",
+      "1": "C",
+      "2": "C",
+      "3": "C"
+    }
+  }
+]

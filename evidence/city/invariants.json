@@ -1,0 +1,72 @@
+{
+  "transitions": [
+    {
+      "chapter": 0,
+      "route": "A",
+      "worldJump": 0,
+      "energy": 100
+    },
+    {
+      "chapter": 0,
+      "route": "B",
+      "worldJump": 0,
+      "energy": 100
+    },
+    {
+      "chapter": 0,
+      "route": "C",
+      "worldJump": 0,
+      "energy": 93
+    },
+    {
+      "chapter": 1,
+      "route": "A",
+      "worldJump": 0,
+      "energy": 100
+    },
+    {
+      "chapter": 1,
+      "route": "B",
+      "worldJump": 0,
+      "energy": 100
+    },
+    {
+      "chapter": 1,
+      "route": "C",
+      "worldJump": 0,
+      "energy": 93
+    }
+  ],
+  "rests": [
+    {
+      "id": "city-0-B",
+      "inside": true,
+      "recovered": true
+    },
+    {
+      "id": "city-0-B",
+      "inside": false,
+      "recovered": false
+    },
+    {
+      "id": "city-0-C",
+      "inside": true,
+      "recovered": true
+    },
+    {
+      "id": "city-0-C",
+      "inside": false,
+      "recovered": false
+    },
+    {
+      "id": "city-1-C",
+      "inside": true,
+      "recovered": true
+    },
+    {
+      "id": "city-1-C",
+      "inside": false,
+      "recovered": false
+    }
+  ]
+}

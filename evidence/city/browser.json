@@ -1,0 +1,346 @@
+{
+  "errors": [],
+  "journeys": [
+    {
+      "device": "desktop",
+      "route": "A",
+      "cards": 6,
+      "success": true,
+      "health": 100,
+      "energy": 13.926999999996966,
+      "time": 148.28333333334348,
+      "learned": [
+        "glass",
+        "light",
+        "green",
+        "birds",
+        "pond",
+        "wetland"
+      ],
+      "routes": {
+        "0": "A",
+        "1": "A",
+        "2": "A",
+        "3": "A"
+      }
+    },
+    {
+      "device": "desktop",
+      "route": "B",
+      "cards": 6,
+      "success": true,
+      "health": 100,
+      "energy": 37.11999999999682,
+      "time": 155.3333333333491,
+      "learned": [
+        "glass",
+        "green",
+        "light",
+        "birds",
+        "pond",
+        "wetland"
+      ],
+      "routes": {
+        "0": "B",
+        "1": "B",
+        "2": "B",
+        "3": "B"
+      }
+    },
+    {
+      "device": "desktop",
+      "route": "C",
+      "cards": 6,
+      "success": true,
+      "health": 100,
+      "energy": 55.83699999999662,
+      "time": 165.1166666666902,
+      "learned": [
+        "glass",
+        "green",
+        "light",
+        "birds",
+        "pond",
+        "wetland"
+      ],
+      "routes": {
+        "0": "C",
+        "1": "C",
+        "2": "C",
+        "3": "C"
+      }
+    },
+    {
+      "device": "portrait",
+      "route": "A",
+      "cards": 6,
+      "success": true,
+      "health": 100,
+      "energy": 13.926999999996966,
+      "time": 148.28333333334348,
+      "learned": [
+        "glass",
+        "light",
+        "green",
+        "birds",
+        "pond",
+        "wetland"
+      ],
+      "routes": {
+        "0": "A",
+        "1": "A",
+        "2": "A",
+        "3": "A"
+      }
+    },
+    {
+      "device": "portrait",
+      "route": "B",
+      "cards": 6,
+      "success": true,
+      "health": 100,
+      "energy": 37.11999999999682,
+      "time": 155.3333333333491,
+      "learned": [
+        "glass",
+        "green",
+        "light",
+        "birds",
+        "pond",
+        "wetland"
+      ],
+      "routes": {
+        "0": "B",
+        "1": "B",
+        "2": "B",
+        "3": "B"
+      }
+    },
+    {
+      "device": "portrait",
+      "route": "C",
+      "cards": 6,
+      "success": true,
+      "health": 100,
+      "energy": 55.83699999999662,
+      "time": 165.1166666666902,
+      "learned": [
+        "glass",
+        "green",
+        "light",
+        "birds",
+        "pond",
+        "wetland"
+      ],
+      "routes": {
+        "0": "C",
+        "1": "C",
+        "2": "C",
+        "3": "C"
+      }
+    },
+    {
+      "device": "landscape",
+      "route": "A",
+      "cards": 6,
+      "success": true,
+      "health": 100,
+      "energy": 13.926999999996966,
+      "time": 148.28333333334348,
+      "learned": [
+        "glass",
+        "light",
+        "green",
+        "birds",
+        "pond",
+        "wetland"
+      ],
+      "routes": {
+        "0": "A",
+        "1": "A",
+        "2": "A",
+        "3": "A"
+      }
+    },
+    {
+      "device": "landscape",
+      "route": "B",
+      "cards": 6,
+      "success": true,
+      "health": 100,
+      "energy": 37.11999999999682,
+      "time": 155.3333333333491,
+      "learned": [
+        "glass",
+        "green",
+        "light",
+        "birds",
+        "pond",
+        "wetland"
+      ],
+      "routes": {
+        "0": "B",
+        "1": "B",
+        "2": "B",
+        "3": "B"
+      }
+    },
+    {
+      "device": "landscape",
+      "route": "C",
+      "cards": 6,
+      "success": true,
+      "health": 100,
+      "energy": 55.83699999999662,
+      "time": 165.1166666666902,
+      "learned": [
+        "glass",
+        "green",
+        "light",
+        "birds",
+        "pond",
+        "wetland"
+      ],
+      "routes": {
+        "0": "C",
+        "1": "C",
+        "2": "C",
+        "3": "C"
+      }
+    }
+  ],
+  "performance": [
+    {
+      "device": "desktop",
+      "version": "before",
+      "route": "A",
+      "meanMs": 19.228333333569267,
+      "p95Ms": 23.200000002980232
+    },
+    {
+      "device": "desktop",
+      "version": "before",
+      "route": "B",
+      "meanMs": 5.07999999995033,
+      "p95Ms": 6.199999999254942
+    },
+    {
+      "device": "desktop",
+      "version": "before",
+      "route": "C",
+      "meanMs": 4.566666666666666,
+      "p95Ms": 5.800000000745058
+    },
+    {
+      "device": "desktop",
+      "version": "after",
+      "route": "A",
+      "meanMs": 8.236666667088866,
+      "p95Ms": 12.099999997764826
+    },
+    {
+      "device": "desktop",
+      "version": "after",
+      "route": "B",
+      "meanMs": 7.059999999900659,
+      "p95Ms": 8.899999998509884
+    },
+    {
+      "device": "desktop",
+      "version": "after",
+      "route": "C",
+      "meanMs": 5.7483333331222335,
+      "p95Ms": 6.899999998509884
+    },
+    {
+      "device": "portrait",
+      "version": "before",
+      "route": "A",
+      "meanMs": 9.85,
+      "p95Ms": 16.900000002235174
+    },
+    {
+      "device": "portrait",
+      "version": "before",
+      "route": "B",
+      "meanMs": 4.006666666828096,
+      "p95Ms": 5.5
+    },
+    {
+      "device": "portrait",
+      "version": "before",
+      "route": "C",
+      "meanMs": 3.573333333556851,
+      "p95Ms": 4.399999998509884
+    },
+    {
+      "device": "portrait",
+      "version": "after",
+      "route": "A",
+      "meanMs": 5.176666667001943,
+      "p95Ms": 6.200000002980232
+    },
+    {
+      "device": "portrait",
+      "version": "after",
+      "route": "B",
+      "meanMs": 4.24166666654249,
+      "p95Ms": 6.399999998509884
+    },
+    {
+      "device": "portrait",
+      "version": "after",
+      "route": "C",
+      "meanMs": 3.9883333332215747,
+      "p95Ms": 5.199999999254942
+    },
+    {
+      "device": "landscape",
+      "version": "before",
+      "route": "A",
+      "meanMs": 11.513333333159487,
+      "p95Ms": 18.899999998509884
+    },
+    {
+      "device": "landscape",
+      "version": "before",
+      "route": "B",
+      "meanMs": 4.464999999975165,
+      "p95Ms": 5.5
+    },
+    {
+      "device": "landscape",
+      "version": "before",
+      "route": "C",
+      "meanMs": 4.510000000024835,
+      "p95Ms": 6.099999997764826
+    },
+    {
+      "device": "landscape",
+      "version": "after",
+      "route": "A",
+      "meanMs": 8.051666666505238,
+      "p95Ms": 11.699999999254942
+    },
+    {
+      "device": "landscape",
+      "version": "after",
+      "route": "B",
+      "meanMs": 6.433333333209157,
+      "p95Ms": 8.899999998509884
+    },
+    {
+      "device": "landscape",
+      "version": "after",
+      "route": "C",
+      "meanMs": 5.858333333209157,
+      "p95Ms": 9
+    }
+  ],
+  "checks": [
+    "desktop: keyboard/touch, pause, help, bilingual, card freeze, six topics, success/failure/restart",
+    "portrait: keyboard/touch, pause, help, bilingual, card freeze, six topics, success/failure/restart",
+    "landscape: keyboard/touch, pause, help, bilingual, card freeze, six topics, success/failure/restart"
+  ],
+  "physicalPhone": false
+}

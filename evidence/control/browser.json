@@ -1,0 +1,89 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "device": "desktop",
+      "view": "first",
+      "heading": 0.3999122917586919,
+      "crash": {
+        "health": 65,
+        "heading": 0,
+        "inside": false
+      },
+      "headerBottom": 74,
+      "hudTop": 83,
+      "buttonRight": 1056,
+      "cameraDistance": 0
+    },
+    {
+      "device": "desktop",
+      "view": "third",
+      "heading": 0.3999122917586919,
+      "crash": {
+        "health": 65,
+        "heading": 0,
+        "inside": false
+      },
+      "headerBottom": 74,
+      "hudTop": 83,
+      "buttonRight": 1056,
+      "cameraDistance": 12.999946458346802
+    },
+    {
+      "device": "portrait",
+      "view": "first",
+      "heading": 0.3999122917586919,
+      "crash": {
+        "health": 65,
+        "heading": 0,
+        "inside": false
+      },
+      "headerBottom": 60,
+      "hudTop": 66,
+      "buttonRight": 224,
+      "cameraDistance": 0
+    },
+    {
+      "device": "portrait",
+      "view": "third",
+      "heading": 0.3999122917586919,
+      "crash": {
+        "health": 65,
+        "heading": 0,
+        "inside": false
+      },
+      "headerBottom": 60,
+      "hudTop": 66,
+      "buttonRight": 224,
+      "cameraDistance": 12.999946458346802
+    },
+    {
+      "device": "landscape",
+      "view": "first",
+      "heading": 0.3999122917586919,
+      "crash": {
+        "health": 65,
+        "heading": 0,
+        "inside": false
+      },
+      "headerBottom": 54,
+      "hudTop": 56,
+      "buttonRight": 634,
+      "cameraDistance": 0
+    },
+    {
+      "device": "landscape",
+      "view": "third",
+      "heading": 0.3999122917586919,
+      "crash": {
+        "health": 65,
+        "heading": 0,
+        "inside": false
+      },
+      "headerBottom": 54,
+      "hudTop": 56,
+      "buttonRight": 634,
+      "cameraDistance": 12.999946458346802
+    }
+  ]
+}

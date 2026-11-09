@@ -1,0 +1,65 @@
+[
+  {
+    "device": "desktop",
+    "view": "first",
+    "meanMs": 303.2999999987582,
+    "p95Ms": 360.40000000596046
+  },
+  {
+    "device": "desktop",
+    "view": "third",
+    "meanMs": 327.575,
+    "p95Ms": 355.8999999910593
+  },
+  {
+    "device": "desktop",
+    "safety": {
+      "retracted": 0.5,
+      "frozen": true,
+      "preference": "third",
+      "distance": 0
+    }
+  },
+  {
+    "device": "portrait",
+    "view": "first",
+    "meanMs": 112.74833333293597,
+    "p95Ms": 135.09999999403954
+  },
+  {
+    "device": "portrait",
+    "view": "third",
+    "meanMs": 117.26166666770975,
+    "p95Ms": 136.29999999701977
+  },
+  {
+    "device": "portrait",
+    "safety": {
+      "retracted": 0.5,
+      "frozen": true,
+      "preference": "third",
+      "distance": 0
+    }
+  },
+  {
+    "device": "landscape",
+    "view": "first",
+    "meanMs": 120.57666666681568,
+    "p95Ms": 140.1000000089407
+  },
+  {
+    "device": "landscape",
+    "view": "third",
+    "meanMs": 145.2066666662693,
+    "p95Ms": 169.20000000298023
+  },
+  {
+    "device": "landscape",
+    "safety": {
+      "retracted": 0.5,
+      "frozen": true,
+      "preference": "third",
+      "distance": 0
+    }
+  }
+]

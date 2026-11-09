@@ -1,0 +1,20 @@
+[
+  {
+    "requested": "A",
+    "error": 0.00927205801171714,
+    "route": "A",
+    "health": 100
+  },
+  {
+    "requested": "B",
+    "error": -0.016634534493512407,
+    "route": "B",
+    "health": 100
+  },
+  {
+    "requested": "C",
+    "error": -0.005292925061501974,
+    "route": "C",
+    "health": 100
+  }
+]

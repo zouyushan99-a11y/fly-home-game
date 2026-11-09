@@ -1,0 +1,163 @@
+{
+  "errors": [],
+  "journeys": [
+    {
+      "device": "desktop",
+      "view": "first",
+      "name": "A1",
+      "success": true,
+      "health": 100,
+      "energy": 10.943500000038036
+    },
+    {
+      "device": "desktop",
+      "view": "first",
+      "name": "B1",
+      "success": true,
+      "health": 100,
+      "energy": 37.6510000000521
+    },
+    {
+      "device": "desktop",
+      "view": "first",
+      "name": "C1",
+      "success": true,
+      "health": 100,
+      "energy": 53.38900000009487
+    },
+    {
+      "device": "desktop",
+      "view": "third",
+      "name": "A1",
+      "success": true,
+      "health": 100,
+      "energy": 10.943500000038036
+    },
+    {
+      "device": "desktop",
+      "view": "third",
+      "name": "B1",
+      "success": true,
+      "health": 100,
+      "energy": 37.6510000000521
+    },
+    {
+      "device": "desktop",
+      "view": "third",
+      "name": "C1",
+      "success": true,
+      "health": 100,
+      "energy": 53.38900000009487
+    },
+    {
+      "device": "portrait",
+      "view": "first",
+      "name": "A1",
+      "success": true,
+      "health": 100,
+      "energy": 10.943500000038036
+    },
+    {
+      "device": "portrait",
+      "view": "first",
+      "name": "B1",
+      "success": true,
+      "health": 100,
+      "energy": 37.6510000000521
+    },
+    {
+      "device": "portrait",
+      "view": "first",
+      "name": "C1",
+      "success": true,
+      "health": 100,
+      "energy": 53.38900000009487
+    },
+    {
+      "device": "portrait",
+      "view": "third",
+      "name": "A1",
+      "success": true,
+      "health": 100,
+      "energy": 10.943500000038036
+    },
+    {
+      "device": "portrait",
+      "view": "third",
+      "name": "B1",
+      "success": true,
+      "health": 100,
+      "energy": 37.6510000000521
+    },
+    {
+      "device": "portrait",
+      "view": "third",
+      "name": "C1",
+      "success": true,
+      "health": 100,
+      "energy": 53.38900000009487
+    },
+    {
+      "device": "landscape",
+      "view": "first",
+      "name": "A1",
+      "success": true,
+      "health": 100,
+      "energy": 10.943500000038036
+    },
+    {
+      "device": "landscape",
+      "view": "first",
+      "name": "B1",
+      "success": true,
+      "health": 100,
+      "energy": 37.6510000000521
+    },
+    {
+      "device": "landscape",
+      "view": "first",
+      "name": "C1",
+      "success": true,
+      "health": 100,
+      "energy": 53.38900000009487
+    },
+    {
+      "device": "landscape",
+      "view": "third",
+      "name": "A1",
+      "success": true,
+      "health": 100,
+      "energy": 10.943500000038036
+    },
+    {
+      "device": "landscape",
+      "view": "third",
+      "name": "B1",
+      "success": true,
+      "health": 100,
+      "energy": 37.6510000000521
+    },
+    {
+      "device": "landscape",
+      "view": "third",
+      "name": "C1",
+      "success": true,
+      "health": 100,
+      "energy": 53.38900000009487
+    }
+  ],
+  "cameras": [
+    {
+      "device": "desktop",
+      "pausedSwitchInvariant": true
+    },
+    {
+      "device": "portrait",
+      "pausedSwitchInvariant": true
+    },
+    {
+      "device": "landscape",
+      "pausedSwitchInvariant": true
+    }
+  ]
+}

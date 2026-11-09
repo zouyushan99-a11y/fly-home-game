@@ -1,0 +1,9 @@
+{
+  "knowledge": true,
+  "help": true,
+  "bilingual": true,
+  "pause": true,
+  "viewFrozen": true,
+  "successFailureSkipRestart": true,
+  "reducedEffectsKeepsPhysicalHeading": true
+}

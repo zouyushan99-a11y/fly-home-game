@@ -1,0 +1,70 @@
+[
+  {
+    "chapter": 0,
+    "heldHeading": true
+  },
+  {
+    "chapter": 1,
+    "heldHeading": true
+  },
+  {
+    "chapter": 2,
+    "heldHeading": true
+  },
+  {
+    "chapter": 3,
+    "heldHeading": true
+  },
+  {
+    "chapter": 4,
+    "heldHeading": true
+  },
+  {
+    "dt": 0.008333333333333333,
+    "multiplier": 1,
+    "blocked": true,
+    "health": 65
+  },
+  {
+    "dt": 0.008333333333333333,
+    "multiplier": 5,
+    "blocked": true,
+    "health": 75
+  },
+  {
+    "dt": 0.03333333333333333,
+    "multiplier": 1,
+    "blocked": true,
+    "health": 65
+  },
+  {
+    "dt": 0.03333333333333333,
+    "multiplier": 5,
+    "blocked": true,
+    "health": 75
+  },
+  {
+    "dt": 0.1,
+    "multiplier": 1,
+    "blocked": true,
+    "health": 65
+  },
+  {
+    "dt": 0.1,
+    "multiplier": 5,
+    "blocked": true,
+    "health": 75
+  },
+  {
+    "dt": 0.25,
+    "multiplier": 1,
+    "blocked": true,
+    "health": 65
+  },
+  {
+    "dt": 0.25,
+    "multiplier": 5,
+    "blocked": true,
+    "health": 75
+  }
+]

@@ -28,7 +28,7 @@
 @media(max-width:650px){#lesson{padding:8px}.lesson-heading{padding:14px 16px 10px;gap:8px}.lesson-heading #lessonTag{font-size:9px;letter-spacing:.7px}.lesson-heading #lessonTitle{font-size:21px}.lesson-language{font-size:11px;padding:6px}.lesson-scroll{padding:0 14px 12px}.lesson-figure figcaption{font-size:11px;padding:8px}.lesson-sections{grid-template-columns:1fr;gap:10px}.lesson-block{padding:12px}#lesson .lesson-block p{font-size:15px}.lesson-footer{padding:12px;gap:8px}.lesson-footer span{font-size:11px;max-width:125px}#continueLesson{font-size:13px;padding:8px 12px}.education-ending .knowledge-summary,.evidence-cards{grid-template-columns:1fr}#ending .education-ending{padding:20px}.education-ending h1{font-size:28px}}
 @media(max-height:520px) and (orientation:landscape){#lesson{padding:6px 14px}.lesson-heading{padding:10px 18px}.lesson-heading #lessonTitle{font-size:20px}.lesson-heading #lessonTag{font-size:9px}.lesson-figure img{max-height:180px;object-fit:contain}.lesson-footer{padding:8px 18px}.lesson-sections{grid-template-columns:1fr}#lesson .lesson-block p{font-size:15px}.lesson-scroll{padding:0 18px 12px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:14px;align-items:start}.lesson-figure{position:sticky;top:0;margin:0}.lesson-scroll>.science-note{grid-column:1/-1}}
 @media(max-width:600px){header nav{gap:3px}header nav button{padding:6px;min-width:30px}#viewMode{font-size:10px;max-width:58px}.brand{font-size:11px}}
-header nav button#viewMode{font-size:12px;white-space:nowrap;padding:4px 8px;min-width:44px}.brand{white-space:nowrap}@media(max-width:600px){header{padding-left:10px;padding-right:10px}header .brand{font-size:10px;letter-spacing:1px}header nav button:not(#language){font-size:18px;padding:4px 7px;min-width:36px}header nav button#viewMode{font-size:12px;min-width:38px}header nav #language{font-size:10px;padding:4px 7px}}
+header nav button#viewMode{background:#eac27f;color:#172d40;font-weight:700;font-size:12px;white-space:nowrap;padding:4px 8px;min-width:44px}.brand{white-space:nowrap}@media(max-width:600px){header{padding-left:10px;padding-right:10px}header .brand{font-size:10px;letter-spacing:1px}header nav button:not(#language){font-size:18px;padding:4px 7px;min-width:36px}header nav button#viewMode{font-size:12px;min-width:38px}header nav #language{font-size:10px;padding:4px 7px}}
 </style></head>
 <body><main id="game"><canvas id="scene" aria-label="候鳥第一人稱飛行 / First-person bird flight"></canvas>
 <header><div class="brand">URBAN WINGS<small>飛越香港</small></div><nav aria-label="遊戲選單 / Game menu"><button id="language">繁中 | EN</button><button id="viewMode" aria-label="切換視角 / Switch view">1P</button><button id="pause" aria-label="暫停 / Pause">II</button><button id="help" aria-label="說明 / Instructions">?</button><button id="mute" aria-label="聲音 / Sound">♪</button><button id="restart" aria-label="重新開始 / Restart">↻</button></nav></header>
@@ -142,23 +142,25 @@ function makeDistrict(chapter,route='B'){
 }
 // Transform the swept bird into local building space; slab-test the actual
 // tier at flight altitude, conservatively expanded by the unchanged bird radius.
-function hitsBuilding(building,from,to,radius=1.1){
- if(building.height<EYE_HEIGHT-1)return false;
+function buildingHitTime(building,from,to,radius=1.1){
+ if(building.height<EYE_HEIGHT-1)return Infinity;
  const a=building.angle||0,co=Math.cos(a),si=Math.sin(a),cz=building.z+building.depth/2;
  const local=p=>({x:(p.x-building.x)*co-(p.z-cz)*si,z:(p.x-building.x)*si+(p.z-cz)*co});
- const f=local(from),t=local(to);
- return buildingParts(building).some(part=>{
-  if(part.y>EYE_HEIGHT+1||part.y+part.h<EYE_HEIGHT-1)return false;
-  let enter=0,exit=1;
+ const f=local(from),t=local(to);let earliest=Infinity;
+ for(const part of buildingParts(building)){
+  if(part.y>EYE_HEIGHT+1||part.y+part.h<EYE_HEIGHT-1)continue;
+  let enter=0,exit=1,miss=false;
   for(const [axis,half] of [['x',part.w/2],['z',part.d/2]]){
    const min=-half-radius,max=half+radius,delta=t[axis]-f[axis];
-   if(Math.abs(delta)<1e-9){if(f[axis]<min||f[axis]>max)return false;continue;}
+   if(Math.abs(delta)<1e-9){if(f[axis]<min||f[axis]>max){miss=true;break;}continue;}
    let aa=(min-f[axis])/delta,bb=(max-f[axis])/delta;if(aa>bb)[aa,bb]=[bb,aa];
-   enter=Math.max(enter,aa);exit=Math.min(exit,bb);if(enter>exit)return false;
+   enter=Math.max(enter,aa);exit=Math.min(exit,bb);if(enter>exit){miss=true;break;}
   }
-  return true;
- });
+  if(!miss)earliest=Math.min(earliest,enter);
+ }
+ return earliest;
 }
+function hitsBuilding(building,from,to,radius=1.1){return buildingHitTime(building,from,to,radius)!==Infinity;}
 
 // Wildlife positions use simulation progress, so pause freezes every animal.
 function wildlife(chapter,progress){
@@ -251,7 +253,7 @@ const EDUCATION_IDS=['glass','light','green','pond','birds','wetland'];
 const educationTopic=id=>({city:'glass',night:'light',corridor:'green'}[id]||id);
 class Journey {
  constructor(){this.reset()}
- reset(){this.viewMode=this.viewMode||'first';this.cameraDistance=0;Object.assign(this,{health:100,energy:100,energyLedger:{flight:0,detour:0,light:0,rest:0,arrival:0},outro:null,summaryReady:false,time:0,progress:0,x:0,lookYaw:0,trackYaw:0,chapter:-1,entryPending:false,routes:{},events:new Set(),seen:new Set(),learned:new Set(),retryUsed:false,emergencyUsed:false,recovery:null,recoveryTime:0,done:false,success:false,started:false,paused:false,speed:1,clock:0,lesson:null,lessonQueue:[],grace:0,impact:0,slowImpact:0,notices:[],districts:new Map(),journal:[],feedback:null,reflection:'',routeSelectedAt:{},interference:null,gust:null,yieldRemaining:0,habitatNotice:null})}
+ reset(){this.viewMode=this.viewMode||'first';this.cameraDistance=0;Object.assign(this,{health:100,energy:100,energyLedger:{flight:0,detour:0,light:0,rest:0,arrival:0},outro:null,summaryReady:false,time:0,progress:0,x:0,heading:0,turnVelocity:0,lookYaw:0,trackYaw:0,chapter:-1,entryPending:false,routes:{},events:new Set(),seen:new Set(),learned:new Set(),retryUsed:false,emergencyUsed:false,recovery:null,recoveryTime:0,done:false,success:false,started:false,paused:false,speed:1,clock:0,lesson:null,lessonQueue:[],grace:0,impact:0,slowImpact:0,notices:[],districts:new Map(),journal:[],feedback:null,reflection:'',routeSelectedAt:{},interference:null,gust:null,yieldRemaining:0,habitatNotice:null})}
  get waitingRoute(){return this.started&&!this.done&&this.chapter>=0&&this.chapter<4&&!this.routes[this.chapter]}
  get interaction(){return !this.started?'intro':this.done?(this.summaryReady?'ending':'outro'):this.paused?'overlay':this.lesson?'lesson':this.recovery?'recovery':'flight'}
  get running(){return this.started&&!this.done&&!this.paused&&!this.lesson}
@@ -265,7 +267,7 @@ class Journey {
  choose(route){
   if(this.interaction!=='flight'||!entrancePassages(this.chapter).some(p=>p.route===route&&cameraZ(this.progress)>=p.z&&cameraZ(this.progress)<=p.end&&this.pathAt(cameraZ(this.progress))+this.x*LATERAL_RANGE>=p.left&&this.pathAt(cameraZ(this.progress))+this.x*LATERAL_RANGE<=p.right)||this.entryPending||![0,1,2,3].includes(this.chapter)||this.routes[this.chapter]||!['A','B','C'].includes(route))return false;
   const z=cameraZ(this.progress),worldX=this.pathAt(z)+this.x*LATERAL_RANGE;
-  this.routes[this.chapter]=route;if(this.chapter<2)this.x=(worldX-this.pathAt(z))/LATERAL_RANGE;this.routeSelectedAt[this.chapter]=this.clock;if(route==='C')this.event(`detour-${this.chapter}`,0,-ENERGY.detour);return true;
+  this.routes[this.chapter]=route;this.x=(worldX-this.pathAt(z))/LATERAL_RANGE;this.routeSelectedAt[this.chapter]=this.clock;if(route==='C')this.event(`detour-${this.chapter}`,0,-ENERGY.detour);return true;
  }
  pathAt(z){
   const p=z/FLIGHT_SPEED+10,c=STAGE_STARTS.findIndex((v,i)=>p>=v&&p<STAGE_ENDS[i]);
@@ -296,12 +298,7 @@ class Journey {
   this.interference={duration:profile.driftDuration,remaining:profile.driftDuration,elapsed:0,strength:profile.driftStrength,side:1};
   this.teach('light',2);return true;
  }
- driftVelocity(){
-  const effect=this.interference||this.gust;if(!effect)return 0;
-  const smooth=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)};
-  // Ease both edges of the velocity, never reset the bird's position on expiry.
-  return effect.side*effect.strength*smooth(effect.elapsed/.45)*smooth(effect.remaining/.8);
- }
+ driftVelocity(){return 0;} // Environmental feedback never steers the player.
  clearHabitat(){this.gust=null;this.yieldRemaining=0;this.habitatNotice=null}
  updateHabitat(local){
   if(this.chapter===3){
@@ -353,7 +350,7 @@ class Journey {
  retry(){
   if(this.recovery!=='health'||this.retryUsed||this.recoveryTime<1)return false;
   this.retryUsed=true;this.health=70;this.energy=60;
-  this.progress=STAGE_STARTS[Math.max(0,this.chapter)];this.x=0;this.lookYaw=0;this.trackYaw=0;
+  this.progress=STAGE_STARTS[Math.max(0,this.chapter)];this.x=0;this.heading=0;this.turnVelocity=0;this.lookYaw=0;this.trackYaw=0;
   delete this.routes[this.chapter];delete this.routeSelectedAt[this.chapter];this.interference=null;this.clearHabitat();
   for(const key of [...this.events])if(key===`detour-${this.chapter}`||key===`rest-${this.chapter}`||key.startsWith(`rest-city-${this.chapter}-`)||key.startsWith(`hit-${this.chapter}-`)||key.startsWith(`hit-backdrop-${this.chapter}-`)||key===`light-${this.chapter}`||key.startsWith(`gust-${this.chapter}-`)||key===`flock-${this.chapter}`)this.events.delete(key);
   this.recovery=null;this.entryPending=false;this.grace=2;this.speed=.65;this.notices=[];return true;
@@ -367,6 +364,10 @@ class Journey {
  }
  skipOutro(){if(this.done){this.summaryReady=true;this.outro.elapsed=this.outro.duration;}}
  tick(dt,steer=0){
+  let remaining=Math.max(0,Math.min(Number.isFinite(dt)?dt:0,.25));
+  while(remaining>1e-9){const step=Math.min(1/120,remaining);this.tickStep(step,steer);remaining-=step;}
+ }
+ tickStep(dt,steer=0){
   if(this.done){this.trackYaw*=Math.exp(-Math.max(0,Math.min(dt,.1))*6);this.lookYaw*=Math.exp(-Math.max(0,Math.min(dt,.1))*6);if(!this.summaryReady){this.outro.elapsed=Math.min(this.outro.duration,this.outro.elapsed+Math.max(0,Math.min(dt,.1)));if(this.outro.elapsed>=this.outro.duration)this.summaryReady=true;}return;}
   if(!this.started||this.paused||this.lesson)return;
   this.beginLesson();if(this.lesson)return;
@@ -382,23 +383,26 @@ class Journey {
   this.beginLesson();if(this.lesson)return;
   this.yieldRemaining=Math.max(0,this.yieldRemaining-dt);
   if(this.habitatNotice){this.habitatNotice.remaining-=dt;if(this.habitatNotice.remaining<=0)this.habitatNotice=null}
-  this.lookYaw+=(steer*Math.PI*8/180-this.lookYaw)*(1-Math.exp(-dt*6));if(Math.abs(this.lookYaw)<1e-7)this.lookYaw=0;
-  const trackZ=cameraZ(this.progress),trackGoal=this.chapter>=0&&this.chapter<2&&this.routes[this.chapter]?steer*.48:0;this.trackYaw+=(trackGoal-this.trackYaw)*(1-Math.exp(-dt*4));
-  const target=this.slowImpact>0?.4:this.yieldRemaining>0?.55:this.lesson?.65:this.chapter===4?.85:1;
+  steer=Math.max(-1,Math.min(1,steer));
+  this.turnVelocity=steer?this.turnVelocity+(steer*.95-this.turnVelocity)*(1-Math.exp(-dt*12)):0;
+  const oldHeading=this.heading;
+  this.heading=Math.max(-Math.PI*.5,Math.min(Math.PI*.5,this.heading+this.turnVelocity*dt));
+  this.lookYaw+=(steer*.06-this.lookYaw)*(1-Math.exp(-dt*8));this.trackYaw=0;
+  const target=this.slowImpact>0?.4:this.yieldRemaining>0?.55:this.chapter===4?.85:1;
   this.speed+=(target-this.speed)*(1-Math.exp(-dt*8));
   const previous={x:this.pathAt(cameraZ(this.progress))+this.x*LATERAL_RANGE,z:cameraZ(this.progress)};
-  // C follows a real curved centreline; arc-length integration preserves airspeed.
-  const slope=(this.pathAt(previous.z+.1)-this.pathAt(previous.z-.1))/.2;
-  const baseSlope=(pathX(previous.z+.1)-pathX(previous.z-.1))/.2;
-  const arc=this.chapter>=0&&this.chapter<2&&this.routes[this.chapter]?Math.sqrt(1+slope*slope):this.routes[this.chapter]==='C'?Math.sqrt((1+slope*slope)/(1+baseSlope*baseSlope)):1;
-  const freeCity=this.chapter>=0&&this.chapter<2&&!!this.routes[this.chapter];
-  const flightHeading=(steer+this.driftVelocity()/STEER_RATE)*Math.PI*.43;
-  this.progress+=dt*this.speed*PACE*(freeCity?Math.max(.2,Math.cos(flightHeading)):1/arc);
+  const angle=(oldHeading+this.heading)/2,distance=dt*this.speed*PACE*FLIGHT_SPEED;
+  const proposed={x:previous.x+Math.sin(angle)*distance,z:previous.z+Math.cos(angle)*distance};
+  // Collision geometry blocks motion independently of damage cooldown or lesson state.
+  const solids=[...this.collisionBuildings(this.chapter-1),...this.collisionBuildings(this.chapter),...this.collisionBuildings(this.chapter+1)];
+  let hit=null,earliest=Infinity;
+  for(const solid of solids){const t=buildingHitTime(solid,previous,proposed);if(t<earliest){earliest=t;hit=solid;}}
+  let current=proposed;
+  if(hit){const t=Math.max(0,earliest-.002/Math.max(.002,distance));current={x:previous.x+(proposed.x-previous.x)*t,z:previous.z+(proposed.z-previous.z)*t};}
+  this.progress=current.z/FLIGHT_SPEED+10;
+  this.x=(current.x-this.pathAt(current.z))/LATERAL_RANGE;
   const drain=Math.min(this.energy,dt*ENERGY.flight);this.energy-=drain;this.energyLedger.flight-=drain;
-  if(freeCity){
-   const wx=Math.max(-200,Math.min(220,previous.x+dt*this.speed*PACE*FLIGHT_SPEED*Math.sin(flightHeading)));
-   this.x=(wx-this.pathAt(cameraZ(this.progress)))/LATERAL_RANGE;
-  }else if(this.progress>=10){const bound=Math.max(1,Math.abs(this.x));this.x=Math.max(-bound,Math.min(bound,this.x+(steer*STEER_RATE+this.driftVelocity())*dt));}
+  if(hit){this.collide(hit.id,hit.severe||(this.speed>.85&&previous.z<hit.z-1.1&&proposed.z>=hit.z-1.1),hit.glass);if(this.lesson||this.recovery)return;}
   for(const key of ['interference','gust']){const effect=this[key];if(effect){effect.elapsed+=dt;effect.remaining=Math.max(0,effect.duration-effect.elapsed);if(effect.remaining<=0)this[key]=null}}
   const c=this.progress<10?-1:this.progress<45?0:this.progress<80?1:this.progress<115?2:this.progress<140?3:4;
   if(c!==this.chapter){
@@ -408,11 +412,6 @@ class Journey {
   }
   const local=this.progress-(STAGE_STARTS[c]||0);
   if(this.waitingRoute){
-   const point={x:this.pathAt(cameraZ(this.progress))+this.x*LATERAL_RANGE,z:cameraZ(this.progress)};
-   const wall=this.buildings().find(b=>b.entrance&&hitsBuilding(b,previous,point));
-   // A real facade stops forward penetration, while lateral steering remains available.
-   // Damage still uses the existing collision rules, cooldown and once-per-object event.
-   if(wall){this.progress=previous.z/FLIGHT_SPEED+10;this.collide(wall.id,true,wall.glass);if(this.lesson)return;}
    const z=cameraZ(this.progress),x=this.pathAt(z)+this.x*LATERAL_RANGE;
    const passage=entrancePassages(c).find(p=>z>=p.z&&z<=p.end&&x>=p.left&&x<=p.right);
    if(passage)this.choose(passage.route);
@@ -432,16 +431,6 @@ class Journey {
    if((c===2||c===3)&&['B','C'].includes(this.routes[c])&&local>=21)this.rest(c);
   }
   if(c===2&&local>=25)this.teach('green');
-  const current={x:this.pathAt(cameraZ(this.progress))+this.x*LATERAL_RANGE,z:cameraZ(this.progress)};
-  if(c>=0&&c<4&&local>=8&&this.grace===0){
-   for(const building of this.collisionBuildings()){
-    if(!building.entry&&this.districtReveal()<1)continue;
-    const frontal=!building.solidTree&&this.speed>.85&&previous.z<building.z-1.1&&current.z>=building.z-1.1;
-    if(hitsBuilding(building,previous,current)&&this.collide(building.id,building.severe||frontal,building.glass)){
-     this.x=Math.max(-1,Math.min(1,this.x-(building.side||Math.sign(previous.x-building.x)*-1||1)*.16));if(this.lesson)return;break;
-    }
-   }
-  }
   this.checkRecovery();
   // Safe waypoints guarantee learning even when a habitat or flock is bypassed.
   if(this.progress>=137)for(const id of ['green','pond','birds'])this.teach(id);
@@ -518,7 +507,7 @@ class FlightRenderer {
    const drift=this.reducedEffects?0:Math.sin(g.clock*.008)*w*.012;
    const scale=Math.max((w+this.f*1.5)/image.width,H*1.04/image.height),iw=image.width*scale,ih=image.height*scale;
    c.save();c.beginPath();c.rect(0,0,w,H);c.clip();c.globalAlpha=alpha;
-   c.drawImage(image,(w-iw)/2+drift-g.x*2-this.yaw*this.f,H-ih,iw,ih);c.restore();return true;
+   c.drawImage(image,Math.max(w-iw,Math.min(0,(w-iw)/2+drift-g.x*2-this.yaw*this.f)),H-ih,iw,ih);c.restore();return true;
   };
   const previous=this.skyNames[Math.max(0,stage-1)],current=this.skyNames[stage];
   const hasPrev=paint(previous,1);paint(current,hasPrev?blend:1);
@@ -816,7 +805,7 @@ class FlightRenderer {
    }
   }
  }
- backdropBuilding(b,p,night){const c=this.ctx;const d=this.depth([b.x,0,b.z]);if(b.chapter===4||d<8||d>650)return;
+ backdropBuilding(b,p,night){const c=this.ctx;const d=this.depth([b.x,0,b.z]);if(b.chapter===4||d+b.width+b.depth<3||d>650)return;if(d<90){this.building({...b,kind:['commercial','stepped'].includes(b.kind)?'office':b.kind},p,night);return;}
    const pt=this.project([b.x,b.height/2,b.z]),extent=(b.width+b.depth+b.height)*this.f/d;if(pt[0]+extent<0||pt[0]-extent>this.w)return;
    const curtain=curtainBuilding(b),tone=colorMix(curtain?(night?'#243b51':'#72a4ba'):(night?'#283449':'#657c8c'),p.haze,Math.min(.88,.3+d/950)),point=(x,y,z)=>worldPoint(b,x,y,z),w=b.width/2,depth=b.depth/2,h=b.height,side=this.cx>b.x?1:-1;
    const face=[point(-w,0,-depth),point(w,0,-depth),point(w,h,-depth),point(-w,h,-depth)];
@@ -981,7 +970,7 @@ class FlightRenderer {
   points.forEach(([x,y],i)=>{c.fillStyle='#f7e6b7';c.beginPath();c.arc(x*w,y*h,4,0,7);c.fill();c.fillText(labels[i],x*w,y*h-13)});c.textAlign='left';
  }
  playerBird(position,g){
-  const heading=(g.trackYaw||0)+(g.lookYaw||0),bank=this.reducedEffects?0:g.lookYaw*1.7,flap=this.reducedEffects?0:Math.sin(g.clock*5)*.45;
+  const heading=g.heading||0,bank=this.reducedEffects?0:g.lookYaw*1.7,flap=this.reducedEffects?0:Math.sin(g.clock*5)*.45;
   const point=(x,y,z)=>{const yy=y+x*Math.sin(bank);return [position[0]+x*Math.cos(heading)+z*Math.sin(heading),position[1]+yy,position[2]-x*Math.sin(heading)+z*Math.cos(heading)]};
   const poly=(points,color)=>this.polygon(points.map(p=>point(...p)),color);
   poly([[-.3,0,-.7],[-.85,-.1,-1.7],[.85,-.1,-1.7],[.3,0,-.7]],'#665443');
@@ -1003,16 +992,21 @@ class FlightRenderer {
   const landing=g.done&&g.success&&!this.reducedEffects?Math.min(4,g.outro.elapsed):0;
   this.cz=cameraZ(t)+FLIGHT_SPEED*(landing-landing*landing/8);this.cx=g.pathAt(this.cz)+g.x*23;this.eye=EYE_HEIGHT+(this.reducedEffects?0:Math.sin(g.clock*1.8)*.4);
   if(!this.reducedEffects)this.reflectionClock=g.clock;
-  this.yaw=this.reducedEffects?0:(g.lookYaw||0)+(g.trackYaw||0);this.cosYaw=Math.cos(this.yaw);this.sinYaw=Math.sin(this.yaw);
+  this.yaw=g.heading||0;this.cosYaw=Math.cos(this.yaw);this.sinYaw=Math.sin(this.yaw);
   const birdPosition=[this.cx,EYE_HEIGHT,this.cz];
   if(g.viewMode==='third'){
-   const heading=this.yaw,solids=g.collisionBuildings(),blocked=d=>solids.some(b=>hitsBuilding(b,{x:birdPosition[0],z:birdPosition[2]},{x:birdPosition[0]-Math.sin(heading)*d,z:birdPosition[2]-Math.cos(heading)*d},1.8));
+   if(!g.cameraDistance)this.followPoint=null;
+   const heading=this.yaw,solids=[...g.collisionBuildings(g.chapter-1),...g.collisionBuildings(g.chapter),...g.collisionBuildings(g.chapter+1)],blocked=d=>solids.some(b=>hitsBuilding(b,{x:birdPosition[0],z:birdPosition[2]},{x:birdPosition[0]-Math.sin(heading)*d,z:birdPosition[2]-Math.cos(heading)*d},.4));
    let safe=13;while(safe>.5&&blocked(safe))safe-=.5;
    // Retract immediately to prevent wall penetration; extend smoothly in clear space.
    const now=performance.now(),dt=Math.min(.05,(now-(this.cameraTime||now))/1000);this.cameraTime=now;
    g.cameraDistance=Math.min(safe,(g.cameraDistance||0)+(safe-(g.cameraDistance||0))*(1-Math.exp(-dt*8)));
-   this.cx-=Math.sin(heading)*g.cameraDistance;this.cz-=Math.cos(heading)*g.cameraDistance;this.eye+=g.cameraDistance*.18;
-  }else{g.cameraDistance=0;this.cameraTime=performance.now();}
+   if(this.followPoint&&g.cameraDistance>0){
+    const crosses=d=>solids.some(b=>hitsBuilding(b,this.followPoint,{x:birdPosition[0]-Math.sin(heading)*d,z:birdPosition[2]-Math.cos(heading)*d},.4));
+    while(g.cameraDistance>.5&&crosses(g.cameraDistance))g.cameraDistance=Math.max(.5,g.cameraDistance-.5);
+   }
+   this.cx-=Math.sin(heading)*g.cameraDistance;this.cz-=Math.cos(heading)*g.cameraDistance;this.eye+=g.cameraDistance*.18;this.followPoint={x:this.cx,z:this.cz};
+  }else{g.cameraDistance=0;this.followPoint=null;this.cameraTime=performance.now();}
   this.sky(g,p);
   for(let layer=0;layer<3;layer++){
    const points=[[0,this.horizon+3]];for(let x=0;x<=w+12;x+=12){const ridge=Math.sin((x+this.yaw*this.f)*.006+layer)*22+Math.sin((x+this.yaw*this.f)*.013+layer*.4)*10;
@@ -1034,13 +1028,13 @@ class FlightRenderer {
   if(!this.cityWorld)this.cityWorld=[0,1,2,3].flatMap(cityBackdrop).map(b=>({...b,background:true}));
 
   c.save();if(g.impact>0)c.translate(Math.sin(g.clock*90)*5,Math.cos(g.clock*80)*4);
-  const stage=Math.max(0,g.chapter),objects=[...g.buildings(stage)];
+  const stage=Math.max(0,g.chapter),objects=[...g.buildings(stage),...g.buildings(stage-1)];
   if(stage<4)objects.push(...g.buildings(stage+1).filter(b=>b.z<this.cz+350));
   if(!night)for(const b of objects){
    if(b.z<this.cz+3||b.z>this.cz+240)continue;const x0=b.x-b.width/2,x1=b.x+b.width/2,shift=b.height*.3;
    c.save();c.globalAlpha=b.entry?1:g.districtReveal(b.chapter);this.polygon([worldPoint(b,-b.width/2,.06,-b.depth/2),worldPoint(b,b.width/2,.06,-b.depth/2),worldPoint(b,b.width/2+shift,.06,b.depth/2+shift),worldPoint(b,-b.width/2+shift,.06,b.depth/2+shift)],'#223d4925');c.restore();
   }
-  objects.push(...this.cityWorld.filter(b=>this.depth([b.x,0,b.z])>8&&this.depth([b.x,0,b.z])<650));
+  objects.push(...this.cityWorld.filter(b=>this.depth([b.x,0,b.z])+b.width+b.depth>3&&this.depth([b.x,0,b.z])<650));
   for(const b of cityBackdrop(4))if(b.z>this.cz-25&&b.z<this.cz+400)objects.push({...b,entry:true,route:'C',glass:false});
   for(const part of this.bridgeObjects())if(part.z+(part.depth||0)>this.cz+3&&part.z<this.cz+420)objects.push(part);
   this.vegetation(objects,stage);
@@ -1120,7 +1114,7 @@ const lessons={
 const extraNotes={
  wall:['外牆與飛行空間','Walls and flight space','建築會限制可飛行空間。觀察整個輪廓，提前移向開口；不要只看窗戶。','Buildings constrain flight space. Read the whole silhouette and steer toward an opening early.'],
  city:['進入城市','Entering the city','建築間隙並不總是直線相連。先看下一個出口，再平穩轉向。','Gaps do not always align. Find the next opening before steering.'],
- night:['進入夜間街區','Entering the night district','人工照明可能影響部分遷徙鳥類。留意偏移提示，提前準備反向修正。','Artificial light can affect some migratory birds. Watch drift warnings and prepare to countersteer.'],
+ night:['進入夜間街區','Entering the night district','人工照明可能影響部分遷徙鳥類。留意照明與建築，航向由你控制。','Artificial light can affect some migratory birds. Watch the lights and buildings; you control the heading.'],
  pond:['魚塘與村落','Ponds and villages','魚塘周邊可能提供覓食空間，價值取決於管理和干擾。觀察陣風預告，遠離鳥群。','Ponds may offer feeding habitat; management and disturbance matter. Watch wind warnings and give birds space.'],
  birds:['為鳥群留出空間','Give birds space','接近可能令鳥群警戒或驚飛，增加能量消耗。提前繞行，減少干擾。','Approaching may cause vigilance or flushing and expend energy. Detour early to reduce disturbance.'],
  arrival:['抵達並不代表旅程結束','Arrival is part of migration','候鳥需要一連串合適停歇地。回顧本次遇到的風險與幫助，思考如何保護沿途棲地。','Migrants need a network of suitable stopovers. Review the hazards and support you encountered and consider habitat protection.'],
@@ -1159,7 +1153,7 @@ function modalLanguageButtons(){
  }
 }
 function labels(){
- $('viewMode').textContent=innerWidth<600?(g.viewMode==='third'?'3P':'1P'):(g.viewMode==='third'?tr('第三人稱','Third person'):tr('第一人稱','First person'));$('viewMode').title=tr('切換第一／第三人稱（V）','Switch first / third person (V)');$('viewMode').setAttribute('aria-pressed',String(g.viewMode==='third'));
+ $('viewMode').textContent=innerWidth<600?(tr('視角 ','View ')+(g.viewMode==='third'?'3':'1')):(g.viewMode==='third'?tr('第三人稱','Third person'):tr('第一人稱','First person'));$('viewMode').title=tr('切換第一／第三人稱（V）','Switch first / third person (V)');$('viewMode').setAttribute('aria-pressed',String(g.viewMode==='third'));
  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
  $('language').setAttribute('aria-label','切換語言 / Switch language');
  for(const [id,label] of [['pause',g.paused?tr('繼續飛行','Resume flight'):tr('暫停','Pause')],['help',tr('說明與飛行筆記','Instructions & field notes')],['mute',muted?tr('開啟聲音','Unmute'):tr('靜音','Mute')],['restart',tr('重新開始','Restart')]]){$(id).title=label;$(id).setAttribute('aria-label',label)}
@@ -1167,7 +1161,7 @@ function labels(){
  setText('introText',tr('與家人失散的候鳥，將穿過城市、夜色與綠地，飛向米埔濕地。觀察建築間的通道，選擇自己的路。','A bird separated from its family crosses city, night and green space toward Mai Po. Observe the passages between buildings and choose your route.'));
  setText('start',tr('展翅啟程 ↗','Begin the journey ↗'));
  setText('introHint',tr('按 A / D 或 ← / →；觸屏可按住兩側箭頭。遊戲數值並非科學數據。','Use A / D or ← / →; on touchscreens hold the side arrows. Game values are not scientific data.'));
- setText('controlHint',tr('A / D · ← / → · 按住轉向','A / D · ← / → · Hold to steer'));
+ setText('controlHint',tr('A/D 或 ←/→ 轉彎 · 松開保持方向 · V 切換視角','A/D or arrows turn · Release holds heading · V switches view'));
  uiKey='';lessonKey='';endKey='';recoveryKey='';updateUI();modalLanguageButtons();
 }
 function restart(){g.reset();g.started=true;clearInput();accumulator=0;$('intro').hidden=true;for(const id of ['pausePanel','helpPanel','ending','recovery'])$(id).hidden=true;uiKey=lessonKey=endKey=recoveryKey='';initAudio();labels()}
@@ -1177,7 +1171,7 @@ function pause(value=true){if(!g.started||g.done)return;g.paused=value;clearInpu
 }
 function help(){
  helpWasPaused=g.paused;g.paused=true;clearInput();$('pausePanel').hidden=true;$('helpPanel').hidden=false;
- $('helpPanel').innerHTML=`<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><h2 id="helpTitle">${tr('飛行指南','Flight guide')}</h2><p>${tr('使用 A / D 或左右方向鍵；觸屏按住左下或右下箭頭。鬆開即停止轉向。Escape 或 II 暫停。觀察立體樓房之間的空間，碰到外牆會扣健康值。','Use A / D or arrow keys; on touchscreens hold the lower-left or lower-right button. Release to stop steering. Escape or II pauses. Observe the spaces between buildings; touching a façade costs health.')}</p><p>${tr('首次知識卡會安全暫停飛行，讀完後按繼續。飛入建築之間的實際通道，通過街角後確認路線；沿建築外牆轉向，避免撞牆。重複事件顯示簡短回饋；飛行筆記只列出已解鎖內容。照明干擾會持續偏移，請反向轉向修正；A 約 6 秒、B 約 3 秒、C 約 1 秒，期間只扣一次體力。飛行每秒 −0.54 體力；C 繞道每段 −7；夜間干擾 A/B/C −14/−8/−3。城市、廊道與村落指定停歇點 B +7、C +17，每處僅一次；完成旅程 +8。低於 30 會預警。數值屬遊戲設計，並非科學測量。','First-time notes freeze flight until Continue. Fly through an actual gap between buildings; passing its corner confirms the route. Steer along facades and avoid walls. Repeated events give brief feedback; the notebook lists unlocked topics. Countersteer against sustained light drift: A about 6s, B 3s, C 1s. Energy is charged once per zone. Flight −0.54 energy/second; each C detour −7; night interference A/B/C −14/−8/−3. City, corridor and village rests: B +7, C +17, once each; completed journey +8. Warning below 30. These are game-design values, not scientific measurements.')}</p><p>${tr('普通碰撞 −25 健康，嚴重碰撞 −35。廊道鳥群附近會短暫減速；魚塘有預告陣風，請反向修正。濕地請為棲息鳥群讓行。','Ordinary collision −25 health; severe collision −35. Slow down near corridor flocks. Countersteer against forecast gusts over ponds. Give wetland roosts space.')}</p><label class="effects-setting"><input id="reduceEffects" type="checkbox" ${renderer.reducedEffects?'checked':''}> ${tr('減少視覺效果（停止雲層、植被、反射動畫及風線）','Reduce visual effects (freeze clouds, foliage, reflection animation and wind streaks)')}</label><details><summary>${tr('完整飛行筆記','Complete field notes')}</summary>${Object.entries(lessons).filter(([id])=>g.seen.has(id)).map(([,l])=>`<h3>${l.title[lang==='zh'?0:1]}</h3><p>${l.text[lang==='zh'?0:1]}</p>`).join('')}</details><button id="closeHelp" class="primary">${tr('返回遊戲','Back to game')}</button></div>`;
+ $('helpPanel').innerHTML=`<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><h2 id="helpTitle">${tr('飛行指南','Flight guide')}</h2><p>${tr('使用 A / D 或左右方向鍵；觸屏按住左下或右下箭頭。鬆開即停止轉向。Escape 或 II 暫停。觀察立體樓房之間的空間，碰到外牆會扣健康值。','Use A / D or arrow keys; on touchscreens hold the lower-left or lower-right button. Release to stop steering. Escape or II pauses. Observe the spaces between buildings; touching a façade costs health.')}</p><p>${tr('首次知識卡會安全暫停飛行，讀完後按繼續。飛入建築之間的實際通道，通過街角後確認路線；沿建築外牆轉向，避免撞牆。重複事件顯示簡短回饋；飛行筆記只列出已解鎖內容。照明與陣風只顯示環境提示，不會改變航向；照明提示 A 約 6 秒、B 約 3 秒、C 約 1 秒，期間只扣一次體力。飛行每秒 −0.54 體力；C 繞道每段 −7；夜間干擾 A/B/C −14/−8/−3。城市、廊道與村落指定停歇點 B +7、C +17，每處僅一次；完成旅程 +8。低於 30 會預警。數值屬遊戲設計，並非科學測量。','First-time notes freeze flight until Continue. Fly through an actual gap between buildings; passing its corner confirms the route. Steer along facades and avoid walls. Repeated events give brief feedback; the notebook lists unlocked topics. Environmental cues do not steer the bird. Lighting feedback: A about 6s, B 3s, C 1s. Energy is charged once per zone. Flight −0.54 energy/second; each C detour −7; night interference A/B/C −14/−8/−3. City, corridor and village rests: B +7, C +17, once each; completed journey +8. Warning below 30. These are game-design values, not scientific measurements.')}</p><p>${tr('普通碰撞 −25 健康，嚴重碰撞 −35。廊道鳥群附近會短暫減速；魚塘有陣風環境提示，不會自動轉向。濕地請為棲息鳥群讓行。','Ordinary collision −25 health; severe collision −35. Slow down near corridor flocks. Gust cues over ponds do not change your heading. Give wetland roosts space.')}</p><label class="effects-setting"><input id="reduceEffects" type="checkbox" ${renderer.reducedEffects?'checked':''}> ${tr('減少視覺效果（停止雲層、植被、反射動畫及風線）','Reduce visual effects (freeze clouds, foliage, reflection animation and wind streaks)')}</label><details><summary>${tr('完整飛行筆記','Complete field notes')}</summary>${Object.entries(lessons).filter(([id])=>g.seen.has(id)).map(([,l])=>`<h3>${l.title[lang==='zh'?0:1]}</h3><p>${l.text[lang==='zh'?0:1]}</p>`).join('')}</details><button id="closeHelp" class="primary">${tr('返回遊戲','Back to game')}</button></div>`;
  $('reduceEffects').onchange=e=>{renderer.reducedEffects=e.target.checked};
  $('closeHelp').onclick=()=>{$('helpPanel').hidden=true;g.paused=helpWasPaused;clearInput();if(helpWasPaused)pause(true);else {labels();if(g.lesson)$('continueLesson')?.focus({preventScroll:true})}};$('closeHelp').focus();modalLanguageButtons();updateUI();
 }
@@ -1214,7 +1208,7 @@ function renderLesson(){
  const key=g.lesson.id+lang;
  if(key!==lessonKey||!$('continueLesson')){
   lessonKey=key;clearInput();const t=EDUCATION_CONTENT[g.lesson.id],i=lang==='zh'?0:1;
-  const consequence=g.lesson.reason==='consequence'?(g.lesson.id==='glass'?tr('玻璃碰撞已按原有規則扣減健康；現在暫停，了解原因與保護方法。','The glass collision applied the usual Health penalty. Flight is paused to explore the cause and solutions.'):g.lesson.id==='light'?tr('照明偏移模擬已觸發；閱讀期間，效果與體力計時均已暫停。','The simulated lighting effect has started. Its timer and Energy use are paused while you read.'):''):'';
+  const consequence=g.lesson.reason==='consequence'?(g.lesson.id==='glass'?tr('玻璃碰撞已按原有規則扣減健康；現在暫停，了解原因與保護方法。','The glass collision applied the usual Health penalty. Flight is paused to explore the cause and solutions.'):g.lesson.id==='light'?tr('照明環境提示已觸發；閱讀期間，效果與體力計時均已暫停。','The simulated lighting effect has started. Its timer and Energy use are paused while you read.'):''):'';
   panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');panel.setAttribute('aria-labelledby','lessonTitle');
   panel.innerHTML=`<div class="lesson-dialog"><div class="lesson-heading"><div><span id="lessonTag">${tr('城市與鳥 · 知識展板','CITY & BIRDS · FIELD EXHIBIT')} ${EDUCATION_IDS.indexOf(g.lesson.id)+1} / 6</span><h2 id="lessonTitle">${t.title[i]}</h2></div><div class="lesson-actions"><button class="lesson-language" aria-label="切換語言 / Switch language">繁中 | EN</button><button class="lesson-help" aria-label="${tr('說明','Help')}">?</button></div></div><div class="lesson-scroll" tabindex="0" aria-label="${tr('知識內容，可捲動閱讀','Educational content, scroll to read')}">${consequence?`<p class="science-note consequence-note" role="status">${consequence}</p>`:''}<figure class="lesson-figure"><img width="800" height="280" src="${t.image}" alt="${t.alt[i]}"><figcaption><span>${t.labels[0][i]}</span><span>${t.labels[1][i]}</span></figcaption></figure><div class="lesson-sections">${[['impact','!','影響','The impact'],['why','?','為甚麼？','Why does it happen?'],['solution','✓','我們可以做甚麼？','What can we do?']].map(([field,icon,zh,en])=>`<section class="lesson-block ${field}"><h3><span aria-hidden="true">${icon}</span> ${tr(zh,en)}</h3><p>${t[field][i]}</p></section>`).join('')}</div>${t.note?`<p class="science-note">${t.note[i]}</p>`:''}</div><div class="lesson-footer"><span>${tr('飛行已暫停 · 按你的步調閱讀','Flight paused · Read at your own pace')}</span><button id="continueLesson" class="primary">${tr('繼續飛行','CONTINUE FLYING')}</button></div></div>`;
   const view=document.createElement('button');view.className='lesson-view';view.textContent=tr('切換視角','Switch view');view.onclick=()=>$('viewMode').click();panel.querySelector('.lesson-language').parentElement.append(view);
@@ -1261,9 +1255,9 @@ function renderInterference(){
  $('interference').hidden=!visible;if(!visible)return;
  if(effect){
   const seconds=Math.ceil(effect.remaining),right=effect.side>0;
-  setText('interference',tr(`${g.interference?'照明干擾':'陣風'} · 向${right?'右':'左'}偏移 ${seconds} 秒 · 向${right?'左':'右'}修正`,`${g.interference?'Light interference':'Gust'} · ${right?'Right':'Left'} drift ${seconds}s · Steer ${right?'left':'right'}`));
+  setText('interference',tr(`${g.interference?'照明提示':'陣風提示'} · ${seconds} 秒 · 航向由你控制`,`${g.interference?'Lighting cue':'Gust cue'} · ${seconds}s · You control the heading`));
  }else{
-  const messages={'wind-left':['即將有向左陣風 · 準備向右修正','Leftward gust ahead · Prepare to steer right'],'wind-right':['即將有向右陣風 · 準備向左修正','Rightward gust ahead · Prepare to steer left'],'birds-ahead':['前方有鳥群 · 保持距離，提前繞行','Birds ahead · Keep distance and steer around'],'yield':['保持距離，為鳥群讓行 · 暫時減速','Give birds space · Slowing briefly'],'roost':['保持棲息區距離 · 平穩繞行','Give the roost space · Pass gently']};
+  const messages={'wind-left':['前方有陣風 · 航向由你控制','Gust ahead · You control the heading'],'wind-right':['前方有陣風 · 航向由你控制','Gust ahead · You control the heading'],'birds-ahead':['前方有鳥群 · 保持距離，提前繞行','Birds ahead · Keep distance and steer around'],'yield':['保持距離，為鳥群讓行 · 暫時減速','Give birds space · Slowing briefly'],'roost':['保持棲息區距離 · 平穩繞行','Give the roost space · Pass gently']};
   setText('interference',messages[note.kind][lang==='zh'?0:1]);
  }
 }

@@ -1,0 +1,146 @@
+[
+  {
+    "chapter": 0,
+    "route": "A",
+    "late": false,
+    "worldJump": 0
+  },
+  {
+    "chapter": 0,
+    "route": "A",
+    "late": true,
+    "worldJump": 0
+  },
+  {
+    "chapter": 0,
+    "route": "B",
+    "late": false,
+    "worldJump": 0
+  },
+  {
+    "chapter": 0,
+    "route": "B",
+    "late": true,
+    "worldJump": 0
+  },
+  {
+    "chapter": 0,
+    "route": "C",
+    "late": false,
+    "worldJump": 0
+  },
+  {
+    "chapter": 0,
+    "route": "C",
+    "late": true,
+    "worldJump": 0
+  },
+  {
+    "chapter": 1,
+    "route": "A",
+    "late": false,
+    "worldJump": 0
+  },
+  {
+    "chapter": 1,
+    "route": "A",
+    "late": true,
+    "worldJump": 0
+  },
+  {
+    "chapter": 1,
+    "route": "B",
+    "late": false,
+    "worldJump": 0
+  },
+  {
+    "chapter": 1,
+    "route": "B",
+    "late": true,
+    "worldJump": 0
+  },
+  {
+    "chapter": 1,
+    "route": "C",
+    "late": false,
+    "worldJump": 0
+  },
+  {
+    "chapter": 1,
+    "route": "C",
+    "late": true,
+    "worldJump": 0
+  },
+  {
+    "chapter": 2,
+    "route": "A",
+    "late": false,
+    "worldJump": 0
+  },
+  {
+    "chapter": 2,
+    "route": "A",
+    "late": true,
+    "worldJump": 0
+  },
+  {
+    "chapter": 2,
+    "route": "B",
+    "late": false,
+    "worldJump": 0
+  },
+  {
+    "chapter": 2,
+    "route": "B",
+    "late": true,
+    "worldJump": 0
+  },
+  {
+    "chapter": 2,
+    "route": "C",
+    "late": false,
+    "worldJump": 0
+  },
+  {
+    "chapter": 2,
+    "route": "C",
+    "late": true,
+    "worldJump": 0
+  },
+  {
+    "chapter": 3,
+    "route": "A",
+    "late": false,
+    "worldJump": 0
+  },
+  {
+    "chapter": 3,
+    "route": "A",
+    "late": true,
+    "worldJump": 0
+  },
+  {
+    "chapter": 3,
+    "route": "B",
+    "late": false,
+    "worldJump": 0
+  },
+  {
+    "chapter": 3,
+    "route": "B",
+    "late": true,
+    "worldJump": 0
+  },
+  {
+    "chapter": 3,
+    "route": "C",
+    "late": false,
+    "worldJump": 0
+  },
+  {
+    "chapter": 3,
+    "route": "C",
+    "late": true,
+    "worldJump": 0
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "route": "A",
+    "neutralWorldDisplacement": 0,
+    "frozen": true
+  },
+  {
+    "route": "B",
+    "neutralWorldDisplacement": 0,
+    "frozen": true
+  },
+  {
+    "route": "C",
+    "neutralWorldDisplacement": 0,
+    "frozen": true
+  }
+]

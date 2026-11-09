@@ -1,0 +1,451 @@
+{
+  "errors": [],
+  "journeys": [
+    {
+      "device": "desktop",
+      "view": "first",
+      "name": "A0",
+      "success": true,
+      "health": 100,
+      "energy": 13.161999999996937
+    },
+    {
+      "device": "desktop",
+      "view": "first",
+      "name": "A1",
+      "success": true,
+      "health": 100,
+      "energy": 14.196999999996976
+    },
+    {
+      "device": "desktop",
+      "view": "first",
+      "name": "A2",
+      "success": true,
+      "health": 100,
+      "energy": 14.56599999999699
+    },
+    {
+      "device": "desktop",
+      "view": "first",
+      "name": "B0",
+      "success": true,
+      "health": 100,
+      "energy": 34.05299999999697
+    },
+    {
+      "device": "desktop",
+      "view": "first",
+      "name": "B1",
+      "success": true,
+      "health": 100,
+      "energy": 39.39699999999691
+    },
+    {
+      "device": "desktop",
+      "view": "first",
+      "name": "B2",
+      "success": true,
+      "health": 100,
+      "energy": 29.660999999996804
+    },
+    {
+      "device": "desktop",
+      "view": "first",
+      "name": "C0",
+      "success": true,
+      "health": 100,
+      "energy": 24.67199999999673
+    },
+    {
+      "device": "desktop",
+      "view": "first",
+      "name": "C1",
+      "success": true,
+      "health": 100,
+      "energy": 56.53899999999665
+    },
+    {
+      "device": "desktop",
+      "view": "first",
+      "name": "C2",
+      "success": true,
+      "health": 100,
+      "energy": 19.70399999999654
+    },
+    {
+      "device": "desktop",
+      "view": "third",
+      "name": "A0",
+      "success": true,
+      "health": 100,
+      "energy": 13.161999999996937
+    },
+    {
+      "device": "desktop",
+      "view": "third",
+      "name": "A1",
+      "success": true,
+      "health": 100,
+      "energy": 14.196999999996976
+    },
+    {
+      "device": "desktop",
+      "view": "third",
+      "name": "A2",
+      "success": true,
+      "health": 100,
+      "energy": 14.56599999999699
+    },
+    {
+      "device": "desktop",
+      "view": "third",
+      "name": "B0",
+      "success": true,
+      "health": 100,
+      "energy": 34.05299999999697
+    },
+    {
+      "device": "desktop",
+      "view": "third",
+      "name": "B1",
+      "success": true,
+      "health": 100,
+      "energy": 39.39699999999691
+    },
+    {
+      "device": "desktop",
+      "view": "third",
+      "name": "B2",
+      "success": true,
+      "health": 100,
+      "energy": 29.660999999996804
+    },
+    {
+      "device": "desktop",
+      "view": "third",
+      "name": "C0",
+      "success": true,
+      "health": 100,
+      "energy": 24.67199999999673
+    },
+    {
+      "device": "desktop",
+      "view": "third",
+      "name": "C1",
+      "success": true,
+      "health": 100,
+      "energy": 56.53899999999665
+    },
+    {
+      "device": "desktop",
+      "view": "third",
+      "name": "C2",
+      "success": true,
+      "health": 100,
+      "energy": 19.70399999999654
+    },
+    {
+      "device": "portrait",
+      "view": "first",
+      "name": "A0",
+      "success": true,
+      "health": 100,
+      "energy": 13.161999999996937
+    },
+    {
+      "device": "portrait",
+      "view": "first",
+      "name": "A1",
+      "success": true,
+      "health": 100,
+      "energy": 14.196999999996976
+    },
+    {
+      "device": "portrait",
+      "view": "first",
+      "name": "A2",
+      "success": true,
+      "health": 100,
+      "energy": 14.56599999999699
+    },
+    {
+      "device": "portrait",
+      "view": "first",
+      "name": "B0",
+      "success": true,
+      "health": 100,
+      "energy": 34.05299999999697
+    },
+    {
+      "device": "portrait",
+      "view": "first",
+      "name": "B1",
+      "success": true,
+      "health": 100,
+      "energy": 39.39699999999691
+    },
+    {
+      "device": "portrait",
+      "view": "first",
+      "name": "B2",
+      "success": true,
+      "health": 100,
+      "energy": 29.660999999996804
+    },
+    {
+      "device": "portrait",
+      "view": "first",
+      "name": "C0",
+      "success": true,
+      "health": 100,
+      "energy": 24.67199999999673
+    },
+    {
+      "device": "portrait",
+      "view": "first",
+      "name": "C1",
+      "success": true,
+      "health": 100,
+      "energy": 56.53899999999665
+    },
+    {
+      "device": "portrait",
+      "view": "first",
+      "name": "C2",
+      "success": true,
+      "health": 100,
+      "energy": 19.70399999999654
+    },
+    {
+      "device": "portrait",
+      "view": "third",
+      "name": "A0",
+      "success": true,
+      "health": 100,
+      "energy": 13.161999999996937
+    },
+    {
+      "device": "portrait",
+      "view": "third",
+      "name": "A1",
+      "success": true,
+      "health": 100,
+      "energy": 14.196999999996976
+    },
+    {
+      "device": "portrait",
+      "view": "third",
+      "name": "A2",
+      "success": true,
+      "health": 100,
+      "energy": 14.56599999999699
+    },
+    {
+      "device": "portrait",
+      "view": "third",
+      "name": "B0",
+      "success": true,
+      "health": 100,
+      "energy": 34.05299999999697
+    },
+    {
+      "device": "portrait",
+      "view": "third",
+      "name": "B1",
+      "success": true,
+      "health": 100,
+      "energy": 39.39699999999691
+    },
+    {
+      "device": "portrait",
+      "view": "third",
+      "name": "B2",
+      "success": true,
+      "health": 100,
+      "energy": 29.660999999996804
+    },
+    {
+      "device": "portrait",
+      "view": "third",
+      "name": "C0",
+      "success": true,
+      "health": 100,
+      "energy": 24.67199999999673
+    },
+    {
+      "device": "portrait",
+      "view": "third",
+      "name": "C1",
+      "success": true,
+      "health": 100,
+      "energy": 56.53899999999665
+    },
+    {
+      "device": "portrait",
+      "view": "third",
+      "name": "C2",
+      "success": true,
+      "health": 100,
+      "energy": 19.70399999999654
+    },
+    {
+      "device": "landscape",
+      "view": "first",
+      "name": "A0",
+      "success": true,
+      "health": 100,
+      "energy": 13.161999999996937
+    },
+    {
+      "device": "landscape",
+      "view": "first",
+      "name": "A1",
+      "success": true,
+      "health": 100,
+      "energy": 14.196999999996976
+    },
+    {
+      "device": "landscape",
+      "view": "first",
+      "name": "A2",
+      "success": true,
+      "health": 100,
+      "energy": 14.56599999999699
+    },
+    {
+      "device": "landscape",
+      "view": "first",
+      "name": "B0",
+      "success": true,
+      "health": 100,
+      "energy": 34.05299999999697
+    },
+    {
+      "device": "landscape",
+      "view": "first",
+      "name": "B1",
+      "success": true,
+      "health": 100,
+      "energy": 39.39699999999691
+    },
+    {
+      "device": "landscape",
+      "view": "first",
+      "name": "B2",
+      "success": true,
+      "health": 100,
+      "energy": 29.660999999996804
+    },
+    {
+      "device": "landscape",
+      "view": "first",
+      "name": "C0",
+      "success": true,
+      "health": 100,
+      "energy": 24.67199999999673
+    },
+    {
+      "device": "landscape",
+      "view": "first",
+      "name": "C1",
+      "success": true,
+      "health": 100,
+      "energy": 56.53899999999665
+    },
+    {
+      "device": "landscape",
+      "view": "first",
+      "name": "C2",
+      "success": true,
+      "health": 100,
+      "energy": 19.70399999999654
+    },
+    {
+      "device": "landscape",
+      "view": "third",
+      "name": "A0",
+      "success": true,
+      "health": 100,
+      "energy": 13.161999999996937
+    },
+    {
+      "device": "landscape",
+      "view": "third",
+      "name": "A1",
+      "success": true,
+      "health": 100,
+      "energy": 14.196999999996976
+    },
+    {
+      "device": "landscape",
+      "view": "third",
+      "name": "A2",
+      "success": true,
+      "health": 100,
+      "energy": 14.56599999999699
+    },
+    {
+      "device": "landscape",
+      "view": "third",
+      "name": "B0",
+      "success": true,
+      "health": 100,
+      "energy": 34.05299999999697
+    },
+    {
+      "device": "landscape",
+      "view": "third",
+      "name": "B1",
+      "success": true,
+      "health": 100,
+      "energy": 39.39699999999691
+    },
+    {
+      "device": "landscape",
+      "view": "third",
+      "name": "B2",
+      "success": true,
+      "health": 100,
+      "energy": 29.660999999996804
+    },
+    {
+      "device": "landscape",
+      "view": "third",
+      "name": "C0",
+      "success": true,
+      "health": 100,
+      "energy": 24.67199999999673
+    },
+    {
+      "device": "landscape",
+      "view": "third",
+      "name": "C1",
+      "success": true,
+      "health": 100,
+      "energy": 56.53899999999665
+    },
+    {
+      "device": "landscape",
+      "view": "third",
+      "name": "C2",
+      "success": true,
+      "health": 100,
+      "energy": 19.70399999999654
+    }
+  ],
+  "cameras": [
+    {
+      "device": "desktop",
+      "pausedSwitchInvariant": true
+    },
+    {
+      "device": "portrait",
+      "pausedSwitchInvariant": true
+    },
+    {
+      "device": "landscape",
+      "pausedSwitchInvariant": true
+    }
+  ]
+}

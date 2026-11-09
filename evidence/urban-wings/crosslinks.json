@@ -1,0 +1,266 @@
+[
+  {
+    "route": "A",
+    "lane": 0,
+    "city": [
+      {
+        "distance": 351.33578260876874,
+        "time": 28.383333333333002
+      },
+      {
+        "distance": 353.06929218961926,
+        "time": 28.216666666666345
+      }
+    ],
+    "rests": [],
+    "ledger": {
+      "flight": -80.82000000000288,
+      "detour": 0,
+      "light": -14,
+      "rest": 0,
+      "arrival": 8
+    },
+    "success": true,
+    "health": 100,
+    "energy": 13.179999999996937,
+    "time": 149.6666666666779,
+    "progress": 185.00813061067967
+  },
+  {
+    "route": "A",
+    "lane": 1,
+    "city": [
+      {
+        "distance": 339.59078260876885,
+        "time": 27.41666666666639
+      },
+      {
+        "distance": 342.13070145825054,
+        "time": 27.316666666666396
+      }
+    ],
+    "rests": [],
+    "ledger": {
+      "flight": -79.80300000000284,
+      "detour": 0,
+      "light": -14,
+      "rest": 0,
+      "arrival": 8
+    },
+    "success": true,
+    "health": 100,
+    "energy": 14.196999999996976,
+    "time": 147.78333333334308,
+    "progress": 185.00425558086354
+  },
+  {
+    "route": "A",
+    "lane": 2,
+    "city": [
+      {
+        "distance": 335.9457826087691,
+        "time": 27.116666666666408
+      },
+      {
+        "distance": 339.0964768741741,
+        "time": 27.06666666666641
+      }
+    ],
+    "rests": [],
+    "ledger": {
+      "flight": -79.50600000000283,
+      "detour": 0,
+      "light": -14,
+      "rest": 0,
+      "arrival": 8
+    },
+    "success": true,
+    "health": 100,
+    "energy": 14.493999999996987,
+    "time": 147.23333333334264,
+    "progress": 185.00404357696644
+  },
+  {
+    "route": "B",
+    "lane": 0,
+    "city": [
+      {
+        "distance": 337.9923962287271,
+        "time": 27.64999999999971
+      },
+      {
+        "distance": 334.49084255883935,
+        "time": 27.49999999999972
+      }
+    ],
+    "rests": [
+      "rest-2",
+      "rest-3"
+    ],
+    "ledger": {
+      "flight": -80.03700000000285,
+      "detour": 0,
+      "light": -8,
+      "rest": 14,
+      "arrival": 8
+    },
+    "success": true,
+    "health": 100,
+    "energy": 33.96299999999697,
+    "time": 148.21666666667676,
+    "progress": 185.01666912070206
+  },
+  {
+    "route": "B",
+    "lane": 1,
+    "city": [
+      {
+        "distance": 355.81239622872585,
+        "time": 29.116666666666294
+      },
+      {
+        "distance": 351.90477497036414,
+        "time": 28.93333333333297
+      }
+    ],
+    "rests": [
+      "rest-city-0-B",
+      "rest-2",
+      "rest-3"
+    ],
+    "ledger": {
+      "flight": -81.60300000000291,
+      "detour": 0,
+      "light": -8,
+      "rest": 21,
+      "arrival": 8
+    },
+    "success": true,
+    "health": 100,
+    "energy": 39.39699999999691,
+    "time": 151.11666666667907,
+    "progress": 185.00985167727518
+  },
+  {
+    "route": "B",
+    "lane": 2,
+    "city": [
+      {
+        "distance": 386.99739622872596,
+        "time": 31.683333333332815
+      },
+      {
+        "distance": 383.0898262409233,
+        "time": 31.499999999999492
+      }
+    ],
+    "rests": [
+      "rest-2",
+      "rest-3"
+    ],
+    "ledger": {
+      "flight": -84.37500000000301,
+      "detour": 0,
+      "light": -8,
+      "rest": 14,
+      "arrival": 8
+    },
+    "success": true,
+    "health": 100,
+    "energy": 29.624999999996803,
+    "time": 156.25000000001648,
+    "progress": 185.01795510905146
+  },
+  {
+    "route": "C",
+    "lane": 0,
+    "city": [
+      {
+        "distance": 395.77779105522353,
+        "time": 31.449999999999495
+      },
+      {
+        "distance": 391.40076204541225,
+        "time": 31.249999999999506
+      }
+    ],
+    "rests": [
+      "rest-2",
+      "rest-3"
+    ],
+    "ledger": {
+      "flight": -86.33700000000309,
+      "detour": -28,
+      "light": -3,
+      "rest": 34,
+      "arrival": 8
+    },
+    "success": true,
+    "health": 100,
+    "energy": 24.662999999996728,
+    "time": 159.8833333333527,
+    "progress": 185.01787641648934
+  },
+  {
+    "route": "C",
+    "lane": 1,
+    "city": [
+      {
+        "distance": 419.8752910552246,
+        "time": 33.43333333333272
+      },
+      {
+        "distance": 415.0986855711223,
+        "time": 33.1999999999994
+      }
+    ],
+    "rests": [
+      "rest-city-0-C",
+      "rest-city-1-C",
+      "rest-2",
+      "rest-3"
+    ],
+    "ledger": {
+      "flight": -88.46100000000317,
+      "detour": -28,
+      "light": -3,
+      "rest": 68,
+      "arrival": 8
+    },
+    "success": true,
+    "health": 100,
+    "energy": 56.53899999999665,
+    "time": 163.81666666668917,
+    "progress": 185.00762835265093
+  },
+  {
+    "route": "C",
+    "lane": 2,
+    "city": [
+      {
+        "distance": 451.6677910552201,
+        "time": 36.04999999999924
+      },
+      {
+        "distance": 447.29029663854385,
+        "time": 35.84999999999925
+      }
+    ],
+    "rests": [
+      "rest-2",
+      "rest-3"
+    ],
+    "ledger": {
+      "flight": -91.29600000000327,
+      "detour": -28,
+      "light": -3,
+      "rest": 34,
+      "arrival": 8
+    },
+    "success": true,
+    "health": 100,
+    "energy": 19.70399999999654,
+    "time": 169.06666666669335,
+    "progress": 185.00091599601788
+  }
+]

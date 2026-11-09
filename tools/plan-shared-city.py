@@ -3,7 +3,7 @@ from pathlib import Path
 import json,math
 root=Path(__file__).resolve().parents[1]
 world=json.loads((root/'assets/world/layout.json').read_text());roads=json.loads((root/'assets/ground/roads.json').read_text())
-controls={'A':[[0,0],[45,0],[80,-21],[110,-21],[145,-45],[170,-45],[220,-42],[270,-25],[305,0],[315,0]],'B':[[0,0],[45,0],[85,0],[110,0],[130,8],[160,40],[190,9],[225,44],[255,17],[285,5],[305,0],[315,0]],'C':[[0,0],[45,0],[85,22],[110,22],[150,85],[185,105],[220,100],[260,73],[290,25],[305,0],[315,0]]}
+controls={'A':[[0,0],[45,0],[80,-21],[110,-21],[145,-45],[170,-45],[220,-42],[270,-25],[305,0],[315,0]],'B':[[0,0],[45,0],[85,0],[110,0],[170,50],[230,50],[275,18],[305,0],[315,0]],'C':[[0,0],[45,0],[85,22],[110,22],[150,85],[185,105],[220,100],[260,73],[290,25],[305,0],[315,0]]}
 def path(z):return math.sin(z/175)*10+math.sin(z/410)*14
 def offset(route,u):
  pts=controls[route]
@@ -102,6 +102,29 @@ for c in [0,1]:
    if any(intersects([x,z],[x,z],b,2) for b in placed+kept):continue
    if any(math.dist([x,z],restp)<12 for restp in [[r['x'],r['z']] for r in data['rests'] if r['chapter']==c]):continue
    data['vegetation'].append(dict(tree=True,decorative=True,x=x,z=z,height=17+(j%4)*2,seed=c*91+j*7+side,depth=0))
+ # Three real interior corridors, joined at u=110 and u=290. Clear their swept envelopes.
+ branches={}
+ for r in controls:
+  branches[r]=[]
+  for lane in [-1,0,1]:
+   points=[]
+   for u in range(110,291,2):
+    envelope=math.sin(math.pi*(u-110)/180)**2
+    shift=lane*{'A':18,'B':28,'C':24}[r]*envelope+(3*math.sin((u-110)/180*math.pi*2)*envelope if lane==1 else 0)
+    points.append([line(c,r,u)+shift,start+u])
+   branches[r].append(points)
+ def on_branch(b):
+  return any(intersects(a,v,b,3.5 if r=='A' else 4.5 if r=='B' else 5.5) for r in controls for pts in branches[r] for a,v in zip(pts,pts[1:]))
+ placed=[b for b in placed if b.get('entrance') or not on_branch(b)]
+ kept=[b for b in kept if not on_branch(b)]
+ # Divider islands make the three openings physical, with cross-links between groups.
+ for r in controls:
+  for j,u in enumerate([155,170,185,200,215,230,245]):
+   for side in [-1,1]:
+    shift=side*{'A':9,'B':14,'C':12}[r]*math.sin(math.pi*(u-110)/180)**2
+    b=dict(id=f'{c}-inner-{r}-{j}-{side}',chapter=c,shared=True,entry=False,route=r,x=line(c,r,u)+shift,z=start+u-4,width=7,depth=8,height=44 if r!='C' else 28,angle=0,kind='office' if r!='C' else 'residential',glass=r!='C',marked=r=='B',style=j%3,seed=c*50+j*7+side,side=side,severe=False)
+    if not on_branch(b) and not any(overlap(b,o,0) for o in placed+kept) and not any(intersects(a,v,b,w) for a,v,w in segments):placed.append(b)
+ data.setdefault('branches',[]).append(branches)
  data['entrances'].append(entrance);data['buildings'].append(placed);data['backdrops'].append(kept)
  lengths={r:sum(math.hypot(line(c,r,i/10)-line(c,r,(i-1)/10),.1) for i in range(1,3151)) for r in controls}
  data['report'].append(dict(chapter=c,buildings=len(placed),routeBuildings={r:sum(b['route']==r for b in placed) for r in controls},gateBuildings={r:sum(b['route']==r for b in gates) for r in controls},backdropsKept=len(kept),backdropsRemoved=len(removed),lengths=lengths))

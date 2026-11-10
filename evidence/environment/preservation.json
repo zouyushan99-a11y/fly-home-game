@@ -1,0 +1,11 @@
+{
+  "journey_logic_unchanged_except_default_view": true,
+  "collision_algorithm_unchanged": true,
+  "educational_content_unchanged": true,
+  "quiz_logic_unchanged": true,
+  "ending_unchanged": true,
+  "controls_unchanged": true,
+  "entrances_unchanged": true,
+  "branches_unchanged": true,
+  "rests_unchanged": true
+}

@@ -1,0 +1,188 @@
+[
+  {
+    "name": "desktop",
+    "topic": "glass-A",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "wetland": null
+  },
+  {
+    "name": "desktop",
+    "topic": "glass-B",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "wetland": null
+  },
+  {
+    "name": "desktop",
+    "topic": "glass-C",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "wetland": null
+  },
+  {
+    "name": "desktop",
+    "topic": "night",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 4.620999424554508,
+    "wetland": null
+  },
+  {
+    "name": "desktop",
+    "topic": "green",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "wetland": null
+  },
+  {
+    "name": "desktop",
+    "topic": "pond",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "ponds": 5,
+    "wetland": null
+  },
+  {
+    "name": "desktop",
+    "topic": "wetland",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "ponds": 5,
+    "wetland": {
+      "islands": 7,
+      "ponds": 3,
+      "objects": 169
+    }
+  },
+  {
+    "name": "portrait",
+    "topic": "glass-A",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "wetland": null
+  },
+  {
+    "name": "portrait",
+    "topic": "glass-B",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "wetland": null
+  },
+  {
+    "name": "portrait",
+    "topic": "glass-C",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "wetland": null
+  },
+  {
+    "name": "portrait",
+    "topic": "night",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 4.620999424554508,
+    "wetland": null
+  },
+  {
+    "name": "portrait",
+    "topic": "green",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "wetland": null
+  },
+  {
+    "name": "portrait",
+    "topic": "pond",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "ponds": 5,
+    "wetland": null
+  },
+  {
+    "name": "portrait",
+    "topic": "wetland",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "ponds": 5,
+    "wetland": {
+      "islands": 7,
+      "ponds": 3,
+      "objects": 169
+    }
+  },
+  {
+    "name": "landscape",
+    "topic": "glass-A",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "wetland": null
+  },
+  {
+    "name": "landscape",
+    "topic": "glass-B",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "wetland": null
+  },
+  {
+    "name": "landscape",
+    "topic": "glass-C",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "wetland": null
+  },
+  {
+    "name": "landscape",
+    "topic": "night",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 4.620999424554508,
+    "wetland": null
+  },
+  {
+    "name": "landscape",
+    "topic": "green",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "wetland": null
+  },
+  {
+    "name": "landscape",
+    "topic": "pond",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "ponds": 5,
+    "wetland": null
+  },
+  {
+    "name": "landscape",
+    "topic": "wetland",
+    "bird": 1,
+    "view": "third",
+    "cameraDistance": 13,
+    "ponds": 5,
+    "wetland": {
+      "islands": 7,
+      "ponds": 3,
+      "objects": 169
+    }
+  }
+]

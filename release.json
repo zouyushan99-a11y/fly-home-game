@@ -1,1 +1,4 @@
-{"version":"UW-STABILITY-1","features":"bounded forward flight, collision escape, spatial rest and auditable resource events"}
+{
+  "version": "UW-ENVIRONMENT-1",
+  "features": "bird-visible view, distinct route facades, urban paving, low vegetation, diverse wetland habitats"
+}

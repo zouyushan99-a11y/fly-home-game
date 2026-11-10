@@ -12,3 +12,6 @@ evidence/clarity/replays.json
 
 evidence/stability/*.png
 evidence/stability/replays.json
+
+evidence/environment/*.png
+evidence/environment/replays.json

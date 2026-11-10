@@ -15,3 +15,5 @@ evidence/stability/replays.json
 
 evidence/environment/*.png
 evidence/environment/replays.json
+
+evidence/learning/*.png

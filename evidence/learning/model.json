@@ -1,0 +1,22 @@
+{
+  "checks": [
+    "preview 0 once before boundary; resources and time frozen",
+    "preview 1 once before boundary; resources and time frozen",
+    "preview 2 once before boundary; resources and time frozen",
+    "preview 3 once before boundary; resources and time frozen",
+    "preview 4 once before boundary; resources and time frozen"
+  ],
+  "tutorialSafe": true,
+  "contextualTopics": 7,
+  "quizDraws": 1000,
+  "quizTopics": [
+    "green",
+    "light",
+    "marked",
+    "wetland",
+    "pond",
+    "glass"
+  ],
+  "answerOrders": 6,
+  "physicsAndGeometryUnchanged": true
+}

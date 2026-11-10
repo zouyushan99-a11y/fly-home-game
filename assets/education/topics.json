@@ -30,6 +30,10 @@
         "外部重複標記",
         "External patterns"
       ]
+    ],
+    "comparison": [
+      false,
+      true
     ]
   },
   "light": {
@@ -54,8 +58,8 @@
       "Excessive city lighting compared with reduced unnecessary lighting; bird responses vary."
     ],
     "note": [
-      "遊戲中的方向偏移是簡化模擬，並非所有鳥類遇光都會迷向。",
-      "Flight drift is a simplified game representation; light does not disorient every bird."
+      "遊戲的照明提示不會自動改變航向；現實影響因鳥種和環境而異。",
+      "The game’s lighting cue does not steer your bird. Real effects depend on bird species and conditions."
     ],
     "labels": [
       [
@@ -66,6 +70,10 @@
         "減光、向下照明",
         "Less light, directed down"
       ]
+    ],
+    "comparison": [
+      false,
+      true
     ]
   },
   "green": {
@@ -102,6 +110,10 @@
         "食物 · 水 · 遮蔽",
         "Food · water · shelter"
       ]
+    ],
+    "comparison": [
+      false,
+      true
     ]
   },
   "pond": {
@@ -125,7 +137,10 @@
       "香港濕地邊緣示意：村屋、緩衝植被、魚塘淺水與覓食水鳥；不是玩家已看見場景的紀錄。",
       "Hong Kong wetland-edge diagram: village, vegetation buffer, shallow fishpond and feeding waterbirds; not a record of a scene the player has seen."
     ],
-    "note": null,
+    "note": [
+      "魚塘與天然濕地的功能不同，不能互相取代。",
+      "Managed ponds and natural wetlands have different roles; one cannot simply replace the other."
+    ],
     "labels": [
       [
         "村落與緩衝區",
@@ -168,6 +183,10 @@
         "過近可能驚飛",
         "Close approach may flush"
       ]
+    ],
+    "comparison": [
+      true,
+      false
     ]
   },
   "wetland": {
@@ -201,6 +220,43 @@
         "紅樹林與蘆葦叢",
         "Mangroves and reedbeds"
       ]
+    ]
+  },
+  "marked": {
+    "title": [
+      "讓鳥看得見的玻璃",
+      "Glass that birds can see"
+    ],
+    "impact": [
+      "清晰重複的白點圖案可幫助鳥類辨認玻璃障礙。",
+      "Clear repeated white-dot patterns can help birds recognise a glass barrier."
+    ],
+    "why": [
+      "圖案把看似天空的玻璃表面顯示出來；少量、相距太遠的貼紙可能留下看似可飛入的空隙。",
+      "Patterns reveal a surface that may look like sky. A few widely spaced stickers may leave gaps that still look open."
+    ],
+    "solution": [
+      "使用經評估的鳥友好設計與合適的外部圖案；保持標記清晰，仍須留意周圍風險。",
+      "Use evaluated bird-friendly designs and suitable external patterns. Keep markings visible; some collision risk remains."
+    ],
+    "alt": [
+      "反光玻璃與外部可見標記的比較：鳥可能把倒影當作通道，圖案幫助辨認障礙。",
+      "Reflective glass versus visible external patterns: reflections resemble a passage; patterns help reveal the barrier."
+    ],
+    "note": null,
+    "labels": [
+      [
+        "反光 / 透明",
+        "Reflective / transparent"
+      ],
+      [
+        "外部重複標記",
+        "External patterns"
+      ]
+    ],
+    "comparison": [
+      false,
+      true
     ]
   }
 }

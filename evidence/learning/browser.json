@@ -1,0 +1,41 @@
+[
+  {
+    "name": "desktop",
+    "width": 1280,
+    "height": 720,
+    "touchEmulation": false,
+    "tutorialKeyboardOrTouch": true,
+    "previewCount": 5,
+    "cards": 7,
+    "quizRetryNoPenalty": true,
+    "personalRecap": true,
+    "successFailure": true,
+    "errors": []
+  },
+  {
+    "name": "portrait",
+    "width": 390,
+    "height": 844,
+    "touchEmulation": true,
+    "tutorialKeyboardOrTouch": true,
+    "previewCount": 5,
+    "cards": 7,
+    "quizRetryNoPenalty": true,
+    "personalRecap": true,
+    "successFailure": true,
+    "errors": []
+  },
+  {
+    "name": "landscape",
+    "width": 844,
+    "height": 390,
+    "touchEmulation": true,
+    "tutorialKeyboardOrTouch": true,
+    "previewCount": 5,
+    "cards": 7,
+    "quizRetryNoPenalty": true,
+    "personalRecap": true,
+    "successFailure": true,
+    "errors": []
+  }
+]

@@ -17,3 +17,7 @@ Verification attempted during this work: each HTTPS request was rejected by the 
 Accordingly **no statistical numbers from these sources are displayed as verified**. This includes the brief's sparrow estimate, volunteer/route/district counts, spoonbill regional/global counts and changes, and the two suggested historical waterbird figures. The optional AFCD figure is omitted as well. No overseas statistics, independently inferred counts or causal claims were substituted.
 
 The final screen preserves the three actual original-source hyperlinks, explains differing methods and scopes, and clearly states that statistics are omitted pending original-source verification. It includes the requested citizen-science note. Future data cards require direct review of the original report, including geography, date, method, estimate/count classification and a matching source link; changing the audit status alone is insufficient.
+
+## Learning update
+
+`marked.svg` reuses the original `glass.svg` comparison. Green checks and red crosses are accessible HTML overlays attached to the matching comparison panels; habitat-only diagrams do not imply one habitat is wrong. `questions.json` contains original bilingual questions based on the existing qualified lesson content. No new third-party imagery or numerical ecological claims were added.

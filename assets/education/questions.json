@@ -1,0 +1,158 @@
+[
+  [
+    "reflection",
+    "glass",
+    [
+      "為甚麼一棟安靜公園旁的玻璃樓仍可能傷害鳥類？",
+      "Why might a glass building beside a quiet park still be risky for birds?"
+    ],
+    [
+      [
+        "天空和樹木的倒影可能看起來像可飛入的空間。",
+        "Reflections of sky and trees may look like open flying space."
+      ],
+      [
+        "只要建築旁有樹，鳥類就較容易辨認玻璃。",
+        "Trees beside the building help birds recognise the glass surface."
+      ],
+      [
+        "沒有車輛噪音時，鳥類較容易察覺透明玻璃。",
+        "Without traffic noise, birds can more easily notice clear glass."
+      ]
+    ],
+    [
+      "安靜與植被不能消除玻璃風險。倒影和透明通道都可能讓障礙不易被辨認。",
+      "Quiet surroundings do not remove glass risk. Reflections and transparent passages can make barriers hard to recognise."
+    ]
+  ],
+  [
+    "patterns",
+    "marked",
+    [
+      "哪種玻璃改進較能幫助鳥類辨認障礙？",
+      "Which glass improvement better helps birds recognise a barrier?"
+    ],
+    [
+      [
+        "在外表面使用合適、清晰且密集重複的圖案。",
+        "Use suitable, visible, closely repeated patterns on the outside."
+      ],
+      [
+        "在大玻璃中央放一張大貼紙，其他地方保持透明。",
+        "Place one large sticker in the centre and leave the rest clear."
+      ],
+      [
+        "保留清晰的天空倒影，幫助鳥類辨認天空方向。",
+        "Keep clear sky reflections to help birds find the sky’s direction."
+      ]
+    ],
+    [
+      "合適的外部圖案可顯示玻璃表面；大面積未標記空隙仍可能看似暢通。這能降低風險，但不能消除每次碰撞。",
+      "Suitable outside patterns reveal the surface. Large unmarked gaps may still look open. Patterns reduce risk without preventing every collision."
+    ]
+  ],
+  [
+    "lighting",
+    "light",
+    [
+      "遷徙季節，學校夜間應怎樣管理照明？",
+      "How should a school manage its lighting at night during migration?"
+    ],
+    [
+      [
+        "關掉不必要的燈，讓必要的燈向下照並控制亮度。",
+        "Switch off unused lights and aim necessary light down at a suitable brightness."
+      ],
+      [
+        "保留外牆照明，只把所有白燈換成較暖色的燈。",
+        "Keep facade lighting on and change the white bulbs to warmer ones."
+      ],
+      [
+        "讓玻璃窗更亮，幫助經過的鳥類從遠處看見大樓。",
+        "Brighten the windows so passing birds can see the building from farther away."
+      ]
+    ],
+    [
+      "減少多餘光線，比只換燈色更完整。人工照明可能影響部分鳥類，程度取決於物種、地點和天氣。",
+      "Reducing unnecessary light does more than changing its colour. Some birds can be affected; effects depend on species, location and weather."
+    ]
+  ],
+  [
+    "habitat",
+    "green",
+    [
+      "兩個公園大小相近，甚麼資料最能幫助比較鳥類棲地？",
+      "Two parks are about the same size. What best helps compare their bird habitats?"
+    ],
+    [
+      [
+        "比較食物、水源、植被遮蔽、連接和人為干擾。",
+        "Compare food, water, plant cover, connections and human disturbance."
+      ],
+      [
+        "比較草坪面積和剪草頻率，選草坪較整齊的公園。",
+        "Compare lawn size and mowing frequency, favouring the tidier lawn."
+      ],
+      [
+        "比較樹木總數和樹高，選最高樹木較多的公園。",
+        "Compare tree numbers and height, favouring the park with taller trees."
+      ]
+    ],
+    [
+      "樹木和草坪只是部分線索。鳥類需要的資源和安靜空間因物種而異，相連棲地也很重要。",
+      "Trees and lawns tell only part of the story. Resources and quiet space matter, needs vary between species, and habitat connections help."
+    ]
+  ],
+  [
+    "pond-management",
+    "pond",
+    [
+      "魚塘怎樣才能更好地支持部分水鳥？",
+      "How can fishponds better support some waterbirds?"
+    ],
+    [
+      [
+        "管理水位與食物條件，並減少覓食區附近的干擾。",
+        "Manage water levels and food conditions, and reduce disturbance near feeding areas."
+      ],
+      [
+        "增加養魚數量並保持深水，使岸邊一直有較多魚。",
+        "Stock more fish and keep deep water so more fish stay near the banks."
+      ],
+      [
+        "把岸邊植物清除，讓鳥類從各方向都能看到水面。",
+        "Clear bank vegetation so birds can see the water from every direction."
+      ]
+    ],
+    [
+      "有魚不代表鳥類能吃到。水深、可取得的食物和干擾影響不同鳥種；魚塘不能取代天然濕地。",
+      "Fish being present does not mean birds can reach them. Depth, accessible food and disturbance affect species differently. Ponds do not replace natural wetlands."
+    ]
+  ],
+  [
+    "wetland-network",
+    "wetland",
+    [
+      "為甚麼米埔需要不同類型的濕地棲地？",
+      "Why does Mai Po need different kinds of wetland habitat?"
+    ],
+    [
+      [
+        "不同棲地提供不同的覓食、休息和遮蔽條件。",
+        "Different habitats provide different feeding, resting and shelter conditions."
+      ],
+      [
+        "把泥灘改成較深的塘，可以增加鳥類可用的水域。",
+        "Turning mudflats into deeper ponds can increase usable water for birds."
+      ],
+      [
+        "集中保護遊客看到最多鳥的地點，會更有效率。",
+        "Focusing protection on the place visitors see most birds is more efficient."
+      ]
+    ],
+    [
+      "不同水鳥在不同時候使用泥灘、水域和植被。保護相連的多樣棲地，比只保留單一類型更能照顧牠們的需要。",
+      "Waterbirds use mudflats, water and vegetation at different times. Protecting connected, varied habitats supports more needs than keeping just one kind."
+    ]
+  ]
+]

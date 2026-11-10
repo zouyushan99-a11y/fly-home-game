@@ -1,0 +1,16 @@
+[
+  {
+    "touchEmulated": false,
+    "instrumented": false,
+    "realAnimationLoop": true,
+    "firstPreviewAndEncounter": true,
+    "errors": []
+  },
+  {
+    "touchEmulated": true,
+    "instrumented": false,
+    "realAnimationLoop": true,
+    "firstPreviewAndEncounter": true,
+    "errors": []
+  }
+]

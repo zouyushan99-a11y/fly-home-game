@@ -38,7 +38,7 @@ header nav button#viewMode{background:#eac27f;color:#172d40;font-weight:700;font
 <body><main id="game"><canvas id="scene" aria-label="候鳥第一人稱飛行 / First-person bird flight"></canvas>
 <header><div class="brand">URBAN WINGS<small>飛越香港</small></div><nav aria-label="遊戲選單 / Game menu"><button id="language">繁中 | EN</button><button id="viewMode" aria-label="切換視角 / Switch view">1P</button><button id="pause" aria-label="暫停 / Pause">II</button><button id="help" aria-label="說明 / Instructions">?</button><button id="mute" aria-label="聲音 / Sound">♪</button><button id="restart" aria-label="重新開始 / Restart">↻</button></nav></header>
 <section id="hud"><div class="vitals"><div class="vital"><label id="healthLabel" for="health"></label><meter id="health" min="0" max="100" value="100"></meter></div><div class="vital"><label id="energyLabel" for="energy"></label><meter id="energy" min="0" max="100" value="100"></meter></div></div><div class="chapter"><span id="chapter"></span><span><b id="stage">01 / 06</b> · <time id="time">00:00</time><small id="route"></small></span></div></section>
-<section id="intro" class="panel"><span class="eyebrow">A MIGRATORY BIRD’S JOURNEY</span><h1>Urban Wings</h1><h2>飛越香港</h2><p id="introText"></p><button id="start" class="primary"></button><small id="introHint"></small></section>
+<section id="intro" class="panel"><span class="eyebrow">A MIGRATORY BIRD’S JOURNEY</span><h1>Urban Wings</h1><h2>飛越香港</h2><p id="introText"></p><button id="start" class="primary"></button><small id="introHint"></small><p id="releaseFeatures" style="font-size:13px;line-height:1.5;margin:10px 0 4px;color:#f3d491"></p><small id="releaseVersion">版本 / Build UW-CLARITY-2</small></section>
 <div id="caption" aria-live="polite"></div><section id="choices" aria-label="路線選擇 / Route choice"></section><aside id="lesson" role="status" hidden><span id="lessonTag"></span><h2 id="lessonTitle"></h2><p id="lessonText"></p></aside><div id="delta" aria-live="polite"></div><div id="interference" class="flight-status" role="status" hidden></div>
 <section id="pausePanel" class="overlay" hidden></section><section id="helpPanel" class="overlay" hidden></section><section id="recovery" class="overlay" hidden></section><section id="ending" class="overlay" hidden></section>
 <footer id="controls"><button id="left" aria-label="按住向左飛行 / Hold to steer left">←</button><span id="controlHint"></span><button id="right" aria-label="按住向右飛行 / Hold to steer right">→</button></footer>
@@ -1263,6 +1263,7 @@ function modalLanguageButtons(){
  }
 }
 function labels(){
+ setText('releaseFeatures',tr('本版新增：五區場景預告、操作練習、旅程後兩題學習挑戰。','New: five area previews, control practice, and a two-question Learning Check.'));
  $('viewMode').textContent=innerWidth<600?(tr('視角 ','View ')+(g.viewMode==='third'?'3':'1')):(g.viewMode==='third'?tr('第三人稱','Third person'):tr('第一人稱','First person'));$('viewMode').title=tr('切換第一／第三人稱（V）','Switch first / third person (V)');$('viewMode').setAttribute('aria-pressed',String(g.viewMode==='third'));
  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
  $('language').setAttribute('aria-label','切換語言 / Switch language');

@@ -1,5 +1,37 @@
 [
   {
+    "version": "before",
+    "topic": "glass-A"
+  },
+  {
+    "version": "before",
+    "topic": "glass-B"
+  },
+  {
+    "version": "before",
+    "topic": "glass-C"
+  },
+  {
+    "version": "before",
+    "topic": "night-A"
+  },
+  {
+    "version": "before",
+    "topic": "night-B"
+  },
+  {
+    "version": "before",
+    "topic": "green"
+  },
+  {
+    "version": "before",
+    "topic": "pond"
+  },
+  {
+    "version": "before",
+    "topic": "wetland"
+  },
+  {
     "version": "after",
     "topic": "glass-A"
   },

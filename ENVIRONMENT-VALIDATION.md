@@ -15,6 +15,7 @@ The existing bird-following view is now the only user-facing view. No new camera
 - **Route A/B distinction:** A towers retain unmarked reflective glass. B-facing facets on interior B towers carry the white patterns; facets more directly facing A remain unmarked. This is a fixed world-space facade choice, not a texture change when the player selects a route. Shared entrances still show the alternatives. A small amount of the neighbouring district remains visible as background.
 - **Glass dots:** corrected the texture-space aspect ratio so facade stretching does not turn all circular marks into long vertical ovals. Night markings use a muted pale colour rather than looking like self-illuminated lamps. Glass reflection remains a separate sky-dependent layer.
 - **Night:** darker curtain-wall base materials, ground lighting and distant haze. The existing difference in illuminated-window density between A and B/C remains. No lighting gameplay events were added.
+- **C-side urban background:** 127 existing background buildings in the day/night city eastern blocks now use low residential silhouettes (22–30 units) instead of commercial towers. Their footprints and world coordinates are unchanged; this reduces skyline dominance beside the green route.
 - **Ecological green space:** lower tree groups and retained shrubs, stream, open areas and designated rest marker. Dense commercial paving stays in the city rather than becoming the green corridor's terrain.
 - **Village/fishponds:** retained the five fixed water-filled ponds, embankments and low houses; reduced surrounding trees and removed the excessive trunk-plus-canopy stacking. Ponds remain actual world-space surfaces.
 - **Mai Po:** broad tidal water replaces the uniform bank-lined channel. Seven irregular mudflat/vegetation islands, three managed pond cells with banks, shallow-water margins, wet-mud patches, tidal channels, 140 mangrove/reed plants, 28 standing waterbirds, a low background hide and short boardwalk. The existing destination/family-reunion flow is unchanged.
@@ -27,7 +28,7 @@ The model height is also what the existing collision code sees. These lowered tr
 
 ## Validation and evidence
 
-- Same-camera before/after captures for A/B/C, night A/B, ecology, village and wetlands: `environment-scenes.cjs`.
+- Same-camera before/after captures (city positions and headings replayed from complete test flights, recorded in `flight-poses.json`) for A/B/C, night A/B, ecology, village and wetlands: `environment-scenes.cjs`.
 - Desktop 1280×720, portrait 390×844, landscape 844×390: actual bird-view rendering, all five regions, distinct route samples, no view selector, V does not change view, knowledge/help remain usable (`environment-browser-test.cjs`).
 - All nine complete model-piloted journeys finish with Health 100 and the same final Energy as the stability baseline: A 45, B 45–55, C 25–60 (`environment-journey-test.cjs`).
 - All nine instrumented browser pilot journeys check rendering, area previews, observed-topic knowledge timing, resource logs and arrival (`environment-flight-test.cjs`).

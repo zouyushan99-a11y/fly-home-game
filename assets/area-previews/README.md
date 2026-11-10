@@ -12,4 +12,6 @@ Generated with `tools/environment-scenes.cjs --after-only`, 1000×650, then enco
 | pond.webp | Village/fishpond C, progress 120 |
 | wetland.webp | Wetland destination area, progress 165 |
 
+City captures use the actual position and heading recorded by the complete-flight test pilot (`evidence/environment/flight-poses.json`).
+
 These are representative gameplay views, not a survey map or concept artwork. The existing preview UI and educational logic are unchanged. The offline build embeds all five assets.

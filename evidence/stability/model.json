@@ -1,0 +1,114 @@
+{
+  "boundaries": [
+    {
+      "side": -1,
+      "progress": 6.65181644769404,
+      "health": 100,
+      "energy": 100,
+      "inwardImmediately": true
+    },
+    {
+      "side": 1,
+      "progress": 5.771486813728476,
+      "health": 100,
+      "energy": 100,
+      "inwardImmediately": true
+    },
+    {
+      "side": -1,
+      "stage": 0,
+      "progressDelta": 3.642574040319502,
+      "health": 100,
+      "recoveries": 0
+    },
+    {
+      "side": -1,
+      "stage": 1,
+      "progressDelta": 3.467620649519546,
+      "health": 100,
+      "recoveries": 0
+    },
+    {
+      "side": -1,
+      "stage": 2,
+      "progressDelta": 4.041331967481895,
+      "health": 100,
+      "recoveries": 0
+    },
+    {
+      "side": -1,
+      "stage": 3,
+      "progressDelta": 4.043545803331398,
+      "health": 100,
+      "recoveries": 0
+    },
+    {
+      "side": -1,
+      "stage": 4,
+      "progressDelta": 3.4596806501083677,
+      "health": 100,
+      "recoveries": 0
+    },
+    {
+      "side": 1,
+      "stage": 0,
+      "progressDelta": 2.285250946122673,
+      "health": 100,
+      "recoveries": 0
+    },
+    {
+      "side": 1,
+      "stage": 1,
+      "progressDelta": 2.378893109662293,
+      "health": 100,
+      "recoveries": 0
+    },
+    {
+      "side": 1,
+      "stage": 2,
+      "progressDelta": 4.043545803331369,
+      "health": 100,
+      "recoveries": 0
+    },
+    {
+      "side": 1,
+      "stage": 3,
+      "progressDelta": 4.041015315769073,
+      "health": 100,
+      "recoveries": 0
+    },
+    {
+      "side": 1,
+      "stage": 4,
+      "progressDelta": 3.460586403809259,
+      "health": 100,
+      "recoveries": 0
+    }
+  ],
+  "collisions": [
+    {
+      "dt": 0.016666666666666666,
+      "health": 75,
+      "progressDelta": 1.6509097244607318,
+      "recoveries": 1
+    },
+    {
+      "dt": 0.25,
+      "health": 75,
+      "progressDelta": 1.53846274792717,
+      "recoveries": 1
+    }
+  ],
+  "energy": {
+    "segment": 5,
+    "light": 5,
+    "rest": 20,
+    "restRequiresPosition": true,
+    "restOnce": true,
+    "zeroEnergyGlidesWithoutFreeRefill": true
+  },
+  "routes": [],
+  "insideRecovery": true,
+  "oneCheckpointRetry": true,
+  "retryRetainsRestConsumptionAndRenewsInjury": true
+}

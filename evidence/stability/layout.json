@@ -1,0 +1,114 @@
+{
+  "slices": 1251,
+  "unreachable": [],
+  "branches": [
+    {
+      "chapter": 0,
+      "route": "A",
+      "lane": 0,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 0,
+      "route": "A",
+      "lane": 1,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 0,
+      "route": "A",
+      "lane": 2,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 1,
+      "route": "A",
+      "lane": 0,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 1,
+      "route": "A",
+      "lane": 1,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 1,
+      "route": "A",
+      "lane": 2,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 0,
+      "route": "B",
+      "lane": 0,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 0,
+      "route": "B",
+      "lane": 1,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 0,
+      "route": "B",
+      "lane": 2,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 1,
+      "route": "B",
+      "lane": 0,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 1,
+      "route": "B",
+      "lane": 1,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 1,
+      "route": "B",
+      "lane": 2,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 0,
+      "route": "C",
+      "lane": 0,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 0,
+      "route": "C",
+      "lane": 1,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 0,
+      "route": "C",
+      "lane": 2,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 1,
+      "route": "C",
+      "lane": 0,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 1,
+      "route": "C",
+      "lane": 1,
+      "withinBoundary": true
+    },
+    {
+      "chapter": 1,
+      "route": "C",
+      "lane": 2,
+      "withinBoundary": true
+    }
+  ]
+}

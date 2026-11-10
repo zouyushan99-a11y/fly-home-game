@@ -1,0 +1,44 @@
+[
+  {
+    "name": "desktop",
+    "viewport": [
+      1280,
+      720
+    ],
+    "practice": true,
+    "previewFreeze": 5,
+    "observedBeforeKnowledge": true,
+    "successAndFailureQuiz": true,
+    "wrongAnswerNoPenalty": true,
+    "summaryPreserved": true,
+    "errors": []
+  },
+  {
+    "name": "portrait",
+    "viewport": [
+      390,
+      844
+    ],
+    "practice": true,
+    "previewFreeze": 5,
+    "observedBeforeKnowledge": true,
+    "successAndFailureQuiz": true,
+    "wrongAnswerNoPenalty": true,
+    "summaryPreserved": true,
+    "errors": []
+  },
+  {
+    "name": "landscape",
+    "viewport": [
+      844,
+      390
+    ],
+    "practice": true,
+    "previewFreeze": 5,
+    "observedBeforeKnowledge": true,
+    "successAndFailureQuiz": true,
+    "wrongAnswerNoPenalty": true,
+    "summaryPreserved": true,
+    "errors": []
+  }
+]

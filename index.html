@@ -38,7 +38,7 @@ header nav button#viewMode{background:#eac27f;color:#172d40;font-weight:700;font
 <body><main id="game"><canvas id="scene" aria-label="候鳥第一人稱飛行 / First-person bird flight"></canvas>
 <header><div class="brand">URBAN WINGS<small>飛越香港</small></div><nav aria-label="遊戲選單 / Game menu"><button id="language">繁中 | EN</button><button id="viewMode" aria-label="切換視角 / Switch view">1P</button><button id="pause" aria-label="暫停 / Pause">II</button><button id="help" aria-label="說明 / Instructions">?</button><button id="mute" aria-label="聲音 / Sound">♪</button><button id="restart" aria-label="重新開始 / Restart">↻</button></nav></header>
 <section id="hud"><div class="vitals"><div class="vital"><label id="healthLabel" for="health"></label><meter id="health" min="0" max="100" value="100"></meter></div><div class="vital"><label id="energyLabel" for="energy"></label><meter id="energy" min="0" max="100" value="100"></meter></div></div><div class="chapter"><span id="chapter"></span><span><b id="stage">01 / 06</b> · <time id="time">00:00</time><small id="route"></small></span></div></section>
-<section id="intro" class="panel"><span class="eyebrow">A MIGRATORY BIRD’S JOURNEY</span><h1>Urban Wings</h1><h2>飛越香港</h2><p id="introText"></p><button id="start" class="primary"></button><small id="introHint"></small><p id="releaseFeatures" style="font-size:13px;line-height:1.5;margin:10px 0 4px;color:#f3d491"></p><small id="releaseVersion">版本 / Build UW-CLARITY-2</small></section>
+<section id="intro" class="panel"><span class="eyebrow">A MIGRATORY BIRD’S JOURNEY</span><h1>Urban Wings</h1><h2>飛越香港</h2><p id="introText"></p><button id="start" class="primary"></button><small id="introHint"></small><p id="releaseFeatures" style="font-size:13px;line-height:1.5;margin:10px 0 4px;color:#f3d491"></p><small id="releaseVersion">版本 / Build UW-STABILITY-1</small></section>
 <div id="caption" aria-live="polite"></div><section id="choices" aria-label="路線選擇 / Route choice"></section><aside id="lesson" role="status" hidden><span id="lessonTag"></span><h2 id="lessonTitle"></h2><p id="lessonText"></p></aside><div id="delta" aria-live="polite"></div><div id="interference" class="flight-status" role="status" hidden></div>
 <section id="pausePanel" class="overlay" hidden></section><section id="helpPanel" class="overlay" hidden></section><section id="recovery" class="overlay" hidden></section><section id="ending" class="overlay" hidden></section>
 <footer id="controls"><button id="left" aria-label="按住向左飛行 / Hold to steer left">←</button><span id="controlHint"></span><button id="right" aria-label="按住向右飛行 / Hold to steer right">→</button></footer>
@@ -194,7 +194,7 @@ function wildlife(chapter,progress){
 const clamp=n=>Math.max(0,Math.min(100,n));
 // Energy values are game-design units, not physiological measurements.
 function curtainBuilding(b){if(b.shared)return b.glass;return b.chapter<2&&!b.marked&&!['public','village'].includes(b.kind)&&(b.glass||['office','stepped'].includes(b.kind));}
-const ENERGY={flight:.54,detour:7,light:{A:14,B:8,C:3},rest:{B:7,C:17},arrival:8};
+const ENERGY={flight:5,segment:15,detour:5,light:{A:5,B:5,C:5},rest:{B:20,C:20},arrival:10};
 // Decorative districts are stable, route-independent and outside the reachable
 // path (pathX ± 23). Streets and alternate empty parcels preserve open space.
 const STREET_LIGHTS=[{"x":-3.12,"z":-44.0,"headX":-1.9,"headZ":-44.0,"road":0,"arc":42,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-3.12,"z":-14.0,"headX":-1.9,"headZ":-14.0,"road":0,"arc":72,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-3.12,"z":16.0,"headX":-1.9,"headZ":16.0,"road":0,"arc":102,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-3.12,"z":46.0,"headX":-1.9,"headZ":46.0,"road":0,"arc":132,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":0.8799999999999999,"z":75.08444089494128,"headX":2.1,"headZ":75.08444089494128,"road":0,"arc":162,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":0.8799999999999999,"z":105.08444089494128,"headX":2.1,"headZ":105.08444089494128,"road":0,"arc":192,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":16.869100605505903,"z":131.35550345002758,"headX":17.759135994556807,"headZ":130.52109527279234,"road":0,"arc":222,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":12.879999999999999,"z":186.6964597706267,"headX":14.1,"headZ":186.6964597706267,"road":0,"arc":282,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":2.88,"z":213.33241409724792,"headX":4.1,"headZ":213.33241409724792,"road":0,"arc":312,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":2.88,"z":243.33241409724792,"headX":4.1,"headZ":243.33241409724792,"road":0,"arc":342,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-23.12,"z":293.34095142589945,"headX":-21.9,"headZ":293.34095142589945,"road":0,"arc":402,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-23.12,"z":323.34095142589945,"headX":-21.9,"headZ":323.34095142589945,"road":0,"arc":432,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-23.12,"z":353.34095142589945,"headX":-21.9,"headZ":353.34095142589945,"road":0,"arc":462,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-31.03940275722458,"z":380.61303914492333,"headX":-29.821778611475455,"headZ":380.68914065403266,"road":0,"arc":492,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-31.12,"z":410.8053328772669,"headX":-29.9,"headZ":410.8053328772669,"road":0,"arc":522,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-31.12,"z":440.8053328772669,"headX":-29.9,"headZ":440.8053328772669,"road":0,"arc":552,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-27.12,"z":499.8897737722084,"headX":-25.9,"headZ":499.8897737722084,"road":0,"arc":612,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-27.12,"z":529.8897737722084,"headX":-25.9,"headZ":529.8897737722084,"road":0,"arc":642,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-29.544500047356625,"z":588.8139106374994,"headX":-28.360926197179317,"headZ":589.1098041000437,"road":0,"arc":702,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-24.729634069702268,"z":619.6827122449018,"headX":-23.86696379665468,"headZ":618.8200419718543,"road":0,"arc":732,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-12.561440137512989,"z":32.62053003351478,"headX":-12.233337645063449,"headZ":33.67045800935331,"road":1,"arc":12,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-41.23682823577554,"z":39.45658881422183,"headX":-40.908725743325995,"headZ":40.50651679006036,"road":1,"arc":42,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":23.261938447612373,"z":170.37320828483317,"headX":24.039755906917577,"headZ":169.59539082552797,"road":2,"arc":12,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":44.2386038705396,"z":191.47622316876257,"headX":45.09755956092693,"headZ":190.7890586164527,"road":2,"arc":42,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-15.4261522818392,"z":257.8497532283803,"headX":-16.049333987014972,"headZ":258.7561993449996,"road":3,"arc":12,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-41.688480394305124,"z":243.8,"headX":-41.688480394305124,"headZ":244.9,"road":3,"arc":42,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-8.0,"z":366.2,"headX":-8.0,"headZ":365.1,"road":4,"arc":12,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":21.402920699658953,"z":366.7434382690044,"headX":21.66970988719892,"headZ":365.6762815188446,"road":4,"arc":42,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":48.187580776570385,"z":373.29885061379116,"headX":48.96539823587558,"headZ":372.52103315448596,"road":4,"arc":72,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-37.88355761951449,"z":470.50017878556093,"headX":-37.260375914338724,"headZ":471.4066249021802,"road":5,"arc":12,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":7.220914412008128,"z":546.2,"headX":7.220914412008128,"headZ":545.1,"road":6,"arc":42,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":36.51139433466286,"z":538.7039776079183,"headX":36.01945937961291,"headZ":537.7201076978184,"road":6,"arc":72,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":-48.0,"headX":-113.5,"headZ":-48.0,"road":7,"arc":12,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":-18.0,"headX":-113.5,"headZ":-18.0,"road":7,"arc":42,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":12.0,"headX":-113.5,"headZ":12.0,"road":7,"arc":72,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":72.0,"headX":-113.5,"headZ":72.0,"road":7,"arc":132,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":102.0,"headX":-113.5,"headZ":102.0,"road":7,"arc":162,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":132.0,"headX":-113.5,"headZ":132.0,"road":7,"arc":192,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":162.0,"headX":-113.5,"headZ":162.0,"road":7,"arc":222,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":192.0,"headX":-113.5,"headZ":192.0,"road":7,"arc":252,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":222.0,"headX":-113.5,"headZ":222.0,"road":7,"arc":282,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":252.0,"headX":-113.5,"headZ":252.0,"road":7,"arc":312,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":282.0,"headX":-113.5,"headZ":282.0,"road":7,"arc":342,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":312.0,"headX":-113.5,"headZ":312.0,"road":7,"arc":372,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":342.0,"headX":-113.5,"headZ":342.0,"road":7,"arc":402,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":372.0,"headX":-113.5,"headZ":372.0,"road":7,"arc":432,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":402.0,"headX":-113.5,"headZ":402.0,"road":7,"arc":462,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":432.0,"headX":-113.5,"headZ":432.0,"road":7,"arc":492,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":462.0,"headX":-113.5,"headZ":462.0,"road":7,"arc":522,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":492.0,"headX":-113.5,"headZ":492.0,"road":7,"arc":552,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":522.0,"headX":-113.5,"headZ":522.0,"road":7,"arc":582,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":552.0,"headX":-113.5,"headZ":552.0,"road":7,"arc":612,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":582.0,"headX":-113.5,"headZ":582.0,"road":7,"arc":642,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-114.66,"z":612.0,"headX":-113.5,"headZ":612.0,"road":7,"arc":672,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-12.0,"z":-62.2,"headX":-12.0,"headZ":-61.1,"road":8,"arc":12,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-42.0,"z":-62.2,"headX":-42.0,"headZ":-61.1,"road":8,"arc":42,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-72.0,"z":-62.2,"headX":-72.0,"headZ":-61.1,"road":8,"arc":72,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-102.0,"z":-62.2,"headX":-102.0,"headZ":-61.1,"road":8,"arc":102,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":-48.0,"headX":110.5,"headZ":-48.0,"road":10,"arc":12,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":-18.0,"headX":110.5,"headZ":-18.0,"road":10,"arc":42,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":12.0,"headX":110.5,"headZ":12.0,"road":10,"arc":72,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":42.0,"headX":110.5,"headZ":42.0,"road":10,"arc":102,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":72.0,"headX":110.5,"headZ":72.0,"road":10,"arc":132,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":102.0,"headX":110.5,"headZ":102.0,"road":10,"arc":162,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":132.0,"headX":110.5,"headZ":132.0,"road":10,"arc":192,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":162.0,"headX":110.5,"headZ":162.0,"road":10,"arc":222,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":192.0,"headX":110.5,"headZ":192.0,"road":10,"arc":252,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":222.0,"headX":110.5,"headZ":222.0,"road":10,"arc":282,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":252.0,"headX":110.5,"headZ":252.0,"road":10,"arc":312,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":282.0,"headX":110.5,"headZ":282.0,"road":10,"arc":342,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":312.0,"headX":110.5,"headZ":312.0,"road":10,"arc":372,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":342.0,"headX":110.5,"headZ":342.0,"road":10,"arc":402,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":372.0,"headX":110.5,"headZ":372.0,"road":10,"arc":432,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":432.0,"headX":110.5,"headZ":432.0,"road":10,"arc":492,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":462.0,"headX":110.5,"headZ":462.0,"road":10,"arc":522,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":492.0,"headX":110.5,"headZ":492.0,"road":10,"arc":552,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":522.0,"headX":110.5,"headZ":522.0,"road":10,"arc":582,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":552.0,"headX":110.5,"headZ":552.0,"road":10,"arc":612,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":582.0,"headX":110.5,"headZ":582.0,"road":10,"arc":642,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":109.34,"z":612.0,"headX":110.5,"headZ":612.0,"road":10,"arc":672,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":12.0,"z":-57.8,"headX":12.0,"headZ":-58.9,"road":11,"arc":12,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":42.0,"z":-57.8,"headX":42.0,"headZ":-58.9,"road":11,"arc":42,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":72.0,"z":-57.8,"headX":72.0,"headZ":-58.9,"road":11,"arc":72,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":102.0,"z":-62.2,"headX":102.0,"headZ":-61.1,"road":11,"arc":102,"side":1,"baseY":0,"depth":0,"lamp":true},{"x":-76.0,"z":54.0,"headX":-76.0,"headZ":52.9,"road":13,"arc":12,"side":1,"baseY":0,"depth":0,"lamp":true},{"x":-103.51471862576143,"z":48.0,"headX":-103.51471862576143,"headZ":46.9,"road":13,"arc":42,"side":1,"baseY":0,"depth":0,"lamp":true},{"x":54.0,"z":174.0,"headX":54.0,"headZ":172.9,"road":14,"arc":42,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":80.24264068711929,"z":179.0710678118655,"headX":81.02045814642449,"headZ":178.29325035256028,"road":14,"arc":72,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":-76.0,"z":246.0,"headX":-76.0,"headZ":244.9,"road":15,"arc":12,"side":1,"baseY":0,"depth":0,"lamp":true},{"x":-103.51471862576143,"z":240.0,"headX":-103.51471862576143,"headZ":238.9,"road":15,"arc":42,"side":1,"baseY":0,"depth":0,"lamp":true},{"x":76.0,"z":382.0,"headX":76.0,"headZ":383.1,"road":16,"arc":12,"side":1,"baseY":0,"depth":0,"lamp":true},{"x":102.68629150101523,"z":390.0,"headX":102.68629150101523,"headZ":391.1,"road":16,"arc":42,"side":1,"baseY":0,"depth":0,"lamp":true},{"x":-76.0,"z":494.0,"headX":-76.0,"headZ":492.9,"road":17,"arc":12,"side":1,"baseY":0,"depth":0,"lamp":true},{"x":52.82842712474619,"z":520.0,"headX":52.82842712474619,"headZ":521.1,"road":18,"arc":12,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":24.0,"z":515.3137084989847,"headX":25.1,"headZ":515.3137084989847,"road":18,"arc":42,"side":1,"baseY":0,"depth":0,"lamp":true},{"x":36.68629150101523,"z":498.0,"headX":36.68629150101523,"headZ":496.9,"road":18,"arc":72,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":63.372583002030495,"z":490.0,"headX":63.372583002030495,"headZ":488.9,"road":18,"arc":102,"side":-1,"baseY":0,"depth":0,"lamp":true},{"x":90.88730162779194,"z":496.0,"headX":90.88730162779194,"headZ":494.9,"road":18,"arc":132,"side":-1,"baseY":0,"depth":0,"lamp":true}];
@@ -274,15 +274,50 @@ const EDUCATION_IDS=['glass','light','green','pond','birds','wetland'];
 const educationTopic=id=>({city:'glass',night:'light',corridor:'green'}[id]||id);
 class Journey {
  constructor(){this.reset()}
- reset(){this.viewMode=this.viewMode||'first';this.cameraDistance=0;this.areaPreview=null;this.previewSeen=new Set();this.observedTopics=new Set();this.tutorial=null;this.learning=null;this.learningDone=false;this.resourceHints=new Set();this.resourceHint=null;Object.assign(this,{health:100,energy:100,energyLedger:{flight:0,detour:0,light:0,rest:0,arrival:0},outro:null,summaryReady:false,time:0,progress:0,x:0,heading:0,turnVelocity:0,lookYaw:0,trackYaw:0,chapter:-1,entryPending:false,routes:{},events:new Set(),seen:new Set(),learned:new Set(),retryUsed:false,emergencyUsed:false,recovery:null,recoveryTime:0,done:false,success:false,started:false,paused:false,speed:1,clock:0,lesson:null,lessonQueue:[],grace:0,impact:0,slowImpact:0,notices:[],districts:new Map(),journal:[],feedback:null,reflection:'',routeSelectedAt:{},interference:null,gust:null,yieldRemaining:0,habitatNotice:null})}
+ reset(){this.lastSafe=null;this.blockedTime=0;this.positionRecoveries=0;this.safetyNotice=null;this.boundarySide=0;this.energyGlide=false;this.resourceLog=[];this.viewMode=this.viewMode||'first';this.cameraDistance=0;this.areaPreview=null;this.previewSeen=new Set();this.observedTopics=new Set();this.tutorial=null;this.learning=null;this.learningDone=false;this.resourceHints=new Set();this.resourceHint=null;Object.assign(this,{health:100,energy:100,energyLedger:{flight:0,detour:0,light:0,rest:0,arrival:0},outro:null,summaryReady:false,time:0,progress:0,x:0,heading:0,turnVelocity:0,lookYaw:0,trackYaw:0,chapter:-1,entryPending:false,routes:{},events:new Set(),seen:new Set(),learned:new Set(),retryUsed:false,emergencyUsed:false,recovery:null,recoveryTime:0,done:false,success:false,started:false,paused:false,speed:1,clock:0,lesson:null,lessonQueue:[],grace:0,impact:0,slowImpact:0,notices:[],districts:new Map(),journal:[],feedback:null,reflection:'',routeSelectedAt:{},interference:null,gust:null,yieldRemaining:0,habitatNotice:null})}
+ worldPosition(){const z=cameraZ(this.progress);return {x:this.pathAt(z)+this.x*LATERAL_RANGE,z};}
+ routeCenters(z,onlySelected=false){
+  const c=STAGE_STARTS.findIndex((s,i)=>z>=cameraZ(s)&&z<cameraZ(STAGE_ENDS[i]));
+  if(c<0||c>1)return [pathX(z)];
+  const routes=onlySelected&&this.routes[c]?[this.routes[c]]:['A','B','C'];
+  return routes.flatMap(route=>SHARED_CITY.branches[c][route].map(points=>{
+   if(z<points[0][1]||z>points.at(-1)[1])return cityRouteX(c,route,z);
+   const i=Math.min(points.length-1,Math.max(1,Math.ceil((z-points[0][1])/2))),a=points[i-1],b=points[i];return a[0]+(b[0]-a[0])*(z-a[1])/(b[1]-a[1]);
+  }));
+ }
+ flightBounds(z){
+  const centers=this.routeCenters(z),p=z/FLIGHT_SPEED+10,c=STAGE_STARTS.findIndex((s,i)=>p>=s&&p<STAGE_ENDS[i]);
+  if(c>=0&&c<2){const u=z-cameraZ(STAGE_STARTS[c]),width=u<60?30:u<110?18:u<290?10:18;return {left:Math.min(...centers)-width,right:Math.max(...centers)+width};}
+  return {left:pathX(z)-30,right:pathX(z)+38};
+ }
+ nearbySolids(z){return [...this.collisionBuildings(this.chapter-1),...this.collisionBuildings(this.chapter),...this.collisionBuildings(this.chapter+1)].filter(b=>b.height>=EYE_HEIGHT-1&&Math.abs(z-b.z-b.depth/2)<Math.hypot(b.width,b.depth)/2+45);}
+ safeAt(point,solids,look=0){const bounds=this.flightBounds(point.z),end={x:point.x,z:point.z+look},next=this.flightBounds(end.z);return point.x>=bounds.left+.2&&point.x<=bounds.right-.2&&end.x>=next.left+.2&&end.x<=next.right-.2&&!solids.some(b=>hitsBuilding(b,point,end,1.3));}
+ findSafePosition(point,solids){
+  const bounds=this.flightBounds(point.z),centers=this.routeCenters(point.z,true),candidates=[point.x,this.lastSafe?.x,...centers];
+  for(let x=bounds.left+.5;x<=bounds.right-.5;x+=.75)candidates.push(x);
+  const rank=x=>Math.abs(x-point.x)+Math.max(0,Math.min(...centers.map(c=>Math.abs(c-x)))-14)*5;
+  candidates.sort((a,b)=>rank(a)-rank(b));
+  for(const look of [16,8,3])for(const x of candidates)if(Number.isFinite(x)&&this.safeAt({x,z:point.z},solids,look))return {x,z:point.z};
+  return null;
+ }
+ recoverPosition(point,solids){
+  const safe=this.findSafePosition(point,solids);if(!safe)return false;
+  this.x=(safe.x-this.pathAt(safe.z))/LATERAL_RANGE;this.heading=0;this.turnVelocity=0;this.blockedTime=0;this.grace=Math.max(this.grace,1.5);this.lastSafe=safe;
+  this.positionRecoveries++;this.safetyNotice={kind:'recovered',until:this.clock+3};return true;
+ }
+ restPoints(){
+  const points=SHARED_CITY.rests.filter(r=>r.chapter===this.chapter&&r.route===this.routes[this.chapter]);
+  if([2,3].includes(this.chapter)&&['B','C'].includes(this.routes[this.chapter])){const z=cameraZ(STAGE_STARTS[this.chapter]+21);points.push({id:'habitat-'+this.chapter,chapter:this.chapter,route:this.routes[this.chapter],x:this.pathAt(z),z,radius:7});}
+  return points;
+ }
  get waitingRoute(){return this.started&&!this.done&&this.chapter>=0&&this.chapter<4&&!this.routes[this.chapter]}
  get interaction(){return !this.started?'intro':this.done?(this.summaryReady?'ending':'outro'):this.paused?'overlay':this.areaPreview!==null?'preview':this.lesson?'lesson':this.recovery?'recovery':'flight'}
  get running(){return this.started&&!this.done&&!this.paused&&!this.lesson&&this.areaPreview===null&&!this.tutorial}
  event(id,health=0,energy=0){
-  if(this.done||this.paused||this.lesson||this.events.has(id))return false;
+  if(this.done||this.paused||this.lesson||this.areaPreview!==null||this.tutorial||this.events.has(id))return false;
   this.events.add(id);this.health=clamp(this.health+health);const before=this.energy;this.energy=clamp(this.energy+energy);
-  const bucket=id.startsWith('detour-')?'detour':id==='light-1'?'light':id.startsWith('rest-')?'rest':id==='arrival'?'arrival':null;if(bucket)this.energyLedger[bucket]+=this.energy-before;
-  if(health||energy)this.notices.push({id,health,energy,at:this.clock});
+  const bucket=id.startsWith('flight-segment-')?'flight':id.startsWith('detour-')?'detour':id==='light-1'?'light':id.startsWith('rest-')?'rest':id==='arrival'?'arrival':null;if(bucket)this.energyLedger[bucket]+=this.energy-before;
+  if(health||energy){this.notices.push({id,health,energy:this.energy-before,at:this.clock});this.resourceLog.push({id,health,energy:this.energy-before,at:this.progress});}if(this.energy>0)this.energyGlide=false;
   return true;
  }
  choose(route){
@@ -361,21 +396,23 @@ class Journey {
  }
  collide(id,severe=false,glass=false){
   if(!this.running||this.recovery||this.grace>0)return false;
-  if(!this.event(`hit-${id}`,severe?-35:-25))return false;
+  if(!this.event(`hit-${id}`,severe?-25:-15))return false;
   this.impact=.3;this.slowImpact=.9;this.grace=1;if(glass)this.observedTopics.add('glass');if(!this.resourceHints.has('health')){this.resourceHints.add('health');this.resourceHint={kind:'health',until:this.clock+7};} this.teach(glass?'glass':'wall',2,true);this.checkRecovery();this.beginLesson();return true;
  }
- rest(id){this.observedTopics.add('green');if(this.event(`rest-${id}`,0,ENERGY.rest[this.routes[this.chapter]]||0))this.teach('green')}
+ rest(id){const point=this.worldPosition(),rest=this.restPoints().find(r=>r.id===id&&Math.hypot(r.x-point.x,r.z-point.z)<=r.radius);if(!rest||!this.running||this.recovery)return false;this.observedTopics.add('green');if(this.event(`rest-${id}`,0,20)){this.teach('green');return true;}return false;}
  checkRecovery(){
   if(this.done||this.recovery)return;
   if(this.health===0){this.recovery='health';this.recoveryTime=0;this.interference=null;this.clearHabitat()}
-  else if(this.energy===0){this.recovery='energy';this.recoveryTime=0;this.interference=null;this.clearHabitat()}
+  else if(this.energy===0){this.energyGlide=true;}
  }
  retry(){
   if(this.recovery!=='health'||this.retryUsed||this.recoveryTime<1)return false;
-  this.retryUsed=true;this.health=70;this.energy=60;
+  this.retryUsed=true;this.resourceLog.push({id:'checkpoint-retry',health:70-this.health,energy:60-this.energy,at:this.progress});this.health=70;this.energy=60;this.energyGlide=false;this.blockedTime=0;this.lastSafe=null;
   this.progress=STAGE_STARTS[Math.max(0,this.chapter)];this.x=0;this.heading=0;this.turnVelocity=0;this.lookYaw=0;this.trackYaw=0;
   delete this.routes[this.chapter];delete this.routeSelectedAt[this.chapter];this.interference=null;this.clearHabitat();
-  for(const key of [...this.events])if(key===`detour-${this.chapter}`||key===`rest-${this.chapter}`||key.startsWith(`rest-city-${this.chapter}-`)||key.startsWith(`hit-${this.chapter}-`)||key.startsWith(`hit-backdrop-${this.chapter}-`)||key===`light-${this.chapter}`||key.startsWith(`gust-${this.chapter}-`)||key===`flock-${this.chapter}`)this.events.delete(key);
+  // Recovery/cost IDs persist: no repeat rest farming. A checkpoint starts a new injury attempt.
+  for(const b of this.collisionBuildings(this.chapter))this.events.delete(`hit-${b.id}`);
+
   this.recovery=null;this.entryPending=false;this.grace=2;this.speed=.65;this.notices=[];return true;
  }
  finish(success){
@@ -403,33 +440,44 @@ class Journey {
   this.notices=this.notices.filter(n=>this.clock-n.at<2.5);
   if(this.recovery){
    this.recoveryTime+=dt;
-   if(this.recovery==='energy'&&this.recoveryTime>=3){this.energy=25;this.emergencyUsed=true;this.recovery=null;this.notices.push({id:'emergency',health:0,energy:25,at:this.clock})}
-   else if(this.recovery==='health'&&this.retryUsed&&this.recoveryTime>=2)this.finish(false);
+   if(this.recovery==='health'&&this.retryUsed&&this.recoveryTime>=2)this.finish(false);
    return;
   }
   this.beginLesson();if(this.lesson)return;
   this.yieldRemaining=Math.max(0,this.yieldRemaining-dt);
   if(this.habitatNotice){this.habitatNotice.remaining-=dt;if(this.habitatNotice.remaining<=0)this.habitatNotice=null}
   steer=Math.max(-1,Math.min(1,steer));
+  const edgePosition=this.worldPosition(),edge=this.flightBounds(edgePosition.z);
+  if((edgePosition.x-edge.left<.6&&steer>0&&this.heading<0)||(edge.right-edgePosition.x<.6&&steer<0&&this.heading>0)){this.heading=0;this.turnVelocity=0;}
   this.turnVelocity=steer?this.turnVelocity+(steer*.95-this.turnVelocity)*(1-Math.exp(-dt*12)):0;
   const oldHeading=this.heading;
-  this.heading=Math.max(-Math.PI*.5,Math.min(Math.PI*.5,this.heading+this.turnVelocity*dt));
+  this.heading=Math.max(-Math.PI*.36,Math.min(Math.PI*.36,this.heading+this.turnVelocity*dt));
   this.lookYaw+=(steer*.06-this.lookYaw)*(1-Math.exp(-dt*8));this.trackYaw=0;
-  const target=this.slowImpact>0?.4:this.yieldRemaining>0?.55:this.chapter===4?.85:1;
+  const target=this.energyGlide?.6:this.slowImpact>0?.4:this.yieldRemaining>0?.55:this.chapter===4?.85:1;
   this.speed+=(target-this.speed)*(1-Math.exp(-dt*8));
   const previous={x:this.pathAt(cameraZ(this.progress))+this.x*LATERAL_RANGE,z:cameraZ(this.progress)};
   const angle=(oldHeading+this.heading)/2,distance=dt*this.speed*PACE*FLIGHT_SPEED;
-  const proposed={x:previous.x+Math.sin(angle)*distance,z:previous.z+Math.cos(angle)*distance};
-  // Collision geometry blocks motion independently of damage cooldown or lesson state.
-  const solids=[...this.collisionBuildings(this.chapter-1),...this.collisionBuildings(this.chapter),...this.collisionBuildings(this.chapter+1)];
+  const proposed={x:previous.x+Math.sin(angle)*distance,z:previous.z+Math.max(.42,Math.cos(angle))*distance};
+  const bounds=this.flightBounds(proposed.z);this.boundarySide=proposed.x<bounds.left?-1:proposed.x>bounds.right?1:0;
+  if(this.boundarySide){proposed.x=Math.max(bounds.left,Math.min(bounds.right,proposed.x));this.heading=0;this.turnVelocity=0;this.safetyNotice={kind:'boundary',until:this.clock+1};}
+  const solids=this.nearbySolids(previous.z);
+  // A previously invalid position is recovered without treating a software trap as a new injury.
+  if(solids.some(b=>hitsBuilding(b,previous,previous,1.09))){if(this.recoverPosition(previous,solids))return;}
   let hit=null,earliest=Infinity;
   for(const solid of solids){const t=buildingHitTime(solid,previous,proposed);if(t<earliest){earliest=t;hit=solid;}}
   let current=proposed;
-  if(hit){const t=Math.max(0,earliest-.002/Math.max(.002,distance));current={x:previous.x+(proposed.x-previous.x)*t,z:previous.z+(proposed.z-previous.z)*t};}
+  if(hit){const t=Math.max(0,earliest-.01/Math.max(.01,distance));current={x:previous.x+(proposed.x-previous.x)*t,z:previous.z+(proposed.z-previous.z)*t};this.blockedTime+=dt;}else this.blockedTime=0;
   this.progress=current.z/FLIGHT_SPEED+10;
   this.x=(current.x-this.pathAt(current.z))/LATERAL_RANGE;
-  const drain=Math.min(this.energy,dt*ENERGY.flight);this.energy-=drain;this.energyLedger.flight-=drain;if(this.time>3&&!this.resourceHints.has('energy')){this.resourceHints.add('energy');this.resourceHint={kind:'energy',until:this.clock+7};}
-  if(hit){this.collide(hit.id,hit.severe||(this.speed>.85&&previous.z<hit.z-1.1&&proposed.z>=hit.z-1.1),hit.glass);if(this.lesson||this.recovery)return;}
+  if(!hit&&this.safeAt(current,solids,4))this.lastSafe={...current};
+  if(hit){
+   if(!this.boundarySide)this.collide(hit.id,hit.severe||(this.speed>.85&&previous.z<hit.z-1.1&&proposed.z>=hit.z-1.1),hit.glass);
+   if(this.blockedTime>=.4||this.boundarySide)this.recoverPosition(current,solids);
+   if(this.lesson||this.recovery)return;
+  }
+  // Distance milestones charge once. Waiting, boundary pressure and collision stalls cannot accrue time-based drain.
+  if(!hit){for(let segment=1;segment<=Math.floor(this.progress/ENERGY.segment);segment++)this.event(`flight-segment-${segment}`,0,-ENERGY.flight);}
+  if(this.time>3&&!this.resourceHints.has('energy')){this.resourceHints.add('energy');this.resourceHint={kind:'energy',until:this.clock+7};}
   for(const key of ['interference','gust']){const effect=this[key];if(effect){effect.elapsed+=dt;effect.remaining=Math.max(0,effect.duration-effect.elapsed);if(effect.remaining<=0)this[key]=null}}
   const c=this.progress<10?-1:this.progress<45?0:this.progress<80?1:this.progress<115?2:this.progress<140?3:4;
   if(c!==this.chapter){
@@ -449,15 +497,10 @@ class Journey {
   if(c===1&&local>=16)this.startInterference();
   if(c===2&&local>=4)this.teach('corridor');
   this.updateHabitat(local);
-  if(c<2){
-   const z=cameraZ(this.progress),x=this.pathAt(z)+this.x*LATERAL_RANGE;
-   for(const rest of SHARED_CITY.rests)if(rest.chapter===c&&rest.route===this.routes[c]){
-    if(z>rest.z-75&&z<rest.z)this.teach('green');
-    if(Math.abs(z-rest.z)<=rest.radius&&Math.abs(x-rest.x)<=rest.radius)this.rest(rest.id);
-   }
-  }else{
-   if((c===2||c===3)&&['B','C'].includes(this.routes[c])&&local>=18)this.teach('green');
-   if((c===2||c===3)&&['B','C'].includes(this.routes[c])&&local>=21)this.rest(c);
+  const position=this.worldPosition();
+  for(const rest of this.restPoints()){
+   if(rest.z-position.z>0&&rest.z-position.z<60)this.teach('green');
+   if(Math.hypot(position.x-rest.x,position.z-rest.z)<=rest.radius)this.rest(rest.id);
   }
   if(c===2&&local>=25)this.teach('green');
   this.checkRecovery();
@@ -880,6 +923,16 @@ class FlightRenderer {
    }
   }
  }
+ flightBoundary(g){
+  if(!g.started||g.done||g.tutorial)return;
+  const bird=g.worldPosition(),bounds=g.flightBounds(bird.z),left=bird.x-bounds.left,right=bounds.right-bird.x,side=left<right?-1:1,distance=Math.min(left,right);
+  if(distance>9)return;
+  const c=this.ctx;c.save();c.globalAlpha=Math.max(.12,(9-Math.max(0,distance))/9)*.42;
+  for(let d=8;d<62;d+=9){const a=g.flightBounds(bird.z+d),b=g.flightBounds(bird.z+d+9),x=side<0?a.left:a.right,nx=side<0?b.left:b.right;
+   this.polygon([[x,26,bird.z+d],[nx,26,bird.z+d+9],[nx,43,bird.z+d+9],[x,43,bird.z+d]],'#8ad9ef');
+   this.polygon([[x,33,bird.z+d],[nx,33,bird.z+d+9],[nx,33.16,bird.z+d+9],[x,33.16,bird.z+d]],'#cef4ff');
+  }c.restore();
+ }
  visibleFeature(point,margin=0){const depth=this.depth(point);if(depth<10||depth>240)return false;const p=this.project(point);return p[0]>-margin&&p[0]<this.w+margin&&p[1]>0&&p[1]<this.h;}
  ruralWorld(){return this.ruralData||(this.ruralData={ponds:ruralPondSpecs()});}
  ruralLandscape(g,p){
@@ -1075,7 +1128,10 @@ class FlightRenderer {
    const z=cameraZ(STAGE_STARTS[g.chapter]+21),x=g.pathAt(z);
    const ring=[];for(let i=0;i<24;i++){const a=i*Math.PI/12;ring.push([x+Math.cos(a)*7,.18,z+Math.sin(a)*7]);}this.polygon(ring,'#d3ca91');
    const inner=[];for(let i=0;i<24;i++){const a=i*Math.PI/12;inner.push([x+Math.cos(a)*5.7,.2,z+Math.sin(a)*5.7]);}this.polygon(inner,'#688a59');
+   if(this.depth([x,37,z])>12&&this.depth([x,37,z])<150){const screen=this.project([x,37,z]);c.save();c.font='13px system-ui';c.textAlign='center';c.fillStyle='#173d39';c.fillRect(screen[0]-78,screen[1]-18,156,25);c.fillStyle='#fff0c7';c.fillText(g.events.has('rest-habitat-'+g.chapter)?(lang==='en'?'Rest visited':'已停歇'):(lang==='en'?'Ecological rest +20':'生態停歇 +20'),screen[0],screen[1]);c.restore();}
+
   }
+  this.flightBoundary(g);
   if(!this.cityWorld)this.cityWorld=[0,1,2,3].flatMap(cityBackdrop).map(b=>({...b,background:true}));
 
   c.save();if(g.impact>0)c.translate(Math.sin(g.clock*90)*5,Math.cos(g.clock*80)*4);
@@ -1209,7 +1265,7 @@ const resourceLayer=document.createElement('aside');resourceLayer.id='resourceMe
 let clarityKey='';
 function renderClarity(){
  const hint=g.resourceHint;resourceLayer.hidden=!hint||g.clock>hint.until||g.interaction!=='flight'||!!g.tutorial;
- if(hint)resourceLayer.textContent=hint.kind==='health'?tr('♥ 健康代表鳥的安全。碰撞會受傷；觀察通道，轉向避開建築。','♥ Health means safety. Collisions cause injury. Observe the gaps and steer clear.'):tr('⚡ 體力是飛行力量，飛行會慢慢消耗。只有指定合適停歇點能恢復。','⚡ Energy is flying strength. Flight uses it slowly. Only designated suitable resting points restore it.');
+ if(hint)resourceLayer.textContent=hint.kind==='health'?tr('♥ 健康代表鳥的安全。碰撞會受傷；觀察通道，轉向避開建築。','♥ Health means safety. Collisions cause injury. Observe the gaps and steer clear.'):tr('⚡ 體力是飛行力量，每完成一段飛行消耗 5。只有指定合適停歇點能恢復。','⚡ Energy is flying strength. Each completed flight segment costs 5. Only designated suitable resting points restore it.');
  if(g.done&&g.summaryReady&&!g.learningDone&&!g.learning){let last=[];try{last=JSON.parse(storageGet('urban-wings-last-questions')||'[]')}catch{}g.learning={questions:pickLearningQuestions(last),index:0,correct:false,feedback:''};storageSet('urban-wings-last-questions',JSON.stringify(g.learning.questions.map(q=>q.id)));}
  const type=g.paused?'':g.tutorial?'tutorial':g.areaPreview!==null?'preview':g.done&&g.summaryReady&&!g.learningDone?'quiz':'';
  clarityLayer.hidden=!type;if(!type){clarityKey='';return;}
@@ -1233,10 +1289,10 @@ function renderClarity(){
 }
 
 const routes={
- 0:[['建築邊緣','Building edge','密集幕牆與較窄的樓宇間隙。','Dense façades and narrower gaps.'],['外部玻璃標記','External glass markers','玻璃有清晰白點，樓距較寬；飛入指定停歇區 +7。','Repeated white glass dots and wider gaps; enter the designated rest for +7.'],['綠蔭繞道','Green detour','沿樹木繞行；−7 體力，停歇 +17，每處一次。','Tree-lined detour; −7 energy, rest +17, once per site.']],
- 1:[['商業街區','Commercial streets','樓宇密集、間隙較窄；強光區較多。','Dense towers, narrower gaps and brighter windows.'],['受管理照明','Managed lighting','樓距適中，照明較克制。','Moderate density and restrained lighting.'],['外圍繞道','Outer detour','住宅與樹群繞開強光；−7 體力，指定停歇 +17，每處一次。','Homes and trees avoid bright areas; −7 energy, designated rest +17 once.']],
- 2:[['城市邊緣','Urban edge','沿建築與綠地的交界前進。','Follow the boundary of buildings and greenery.'],['水道沿線','Waterway','沿水道觀察相連的綠地；停歇 +7。','Follow water and connected greenery; rest +7.'],['生態繞道','Ecological detour','路程較長；−7 體力，停歇 +17，每處一次。','Longer; −7 energy, rest +17, once per site.']],
- 3:[['村落邊緣','Village edge','沿村落與魚塘的交界前進。','Follow the edge of villages and ponds.'],['濕地廊道','Wetland corridor','沿相連的水面與植被前進；停歇 +7。','Follow linked water and vegetation; rest +7.'],['外圍繞道','Outer detour','路程較長；−7 體力，停歇 +17，每處一次。','Longer; −7 energy, rest +17, once per site.']]
+ 0:[['建築邊緣','Building edge','密集幕牆與較窄的樓宇間隙。','Dense façades and narrower gaps.'],['外部玻璃標記','External glass markers','玻璃有清晰白點，樓距較寬；飛入指定停歇區 +20。','Repeated white glass dots and wider gaps; enter the designated rest for +20.'],['綠蔭繞道','Green detour','沿樹木繞行；−5 體力，停歇 +20，每處一次。','Tree-lined detour; −5 energy, rest +20, once per site.']],
+ 1:[['商業街區','Commercial streets','樓宇密集、間隙較窄；強光區較多。','Dense towers, narrower gaps and brighter windows.'],['受管理照明','Managed lighting','樓距適中，照明較克制。','Moderate density and restrained lighting.'],['外圍繞道','Outer detour','住宅與樹群繞開強光；−5 體力，指定停歇 +20，每處一次。','Homes and trees avoid bright areas; −5 energy, designated rest +20 once.']],
+ 2:[['城市邊緣','Urban edge','沿建築與綠地的交界前進。','Follow the boundary of buildings and greenery.'],['水道沿線','Waterway','沿水道觀察相連的綠地；停歇 +20。','Follow water and connected greenery; rest +20.'],['生態繞道','Ecological detour','路程較長；−5 體力，停歇 +20，每處一次。','Longer; −5 energy, rest +20, once per site.']],
+ 3:[['村落邊緣','Village edge','沿村落與魚塘的交界前進。','Follow the edge of villages and ponds.'],['濕地廊道','Wetland corridor','沿相連的水面與植被前進；停歇 +20。','Follow linked water and vegetation; rest +20.'],['外圍繞道','Outer detour','路程較長；−5 體力，停歇 +20，每處一次。','Longer; −5 energy, rest +20, once per site.']]
 };
 function setText(id,text){if($(id).textContent!==text)$(id).textContent=text}
 function clearInput(){keys.clear();pointers.clear();$('left').classList.remove('held');$('right').classList.remove('held')}
@@ -1263,7 +1319,7 @@ function modalLanguageButtons(){
  }
 }
 function labels(){
- setText('releaseFeatures',tr('本版新增：五區場景預告、操作練習、旅程後兩題學習挑戰。','New: five area previews, control practice, and a two-question Learning Check.'));
+ setText('releaseFeatures',tr('本版修復：飛行邊界、碰撞脫困、明確的體力收支。','Updated: flight boundaries, collision recovery, and clear Energy events.'));
  $('viewMode').textContent=innerWidth<600?(tr('視角 ','View ')+(g.viewMode==='third'?'3':'1')):(g.viewMode==='third'?tr('第三人稱','Third person'):tr('第一人稱','First person'));$('viewMode').title=tr('切換第一／第三人稱（V）','Switch first / third person (V)');$('viewMode').setAttribute('aria-pressed',String(g.viewMode==='third'));
  document.documentElement.lang=lang==='zh'?'zh-Hant':'en';
  $('language').setAttribute('aria-label','切換語言 / Switch language');
@@ -1334,8 +1390,7 @@ function renderLesson(){
 function renderRecovery(){
  $('recovery').hidden=g.interaction!=='recovery';if(g.interaction!=='recovery')return;
  const ready=g.recoveryTime>=1,key=`${g.recovery}-${g.retryUsed}-${ready}-${lang}`;if(key===recoveryKey)return;recoveryKey=key;clearInput();
- const energy=g.recovery==='energy';
- $('recovery').innerHTML=`<div class="dialog" role="dialog" aria-modal="true"><h2>${energy?tr('體力不足，需要停歇','Energy depleted. Rest is needed.'):tr('本次飛行已中斷','Flight interrupted')}</h2><p>${energy?tr('正在滑行至最近的指定停歇點。約 3 秒後恢復至 25 體力，健康值不變。','Gliding to the nearest designated rest. Energy returns to 25 after about 3 seconds; health is unchanged.'):g.retryUsed?tr('正在整理旅程回顧。','Preparing your journey reflection.'):tr('你還有一次重試。返回本章起點，健康值恢復至 70、體力至 60；保留之前完成的旅程與知識。','One retry remains. Return to this chapter with health 70 and energy 60. Previous progress and lessons are preserved.')}</p>${!energy&&!g.retryUsed?`<button id="retry" class="primary" ${ready?'':'disabled'}>${tr('從檢查點重試','Retry from checkpoint')}</button>`:''}</div>`;
+ $('recovery').innerHTML=`<div class="dialog" role="dialog" aria-modal="true"><h2>${tr('本次飛行已中斷','Flight interrupted')}</h2><p>${g.retryUsed?tr('正在整理旅程回顧。','Preparing your journey reflection.'):tr('你還有一次重試。返回本章起點，健康值恢復至 70、體力至 60；保留之前完成的旅程與知識。','One retry remains. Return to this chapter with health 70 and energy 60. Previous progress and lessons are preserved.')}</p>${!g.retryUsed?`<button id="retry" class="primary" ${ready?'':'disabled'}>${tr('從檢查點重試','Retry from checkpoint')}</button>`:''}</div>`;
  if($('retry'))$('retry').onclick=()=>{if(g.retry()){clearInput();uiKey='';recoveryKey='';updateUI()}};
 }
 function renderOutro(){
@@ -1387,9 +1442,11 @@ function updateUI(){
   else if(g.progress<10)caption=tr('前方是繁忙的城市；遠處的米埔濕地，或許是重聚之地。','A bustling city lies ahead. Mai Po’s wetlands may offer a chance to reunite.');
   else if(g.chapter===4&&g.progress<145)caption=tr('米埔濕地就在眼前，家人正在等待。','Mai Po lies ahead. Your family is waiting.');
  }
- if(g.energy<30&&g.interaction==='flight')caption=tr('體力偏低 · B 路線節省繞道體力，C 路線有較多停歇恢復；保持與鳥群距離。','Low energy · B saves detour energy; C offers stronger rests. Give flocks space.');
+ if(g.energy<30&&g.interaction==='flight')caption=tr('體力偏低 · 尋找指定生態停歇點（+20），每處只恢復一次。','Low energy · Look for a designated ecological rest (+20), once per point.');
+ if(g.energyGlide)caption=tr('體力耗盡：仍可滑翔與轉向，請飛入標示的生態停歇點。','Energy empty: keep gliding and steering toward a marked ecological rest.');
+ if(g.safetyNotice&&g.clock<g.safetyNotice.until)caption=g.safetyNotice.kind==='boundary'?tr('已到飛行邊界 · 可向內轉，繼續前進；觸碰邊界不扣資源。','Flight boundary · Steer inward. Boundary contact causes no resource penalty.'):tr('已移出受阻位置 · 可繼續操控，健康與體力未恢復。','Moved clear of the obstacle. Controls restored; no Health or Energy refill.');
  setText('caption',caption);
- const notices=g.notices.slice(-2);setText('delta',notices.map(n=>`${n.health?`${tr('健康','Health')} ${n.health}`:''}${n.energy?`${tr('體力','Energy')} ${n.energy>0?'+':''}${n.energy}`:''}`).join(' · '));
+ const notices=g.notices.slice(-2);setText('delta',notices.map(n=>`${n.health?`${tr('健康','Health')} ${n.health}`:''}${n.energy?`${tr('體力','Energy')} ${n.energy>0?'+':''}${n.energy} (${n.id.startsWith('rest-')?tr('指定停歇點','ecological rest'):n.id==='arrival'?tr('抵達濕地','wetland arrival'):n.id.startsWith('flight-segment-')?tr('完成飛行段','flight segment'):n.id.startsWith('detour-')?tr('繞行','detour'):tr('燈光修正','light correction')})`:''}`).join(' · '));
  renderRoutes();renderLesson();renderRecovery();renderOutro();renderEnding();renderInterference();modalLanguageButtons();renderClarity();
  $('controls').inert=g.interaction!=='flight';
  $('caption').hidden=g.interaction!=='flight';$('interference').hidden=g.interaction!=='flight'||$('interference').hidden;

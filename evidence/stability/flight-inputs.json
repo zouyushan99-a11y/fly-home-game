@@ -1,0 +1,200 @@
+[
+  {
+    "name": "desktop",
+    "mode": "first",
+    "side": -1,
+    "x": -33.015602422704866,
+    "z": -33.171151755255416,
+    "left": -33.01560242270486,
+    "right": 34.98439757729514,
+    "health": 100,
+    "energy": 100,
+    "progress": 6.314316471638287
+  },
+  {
+    "name": "desktop",
+    "mode": "first",
+    "side": 1,
+    "x": 34.17066308377217,
+    "z": -41.083314668173344,
+    "left": -33.72661172416877,
+    "right": 34.27338827583123,
+    "health": 100,
+    "energy": 100,
+    "progress": 5.435187259091851
+  },
+  {
+    "name": "desktop",
+    "mode": "third",
+    "side": -1,
+    "x": -33.015602422704866,
+    "z": -33.171151755255416,
+    "left": -33.01560242270486,
+    "right": 34.98439757729514,
+    "health": 100,
+    "energy": 100,
+    "progress": 6.314316471638287
+  },
+  {
+    "name": "desktop",
+    "mode": "third",
+    "side": 1,
+    "x": 34.17066308377217,
+    "z": -41.083314668173344,
+    "left": -33.72661172416877,
+    "right": 34.27338827583123,
+    "health": 100,
+    "energy": 100,
+    "progress": 5.435187259091851
+  },
+  {
+    "name": "desktop",
+    "mode": "first",
+    "collision": {
+      "health": 75,
+      "recoveries": 1,
+      "inside": false
+    }
+  },
+  {
+    "name": "desktop",
+    "mode": "third",
+    "collision": {
+      "health": 75,
+      "recoveries": 1,
+      "inside": false
+    }
+  },
+  {
+    "name": "portrait",
+    "mode": "first",
+    "side": -1,
+    "x": -33.015602422704866,
+    "z": -33.171151755255416,
+    "left": -33.01560242270486,
+    "right": 34.98439757729514,
+    "health": 100,
+    "energy": 100,
+    "progress": 6.314316471638287
+  },
+  {
+    "name": "portrait",
+    "mode": "first",
+    "side": 1,
+    "x": 34.17066308377217,
+    "z": -41.083314668173344,
+    "left": -33.72661172416877,
+    "right": 34.27338827583123,
+    "health": 100,
+    "energy": 100,
+    "progress": 5.435187259091851
+  },
+  {
+    "name": "portrait",
+    "mode": "third",
+    "side": -1,
+    "x": -33.015602422704866,
+    "z": -33.171151755255416,
+    "left": -33.01560242270486,
+    "right": 34.98439757729514,
+    "health": 100,
+    "energy": 100,
+    "progress": 6.314316471638287
+  },
+  {
+    "name": "portrait",
+    "mode": "third",
+    "side": 1,
+    "x": 34.17066308377217,
+    "z": -41.083314668173344,
+    "left": -33.72661172416877,
+    "right": 34.27338827583123,
+    "health": 100,
+    "energy": 100,
+    "progress": 5.435187259091851
+  },
+  {
+    "name": "portrait",
+    "mode": "first",
+    "collision": {
+      "health": 75,
+      "recoveries": 1,
+      "inside": false
+    }
+  },
+  {
+    "name": "portrait",
+    "mode": "third",
+    "collision": {
+      "health": 75,
+      "recoveries": 1,
+      "inside": false
+    }
+  },
+  {
+    "name": "landscape",
+    "mode": "first",
+    "side": -1,
+    "x": -33.015602422704866,
+    "z": -33.171151755255416,
+    "left": -33.01560242270486,
+    "right": 34.98439757729514,
+    "health": 100,
+    "energy": 100,
+    "progress": 6.314316471638287
+  },
+  {
+    "name": "landscape",
+    "mode": "first",
+    "side": 1,
+    "x": 34.17066308377217,
+    "z": -41.083314668173344,
+    "left": -33.72661172416877,
+    "right": 34.27338827583123,
+    "health": 100,
+    "energy": 100,
+    "progress": 5.435187259091851
+  },
+  {
+    "name": "landscape",
+    "mode": "third",
+    "side": -1,
+    "x": -33.015602422704866,
+    "z": -33.171151755255416,
+    "left": -33.01560242270486,
+    "right": 34.98439757729514,
+    "health": 100,
+    "energy": 100,
+    "progress": 6.314316471638287
+  },
+  {
+    "name": "landscape",
+    "mode": "third",
+    "side": 1,
+    "x": 34.17066308377217,
+    "z": -41.083314668173344,
+    "left": -33.72661172416877,
+    "right": 34.27338827583123,
+    "health": 100,
+    "energy": 100,
+    "progress": 5.435187259091851
+  },
+  {
+    "name": "landscape",
+    "mode": "first",
+    "collision": {
+      "health": 75,
+      "recoveries": 1,
+      "inside": false
+    }
+  },
+  {
+    "name": "landscape",
+    "mode": "third",
+    "collision": {
+      "health": 75,
+      "recoveries": 1,
+      "inside": false
+    }
+  }
+]

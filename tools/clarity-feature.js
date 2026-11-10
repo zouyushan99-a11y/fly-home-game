@@ -32,7 +32,7 @@ const resourceLayer=document.createElement('aside');resourceLayer.id='resourceMe
 let clarityKey='';
 function renderClarity(){
  const hint=g.resourceHint;resourceLayer.hidden=!hint||g.clock>hint.until||g.interaction!=='flight'||!!g.tutorial;
- if(hint)resourceLayer.textContent=hint.kind==='health'?tr('♥ 健康代表鳥的安全。碰撞會受傷；觀察通道，轉向避開建築。','♥ Health means safety. Collisions cause injury. Observe the gaps and steer clear.'):tr('⚡ 體力是飛行力量，飛行會慢慢消耗。只有指定合適停歇點能恢復。','⚡ Energy is flying strength. Flight uses it slowly. Only designated suitable resting points restore it.');
+ if(hint)resourceLayer.textContent=hint.kind==='health'?tr('♥ 健康代表鳥的安全。碰撞會受傷；觀察通道，轉向避開建築。','♥ Health means safety. Collisions cause injury. Observe the gaps and steer clear.'):tr('⚡ 體力是飛行力量，每完成一段飛行消耗 5。只有指定合適停歇點能恢復。','⚡ Energy is flying strength. Each completed flight segment costs 5. Only designated suitable resting points restore it.');
  if(g.done&&g.summaryReady&&!g.learningDone&&!g.learning){let last=[];try{last=JSON.parse(storageGet('urban-wings-last-questions')||'[]')}catch{}g.learning={questions:pickLearningQuestions(last),index:0,correct:false,feedback:''};storageSet('urban-wings-last-questions',JSON.stringify(g.learning.questions.map(q=>q.id)));}
  const type=g.paused?'':g.tutorial?'tutorial':g.areaPreview!==null?'preview':g.done&&g.summaryReady&&!g.learningDone?'quiz':'';
  clarityLayer.hidden=!type;if(!type){clarityKey='';return;}

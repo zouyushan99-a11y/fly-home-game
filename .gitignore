@@ -9,3 +9,6 @@ evidence/control/*.png
 
 evidence/clarity/*.png
 evidence/clarity/replays.json
+
+evidence/stability/*.png
+evidence/stability/replays.json

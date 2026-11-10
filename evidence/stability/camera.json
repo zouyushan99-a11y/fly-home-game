@@ -1,0 +1,38 @@
+[
+  {
+    "device": "desktop",
+    "unsafe": 0,
+    "above": 0,
+    "matrices": true,
+    "uvError": 2.2737367544323206e-13,
+    "reduced": true,
+    "pause": true,
+    "lesson": true,
+    "centered": true,
+    "reset": true
+  },
+  {
+    "device": "portrait",
+    "unsafe": 0,
+    "above": 0,
+    "matrices": true,
+    "uvError": 1.1368683772161603e-13,
+    "reduced": true,
+    "pause": true,
+    "lesson": true,
+    "centered": true,
+    "reset": true
+  },
+  {
+    "device": "landscape",
+    "unsafe": 0,
+    "above": 0,
+    "matrices": true,
+    "uvError": 1.1368683772161603e-13,
+    "reduced": true,
+    "pause": true,
+    "lesson": true,
+    "centered": true,
+    "reset": true
+  }
+]

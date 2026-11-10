@@ -1,0 +1,77 @@
+[
+  {
+    "version": "before",
+    "topic": "glass",
+    "observed": [],
+    "ponds": 0
+  },
+  {
+    "version": "before",
+    "topic": "light",
+    "observed": [],
+    "ponds": 0
+  },
+  {
+    "version": "before",
+    "topic": "green",
+    "observed": [],
+    "ponds": 0
+  },
+  {
+    "version": "before",
+    "topic": "pond",
+    "observed": [],
+    "ponds": 0
+  },
+  {
+    "version": "before",
+    "topic": "wetland",
+    "observed": [],
+    "ponds": 0
+  },
+  {
+    "version": "after",
+    "topic": "glass",
+    "observed": [
+      "glass",
+      "green"
+    ],
+    "ponds": 0
+  },
+  {
+    "version": "after",
+    "topic": "light",
+    "observed": [
+      "light",
+      "green"
+    ],
+    "ponds": 0
+  },
+  {
+    "version": "after",
+    "topic": "green",
+    "observed": [
+      "green",
+      "birds"
+    ],
+    "ponds": 0
+  },
+  {
+    "version": "after",
+    "topic": "pond",
+    "observed": [
+      "green",
+      "pond"
+    ],
+    "ponds": 5
+  },
+  {
+    "version": "after",
+    "topic": "wetland",
+    "observed": [
+      "green",
+      "wetland"
+    ],
+    "ponds": 5
+  }
+]

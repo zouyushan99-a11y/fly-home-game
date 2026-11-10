@@ -1,0 +1,299 @@
+{
+  "results": [
+    {
+      "route": "A",
+      "lane": 0,
+      "success": true,
+      "health": 100,
+      "energy": 9.87250000003906,
+      "time": 155.7916666666893,
+      "steps": 9354,
+      "events": [
+        {
+          "preview": 0,
+          "progress": 9.009090057975058
+        },
+        {
+          "lesson": "glass",
+          "observed": [
+            "glass",
+            "green"
+          ],
+          "progress": 13.475518313472389
+        },
+        {
+          "preview": 1,
+          "progress": 44.00398673604377
+        },
+        {
+          "lesson": "light",
+          "observed": [
+            "glass",
+            "green",
+            "light"
+          ],
+          "progress": 49.00766518967471
+        },
+        {
+          "preview": 2,
+          "progress": 79.0030482437143
+        },
+        {
+          "lesson": "green",
+          "observed": [
+            "glass",
+            "green",
+            "light",
+            "birds"
+          ],
+          "progress": 84.00145175734613
+        },
+        {
+          "lesson": "birds",
+          "observed": [
+            "glass",
+            "green",
+            "light",
+            "birds"
+          ],
+          "progress": 90.78388840470362
+        },
+        {
+          "preview": 3,
+          "progress": 114.00269260159342
+        },
+        {
+          "lesson": "pond",
+          "observed": [
+            "glass",
+            "green",
+            "light",
+            "birds",
+            "pond"
+          ],
+          "progress": 119.00074547560409
+        },
+        {
+          "preview": 4,
+          "progress": 139.00462710885546
+        },
+        {
+          "lesson": "wetland",
+          "observed": [
+            "glass",
+            "green",
+            "light",
+            "birds",
+            "pond",
+            "wetland"
+          ],
+          "progress": 185.00439811926276
+        }
+      ],
+      "learned": [
+        "glass",
+        "light",
+        "green",
+        "birds",
+        "pond",
+        "wetland"
+      ]
+    },
+    {
+      "route": "B",
+      "lane": 1,
+      "success": true,
+      "health": 100,
+      "energy": 37.6465000000521,
+      "time": 154.35833333335728,
+      "steps": 9268,
+      "events": [
+        {
+          "preview": 0,
+          "progress": 9.009090057975058
+        },
+        {
+          "lesson": "glass",
+          "observed": [
+            "glass",
+            "green"
+          ],
+          "progress": 12.003657967221475
+        },
+        {
+          "lesson": "green",
+          "observed": [
+            "glass",
+            "green"
+          ],
+          "progress": 25.669372080388378
+        },
+        {
+          "preview": 1,
+          "progress": 44.00344547959163
+        },
+        {
+          "lesson": "light",
+          "observed": [
+            "glass",
+            "green",
+            "light"
+          ],
+          "progress": 49.006578195305636
+        },
+        {
+          "preview": 2,
+          "progress": 79.00512803542736
+        },
+        {
+          "lesson": "birds",
+          "observed": [
+            "glass",
+            "green",
+            "light",
+            "birds"
+          ],
+          "progress": 90.78290799642485
+        },
+        {
+          "preview": 3,
+          "progress": 114.005261859781
+        },
+        {
+          "lesson": "pond",
+          "observed": [
+            "glass",
+            "green",
+            "light",
+            "birds",
+            "pond"
+          ],
+          "progress": 119.00923395277562
+        },
+        {
+          "preview": 4,
+          "progress": 139.0008576546617
+        },
+        {
+          "lesson": "wetland",
+          "observed": [
+            "glass",
+            "green",
+            "light",
+            "birds",
+            "pond",
+            "wetland"
+          ],
+          "progress": 185.00221053252125
+        }
+      ],
+      "learned": [
+        "glass",
+        "green",
+        "light",
+        "birds",
+        "pond",
+        "wetland"
+      ]
+    },
+    {
+      "route": "C",
+      "lane": 2,
+      "success": true,
+      "health": 100,
+      "energy": 16.477500000041523,
+      "time": 175.0416666666718,
+      "steps": 10509,
+      "events": [
+        {
+          "preview": 0,
+          "progress": 9.009090057975058
+        },
+        {
+          "lesson": "glass",
+          "observed": [
+            "glass",
+            "green"
+          ],
+          "progress": 14.297326217217698
+        },
+        {
+          "lesson": "green",
+          "observed": [
+            "glass",
+            "green"
+          ],
+          "progress": 25.669184132980014
+        },
+        {
+          "preview": 1,
+          "progress": 44.00404907889302
+        },
+        {
+          "lesson": "light",
+          "observed": [
+            "glass",
+            "green",
+            "light"
+          ],
+          "progress": 49.21187263519541
+        },
+        {
+          "preview": 2,
+          "progress": 79.00778857366278
+        },
+        {
+          "lesson": "birds",
+          "observed": [
+            "glass",
+            "green",
+            "light",
+            "birds"
+          ],
+          "progress": 90.78668495561493
+        },
+        {
+          "preview": 3,
+          "progress": 114.00675129305438
+        },
+        {
+          "lesson": "pond",
+          "observed": [
+            "glass",
+            "green",
+            "light",
+            "birds",
+            "pond"
+          ],
+          "progress": 119.0077604414565
+        },
+        {
+          "preview": 4,
+          "progress": 139.00556105275007
+        },
+        {
+          "lesson": "wetland",
+          "observed": [
+            "glass",
+            "green",
+            "light",
+            "birds",
+            "pond",
+            "wetland"
+          ],
+          "progress": 185.0088416649086
+        }
+      ],
+      "learned": [
+        "glass",
+        "green",
+        "light",
+        "birds",
+        "pond",
+        "wetland"
+      ]
+    }
+  ],
+  "errors": [],
+  "note": "Instrumented browser pilot; UI inputs tested separately; no physical mobile device."
+}

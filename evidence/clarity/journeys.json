@@ -1,0 +1,92 @@
+[
+  {
+    "route": "A",
+    "lane": 0,
+    "success": true,
+    "health": 100,
+    "energy": 9.87250000003906,
+    "progress": 185.013931554112,
+    "time": 155.7916666666893,
+    "steps": 9354
+  },
+  {
+    "route": "A",
+    "lane": 1,
+    "success": true,
+    "health": 100,
+    "energy": 10.934500000038035,
+    "progress": 185.01771075989058,
+    "time": 153.82500000002443,
+    "steps": 9236
+  },
+  {
+    "route": "A",
+    "lane": 2,
+    "success": true,
+    "health": 100,
+    "energy": 11.348500000037525,
+    "progress": 185.01327924099937,
+    "time": 153.05833333335846,
+    "steps": 9189
+  },
+  {
+    "route": "B",
+    "lane": 0,
+    "success": true,
+    "health": 100,
+    "energy": 32.325000000041115,
+    "progress": 185.0168775969573,
+    "time": 151.25000000002677,
+    "steps": 9082
+  },
+  {
+    "route": "B",
+    "lane": 1,
+    "success": true,
+    "health": 100,
+    "energy": 37.6465000000521,
+    "progress": 185.01174396854674,
+    "time": 154.35833333335728,
+    "steps": 9268
+  },
+  {
+    "route": "B",
+    "lane": 2,
+    "success": true,
+    "health": 100,
+    "energy": 27.86100000004179,
+    "progress": 185.01510308049717,
+    "time": 159.51666666668592,
+    "steps": 9578
+  },
+  {
+    "route": "C",
+    "lane": 0,
+    "success": true,
+    "health": 100,
+    "energy": 21.625500000037654,
+    "progress": 185.01405642109444,
+    "time": 165.50833333334714,
+    "steps": 9937
+  },
+  {
+    "route": "C",
+    "lane": 1,
+    "success": true,
+    "health": 100,
+    "energy": 53.38900000009485,
+    "progress": 185.01487329215618,
+    "time": 169.65000000001004,
+    "steps": 10185
+  },
+  {
+    "route": "C",
+    "lane": 2,
+    "success": true,
+    "health": 100,
+    "energy": 16.477500000041523,
+    "progress": 185.01837509736959,
+    "time": 175.0416666666718,
+    "steps": 10509
+  }
+]

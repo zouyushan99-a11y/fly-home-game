@@ -1,0 +1,40 @@
+{
+  "previews": [
+    {
+      "area": 0,
+      "frozen": true,
+      "oneShot": true,
+      "beforeBoundary": true
+    },
+    {
+      "area": 1,
+      "frozen": true,
+      "oneShot": true,
+      "beforeBoundary": true
+    },
+    {
+      "area": 2,
+      "frozen": true,
+      "oneShot": true,
+      "beforeBoundary": true
+    },
+    {
+      "area": 3,
+      "frozen": true,
+      "oneShot": true,
+      "beforeBoundary": true
+    },
+    {
+      "area": 4,
+      "frozen": true,
+      "oneShot": true,
+      "beforeBoundary": true
+    }
+  ],
+  "tutorialFrozen": true,
+  "unseenTopicsBlocked": true,
+  "duplicatesBlocked": true,
+  "steeringDeferral": true,
+  "questionDraws": 1000,
+  "combinations": 80
+}

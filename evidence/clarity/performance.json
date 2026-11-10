@@ -1,0 +1,101 @@
+{
+  "note": "Serial headless Chromium CPU canvas render timings; not physical-device FPS.",
+  "rows": [
+    {
+      "version": "before",
+      "device": "desktop",
+      "scene": "night",
+      "medianMs": 518.6999999880791,
+      "p95Ms": 589.0999999940395,
+      "samples": 80
+    },
+    {
+      "version": "before",
+      "device": "desktop",
+      "scene": "pond",
+      "medianMs": 2.2000000178813934,
+      "p95Ms": 112.59999999403954,
+      "samples": 80
+    },
+    {
+      "version": "before",
+      "device": "portrait",
+      "scene": "night",
+      "medianMs": 189.40000000596046,
+      "p95Ms": 232.59999999403954,
+      "samples": 80
+    },
+    {
+      "version": "before",
+      "device": "portrait",
+      "scene": "pond",
+      "medianMs": 1.300000011920929,
+      "p95Ms": 73.2999999821186,
+      "samples": 80
+    },
+    {
+      "version": "before",
+      "device": "landscape",
+      "scene": "night",
+      "medianMs": 218.59999999403954,
+      "p95Ms": 278,
+      "samples": 80
+    },
+    {
+      "version": "before",
+      "device": "landscape",
+      "scene": "pond",
+      "medianMs": 2,
+      "p95Ms": 72,
+      "samples": 80
+    },
+    {
+      "version": "after",
+      "device": "desktop",
+      "scene": "night",
+      "medianMs": 520.1999999880791,
+      "p95Ms": 594.1999999880791,
+      "samples": 80
+    },
+    {
+      "version": "after",
+      "device": "desktop",
+      "scene": "pond",
+      "medianMs": 3.9000000059604645,
+      "p95Ms": 95.19999998807907,
+      "samples": 80
+    },
+    {
+      "version": "after",
+      "device": "portrait",
+      "scene": "night",
+      "medianMs": 186.69999998807907,
+      "p95Ms": 232.69999998807907,
+      "samples": 80
+    },
+    {
+      "version": "after",
+      "device": "portrait",
+      "scene": "pond",
+      "medianMs": 1.7999999821186066,
+      "p95Ms": 71,
+      "samples": 80
+    },
+    {
+      "version": "after",
+      "device": "landscape",
+      "scene": "night",
+      "medianMs": 226.2999999821186,
+      "p95Ms": 288.09999999403954,
+      "samples": 80
+    },
+    {
+      "version": "after",
+      "device": "landscape",
+      "scene": "pond",
+      "medianMs": 2.4000000059604645,
+      "p95Ms": 62.60000002384186,
+      "samples": 80
+    }
+  ]
+}

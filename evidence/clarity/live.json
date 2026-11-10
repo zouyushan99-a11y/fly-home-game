@@ -1,0 +1,11 @@
+{
+  "actualAnimationLoop": true,
+  "keyboardPractice": true,
+  "touchButtons": true,
+  "pauseFreeze": true,
+  "thirdPerson": true,
+  "previewContinues": true,
+  "offlineEmbeddedImages": 9,
+  "offlineNetworkRequests": [],
+  "errors": []
+}

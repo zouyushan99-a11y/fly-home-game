@@ -6,3 +6,6 @@ evidence/city/*.png
 evidence/urban-wings/*.png
 
 evidence/control/*.png
+
+evidence/clarity/*.png
+evidence/clarity/replays.json

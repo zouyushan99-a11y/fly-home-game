@@ -1,0 +1,20 @@
+[
+  {
+    "route": "A",
+    "meanChannelDifference": 0.00000923076923076923,
+    "maxChannelDifference": 1,
+    "sharePixelsOver2": 0
+  },
+  {
+    "route": "B",
+    "meanChannelDifference": 0.00006564102564102564,
+    "maxChannelDifference": 4,
+    "sharePixelsOver2": 0.000006153846153846154
+  },
+  {
+    "route": "C",
+    "meanChannelDifference": 0.00000923076923076923,
+    "maxChannelDifference": 1,
+    "sharePixelsOver2": 0
+  }
+]

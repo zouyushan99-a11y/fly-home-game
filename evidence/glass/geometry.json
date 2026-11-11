@@ -1,0 +1,96 @@
+{
+  "boundarySamples": 3360,
+  "unchangedPhysics": true,
+  "nightUnchanged": true,
+  "rows": [
+    {
+      "route": "A",
+      "lane": 0,
+      "centerHits": 0,
+      "offset3Hits": 0,
+      "offset5Hits": 18,
+      "segments": 60
+    },
+    {
+      "route": "A",
+      "lane": 1,
+      "centerHits": 0,
+      "offset3Hits": 4,
+      "offset5Hits": 26,
+      "segments": 60
+    },
+    {
+      "route": "A",
+      "lane": 2,
+      "centerHits": 0,
+      "offset3Hits": 0,
+      "offset5Hits": 18,
+      "segments": 60
+    },
+    {
+      "route": "B",
+      "lane": 0,
+      "centerHits": 0,
+      "offset3Hits": 0,
+      "offset5Hits": 6,
+      "segments": 60
+    },
+    {
+      "route": "B",
+      "lane": 1,
+      "centerHits": 0,
+      "offset3Hits": 0,
+      "offset5Hits": 0,
+      "segments": 60
+    },
+    {
+      "route": "B",
+      "lane": 2,
+      "centerHits": 0,
+      "offset3Hits": 0,
+      "offset5Hits": 3,
+      "segments": 60
+    },
+    {
+      "route": "C",
+      "lane": 0,
+      "centerHits": 0,
+      "offset3Hits": 0,
+      "offset5Hits": 0,
+      "segments": 60
+    },
+    {
+      "route": "C",
+      "lane": 1,
+      "centerHits": 0,
+      "offset3Hits": 0,
+      "offset5Hits": 0,
+      "segments": 60
+    },
+    {
+      "route": "C",
+      "lane": 2,
+      "centerHits": 0,
+      "offset3Hits": 0,
+      "offset5Hits": 0,
+      "segments": 60
+    }
+  ],
+  "ecology": [
+    {
+      "samples": 61,
+      "withoutGlassWithin15": 60,
+      "share": 0.9836065573770492
+    },
+    {
+      "samples": 61,
+      "withoutGlassWithin15": 61,
+      "share": 1
+    },
+    {
+      "samples": 61,
+      "withoutGlassWithin15": 61,
+      "share": 1
+    }
+  ]
+}

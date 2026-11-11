@@ -17,3 +17,6 @@ evidence/environment/*.png
 evidence/environment/replays.json
 
 evidence/learning/*.png
+
+evidence/glass/*.png
+evidence/glass/replays.json

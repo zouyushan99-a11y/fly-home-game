@@ -1,0 +1,150 @@
+{
+  "method": "Visible facade-mask pixels for glass building centres within 80 world units of the bird; far background excluded. Same geometry, depth ordering and camera; no textures/glare in segmentation pass.",
+  "rows": [
+    {
+      "route": "A",
+      "lane": 0,
+      "progress": 27,
+      "marked": 0,
+      "unmarked": 496978,
+      "share": 1
+    },
+    {
+      "route": "A",
+      "lane": 0,
+      "progress": 31,
+      "marked": 0,
+      "unmarked": 554130,
+      "share": 1
+    },
+    {
+      "route": "A",
+      "lane": 0,
+      "progress": 36,
+      "marked": 31744,
+      "unmarked": 337195,
+      "share": 0.9139586760955063
+    },
+    {
+      "route": "A",
+      "lane": 1,
+      "progress": 27,
+      "marked": 0,
+      "unmarked": 389752,
+      "share": 1
+    },
+    {
+      "route": "A",
+      "lane": 1,
+      "progress": 31,
+      "marked": 0,
+      "unmarked": 471761,
+      "share": 1
+    },
+    {
+      "route": "A",
+      "lane": 1,
+      "progress": 36,
+      "marked": 31711,
+      "unmarked": 342488,
+      "share": 0.9152563208346362
+    },
+    {
+      "route": "A",
+      "lane": 2,
+      "progress": 27,
+      "marked": 0,
+      "unmarked": 428786,
+      "share": 1
+    },
+    {
+      "route": "A",
+      "lane": 2,
+      "progress": 31,
+      "marked": 0,
+      "unmarked": 511991,
+      "share": 1
+    },
+    {
+      "route": "A",
+      "lane": 2,
+      "progress": 36,
+      "marked": 23244,
+      "unmarked": 379279,
+      "share": 0.9422542314352224
+    },
+    {
+      "route": "B",
+      "lane": 0,
+      "progress": 27,
+      "marked": 151439,
+      "unmarked": 0,
+      "share": 1
+    },
+    {
+      "route": "B",
+      "lane": 0,
+      "progress": 31,
+      "marked": 316555,
+      "unmarked": 0,
+      "share": 1
+    },
+    {
+      "route": "B",
+      "lane": 0,
+      "progress": 36,
+      "marked": 145462,
+      "unmarked": 0,
+      "share": 1
+    },
+    {
+      "route": "B",
+      "lane": 1,
+      "progress": 27,
+      "marked": 57404,
+      "unmarked": 0,
+      "share": 1
+    },
+    {
+      "route": "B",
+      "lane": 1,
+      "progress": 31,
+      "marked": 294774,
+      "unmarked": 0,
+      "share": 1
+    },
+    {
+      "route": "B",
+      "lane": 1,
+      "progress": 36,
+      "marked": 162555,
+      "unmarked": 0,
+      "share": 1
+    },
+    {
+      "route": "B",
+      "lane": 2,
+      "progress": 27,
+      "marked": 73972,
+      "unmarked": 0,
+      "share": 1
+    },
+    {
+      "route": "B",
+      "lane": 2,
+      "progress": 31,
+      "marked": 155508,
+      "unmarked": 0,
+      "share": 1
+    },
+    {
+      "route": "B",
+      "lane": 2,
+      "progress": 36,
+      "marked": 190696,
+      "unmarked": 0,
+      "share": 1
+    }
+  ],
+  "errors": []
+}

@@ -15,3 +15,5 @@ Generated with `tools/environment-scenes.cjs --after-only`, 1000×650, then enco
 City captures use the actual position and heading recorded by the complete-flight test pilot (`evidence/environment/flight-poses.json`).
 
 These are representative gameplay views, not a survey map or concept artwork. The existing preview UI and educational logic are unchanged. The offline build embeds all five assets.
+
+UW-GLASS-4 updates only `glass.webp`: current A centre branch at progress 31, replay pose and existing bird-follow camera. The other four area images are unchanged.

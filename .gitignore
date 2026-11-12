@@ -20,3 +20,6 @@ evidence/learning/*.png
 
 evidence/glass/*.png
 evidence/glass/replays.json
+
+# Full-resolution local captures; publish compressed evidence.
+evidence/targeted/*.png

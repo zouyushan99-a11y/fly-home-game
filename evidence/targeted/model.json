@@ -1,0 +1,143 @@
+{
+  "educationOnce": true,
+  "approachNoDamage": true,
+  "contactEpisodes": true,
+  "restart": true,
+  "frames": [
+    {
+      "dt": 0.008333333333333333,
+      "distance": 728.9999999998458,
+      "energy": 75,
+      "ledger": -20
+    },
+    {
+      "dt": 0.016666666666666666,
+      "distance": 728.9999999998458,
+      "energy": 75,
+      "ledger": -20
+    },
+    {
+      "dt": 0.03333333333333333,
+      "distance": 728.9999999998458,
+      "energy": 75,
+      "ledger": -20
+    },
+    {
+      "dt": 0.06666666666666667,
+      "distance": 728.9999999998458,
+      "energy": 75,
+      "ledger": -20
+    },
+    {
+      "dt": 0.25,
+      "distance": 728.9999999998458,
+      "energy": 75,
+      "ledger": -20
+    }
+  ],
+  "passive": [
+    {
+      "health": 75,
+      "progress": 24.87666666666667,
+      "heading": 0
+    }
+  ],
+  "towers": [
+    {
+      "id": "0-inner-A-2--1",
+      "chapter": 0,
+      "shared": true,
+      "entry": false,
+      "route": "A",
+      "x": -38.534676422000885,
+      "z": 177,
+      "width": 10,
+      "depth": 12,
+      "height": 100,
+      "angle": 0,
+      "kind": "office",
+      "glass": true,
+      "marked": false,
+      "style": 2,
+      "seed": 13,
+      "side": -1,
+      "severe": false
+    },
+    {
+      "id": "0-inner-A-2-1",
+      "chapter": 0,
+      "shared": true,
+      "entry": false,
+      "route": "A",
+      "x": -20.540447787940934,
+      "z": 185,
+      "width": 10,
+      "depth": 12,
+      "height": 108,
+      "angle": 0,
+      "kind": "office",
+      "glass": true,
+      "marked": false,
+      "style": 2,
+      "seed": 15,
+      "side": 1,
+      "severe": false
+    },
+    {
+      "id": "0-inner-A-3--1",
+      "chapter": 0,
+      "shared": true,
+      "entry": false,
+      "route": "A",
+      "x": -36.996139883751674,
+      "z": 192,
+      "width": 10,
+      "depth": 12,
+      "height": 116,
+      "angle": 0,
+      "kind": "office",
+      "glass": true,
+      "marked": false,
+      "style": 0,
+      "seed": 20,
+      "side": -1,
+      "severe": false
+    },
+    {
+      "id": "0-inner-A-3-1",
+      "chapter": 0,
+      "shared": true,
+      "entry": false,
+      "route": "A",
+      "x": -17.796139883751675,
+      "z": 200,
+      "width": 10,
+      "depth": 12,
+      "height": 124,
+      "angle": 0,
+      "kind": "office",
+      "glass": true,
+      "marked": false,
+      "style": 0,
+      "seed": 22,
+      "side": 1,
+      "severe": false
+    }
+  ],
+  "restOnce": true,
+  "settings": {
+    "flight": 5,
+    "segment": 18,
+    "detour": 0,
+    "light": {
+      "A": 5,
+      "B": 5,
+      "C": 5
+    },
+    "rest": {
+      "B": 20,
+      "C": 20
+    },
+    "arrival": 10
+  }
+}

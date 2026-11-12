@@ -1,0 +1,65 @@
+[
+  {
+    "name": "desktop",
+    "approach": {
+      "state": {
+        "last": 2.4416666666666607,
+        "visibleTime": 2.4333333333333274,
+        "reaction": 1.4333333333333285,
+        "started": true
+      },
+      "lesson": "birds",
+      "health": 100,
+      "progress": 87.29625000000527
+    },
+    "frozen": true,
+    "signs": 0,
+    "hidden": {
+      "reaction": 0,
+      "seen": false
+    },
+    "errors": []
+  },
+  {
+    "name": "portrait",
+    "approach": {
+      "state": {
+        "last": 2.4416666666666607,
+        "visibleTime": 2.4333333333333274,
+        "reaction": 1.4333333333333285,
+        "started": true
+      },
+      "lesson": "birds",
+      "health": 100,
+      "progress": 87.29625000000527
+    },
+    "frozen": true,
+    "signs": 0,
+    "hidden": {
+      "reaction": 0,
+      "seen": false
+    },
+    "errors": []
+  },
+  {
+    "name": "landscape",
+    "approach": {
+      "state": {
+        "last": 2.4416666666666607,
+        "visibleTime": 2.4333333333333274,
+        "reaction": 1.4333333333333285,
+        "started": true
+      },
+      "lesson": "birds",
+      "health": 100,
+      "progress": 87.29625000000527
+    },
+    "frozen": true,
+    "signs": 0,
+    "hidden": {
+      "reaction": 0,
+      "seen": false
+    },
+    "errors": []
+  }
+]

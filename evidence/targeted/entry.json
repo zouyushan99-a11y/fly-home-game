@@ -1,0 +1,64 @@
+[
+  {
+    "name": "desktop",
+    "route": "A",
+    "health": 100,
+    "progress": 18.53145080253421
+  },
+  {
+    "passive": {
+      "health": 75,
+      "headingBefore": -0.09335575751430375,
+      "headingAfter": -0.09335575751430375,
+      "progress": 24.87667150498311
+    }
+  },
+  {
+    "name": "desktop",
+    "route": "B",
+    "health": 100,
+    "progress": 19.560936733743524
+  },
+  {
+    "name": "desktop",
+    "route": "C",
+    "health": 100,
+    "progress": 19.722113075233274
+  },
+  {
+    "name": "portrait",
+    "route": "A",
+    "health": 100,
+    "progress": 18.53145080253421
+  },
+  {
+    "name": "portrait",
+    "route": "B",
+    "health": 100,
+    "progress": 19.560936733743524
+  },
+  {
+    "name": "portrait",
+    "route": "C",
+    "health": 100,
+    "progress": 19.722113075233274
+  },
+  {
+    "name": "landscape",
+    "route": "A",
+    "health": 100,
+    "progress": 18.53145080253421
+  },
+  {
+    "name": "landscape",
+    "route": "B",
+    "health": 100,
+    "progress": 19.560936733743524
+  },
+  {
+    "name": "landscape",
+    "route": "C",
+    "health": 100,
+    "progress": 19.722113075233274
+  }
+]

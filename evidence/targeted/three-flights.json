@@ -1,0 +1,637 @@
+{
+  "results": [
+    {
+      "route": "A",
+      "lane": 1,
+      "success": true,
+      "health": 100,
+      "energy": 55,
+      "time": 153.82500000002443,
+      "steps": 9237,
+      "events": [
+        {
+          "preview": 0,
+          "progress": 9.009090057975058
+        },
+        {
+          "lesson": "marked",
+          "observed": [
+            "glass",
+            "marked",
+            "green"
+          ],
+          "progress": 11.360596184122926
+        },
+        {
+          "lesson": "glass",
+          "observed": [
+            "glass",
+            "marked",
+            "green"
+          ],
+          "progress": 13.475532022145082
+        },
+        {
+          "preview": 1,
+          "progress": 44.00614781027403
+        },
+        {
+          "lesson": "light",
+          "observed": [
+            "glass",
+            "marked",
+            "green",
+            "light"
+          ],
+          "progress": 49.00980417804773
+        },
+        {
+          "preview": 2,
+          "progress": 79.00810621660821
+        },
+        {
+          "lesson": "green",
+          "observed": [
+            "glass",
+            "marked",
+            "green",
+            "light"
+          ],
+          "progress": 84.00645361992888
+        },
+        {
+          "lesson": "birds",
+          "observed": [
+            "glass",
+            "marked",
+            "green",
+            "light",
+            "birds"
+          ],
+          "progress": 85.625151441864
+        },
+        {
+          "preview": 3,
+          "progress": 114.006278249738
+        },
+        {
+          "lesson": "pond",
+          "observed": [
+            "glass",
+            "marked",
+            "green",
+            "light",
+            "birds",
+            "pond"
+          ],
+          "progress": 119.00527461832178
+        },
+        {
+          "preview": 4,
+          "progress": 139.0093065552871
+        },
+        {
+          "lesson": "wetland",
+          "observed": [
+            "glass",
+            "marked",
+            "green",
+            "light",
+            "birds",
+            "pond",
+            "wetland"
+          ],
+          "progress": 185.00739272996066
+        }
+      ],
+      "learned": [
+        "marked",
+        "glass",
+        "light",
+        "green",
+        "birds",
+        "pond",
+        "wetland"
+      ],
+      "recoveries": 0,
+      "ledger": {
+        "flight": -50,
+        "detour": 0,
+        "light": -5,
+        "rest": 0,
+        "arrival": 10
+      },
+      "resourceLog": [
+        {
+          "id": "flight-segment-1",
+          "health": 0,
+          "energy": -5,
+          "at": 17.512628312186806
+        },
+        {
+          "id": "flight-segment-2",
+          "health": 0,
+          "energy": -5,
+          "at": 34.81774555804492
+        },
+        {
+          "id": "flight-segment-3",
+          "health": 0,
+          "energy": -5,
+          "at": 50.66238746977379
+        },
+        {
+          "id": "light-1",
+          "health": 0,
+          "energy": -5,
+          "at": 61.00436163088225
+        },
+        {
+          "id": "flight-segment-4",
+          "health": 0,
+          "energy": -5,
+          "at": 67.79146113853554
+        },
+        {
+          "id": "flight-segment-5",
+          "health": 0,
+          "energy": -5,
+          "at": 83.8162323459859
+        },
+        {
+          "id": "flight-segment-6",
+          "health": 0,
+          "energy": -5,
+          "at": 99.73667171131018
+        },
+        {
+          "id": "flight-segment-7",
+          "health": 0,
+          "energy": -5,
+          "at": 115.94543238270195
+        },
+        {
+          "id": "flight-segment-8",
+          "health": 0,
+          "energy": -5,
+          "at": 132.7990724256896
+        },
+        {
+          "id": "flight-segment-9",
+          "health": 0,
+          "energy": -5,
+          "at": 150.03098918104814
+        },
+        {
+          "id": "flight-segment-10",
+          "health": 0,
+          "energy": -5,
+          "at": 168.03287929363864
+        },
+        {
+          "id": "arrival",
+          "health": 0,
+          "energy": 10,
+          "at": 185.0169261632005
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "route": "B",
+      "lane": 1,
+      "success": true,
+      "health": 100,
+      "energy": 65,
+      "time": 154.35833333335728,
+      "steps": 9269,
+      "events": [
+        {
+          "preview": 0,
+          "progress": 9.009090057975058
+        },
+        {
+          "lesson": "marked",
+          "observed": [
+            "glass",
+            "marked",
+            "green"
+          ],
+          "progress": 10.689678238174844
+        },
+        {
+          "lesson": "glass",
+          "observed": [
+            "glass",
+            "marked",
+            "green"
+          ],
+          "progress": 12.003657967221475
+        },
+        {
+          "lesson": "green",
+          "observed": [
+            "glass",
+            "marked",
+            "green"
+          ],
+          "progress": 29.302380616835443
+        },
+        {
+          "preview": 1,
+          "progress": 44.00344547959163
+        },
+        {
+          "lesson": "light",
+          "observed": [
+            "glass",
+            "marked",
+            "green",
+            "light"
+          ],
+          "progress": 49.006578195305636
+        },
+        {
+          "preview": 2,
+          "progress": 79.00512803542736
+        },
+        {
+          "lesson": "birds",
+          "observed": [
+            "glass",
+            "marked",
+            "green",
+            "light",
+            "birds"
+          ],
+          "progress": 84.58415849639249
+        },
+        {
+          "preview": 3,
+          "progress": 114.0063025168709
+        },
+        {
+          "lesson": "pond",
+          "observed": [
+            "glass",
+            "marked",
+            "green",
+            "light",
+            "birds",
+            "pond"
+          ],
+          "progress": 119.00861306431892
+        },
+        {
+          "preview": 4,
+          "progress": 139.00023160399633
+        },
+        {
+          "lesson": "wetland",
+          "observed": [
+            "glass",
+            "marked",
+            "green",
+            "light",
+            "birds",
+            "pond",
+            "wetland"
+          ],
+          "progress": 185.00158665537788
+        }
+      ],
+      "learned": [
+        "marked",
+        "glass",
+        "green",
+        "light",
+        "birds",
+        "pond",
+        "wetland"
+      ],
+      "recoveries": 0,
+      "ledger": {
+        "flight": -50,
+        "detour": 0,
+        "light": -5,
+        "rest": 10,
+        "arrival": 10
+      },
+      "resourceLog": [
+        {
+          "id": "flight-segment-1",
+          "health": 0,
+          "energy": -5,
+          "at": 17.897049726423905
+        },
+        {
+          "id": "flight-segment-2",
+          "health": 0,
+          "energy": -5,
+          "at": 33.00295639490789
+        },
+        {
+          "id": "rest-city-0-B",
+          "health": 0,
+          "energy": 10,
+          "at": 33.22765997975329
+        },
+        {
+          "id": "flight-segment-3",
+          "health": 0,
+          "energy": -5,
+          "at": 49.41157798579965
+        },
+        {
+          "id": "light-1",
+          "health": 0,
+          "energy": -5,
+          "at": 61.000753928843466
+        },
+        {
+          "id": "flight-segment-4",
+          "health": 0,
+          "energy": -5,
+          "at": 65.31744867312928
+        },
+        {
+          "id": "flight-segment-5",
+          "health": 0,
+          "energy": -5,
+          "at": 81.30230544270808
+        },
+        {
+          "id": "flight-segment-6",
+          "health": 0,
+          "energy": -5,
+          "at": 98.43475597232337
+        },
+        {
+          "id": "flight-segment-7",
+          "health": 0,
+          "energy": -5,
+          "at": 114.52201237024667
+        },
+        {
+          "id": "flight-segment-8",
+          "health": 0,
+          "energy": -5,
+          "at": 132.3104756260623
+        },
+        {
+          "id": "flight-segment-9",
+          "health": 0,
+          "energy": -5,
+          "at": 149.30922949265644
+        },
+        {
+          "id": "flight-segment-10",
+          "health": 0,
+          "energy": -5,
+          "at": 167.3011064200713
+        },
+        {
+          "id": "arrival",
+          "health": 0,
+          "energy": 10,
+          "at": 185.01112009173892
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "route": "C",
+      "lane": 1,
+      "success": true,
+      "health": 100,
+      "energy": 65,
+      "time": 170.60000000000917,
+      "steps": 10243,
+      "events": [
+        {
+          "preview": 0,
+          "progress": 9.009090057975058
+        },
+        {
+          "lesson": "marked",
+          "observed": [
+            "glass",
+            "marked",
+            "green"
+          ],
+          "progress": 11.40666410356733
+        },
+        {
+          "lesson": "glass",
+          "observed": [
+            "glass",
+            "marked",
+            "green"
+          ],
+          "progress": 14.325236438923383
+        },
+        {
+          "lesson": "green",
+          "observed": [
+            "glass",
+            "marked",
+            "green"
+          ],
+          "progress": 27.33674442083922
+        },
+        {
+          "preview": 1,
+          "progress": 44.00082169360655
+        },
+        {
+          "lesson": "light",
+          "observed": [
+            "glass",
+            "marked",
+            "green",
+            "light"
+          ],
+          "progress": 49.20870527079731
+        },
+        {
+          "preview": 2,
+          "progress": 79.00719229316537
+        },
+        {
+          "lesson": "birds",
+          "observed": [
+            "glass",
+            "marked",
+            "green",
+            "light",
+            "birds"
+          ],
+          "progress": 85.4319361560124
+        },
+        {
+          "preview": 3,
+          "progress": 114.00419933340477
+        },
+        {
+          "lesson": "pond",
+          "observed": [
+            "glass",
+            "marked",
+            "green",
+            "light",
+            "birds",
+            "pond"
+          ],
+          "progress": 119.0101522811885
+        },
+        {
+          "preview": 4,
+          "progress": 139.0037612141101
+        },
+        {
+          "lesson": "wetland",
+          "observed": [
+            "glass",
+            "marked",
+            "green",
+            "light",
+            "birds",
+            "pond",
+            "wetland"
+          ],
+          "progress": 185.00002390864688
+        }
+      ],
+      "learned": [
+        "marked",
+        "glass",
+        "green",
+        "light",
+        "birds",
+        "pond",
+        "wetland"
+      ],
+      "recoveries": 0,
+      "ledger": {
+        "flight": -60,
+        "detour": 0,
+        "light": -5,
+        "rest": 20,
+        "arrival": 10
+      },
+      "resourceLog": [
+        {
+          "id": "flight-segment-1",
+          "health": 0,
+          "energy": -5,
+          "at": 16.326093424529994
+        },
+        {
+          "id": "flight-segment-2",
+          "health": 0,
+          "energy": -5,
+          "at": 28.571407057225052
+        },
+        {
+          "id": "flight-segment-3",
+          "health": 0,
+          "energy": -5,
+          "at": 41.80399202310353
+        },
+        {
+          "id": "flight-segment-4",
+          "health": 0,
+          "energy": -5,
+          "at": 57.13812588701001
+        },
+        {
+          "id": "light-1",
+          "health": 0,
+          "energy": -5,
+          "at": 61.00442439539757
+        },
+        {
+          "id": "rest-city-1-C",
+          "health": 0,
+          "energy": 20,
+          "at": 67.9217868367124
+        },
+        {
+          "id": "flight-segment-5",
+          "health": 0,
+          "energy": -5,
+          "at": 70.65105128460635
+        },
+        {
+          "id": "flight-segment-6",
+          "health": 0,
+          "energy": -5,
+          "at": 82.74413799175905
+        },
+        {
+          "id": "flight-segment-7",
+          "health": 0,
+          "energy": -5,
+          "at": 99.94223396107787
+        },
+        {
+          "id": "flight-segment-8",
+          "health": 0,
+          "energy": -5,
+          "at": 114.01264067471472
+        },
+        {
+          "id": "flight-segment-9",
+          "health": 0,
+          "energy": -5,
+          "at": 129.78771462485344
+        },
+        {
+          "id": "flight-segment-10",
+          "health": 0,
+          "energy": -5,
+          "at": 145.12896132822087
+        },
+        {
+          "id": "flight-segment-11",
+          "health": 0,
+          "energy": -5,
+          "at": 163.13368437834177
+        },
+        {
+          "id": "flight-segment-12",
+          "health": 0,
+          "energy": -5,
+          "at": 181.10031333208735
+        },
+        {
+          "id": "arrival",
+          "health": 0,
+          "energy": 10,
+          "at": 185.00955734584863
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "errors": [],
+  "note": "Instrumented browser pilot; UI inputs tested separately; no physical mobile device."
+}

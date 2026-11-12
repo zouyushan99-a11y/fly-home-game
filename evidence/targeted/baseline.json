@@ -1,0 +1,19 @@
+{
+  "checkpoint": "46725bc",
+  "speed": 12.15,
+  "wetlandSpeed": 10.3275,
+  "radius": 1.1,
+  "damage": [
+    15,
+    25
+  ],
+  "protection": 1,
+  "energy": {
+    "flight": 5,
+    "progressSegment": 15,
+    "detour": 5,
+    "light": 5,
+    "rest": 20,
+    "arrival": 10
+  }
+}
